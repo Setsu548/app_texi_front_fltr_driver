@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+
+import '../../theme/main_theme.dart';
+import 'body_text_widget.dart';
+import 'label_text_widget.dart';
+
+class InfoTileFlatSecondary extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String description;
+  final Color? colorIcon;
+
+  const InfoTileFlatSecondary({
+    super.key,
+    required this.icon,
+    required this.title,
+    required this.description,
+    this.colorIcon
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Icon(
+          icon,
+          color: colorIcon ?? lightColorScheme.secondaryContainer,
+        ),
+        const SizedBox(width: 12),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              LabelText(title),
+              BodyText(description),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
