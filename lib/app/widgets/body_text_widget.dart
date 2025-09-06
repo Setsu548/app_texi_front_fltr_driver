@@ -4,12 +4,16 @@ class BodyText extends StatelessWidget {
   final String text;
   final Color? color;
   final TextAlign? textAlign;
+  final int? maxLines;
+  final TextOverflow? overflow;
 
   const BodyText(
     this.text, {
-    this.textAlign = TextAlign.start,
     Key? key,
     this.color,
+    this.textAlign = TextAlign.start,
+    this.maxLines,         
+    this.overflow,        
   }) : super(key: key);
 
   @override
@@ -17,11 +21,12 @@ class BodyText extends StatelessWidget {
     return Text(
       text,
       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-        color: color,
-        
-      ),
+            color: color,
+          ),
       textAlign: textAlign,
       softWrap: true,
+      maxLines: maxLines,       
+      overflow: overflow,      
     );
   }
 }

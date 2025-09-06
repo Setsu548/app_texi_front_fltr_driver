@@ -1,3 +1,4 @@
+import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'label_text_widget.dart';
@@ -5,11 +6,13 @@ import 'label_text_widget.dart';
 class RadioGroup extends HookWidget {
   final List<String> options; 
   final String label;
+  final Color? colorLabel;
   final String? initialValue; 
 
   const RadioGroup({
     super.key,
     required this.label,
+    this.colorLabel,
     required this.options,
     this.initialValue,
   });
@@ -19,16 +22,16 @@ class RadioGroup extends HookWidget {
     final selectedValue = useState<String?>(initialValue);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LabelText(label),
+          LabelText(label, color: colorLabel),
           Wrap(
             children: options.map((option) {
               return SizedBox(
                 // Ancho de la pantalla | Numero de Columna | Margen
-                width: (MediaQuery.of(context).size.width / 4) - 24,
+                width: (MediaQuery.of(context).size.width / 4) - 20,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -38,8 +41,14 @@ class RadioGroup extends HookWidget {
                       onChanged: (value) {
                         selectedValue.value = value;
                       },
+                      fillColor: MaterialStateProperty.resolveWith<Color>((states) {
+                        if (states.contains(MaterialState.selected)) {
+                          return lightColorScheme.primary; 
+                        }
+                        return lightColorScheme.surface;
+                      }),
                     ),
-                    LabelText(option),
+                    LabelText(option, color: colorLabel),
                   ],
                 ),
               );

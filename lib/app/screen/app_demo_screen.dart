@@ -1,3 +1,8 @@
+import 'package:app_texi_fltr_driver/app/widgets/card_on_surface_widget.dart';
+import 'package:app_texi_fltr_driver/app/widgets/card_primary_container_widget.dart';
+import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
+import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
+
 import '../widgets/avatar_text_widget.dart';
 import '../widgets/body_text_bold_widget.dart';
 import '../widgets/body_text_primary_widget.dart';
@@ -152,8 +157,15 @@ class AppDemoBtnView extends HookWidget {
                 onPressed: () {}
               ),
               SizedBox(height: 10),
+              PrimaryVariantButton(text: 'Primary Variant Button', onPressed: (){}),
+              SizedBox(height: 10),
               SecondaryButton(
                 text: 'Secondary Button',
+                onPressed: () {},
+              ),
+              SizedBox(height: 10),
+              SecondaryVariantButton(
+                text: 'Secondary Variant Button',
                 onPressed: () {},
               ),
               SizedBox(height: 10),
@@ -218,6 +230,10 @@ class AppDemoCardView extends HookWidget {
             CardSecondary(children: [Text('Card Secondary')]),
             SizedBox(height: 10),
             CardTertiary(children: [Text('Card Tertiary')]),
+            SizedBox(height: 10),
+            CardOnSurface(children: [BodyText('Card On Surface', color: lightColorScheme.surface,)]),
+            SizedBox(height: 10),
+            CardPrimaryContainer(children: [BodyText('Card On Surface', color: lightColorScheme.surface,)]),
             SizedBox(height: 10),
             Row(
               children: [

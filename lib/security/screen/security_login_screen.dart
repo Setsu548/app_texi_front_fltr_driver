@@ -1,3 +1,5 @@
+import 'package:app_texi_fltr_driver/app/app_router.dart';
+import 'package:app_texi_fltr_driver/app/widgets/link_text_primary_widget.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -42,8 +44,18 @@ class SecurityLoginScreen extends HookWidget {
                             width: MediaQuery.of(context).size.height * 0.4,
                           ),
                           Padding(
-                            padding: EdgeInsets.only(top: (MediaQuery.of(context).size.height * 0.15)),
-                            child: LabelText(context.intl.labelFastestSafestTravel),
+                            padding: EdgeInsets.only(top: (MediaQuery.of(context).size.height * 0.18)),
+                            child: Column(
+                              children: [
+                                LabelText(context.intl.labelFastestSafestTravel),
+                                LinkTextPrimary(
+                                  'Registrarse',
+                                  onTap: (){
+                                    appRouter.push('/security/welcome');
+                                  }
+                                )
+                              ],
+                            ),
                           ), 
                         ],
                       ),

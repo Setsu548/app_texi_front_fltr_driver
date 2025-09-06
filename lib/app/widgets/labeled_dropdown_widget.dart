@@ -5,12 +5,14 @@ import 'label_text_widget.dart';
 
 class LabeledDropdown<T> extends HookWidget {
   final String label;
+  final Color? colorLabel;
   final String hint;
   final List<DropdownMenuItem<T>> items;
 
   const LabeledDropdown({
     super.key,
     required this.label,
+    this.colorLabel,
     required this.hint,
     required this.items,
   });
@@ -21,11 +23,11 @@ class LabeledDropdown<T> extends HookWidget {
     final selectedValue = useState<T?>(null);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 4.0),
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LabelText(label),
+          LabelText(label, color: colorLabel),
           const SizedBox(height: 6),
           DropdownButtonFormField<T>(
             value: selectedValue.value,

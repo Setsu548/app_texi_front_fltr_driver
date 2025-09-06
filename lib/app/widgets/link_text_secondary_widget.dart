@@ -3,10 +3,12 @@ import '../../theme/main_theme.dart';
 
 class LinkTextSecondary extends StatelessWidget {
   final String text;
+  final Color? colorText;
   final VoidCallback onTap;
 
   const LinkTextSecondary(
     this.text, {
+    this.colorText,
     Key? key,
     required this.onTap,
   }) : super(key: key);
@@ -20,8 +22,8 @@ class LinkTextSecondary extends StatelessWidget {
       child: Text(
         text,
         style: baseStyle?.copyWith(
-          color: lightColorScheme.primary,
-          decoration: TextDecoration.underline,
+          color: colorText ?? lightColorScheme.primary,
+          decoration: TextDecoration.none,
         ),
       ),
     );

@@ -4,6 +4,8 @@ import 'label_text_widget.dart';
 
 class LabeledTextField extends StatelessWidget {
   final String label;
+  final Color? colorLabel;
+  final Color? colorPrefix;
   final String hint;
   final TextInputType keyboardType;
   final String? prefixText; 
@@ -11,7 +13,9 @@ class LabeledTextField extends StatelessWidget {
   const LabeledTextField({
     super.key,
     required this.label,
+    this.colorLabel,
     required this.hint,
+    this.colorPrefix,
     this.keyboardType = TextInputType.text,
     this.prefixText,
   });
@@ -19,11 +23,11 @@ class LabeledTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 4.0),
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LabelText(label),
+          LabelText(label, color: colorLabel),
           const SizedBox(height: 6),
           Row(
             children: [
@@ -31,7 +35,7 @@ class LabeledTextField extends StatelessWidget {
                 Text(
                   prefixText!,
                   style: TextStyle(
-                    color: lightColorScheme.onSurface,
+                    color: colorPrefix ?? lightColorScheme.onSurface,
                     fontSize: 16,
                   ),
                 ),

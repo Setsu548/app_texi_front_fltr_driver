@@ -3,12 +3,16 @@ import '../../theme/main_theme.dart';
 
 class LinkTextPrimary extends StatelessWidget {
   final String text;
+  final Color? colorText;
   final VoidCallback onTap;
+  final TextAlign textAlign;
 
   const LinkTextPrimary(
     this.text, {
     Key? key,
+    this.textAlign = TextAlign.start,
     required this.onTap,
+    this.colorText
   }) : super(key: key);
 
   @override
@@ -20,9 +24,10 @@ class LinkTextPrimary extends StatelessWidget {
       child: Text(
         text,
         style: baseStyle?.copyWith(
-          color: lightColorScheme.primary,
-          decoration: TextDecoration.underline,
+          color: colorText ?? lightColorScheme.primary,
+          decoration: TextDecoration.none,
         ),
+        textAlign: textAlign,
       ),
     );
   }
