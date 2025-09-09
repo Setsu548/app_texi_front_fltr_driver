@@ -6,6 +6,7 @@ import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,13 +37,13 @@ class VehicleFoundView extends HookWidget {
             ),
             SizedBox(height: 20),
             TitleText(
-              '¡Vehículo encontrado!',
+              context.intl.titleTextVehicleFound,
               color: lightColorScheme.surface,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
             BodyText(
-              'Su peticion sera revisada por nuestro equipo en las proximas 24 horas.',
+              context.intl.bodyTextVehicleFoundInstruction,
               color: lightColorScheme.surface,
               textAlign: TextAlign.center,
             ),
@@ -53,7 +54,7 @@ class VehicleFoundView extends HookWidget {
                   children: [
                     Icon(Icons.local_taxi),
                     SizedBox(width: 20),
-                    BodyText('Detalles del vehiculo', color: lightColorScheme.surface)
+                    BodyText(context.intl.bodyTextVehicleDetails, color: lightColorScheme.surface)
                   ],
                 ),
                 SizedBox(height: 10),
@@ -65,7 +66,7 @@ class VehicleFoundView extends HookWidget {
                       children: [
                         SizedBox(
                           width: labelWidth,
-                          child: BodyText('Placa:', color: lightColorScheme.secondaryContainer),
+                          child: BodyText(context.intl.labelTextVehiclePlate, color: lightColorScheme.secondaryContainer),
                         ),
                         Expanded(
                           child: BodyText('ABC-123', color: lightColorScheme.surface),
@@ -78,7 +79,7 @@ class VehicleFoundView extends HookWidget {
                       children: [
                         SizedBox(
                           width: labelWidth,
-                          child: BodyText('Modelo:', color: lightColorScheme.secondaryContainer),
+                          child: BodyText(context.intl.labelTextVehicleModel, color: lightColorScheme.secondaryContainer),
                         ),
                         Expanded(
                           child: BodyText('Toyota Corolla', color: lightColorScheme.surface,),
@@ -91,7 +92,7 @@ class VehicleFoundView extends HookWidget {
                       children: [
                         SizedBox(
                           width: labelWidth,
-                          child: BodyText('Año:', color: lightColorScheme.secondaryContainer),
+                          child: BodyText(context.intl.labelTextVehicleYear, color: lightColorScheme.secondaryContainer),
                         ),
                         Expanded(
                           child: BodyText('2019', color: lightColorScheme.surface,),
@@ -123,7 +124,7 @@ class VehicleFoundView extends HookWidget {
                     SizedBox(width: 20),
                     Expanded(
                       child: 
-                        LabelText('Recibira una notificacion cuando su solicitud haya sido verificado y aprobado.',
+                        LabelText(context.intl.bodyTextVehicleNotificationInfo,
                         color: lightColorScheme.surface)
                     )
                   ],
@@ -134,14 +135,14 @@ class VehicleFoundView extends HookWidget {
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: 'Volver al inicio', 
+          text: context.intl.primaryVariantButtonBackHome, 
           onPressed: (){
             appRouter.push('/security/login');
           }
         ),
         SizedBox(height: 20),
         SecondaryVariantButton(
-          text: 'Revisar estado', 
+          text: context.intl.secondaryVariantButtonCheckStatus, 
           onPressed: (){
             appRouter.push('/security/vehicle_search_result');
           },

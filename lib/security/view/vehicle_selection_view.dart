@@ -5,6 +5,7 @@ import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,25 +28,25 @@ class VehicleSelectionView extends HookWidget {
               fit: BoxFit.contain,  
             ),
             TitleText(
-              'Seleccion de Vehiculo',
+              context.intl.titleTextVehicleSelection,
               color: lightColorScheme.surface,
             ),
             SizedBox(height: 20),
             BodyText(
-              'Por favor seleccion una de las siguientes opciones para continuar con el proceso de registro',
+              context.intl.bodyTextVehicleInstruction,
               color: lightColorScheme.surface,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
             PrimaryVariantButton(
-              text: 'Registrar Vehiculo Nuevo', 
+              text: context.intl.primaryVariantButtonRegisterNewVehicle, 
               onPressed: (){
                 appRouter.push('/security/vehicle_info_form');
               }
             ),
             SizedBox(height: 20),
             PrimaryVariantButton(
-              text: 'Seleccionar Vehiculo Registrado', 
+              text: context.intl.primaryVariantButtonSelectRegisteredVehicle, 
               backgroundColor: lightColorScheme.surfaceBright,
               onPressed: (){
                 appRouter.push('/security/vehicle_plate');
@@ -67,7 +68,7 @@ class VehicleSelectionView extends HookWidget {
                 SizedBox(width: 20),
                 Expanded(
                   child: LabelText(
-                    'Si ya ha registrado un vehiculo anteriormente puede seleccionarlo de la lista de vehiculos registrados. De lo contrario, registre un nuevo vehiculo para comenzar',
+                    context.intl.bodyTextRegisteredVehicleInfo,
                     color: lightColorScheme.surface,
                   ),
                 )
@@ -77,7 +78,7 @@ class VehicleSelectionView extends HookWidget {
         ),
         SizedBox(height: 20),
         SecondaryVariantButton(
-          text: 'Continuar Despues', 
+          text: context.intl.secondaryVariantButtonContinueLater, 
           onPressed: (){}
         )
       ],

@@ -1,10 +1,11 @@
-import 'package:app_texi_fltr_driver/app/app_router.dart';
-import 'package:app_texi_fltr_driver/app/widgets/link_text_primary_widget.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+
+import '../../app/app_router.dart';
 import '../../app/app_scaffold.dart';
 import '../../app/widgets/label_text_widget.dart';
+import '../../app/widgets/link_text_primary_widget.dart';
 import '../view/security_login_view.dart';
 
 class SecurityLoginScreen extends HookWidget {
@@ -49,7 +50,7 @@ class SecurityLoginScreen extends HookWidget {
                               children: [
                                 LabelText(context.intl.labelFastestSafestTravel),
                                 LinkTextPrimary(
-                                  'Registrarse',
+                                  context.intl.linkTextPrimaryRegister,
                                   onTap: (){
                                     appRouter.push('/security/welcome');
                                   }

@@ -5,6 +5,7 @@ import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/link_text_secondary_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -29,11 +30,11 @@ class RegistrationConfirmationPersonView extends HookWidget {
           ),
         ),
         SizedBox(height: 20),
-        TitleText('¡Datos del registro!', color: lightColorScheme.primary),
+        TitleText(context.intl.titleTextRegistrationConfirmation, color: lightColorScheme.primary),
         SizedBox(height: 20),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: LabelText('Por favor verifique que los datos que se enviaran a su revision son los correctos', color: lightColorScheme.primary),
+          child: LabelText(context.intl.labelTextVerifyData, color: lightColorScheme.primary),
         ),
         SizedBox(height: 20),
         CardOnSurface(
@@ -41,16 +42,16 @@ class RegistrationConfirmationPersonView extends HookWidget {
           children: [
             Row(
               children: [
-                Expanded(child: BodyText('Resumen de informacion', color: lightColorScheme.surface)),
+                Expanded(child: BodyText(context.intl.bodyTextInformationSummary, color: lightColorScheme.surface)),
                 Icon(Icons.info, color: lightColorScheme.surfaceDim,),
               ],
             ),
             SizedBox(height: 20),
             Row(
               children: [
-                Expanded(child: BodyText('Informacion\nPersonal', color: lightColorScheme.surface)),
+                Expanded(child: BodyText(context.intl.bodyTextPersonalInformation, color: lightColorScheme.surface)),
                 LinkTextSecondary(
-                  'Editar', 
+                  context.intl.linkTextEdit, 
                   colorText: lightColorScheme.surfaceDim,
                   onTap: (){},
                 )
@@ -65,7 +66,7 @@ class RegistrationConfirmationPersonView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Nombre:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.bodyTextName, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText('Carlos Rodriguez', color: lightColorScheme.surface),
@@ -78,7 +79,7 @@ class RegistrationConfirmationPersonView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('CI:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.bodyTextCI, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText('48765432A', color: lightColorScheme.surface,),
@@ -91,7 +92,7 @@ class RegistrationConfirmationPersonView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Teléfono:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.bodyTextPhone, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText('7777777', color: lightColorScheme.surface,),
@@ -104,7 +105,7 @@ class RegistrationConfirmationPersonView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Email:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.bodyTextEmail, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText(
@@ -120,7 +121,7 @@ class RegistrationConfirmationPersonView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Categoría:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.bodyTextLicenseCategory, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText('B', color: lightColorScheme.surface,),
@@ -133,7 +134,7 @@ class RegistrationConfirmationPersonView extends HookWidget {
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: 'Envia Solicitud', 
+          text: context.intl.primaryVariantButtonSubmitRequest, 
           onPressed: (){
             appRouter.push('/security/vehicle_selection');
           }
@@ -147,7 +148,7 @@ class RegistrationConfirmationPersonView extends HookWidget {
               children: [
                 Icon(Icons.check_circle, color: lightColorScheme.surfaceDim),
                 SizedBox(width: 20),
-                Expanded(child: LabelText('Todos los datos han sido enviados para ser verificadors. Recibiras un mensaje con la confirmacion y los proximos pasos a seguir', color: lightColorScheme.surface))
+                Expanded(child: LabelText(context.intl.bodyTextAllDataSubmitted, color: lightColorScheme.surface))
               ],
             ),
           ],

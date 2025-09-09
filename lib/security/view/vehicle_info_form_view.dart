@@ -10,6 +10,7 @@ import 'package:app_texi_fltr_driver/app/widgets/radio_group_row_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/radio_group_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -22,17 +23,17 @@ class VehicleInfoFormView extends HookWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleText('Informacion del Vehiculo', color: lightColorScheme.primary),
-        LabelText('Por favor ingresa los detalles de tu vehiculo para completar tu registro como conductor TEXI.'),
+        TitleText(context.intl.titleTextVehicleInfo, color: lightColorScheme.primary),
+        LabelText(context.intl.labelTextEnterVehicleData),
         SizedBox(height: 20),
         CardOnSurface(
           crossAxisAlignment: CrossAxisAlignment.center,
           padding: EdgeInsetsGeometry.all(20),
           children: [
             LabeledDropdown(
-              label: 'Marca del Vehiculo*', 
+              label: context.intl.labeledDropdownVehicleBrand, 
               colorLabel: lightColorScheme.surface,
-              hint: 'Selecciona una marca', 
+              hint: context.intl.labeledDropdownVehicleBrandHint, 
               items: [
                 DropdownMenuItem(
                   value: "Toyota",
@@ -49,14 +50,14 @@ class VehicleInfoFormView extends HookWidget {
               ]
             ),
             LabeledTextField(
-              label: 'Modelo*', 
+              label: context.intl.labeledTextFieldVehicleModel, 
               colorLabel: lightColorScheme.surface,
-              hint: 'Ej. Corolla Civic, Sentra'
+              hint: context.intl.labeledTextFieldVehicleModelHint
             ),
             LabeledDropdown(
-              label: 'Año*', 
+              label: context.intl.labeledDropdownVehicleYear, 
               colorLabel: lightColorScheme.surface,
-              hint: 'Selecciona el año', 
+              hint: context.intl.labeledDropdownVehicleYearHint, 
               items: [
                 DropdownMenuItem(
                   value: "2018",
@@ -73,35 +74,35 @@ class VehicleInfoFormView extends HookWidget {
               ]
             ),
             LabeledTextField(
-              label: 'Numero de Placa*', 
+              label: context.intl.labeledTextFieldVehiclePlate, 
               colorLabel: lightColorScheme.surface,
-              hint: 'Ej. ABC-123'
+              hint: context.intl.labeledTextFieldVehiclePlateHint
             ),
             RadioGroup(
-              label: 'Color*',
+              label: context.intl.radioGroupVehicleColor,
               colorLabel: lightColorScheme.surface,
               options: ["Blanco", "Negro", "Gris", "Rojo", "Azul", "Verde", "Plata", "Otro"],
             ),
             RadioGroupRow(
-              label: 'Tipo de Vehiculo',
+              label: context.intl.radioGroupVehicleType,
               colorLabel: lightColorScheme.surface,
               options: ["Sedan", "SUV", "Hatchback"],
             ),
             SizedBox(height: 20),
             BodyText(
-              'Tarjeta de Propiedad del Vehiculo',
+              context.intl.bodyTextVehicleOwnership,
               color: lightColorScheme.surface,
             ),
             SizedBox(height: 40),
             PhotoOptions(
-              title: 'Documento de propiedad', 
-              textButtonTake: 'Subir foto', 
-              textButtonUpload: 'Usar camara', 
+              title: context.intl.photoOptionsVehicleDocumentTitle, 
+              textButtonTake: context.intl.photoOptionsVehicleDocumentButtonTake, 
+              textButtonUpload: context.intl.photoOptionsVehicleDocumentButtonUpload, 
               onTakePhoto: (){}, 
               onUploadPhoto: (){}
             ),
             SizedBox(height: 20),
-            LabelText('Confirmo que la informacion proporcionada es correcta', color: lightColorScheme.surface, textAlign: TextAlign.center)
+            LabelText(context.intl.labelTextConfirmVehicleData, color: lightColorScheme.surface, textAlign: TextAlign.center)
           ],
         ),
         SizedBox(height: 20),
@@ -116,7 +117,7 @@ class VehicleInfoFormView extends HookWidget {
                 SizedBox(width: 20),
                 Expanded(
                   child: 
-                    LabelText('Asegurese de que los datos ingresador coincidan con los documentos oficiales del vehiculo para evitar problemas durante la verificacion',
+                    LabelText(context.intl.bodyTextVehicleInfoNotice,
                     color: lightColorScheme.surface)
                 )
               ],
@@ -125,13 +126,13 @@ class VehicleInfoFormView extends HookWidget {
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: 'Continuar', 
+          text: context.intl.primaryVariantButtonContinue, 
           onPressed: (){
             appRouter.push('/security/vehicle_photo_registration');
           }
         ),
         SizedBox(height: 20),
-        SecondaryVariantButton(text: 'Continuar Despues', onPressed: (){})
+        SecondaryVariantButton(text: context.intl.secondaryVariantButtonContinueLater, onPressed: (){})
       ],
     );
   }

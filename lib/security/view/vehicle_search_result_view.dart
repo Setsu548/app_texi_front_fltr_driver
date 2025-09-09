@@ -6,6 +6,7 @@ import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,13 +35,13 @@ class VehicleSearchResultView extends HookWidget {
             ),
             SizedBox(height: 20),
             TitleText(
-              'Vehiculo no\nencontrado',
+              context.intl.titleTextVehicleNotFound,
               color: lightColorScheme.surface,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
             BodyText(
-              'La placa ingresada no esta registrada en nuestro sistema. Por favor verifique los datos o registre el vehiculo como nuevo.',
+              context.intl.bodyTextVehicleNotFoundInstruction,
               color: lightColorScheme.surface,
               textAlign: TextAlign.center,
             ),
@@ -54,7 +55,7 @@ class VehicleSearchResultView extends HookWidget {
                     SizedBox(width: 20),
                     Expanded(
                       child: 
-                        LabelText('Si esta seguro que la placa es correcta, es posible que necesite registrar este vehiculo en el sistem primero.',
+                        LabelText(context.intl.labelTextVehicleNotFoundInfo,
                         color: lightColorScheme.surface)
                     )
                   ],
@@ -63,12 +64,12 @@ class VehicleSearchResultView extends HookWidget {
             ),
             SizedBox(height: 20),
             PrimaryVariantButton(
-              text: 'Volver a intentar', 
+              text: context.intl.primaryVariantButtonRetry, 
               onPressed: (){}
             ),
             SizedBox(height: 20),
             SecondaryVariantButton(
-              text: 'Regresar al inicio', 
+              text: context.intl.secondaryVariantButtonBackHome, 
               onPressed: (){
                 appRouter.push('/security/login');
               },
@@ -81,14 +82,14 @@ class VehicleSearchResultView extends HookWidget {
           backgroundColor: lightColorScheme.secondary,
           children: [
             BodyText(
-              '¿Necesita registrar un vehículo nuevo?',
+              context.intl.bodyTextNeedRegisterVehicle,
               color: lightColorScheme.primary,
             ),
             SizedBox(height: 20),
-            LabelText('Si el vehiculo no esta en nuestro sistema, puede registrarlo facilmente.'),
+            LabelText(context.intl.labelTextRegisterVehicleInfo),
             SizedBox(height: 20),
             PrimaryVariantButton(
-              text: 'Registrar vehiculo nuevo', 
+              text: context.intl.primaryVariantButtonRegisterNewVehicle, 
               onPressed: (){}
             )
           ]

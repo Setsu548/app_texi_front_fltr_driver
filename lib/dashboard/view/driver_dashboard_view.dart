@@ -6,6 +6,7 @@ import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/pill_switch_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/travel_request_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +39,8 @@ class DriverDashboardView extends HookWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    LabelText('Estado actual'),
-                    BodyText('Activo', color: lightColorScheme.surfaceDim)
+                    LabelText(context.intl.labelTextCurrentStatus),
+                    BodyText(context.intl.bodyTextActive, color: lightColorScheme.surfaceDim)
                   ]
                 ),
                 PillSwitch(
@@ -60,9 +61,9 @@ class DriverDashboardView extends HookWidget {
           padding: EdgeInsetsGeometry.all(20),
           backgroundColor: lightColorScheme.secondary,
           children: [
-            BodyText('Tu trayectoria junto a TEXI', color: lightColorScheme.primary),
+            BodyText(context.intl.bodyTextTrajectory, color: lightColorScheme.primary),
             SizedBox(height: 10),
-            LabelText('En viajes atendidos'),
+            LabelText(context.intl.labelTextTripsAttended),
             SizedBox(height: 10),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,15 +78,15 @@ class DriverDashboardView extends HookWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                LabelText('Viajes completados:'),
+                LabelText(context.intl.labelTextCompletedTrips),
                 BodyText('38', color: lightColorScheme.primary)
               ],
             ),
           ],
         ),
         SizedBox(height: 20),
-        TitleText('Solicitudes de viaje'),
-        LabelText('Selecciona una solicitud para aceptar'),
+        TitleText(context.intl.titleTextTravelRequests),
+        LabelText(context.intl.labelTextSelectRequest),
         SizedBox(height: 20),
         TravelRequest(
           originTime: '5 min',

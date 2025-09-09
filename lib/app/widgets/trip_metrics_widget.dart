@@ -1,5 +1,6 @@
 import 'package:app_texi_fltr_driver/app/widgets/body_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ Widget build(BuildContext context) {
     children: [
       Column(
         children: [
-          LabelText('Distancia'),
+          LabelText(context.intl.labelTextDistance),
           Row(
             children: [
               Icon(Icons.route, color: lightColorScheme.surfaceVariant, size: 20),
@@ -34,7 +35,7 @@ Widget build(BuildContext context) {
       ),
       Column(
         children: [
-          LabelText('Tiempo'),
+          LabelText(context.intl.labelTextTime),
           Row(
             children: [
               Icon(Icons.access_time, color: lightColorScheme.surfaceVariant, size: 20),
@@ -46,7 +47,7 @@ Widget build(BuildContext context) {
       ),
       Column(
         children: [
-          LabelText('Tarifa'),
+          LabelText(context.intl.labelTextTariff),
           Row(
             children: [
               Icon(Icons.payments, color: lightColorScheme.surfaceVariant, size: 20),

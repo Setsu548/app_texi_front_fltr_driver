@@ -7,6 +7,7 @@ import 'package:app_texi_fltr_driver/app/widgets/labeled_text_field_widget.dart'
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -19,38 +20,38 @@ class PersonalInfoFormView extends HookWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleText('Informacion Personal', color: lightColorScheme.primary),
-        LabelText('Por favor ingresa tus datos personales'),
+        TitleText(context.intl.titleTextPersonalInfo, color: lightColorScheme.primary),
+        LabelText(context.intl.labelTextEnterPersonalData),
         SizedBox(height: 20),
         CardOnSurface(
           padding: EdgeInsetsGeometry.all(20),
           children: [
             LabeledTextField(
-              label: 'Nombres*',
+              label: context.intl.labeledTextFieldFirstName,
               colorLabel: lightColorScheme.surface, 
-              hint: 'Ej. Juan Diego'
+              hint: context.intl.labeledTextFieldFirstNameHint
             ),
             LabeledTextField(
-              label: 'Apellidos*',
+              label: context.intl.labeledTextFieldLastName,
               colorLabel: lightColorScheme.surface, 
-              hint: 'Ej. Dias Soto'
+              hint: context.intl.labeledTextFieldLastNameHint
             ),
             LabeledTextField(
-              label: 'Numero de Telefono*',
+              label: context.intl.labeledTextFieldPhoneNumber,
               colorLabel: lightColorScheme.surface, 
               hint: '77777777',
               prefixText: '+591',
               colorPrefix: lightColorScheme.surface,
             ),
             LabeledTextField(
-              label: 'Direccion*',
+              label: context.intl.labeledTextFieldAddress,
               colorLabel: lightColorScheme.surface, 
-              hint: 'Calle, numero, barrio'
+              hint: context.intl.labeledTextFieldAddressHint
             ),
             LabeledDropdown(
-              label: 'Departamento*', 
+              label: context.intl.labeledDropdownDepartment, 
               colorLabel: lightColorScheme.surface,
-              hint: 'Selecciona tu departamento', 
+              hint: context.intl.labeledDropdownDepartmentHint, 
               items: [
                 DropdownMenuItem(
                   value: "Cochabamba",
@@ -67,9 +68,9 @@ class PersonalInfoFormView extends HookWidget {
               ]
             ),
             LabeledDropdown(
-              label: 'Provincia*', 
+              label: context.intl.labeledDropdownProvince, 
               colorLabel: lightColorScheme.surface,
-              hint: 'Selecciona tu provincia', 
+              hint: context.intl.labeledDropdownProvinceHint, 
               items: [
                 DropdownMenuItem(
                   value: "Cercado",
@@ -86,21 +87,21 @@ class PersonalInfoFormView extends HookWidget {
               ]
             ),
             LabeledTextField(
-              label: 'Correo Electronico*',
+              label: context.intl.labeledTextFieldEmail,
               colorLabel: lightColorScheme.surface, 
-              hint: 'ejemplo@correo.com'
+              hint: context.intl.labeledTextFieldEmailHint
             ),
           ],
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: 'Continuar', 
+          text: context.intl.primaryVariantButtonContinue, 
           onPressed: (){
             appRouter.push('/security/identity_verification');
           }
         ),
         SizedBox(height: 20),
-        SecondaryVariantButton(text: 'Cancelar', onPressed: (){})
+        SecondaryVariantButton(text: context.intl.secondaryVariantButtonCancel, onPressed: (){})
       ],
     );
   }

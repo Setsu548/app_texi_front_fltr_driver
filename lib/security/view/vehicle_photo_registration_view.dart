@@ -7,6 +7,7 @@ import 'package:app_texi_fltr_driver/app/widgets/photo_picker_field_widget.dart'
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -19,14 +20,14 @@ class VehiclePhotoRegistrationView extends HookWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleText('Fotografias del Vehiculo', color: lightColorScheme.primary),
+        TitleText(context.intl.titleTextVehiclePhotos, color: lightColorScheme.primary),
         SizedBox(height: 20),
         CardOnSurface(
           crossAxisAlignment: CrossAxisAlignment.start,
           padding: EdgeInsetsGeometry.all(20),
           children: [
             LabelText(
-              'Para completar el registro, necesitamos fotos claras de los cuatro lados de su vehiculo',
+              context.intl.labelTextVehiclePhotosInstruction,
               color: lightColorScheme.surface,
             ),
             SizedBox(height: 20),
@@ -39,7 +40,7 @@ class VehiclePhotoRegistrationView extends HookWidget {
                     SizedBox(width: 20),
                     Expanded(
                       child: 
-                        LabelText('Asegurese de tomar las fotos con buena ilumincacion y que se vea claramente todo el vehiculo en cada toma.',
+                        LabelText(context.intl.cardPrimaryContainerVehiclePhotosInfo,
                         color: lightColorScheme.surface)
                     )
                   ],
@@ -47,33 +48,33 @@ class VehiclePhotoRegistrationView extends HookWidget {
               ],
             ),
             SizedBox(height: 20),
-            BodyText('1. Frente del vehiculo', color: lightColorScheme.secondary),
+            BodyText(context.intl.bodyTextFront, color: lightColorScheme.secondary),
             SizedBox(height: 20),
-            PhotoPickerField(label: 'Toque para tomar la foto', onTap: (){}),
+            PhotoPickerField(label: context.intl.photoPickerTapLabel, onTap: (){}),
             SizedBox(height: 20),
-            BodyText('2. Latertal izquierdo', color: lightColorScheme.secondary),
+            BodyText(context.intl.bodyTextLeftSide, color: lightColorScheme.secondary),
             SizedBox(height: 20),
-            PhotoPickerField(label: 'Toque para tomar la foto', onTap: (){}),
+            PhotoPickerField(label: context.intl.photoPickerTapLabel, onTap: (){}),
             SizedBox(height: 20),
-            BodyText('3. Latertal Derecho', color: lightColorScheme.secondary),
+            BodyText(context.intl.bodyTextRightSide, color: lightColorScheme.secondary),
             SizedBox(height: 20),
-            PhotoPickerField(label: 'Toque para tomar la foto', onTap: (){}),
+            PhotoPickerField(label: context.intl.photoPickerTapLabel, onTap: (){}),
             SizedBox(height: 20),
-            BodyText('4. Parte trasera', color: lightColorScheme.secondary),
+            BodyText(context.intl.bodyTextBack, color: lightColorScheme.secondary),
             SizedBox(height: 20),
-            PhotoPickerField(label: 'Toque para tomar la foto', onTap: (){})
+            PhotoPickerField(label: context.intl.photoPickerTapLabel, onTap: (){})
           ],
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: 'Continuar', 
+          text: context.intl.primaryVariantButtonContinue, 
           onPressed: (){
             appRouter.push('/security/registration_confirmation_vehicle');
           }
         ),
         SizedBox(height: 20),
         SecondaryVariantButton(
-          text: 'Continuar Despues',
+          text: context.intl.secondaryVariantButtonContinueLater,
           onPressed: (){}
         )
       ],

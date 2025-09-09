@@ -4,6 +4,7 @@ import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/link_text_secondary_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -28,11 +29,11 @@ class RegistrationConfirmationVehicleView extends HookWidget {
           ),
         ),
         SizedBox(height: 20),
-        TitleText('¡Datos del registro!', color: lightColorScheme.primary),
+        TitleText(context.intl.titleTextRegistrationConfirmationVehicle, color: lightColorScheme.primary),
         SizedBox(height: 20),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: LabelText('Por favor verifique que los datos que se enviaran a su revision son los correctos', color: lightColorScheme.primary),
+          child: LabelText(context.intl.labelTextVerifyVehicleData, color: lightColorScheme.primary),
         ),
         SizedBox(height: 20),
         CardOnSurface(
@@ -40,16 +41,16 @@ class RegistrationConfirmationVehicleView extends HookWidget {
           children: [
             Row(
               children: [
-                Expanded(child: BodyText('Resumen de informacion', color: lightColorScheme.surface)),
+                Expanded(child: BodyText(context.intl.bodyTextInformationSummary, color: lightColorScheme.surface)),
                 Icon(Icons.info, color: lightColorScheme.surfaceDim,),
               ],
             ),
             SizedBox(height: 20),
             Row(
               children: [
-                Expanded(child: BodyText('Informacion del\nVehiculo', color: lightColorScheme.surface)),
+                Expanded(child: BodyText(context.intl.bodyTextVehicleInformation, color: lightColorScheme.surface)),
                 LinkTextSecondary(
-                  'Editar', 
+                  context.intl.linkTextEdit, 
                   colorText: lightColorScheme.surfaceDim,
                   onTap: (){},
                 )
@@ -64,7 +65,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Marca:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.labelVehicleBrand, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText('Toyota', color: lightColorScheme.surface),
@@ -77,7 +78,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Modelo:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.labelVehicleModel, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText('Corolla', color: lightColorScheme.surface,),
@@ -90,7 +91,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Año:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.labelVehicleYear, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText('2020', color: lightColorScheme.surface,),
@@ -103,7 +104,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Placa:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.labelVehiclePlate, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText(
@@ -119,7 +120,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Categoría:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.labelVehicleCategory, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText('B', color: lightColorScheme.surface,),
@@ -132,7 +133,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
                   children: [
                     SizedBox(
                       width: labelWidth,
-                      child: BodyText('Color:', color: lightColorScheme.secondaryContainer),
+                      child: BodyText(context.intl.labelVehicleColor, color: lightColorScheme.secondaryContainer),
                     ),
                     Expanded(
                       child: BodyText('Gris Plata', color: lightColorScheme.surface,),
@@ -144,9 +145,9 @@ class RegistrationConfirmationVehicleView extends HookWidget {
             SizedBox(height: 20),
             Row(
               children: [
-                Expanded(child: BodyText('Documentos', color: lightColorScheme.surface)),
+                Expanded(child: BodyText(context.intl.bodyTextDocuments, color: lightColorScheme.surface)),
                 LinkTextSecondary(
-                  'Editar', 
+                  context.intl.linkTextEdit, 
                   colorText: lightColorScheme.surfaceDim,
                   onTap: (){},
                 )
@@ -163,7 +164,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
                       children: [
                         Icon(Icons.article, color: lightColorScheme.error),
                         SizedBox(width: 20),
-                        BodyText('Targeta de Circulacion', color: lightColorScheme.surface),
+                        BodyText(context.intl.labelVehicleRegistrationCard, color: lightColorScheme.surface),
                       ],
                     ),
                     Icon(Icons.check_circle_sharp, color: lightColorScheme.surfaceDim)
@@ -177,7 +178,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
                       children: [
                         Icon(Icons.photo_camera, color: lightColorScheme.surfaceContainerHigh),
                         SizedBox(width: 20),
-                        BodyText('Foto del Vehiculo', color: lightColorScheme.surface),
+                        BodyText(context.intl.labelVehiclePhoto, color: lightColorScheme.surface),
                       ]
                     ),
                     Icon(Icons.check_circle_sharp, color: lightColorScheme.surfaceDim)
@@ -191,7 +192,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
                       children: [
                         Icon(Icons.description, color: lightColorScheme.primary),
                         SizedBox(width: 20),
-                        BodyText('Seguro Obligatorio', color: lightColorScheme.surface),
+                        BodyText(context.intl.labelVehicleInsurance, color: lightColorScheme.surface),
                       ],
                     ),
                     Icon(Icons.check_circle_sharp, color: lightColorScheme.surfaceDim)
@@ -203,7 +204,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: 'Envia Solicitud', 
+          text: context.intl.primaryVariantButtonSubmitRequest, 
           onPressed: (){}
         ),
         SizedBox(height: 20),
@@ -215,7 +216,7 @@ class RegistrationConfirmationVehicleView extends HookWidget {
               children: [
                 Icon(Icons.check_circle, color: lightColorScheme.surfaceDim),
                 SizedBox(width: 20),
-                Expanded(child: LabelText('Todos los datos han sido enviados para ser verificadors. Recibiras un mensaje con la confirmacion y los proximos pasos a seguir.', color: lightColorScheme.surface))
+                Expanded(child: LabelText(context.intl.labelTextAllDataSent, color: lightColorScheme.surface))
               ],
             ),
           ],

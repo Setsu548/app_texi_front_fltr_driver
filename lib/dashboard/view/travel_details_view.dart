@@ -1,3 +1,4 @@
+import 'package:app_texi_fltr_driver/app/app_router.dart';
 import 'package:app_texi_fltr_driver/app/widgets/body_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/card_on_surface_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/driver_basic_info_widget.dart';
@@ -8,6 +9,7 @@ import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/trip_metrics_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +29,8 @@ class TravelDetailsView extends HookWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TitleText('Detalles del Viaje'),
-                LabelText('En progreso'),
+                TitleText(context.intl.titleTextTravelDetails),
+                LabelText(context.intl.labelTextInProgress),
               ]
             ),
             LabelChip(
@@ -60,12 +62,12 @@ class TravelDetailsView extends HookWidget {
               tariff: '85',
             ),
             SizedBox(height: 20),
-            BodyText('Informacion del viaje'),
+            BodyText(context.intl.bodyTextTravelInfo),
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                LabelText('Metodo de pago'),
+                LabelText(context.intl.labelTextPaymentMethod),
                 Row(
                   children: [
                     Icon(Icons.account_balance_wallet, color: lightColorScheme.surfaceVariant),
@@ -79,7 +81,7 @@ class TravelDetailsView extends HookWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                LabelText('Tipo de servicio'),
+                LabelText(context.intl.labelTextServiceType),
                 Row(
                   children: [
                     Icon(Icons.local_taxi, color: lightColorScheme.surfaceVariant),
@@ -93,12 +95,14 @@ class TravelDetailsView extends HookWidget {
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: 'Aceptar Viaje', 
-          onPressed: (){}
+          text: context.intl.primaryVariantButtonAcceptTrip, 
+          onPressed: (){
+            appRouter.push('/dashboard/driver_pickup');
+          }
         ),
         SizedBox(height: 20),
         SecondaryVariantButton(
-          text: 'Regresar', 
+          text: context.intl.secondaryVariantButtonBack, 
           onPressed: (){}
         )
       ],

@@ -6,6 +6,7 @@ import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -24,7 +25,7 @@ class WelcomeView extends HookWidget {
           color: lightColorScheme.primary,
         ),
         SizedBox(height: 20),
-        TitleText('TEXI REGISTRO', color: lightColorScheme.primary),
+        TitleText(context.intl.titleTextTexiRegister, color: lightColorScheme.primary),
         SizedBox(height: 20),
         CardOnSurface(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,13 +41,13 @@ class WelcomeView extends HookWidget {
             ),
             SizedBox(height: 20),
             TitleText(
-              '¡Bienvenido\nConductor!',
+              context.intl.titleTextWelcomeDriver,
               color: lightColorScheme.surface,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
             BodyText(
-              'Estamos emocionados de que te unas a nuestra plataforma. Para comenzar a trabajar, necesitamos algunos datos importantes.',
+              context.intl.bodyTextWelcomeMessage,
               color: lightColorScheme.surface,
               textAlign: TextAlign.center,
             ),
@@ -60,7 +61,7 @@ class WelcomeView extends HookWidget {
                     SizedBox(width: 20),
                     Expanded(
                       child: 
-                        LabelText('Es importante completar todos los datos correctamente para garantizar una verificacion rapida y sin problemas',
+                        LabelText(context.intl.labelTextCompleteDataInfo,
                         color: lightColorScheme.surface)
                     )
                   ],
@@ -83,15 +84,15 @@ class WelcomeView extends HookWidget {
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: 'Comenzar Registro', 
+          text: context.intl.primaryVariantButtonStartRegistration, 
           onPressed: (){
             appRouter.push('/security/personal_info_form');
           }
         ),
         SizedBox(height: 20),
-        LabelText('Al registrarte, aceptas nuestros terminos y condiciones de servicio', color: lightColorScheme.secondaryContainer, textAlign: TextAlign.center),
+        LabelText(context.intl.labelTextTermsAndConditions, color: lightColorScheme.secondaryContainer, textAlign: TextAlign.center),
         SizedBox(height: 20),
-        SecondaryVariantButton(text: 'Cancelar', onPressed: (){}),
+        SecondaryVariantButton(text: context.intl.secondaryVariantButtonCancel, onPressed: (){}),
       ],
     );
   }

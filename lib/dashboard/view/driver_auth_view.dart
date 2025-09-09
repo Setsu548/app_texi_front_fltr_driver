@@ -3,6 +3,7 @@ import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,25 +23,25 @@ class DriverAuthView extends HookWidget {
           size: 40,
         ),
         SizedBox(height: 20),
-        TitleText('Activar TEXI'),
+        TitleText(context.intl.titleTextActivateTexi),
         SizedBox(height: 20),
-        TitleText('Identificacion Facial'),
+        TitleText(context.intl.titleTextFacialIdentification),
         SizedBox(height: 20),
-        BodyText('Por favor, coloca tu rostro frente a la camara para verificar tu identidad y comienza a recibir viajes'),
+        BodyText(context.intl.bodyTextFaceInstruction),
         SizedBox(height: 200),
-        LabelText('Asegurate de esta en un lugar bien iluminaco, sin prendas adicionales (gorra, anteojos, bufanda...)', textAlign: TextAlign.center,),
+        LabelText(context.intl.labelTextWellLitPlaceWarning, textAlign: TextAlign.center,),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: 'Iniciar Escaneo', 
+          text: context.intl.primaryVariantButtonStartScan, 
           onPressed: (){}
         ),
         SizedBox(height: 20),
         SecondaryVariantButton(
-          text: 'Regresar', 
+          text: context.intl.secondaryVariantButtonBack, 
           onPressed: (){}
         ),
         SizedBox(height: 20),
-        LabelText('Tu información biométrica está protegida y solo se usa para verificar tu identidad', textAlign: TextAlign.center,)
+        LabelText(context.intl.labelTextBiometricInfoProtection, textAlign: TextAlign.center,)
       ],
     );
   }

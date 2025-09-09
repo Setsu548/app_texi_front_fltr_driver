@@ -6,6 +6,7 @@ import 'package:app_texi_fltr_driver/app/widgets/label_chip_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/outlined_small_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/primary_small_button_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -52,7 +53,7 @@ class TravelRequest extends HookWidget {
               child: InfoTileFlat(
                 icon: Icons.send, 
                 colorIcon: lightColorScheme.surfaceVariant,
-                title: 'Recogida', 
+                title: context.intl.labelTextPickup, 
                 description: originDescription
               ),
             ),
@@ -68,11 +69,11 @@ class TravelRequest extends HookWidget {
               child: InfoTileFlat(
                 icon: Icons.send, 
                 colorIcon: lightColorScheme.surfaceVariant,
-                title: 'Destino', 
+                title: context.intl.labelTextDestination, 
                 description: destinationDescription
               ),
             ),
-            OutlinedSmallButton(text: 'Detalle', onPressed: onPressedDetail),
+            OutlinedSmallButton(text: context.intl.labelTextDetail, onPressed: onPressedDetail),
           ],
         ),
         SizedBox(height: 20),
@@ -81,19 +82,19 @@ class TravelRequest extends HookWidget {
           children: [
             Column(
               children: [
-                LabelText('Distancia'),
+                LabelText(context.intl.labelTextDistance),
                 BodyText(distance)
               ],
             ),
             Column(
               children: [
-                LabelText('Tiempo estimado'),
+                LabelText(context.intl.labelTextEstimatedTime),
                 BodyText(estimatedTime)
               ],
             ),
             Column(
               children: [
-                LabelText('Ganancias'),
+                LabelText(context.intl.labelTextEarnings),
                 BodyText(earnings, color: lightColorScheme.surfaceVariant)
               ],
             ),
@@ -110,7 +111,7 @@ class TravelRequest extends HookWidget {
                 rating: ratingDriver,
               ),
             ),
-            PrimarySmallButton(text: 'Aceptar', onPressed: onPressedAccept)
+            PrimarySmallButton(text: context.intl.commonAccept, onPressed: onPressedAccept)
           ],
         ),
       ]

@@ -8,6 +8,7 @@ import 'package:app_texi_fltr_driver/app/widgets/link_text_primary_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
+import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,13 +36,13 @@ class VehiclePlateView extends HookWidget {
             ),
             SizedBox(height: 20),
             TitleText(
-              'Verificacion de\nVehiculo',
+              context.intl.titleTextVehicleVerification,
               color: lightColorScheme.surface,
               textAlign: TextAlign.center,
             ),
             SizedBox(height: 20),
             BodyText(
-              'Ingrese la placa del vehiculo para verificar si esta registrado en nuestro sistema y vincularlo como conductor.',
+              context.intl.bodyTextVehiclePlateInstruction,
               color: lightColorScheme.surface,
               textAlign: TextAlign.center,
             ),
@@ -55,7 +56,7 @@ class VehiclePlateView extends HookWidget {
                     SizedBox(width: 20),
                     Expanded(
                       child: 
-                        LabelText('La placa debe ingresarse sin espacion ni caracteres especiales\n(ejemplo: ABC123).',
+                        LabelText(context.intl.labelTextVehiclePlateInfo,
                         color: lightColorScheme.surface)
                     )
                   ],
@@ -63,17 +64,17 @@ class VehiclePlateView extends HookWidget {
               ],
             ),
             SizedBox(height: 20),
-            LabeledTextField(label: 'Numero de Placa', colorLabel: lightColorScheme.surface, hint: 'Ingrese la placa aqui'),
+            LabeledTextField(label: context.intl.labeledTextFieldVehiclePlate, colorLabel: lightColorScheme.surface, hint: context.intl.hintTextVehiclePlate),
             SizedBox(height: 20),
             PrimaryVariantButton(
-              text: 'Verificar Vehiculo', 
+              text: context.intl.primaryVariantButtonVerifyVehicle, 
               onPressed: (){
                 appRouter.push('/security/vehicle_found');
               }
             ),
             SizedBox(height: 20),
             LinkTextPrimary(
-              '¿No tienes un vehículo registrado? registre uno nuevo',
+              context.intl.linkTextRegisterNewVehicle,
               colorText: lightColorScheme.surfaceVariant, 
               textAlign: TextAlign.center, 
               onTap: (){}
@@ -81,7 +82,7 @@ class VehiclePlateView extends HookWidget {
           ],
         ),
         SizedBox(height: 20),
-        SecondaryVariantButton(text: 'Continuar Despues', onPressed: (){},)
+        SecondaryVariantButton(text: context.intl.secondaryVariantButtonContinueLater, onPressed: (){},)
       ],
     );
   }

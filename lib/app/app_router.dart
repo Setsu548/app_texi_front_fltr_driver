@@ -1,6 +1,9 @@
 import 'package:app_texi_fltr_driver/dashboard/screen/driver_auth_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/driver_dashboard_screen.dart';
+import 'package:app_texi_fltr_driver/dashboard/screen/driver_dropoff_screen.dart';
+import 'package:app_texi_fltr_driver/dashboard/screen/driver_pickup_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/travel_details_screen.dart';
+import 'package:app_texi_fltr_driver/dashboard/screen/travel_rating_screen.dart';
 import 'package:app_texi_fltr_driver/security/screen/driver_license_verification_screen.dart';
 import 'package:app_texi_fltr_driver/security/screen/identity_verification_screen.dart';
 import 'package:app_texi_fltr_driver/security/screen/personal_info_form_screen.dart';
@@ -211,6 +214,36 @@ final GoRouter appRouter = GoRouter(
         return getBuilder(
           state,
           screen: const DriverAuthScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/dashboard/driver_pickup',
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return getBuilder(
+          state,
+          screen: const DriverPickupScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/dashboard/driver_dropoff',
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return getBuilder(
+          state,
+          screen: const DriverDropoffScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/dashboard/travel_rating',
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return getBuilder(
+          state,
+          screen: const TravelRatingScreen(),
         );
       },
     ),
