@@ -6,6 +6,7 @@
   "labelFastestSafestTravel": "Plataforma para conductores",
   "primaryVariantButtonSignIn": "Iniciar Sesión",
   "linkTextPrimaryRegister": "Registrarse",
+  "commonRequiredFieldError": "Este campo es obligatorio",
 
   "labelTextCurrentStatus": "Estado actual",
   "bodyTextActive": "Activo",
@@ -193,5 +194,6 @@
   "secondaryVariantButtonBackHome": "Regresar al inicio",
   "bodyTextNeedRegisterVehicle": "¿Necesita registrar un vehículo nuevo?",
   "labelTextRegisterVehicleInfo": "Si el vehículo no está en nuestro sistema, puede registrarlo fácilmente.",
-  "primaryVariantButtonRegisterNewVehicle": "Registrar vehículo nuevo"
+  "primaryVariantButtonRegisterNewVehicle": "Registrar vehículo nuevo",
+  "labelPassword": "Contraseña"
 }

@@ -19,7 +19,7 @@ class _AppState extends State<App> {
       return Listener(
         child: MaterialApp.router(
           routeInformationProvider: appRouter.routeInformationProvider,
-          locale: Locale('en'),
+          locale: Locale('es'),
           routeInformationParser: appRouter.routeInformationParser,
           routerDelegate: appRouter.routerDelegate,
           theme: MainTheme.light(),

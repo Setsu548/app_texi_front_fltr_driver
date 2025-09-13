@@ -134,6 +134,12 @@ abstract class AppLocalizations {
   /// **'Registrarse'**
   String get linkTextPrimaryRegister;
 
+  /// No description provided for @commonRequiredFieldError.
+  ///
+  /// In es, this message translates to:
+  /// **'Este campo es obligatorio'**
+  String get commonRequiredFieldError;
+
   /// No description provided for @labelTextCurrentStatus.
   ///
   /// In es, this message translates to:
@@ -1129,6 +1135,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Si el vehículo no está en nuestro sistema, puede registrarlo fácilmente.'**
   String get labelTextRegisterVehicleInfo;
+
+  /// No description provided for @labelPassword.
+  ///
+  /// In es, this message translates to:
+  /// **'Contraseña'**
+  String get labelPassword;
 }
 
 class _AppLocalizationsDelegate

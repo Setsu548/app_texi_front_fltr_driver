@@ -27,6 +27,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get linkTextPrimaryRegister => 'Sign Up';
 
   @override
+  String get commonRequiredFieldError => 'Este campo es obligatorio';
+
+  @override
   String get labelTextCurrentStatus => 'Current status';
 
   @override
@@ -556,4 +559,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get labelTextRegisterVehicleInfo =>
       'If the vehicle is not in our system, you can easily register it.';
+
+  @override
+  String get labelPassword => 'Contraseña';
 }
