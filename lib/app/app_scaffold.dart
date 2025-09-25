@@ -7,7 +7,7 @@ class AppScaffold extends HookWidget {
     Key? key,
     required this.appBar,
     this.bottomBar,
-    this.drawer,
+    this.endDrawer,
     required this.body,
     required this.loadingOverlay,
     this.floatingActionButton,
@@ -18,7 +18,7 @@ class AppScaffold extends HookWidget {
 
   final PreferredSizeWidget? appBar;
   final Widget? bottomBar;
-  final Widget? drawer;
+  final Widget? endDrawer;
   final Widget body;
   final Widget? floatingActionButton;
   final Future<bool> Function()? onBackButtonPressed;
@@ -47,7 +47,7 @@ class AppScaffold extends HookWidget {
       child: Scaffold(
         appBar: appBar,
         bottomNavigationBar: bottomBar,
-        endDrawer: drawer,
+        endDrawer: endDrawer,
         body: Align(
             alignment: Alignment.center,
             child: withPadding

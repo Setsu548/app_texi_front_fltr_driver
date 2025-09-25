@@ -4,7 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 import '../../app/app_router.dart';
-import '../../app/widgets/body_text_primary_widget.dart';
 import '../../app/widgets/body_text_widget.dart';
 import '../../app/widgets/label_field_widget.dart';
 import '../../app/widgets/primary_variant_button.dart';

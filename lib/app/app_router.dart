@@ -4,6 +4,10 @@ import 'package:app_texi_fltr_driver/dashboard/screen/driver_dropoff_screen.dart
 import 'package:app_texi_fltr_driver/dashboard/screen/driver_pickup_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/travel_details_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/travel_rating_screen.dart';
+import 'package:app_texi_fltr_driver/navigation/screen/bonuses_screen.dart';
+import 'package:app_texi_fltr_driver/navigation/screen/earnings_screen.dart';
+import 'package:app_texi_fltr_driver/navigation/screen/profile_screen.dart';
+import 'package:app_texi_fltr_driver/navigation/screen/travel_history_screen.dart';
 import 'package:app_texi_fltr_driver/security/screen/driver_license_verification_screen.dart';
 import 'package:app_texi_fltr_driver/security/screen/identity_verification_screen.dart';
 import 'package:app_texi_fltr_driver/security/screen/personal_info_form_screen.dart';
@@ -244,6 +248,46 @@ final GoRouter appRouter = GoRouter(
         return getBuilder(
           state,
           screen: const TravelRatingScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/navigation/profile',
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return getBuilder(
+          state,
+          screen: const ProfileScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/navigation/travel_history',
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return getBuilder(
+          state,
+          screen: const TravelHistoryScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/navigation/earnings',
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return getBuilder(
+          state,
+          screen: const EarningsScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/navigation/bonuses',
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return getBuilder(
+          state,
+          screen: const BonusesScreen(),
         );
       },
     ),

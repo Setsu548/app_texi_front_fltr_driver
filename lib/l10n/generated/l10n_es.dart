@@ -566,4 +566,206 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get labelPassword => 'Contraseña';
+
+  @override
+  String get sideMenuItemProfile => 'Perfil';
+
+  @override
+  String get sideMenuItemHistory => 'Historial';
+
+  @override
+  String get sideMenuItemEarnings => 'Ganancias';
+
+  @override
+  String get sideMenuItemOperatorTexi => 'Operador TEXI';
+
+  @override
+  String get sideMenuItemLogout => 'SALIR';
+
+  @override
+  String get titleDriverProfileView => 'Mi Perfil';
+
+  @override
+  String get labelDriverProfileTrips => 'viajes';
+
+  @override
+  String get labelDriverProfileDriverSince => 'Conductor desde';
+
+  @override
+  String get bodyDriverProfileVehicleInfo => 'Información del Vehículo';
+
+  @override
+  String get labelDriverProfileMakeModel => 'Marca y Modelo';
+
+  @override
+  String get labelDriverProfilePlate => 'Placa';
+
+  @override
+  String get labelDriverProfileColor => 'Color';
+
+  @override
+  String get labelDriverProfileCapacity => 'Capacidad';
+
+  @override
+  String get bodyDriverProfileDocuments => 'Documentos';
+
+  @override
+  String get bodyDriverProfileDriverLicense => 'Licencia de conducir';
+
+  @override
+  String get labelDriverProfileExpires => 'Vence:';
+
+  @override
+  String get labelDriverProfileVerified => 'Verificado';
+
+  @override
+  String get bodyDriverProfileVehicleInsurance => 'Seguro vehicular';
+
+  @override
+  String get bodyDriverProfileTechInspection => 'Inspección técnica';
+
+  @override
+  String get cardDriverProfileTripHistory => 'Historial de Viajes';
+
+  @override
+  String get cardDriverProfileEarnings => 'Ganancias';
+
+  @override
+  String get bodyDriverProfileSettings => 'Configuración';
+
+  @override
+  String get labelDriverProfileNotifications => 'Notificaciones';
+
+  @override
+  String get labelDriverProfileDarkMode => 'Modo oscuro';
+
+  @override
+  String get labelDriverProfileSounds => 'Sonidos';
+
+  @override
+  String get btnDriverProfileLogout => 'Cerrar sesión';
+
+  @override
+  String get btnDriverProfileBack => 'Volver';
+
+  @override
+  String get titleTravelHistoryView => 'Historial de Viajes';
+
+  @override
+  String get labelTravelHistoryCompletedTrips => 'viajes completados';
+
+  @override
+  String get bodyTravelHistoryFilterByDate => 'Filtrar por fecha';
+
+  @override
+  String get linkTravelHistoryApply => 'Aplicar';
+
+  @override
+  String get labelTravelHistoryFrom => 'Desde';
+
+  @override
+  String get labelTravelHistoryTo => 'Hasta';
+
+  @override
+  String get statusTripCompleted => 'Completado';
+
+  @override
+  String get titleDriverEarningsView => 'Mis Ganancias';
+
+  @override
+  String get bodyDriverEarningsTotal => 'Total';
+
+  @override
+  String get bodyDriverEarningsEarnings => 'Ganancias';
+
+  @override
+  String get labelDriverEarningsThisMonth => 'este mes';
+
+  @override
+  String get btnDriverEarningsDaily => 'Diario';
+
+  @override
+  String get btnDriverEarningsWeekly => 'Semanal';
+
+  @override
+  String get btnDriverEarningsMonthly => 'Mensual';
+
+  @override
+  String get bodyDriverEarningsBreakdownByDay => 'Desglose por día';
+
+  @override
+  String get bodyDriverEarningsPerformanceMetrics => 'Métricas de rendimiento';
+
+  @override
+  String get bodyDriverEarningsTripsCompleted => 'Viajes completados';
+
+  @override
+  String get bodyDriverEarningsKilometersTraveled => 'Kilómetros recorridos';
+
+  @override
+  String get bodyDriverEarningsAvgPerTrip => 'Promedio por viaje';
+
+  @override
+  String get bodyDriverEarningsAvgPerKm => 'Promedio por km';
+
+  @override
+  String get bodyDriverEarningsLastTrips => 'Últimos viajes';
+
+  @override
+  String get linkDriverEarningsSeeAll => 'Ver todo';
+
+  @override
+  String get bodyDriverEarningsComparisonPrevPeriod =>
+      'Comparación con periodo anterior';
+
+  @override
+  String get labelDriverEarningsMetricEarnings => 'Ganancias';
+
+  @override
+  String get labelDriverEarningsMetricTrips => 'Viajes';
+
+  @override
+  String get labelDriverEarningsMetricKilometers => 'Kilómetros';
+
+  @override
+  String get titleDriverBonusesView => 'Mis Bonificaciones';
+
+  @override
+  String get bodyDriverBonusesSummaryEarnings => 'Resumen de mis Ganancias';
+
+  @override
+  String get labelDriverBonusesTotalEarnings => 'Ganancias Totales';
+
+  @override
+  String get labelDriverBonusesBonuses => 'Bonificaciones';
+
+  @override
+  String get labelDriverBonusesTotal => 'Total';
+
+  @override
+  String get bodyDriverBonusesActive => 'Bonificaciones Activas';
+
+  @override
+  String get statusDriverBonusesCompleted => 'completados';
+
+  @override
+  String get bodyDriverBonusesPerformanceRewards => 'Recompensas por Desempeño';
+
+  @override
+  String get bodyDriverBonusesRating => 'Calificación';
+
+  @override
+  String get bodyDriverBonusesFastTime => 'Tiempo Rápido';
+
+  @override
+  String get bodyDriverBonusesTrips => 'Viajes';
+
+  @override
+  String get bodyDriverBonusesComments => 'Comentarios';
+
+  @override
+  String get labelDriverBonusesThisMonth => 'este mes';
+
+  @override
+  String get bodyDriverBonusesHistory => 'Historial de Bonificaciones';
 }

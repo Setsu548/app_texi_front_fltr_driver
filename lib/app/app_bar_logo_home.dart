@@ -24,9 +24,11 @@ class AppBarLogoHome extends HookWidget implements PreferredSizeWidget {
       ),
       centerTitle: true,  
       actions: [
-        IconButton(
-          icon: Icon(Icons.menu, color: lightColorScheme.primary),
-          onPressed: () {},
+        Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu, color: lightColorScheme.primary),
+            onPressed: () => {Scaffold.of(context).openEndDrawer()},
+          ),
         ),
       ],
       toolbarHeight: preferredSize.height,

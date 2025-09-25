@@ -1141,6 +1141,408 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Contraseña'**
   String get labelPassword;
+
+  /// No description provided for @sideMenuItemProfile.
+  ///
+  /// In es, this message translates to:
+  /// **'Perfil'**
+  String get sideMenuItemProfile;
+
+  /// No description provided for @sideMenuItemHistory.
+  ///
+  /// In es, this message translates to:
+  /// **'Historial'**
+  String get sideMenuItemHistory;
+
+  /// No description provided for @sideMenuItemEarnings.
+  ///
+  /// In es, this message translates to:
+  /// **'Ganancias'**
+  String get sideMenuItemEarnings;
+
+  /// No description provided for @sideMenuItemOperatorTexi.
+  ///
+  /// In es, this message translates to:
+  /// **'Operador TEXI'**
+  String get sideMenuItemOperatorTexi;
+
+  /// No description provided for @sideMenuItemLogout.
+  ///
+  /// In es, this message translates to:
+  /// **'SALIR'**
+  String get sideMenuItemLogout;
+
+  /// No description provided for @titleDriverProfileView.
+  ///
+  /// In es, this message translates to:
+  /// **'Mi Perfil'**
+  String get titleDriverProfileView;
+
+  /// No description provided for @labelDriverProfileTrips.
+  ///
+  /// In es, this message translates to:
+  /// **'viajes'**
+  String get labelDriverProfileTrips;
+
+  /// No description provided for @labelDriverProfileDriverSince.
+  ///
+  /// In es, this message translates to:
+  /// **'Conductor desde'**
+  String get labelDriverProfileDriverSince;
+
+  /// No description provided for @bodyDriverProfileVehicleInfo.
+  ///
+  /// In es, this message translates to:
+  /// **'Información del Vehículo'**
+  String get bodyDriverProfileVehicleInfo;
+
+  /// No description provided for @labelDriverProfileMakeModel.
+  ///
+  /// In es, this message translates to:
+  /// **'Marca y Modelo'**
+  String get labelDriverProfileMakeModel;
+
+  /// No description provided for @labelDriverProfilePlate.
+  ///
+  /// In es, this message translates to:
+  /// **'Placa'**
+  String get labelDriverProfilePlate;
+
+  /// No description provided for @labelDriverProfileColor.
+  ///
+  /// In es, this message translates to:
+  /// **'Color'**
+  String get labelDriverProfileColor;
+
+  /// No description provided for @labelDriverProfileCapacity.
+  ///
+  /// In es, this message translates to:
+  /// **'Capacidad'**
+  String get labelDriverProfileCapacity;
+
+  /// No description provided for @bodyDriverProfileDocuments.
+  ///
+  /// In es, this message translates to:
+  /// **'Documentos'**
+  String get bodyDriverProfileDocuments;
+
+  /// No description provided for @bodyDriverProfileDriverLicense.
+  ///
+  /// In es, this message translates to:
+  /// **'Licencia de conducir'**
+  String get bodyDriverProfileDriverLicense;
+
+  /// No description provided for @labelDriverProfileExpires.
+  ///
+  /// In es, this message translates to:
+  /// **'Vence:'**
+  String get labelDriverProfileExpires;
+
+  /// No description provided for @labelDriverProfileVerified.
+  ///
+  /// In es, this message translates to:
+  /// **'Verificado'**
+  String get labelDriverProfileVerified;
+
+  /// No description provided for @bodyDriverProfileVehicleInsurance.
+  ///
+  /// In es, this message translates to:
+  /// **'Seguro vehicular'**
+  String get bodyDriverProfileVehicleInsurance;
+
+  /// No description provided for @bodyDriverProfileTechInspection.
+  ///
+  /// In es, this message translates to:
+  /// **'Inspección técnica'**
+  String get bodyDriverProfileTechInspection;
+
+  /// No description provided for @cardDriverProfileTripHistory.
+  ///
+  /// In es, this message translates to:
+  /// **'Historial de Viajes'**
+  String get cardDriverProfileTripHistory;
+
+  /// No description provided for @cardDriverProfileEarnings.
+  ///
+  /// In es, this message translates to:
+  /// **'Ganancias'**
+  String get cardDriverProfileEarnings;
+
+  /// No description provided for @bodyDriverProfileSettings.
+  ///
+  /// In es, this message translates to:
+  /// **'Configuración'**
+  String get bodyDriverProfileSettings;
+
+  /// No description provided for @labelDriverProfileNotifications.
+  ///
+  /// In es, this message translates to:
+  /// **'Notificaciones'**
+  String get labelDriverProfileNotifications;
+
+  /// No description provided for @labelDriverProfileDarkMode.
+  ///
+  /// In es, this message translates to:
+  /// **'Modo oscuro'**
+  String get labelDriverProfileDarkMode;
+
+  /// No description provided for @labelDriverProfileSounds.
+  ///
+  /// In es, this message translates to:
+  /// **'Sonidos'**
+  String get labelDriverProfileSounds;
+
+  /// No description provided for @btnDriverProfileLogout.
+  ///
+  /// In es, this message translates to:
+  /// **'Cerrar sesión'**
+  String get btnDriverProfileLogout;
+
+  /// No description provided for @btnDriverProfileBack.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver'**
+  String get btnDriverProfileBack;
+
+  /// No description provided for @titleTravelHistoryView.
+  ///
+  /// In es, this message translates to:
+  /// **'Historial de Viajes'**
+  String get titleTravelHistoryView;
+
+  /// No description provided for @labelTravelHistoryCompletedTrips.
+  ///
+  /// In es, this message translates to:
+  /// **'viajes completados'**
+  String get labelTravelHistoryCompletedTrips;
+
+  /// No description provided for @bodyTravelHistoryFilterByDate.
+  ///
+  /// In es, this message translates to:
+  /// **'Filtrar por fecha'**
+  String get bodyTravelHistoryFilterByDate;
+
+  /// No description provided for @linkTravelHistoryApply.
+  ///
+  /// In es, this message translates to:
+  /// **'Aplicar'**
+  String get linkTravelHistoryApply;
+
+  /// No description provided for @labelTravelHistoryFrom.
+  ///
+  /// In es, this message translates to:
+  /// **'Desde'**
+  String get labelTravelHistoryFrom;
+
+  /// No description provided for @labelTravelHistoryTo.
+  ///
+  /// In es, this message translates to:
+  /// **'Hasta'**
+  String get labelTravelHistoryTo;
+
+  /// No description provided for @statusTripCompleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Completado'**
+  String get statusTripCompleted;
+
+  /// No description provided for @titleDriverEarningsView.
+  ///
+  /// In es, this message translates to:
+  /// **'Mis Ganancias'**
+  String get titleDriverEarningsView;
+
+  /// No description provided for @bodyDriverEarningsTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total'**
+  String get bodyDriverEarningsTotal;
+
+  /// No description provided for @bodyDriverEarningsEarnings.
+  ///
+  /// In es, this message translates to:
+  /// **'Ganancias'**
+  String get bodyDriverEarningsEarnings;
+
+  /// No description provided for @labelDriverEarningsThisMonth.
+  ///
+  /// In es, this message translates to:
+  /// **'este mes'**
+  String get labelDriverEarningsThisMonth;
+
+  /// No description provided for @btnDriverEarningsDaily.
+  ///
+  /// In es, this message translates to:
+  /// **'Diario'**
+  String get btnDriverEarningsDaily;
+
+  /// No description provided for @btnDriverEarningsWeekly.
+  ///
+  /// In es, this message translates to:
+  /// **'Semanal'**
+  String get btnDriverEarningsWeekly;
+
+  /// No description provided for @btnDriverEarningsMonthly.
+  ///
+  /// In es, this message translates to:
+  /// **'Mensual'**
+  String get btnDriverEarningsMonthly;
+
+  /// No description provided for @bodyDriverEarningsBreakdownByDay.
+  ///
+  /// In es, this message translates to:
+  /// **'Desglose por día'**
+  String get bodyDriverEarningsBreakdownByDay;
+
+  /// No description provided for @bodyDriverEarningsPerformanceMetrics.
+  ///
+  /// In es, this message translates to:
+  /// **'Métricas de rendimiento'**
+  String get bodyDriverEarningsPerformanceMetrics;
+
+  /// No description provided for @bodyDriverEarningsTripsCompleted.
+  ///
+  /// In es, this message translates to:
+  /// **'Viajes completados'**
+  String get bodyDriverEarningsTripsCompleted;
+
+  /// No description provided for @bodyDriverEarningsKilometersTraveled.
+  ///
+  /// In es, this message translates to:
+  /// **'Kilómetros recorridos'**
+  String get bodyDriverEarningsKilometersTraveled;
+
+  /// No description provided for @bodyDriverEarningsAvgPerTrip.
+  ///
+  /// In es, this message translates to:
+  /// **'Promedio por viaje'**
+  String get bodyDriverEarningsAvgPerTrip;
+
+  /// No description provided for @bodyDriverEarningsAvgPerKm.
+  ///
+  /// In es, this message translates to:
+  /// **'Promedio por km'**
+  String get bodyDriverEarningsAvgPerKm;
+
+  /// No description provided for @bodyDriverEarningsLastTrips.
+  ///
+  /// In es, this message translates to:
+  /// **'Últimos viajes'**
+  String get bodyDriverEarningsLastTrips;
+
+  /// No description provided for @linkDriverEarningsSeeAll.
+  ///
+  /// In es, this message translates to:
+  /// **'Ver todo'**
+  String get linkDriverEarningsSeeAll;
+
+  /// No description provided for @bodyDriverEarningsComparisonPrevPeriod.
+  ///
+  /// In es, this message translates to:
+  /// **'Comparación con periodo anterior'**
+  String get bodyDriverEarningsComparisonPrevPeriod;
+
+  /// No description provided for @labelDriverEarningsMetricEarnings.
+  ///
+  /// In es, this message translates to:
+  /// **'Ganancias'**
+  String get labelDriverEarningsMetricEarnings;
+
+  /// No description provided for @labelDriverEarningsMetricTrips.
+  ///
+  /// In es, this message translates to:
+  /// **'Viajes'**
+  String get labelDriverEarningsMetricTrips;
+
+  /// No description provided for @labelDriverEarningsMetricKilometers.
+  ///
+  /// In es, this message translates to:
+  /// **'Kilómetros'**
+  String get labelDriverEarningsMetricKilometers;
+
+  /// No description provided for @titleDriverBonusesView.
+  ///
+  /// In es, this message translates to:
+  /// **'Mis Bonificaciones'**
+  String get titleDriverBonusesView;
+
+  /// No description provided for @bodyDriverBonusesSummaryEarnings.
+  ///
+  /// In es, this message translates to:
+  /// **'Resumen de mis Ganancias'**
+  String get bodyDriverBonusesSummaryEarnings;
+
+  /// No description provided for @labelDriverBonusesTotalEarnings.
+  ///
+  /// In es, this message translates to:
+  /// **'Ganancias Totales'**
+  String get labelDriverBonusesTotalEarnings;
+
+  /// No description provided for @labelDriverBonusesBonuses.
+  ///
+  /// In es, this message translates to:
+  /// **'Bonificaciones'**
+  String get labelDriverBonusesBonuses;
+
+  /// No description provided for @labelDriverBonusesTotal.
+  ///
+  /// In es, this message translates to:
+  /// **'Total'**
+  String get labelDriverBonusesTotal;
+
+  /// No description provided for @bodyDriverBonusesActive.
+  ///
+  /// In es, this message translates to:
+  /// **'Bonificaciones Activas'**
+  String get bodyDriverBonusesActive;
+
+  /// No description provided for @statusDriverBonusesCompleted.
+  ///
+  /// In es, this message translates to:
+  /// **'completados'**
+  String get statusDriverBonusesCompleted;
+
+  /// No description provided for @bodyDriverBonusesPerformanceRewards.
+  ///
+  /// In es, this message translates to:
+  /// **'Recompensas por Desempeño'**
+  String get bodyDriverBonusesPerformanceRewards;
+
+  /// No description provided for @bodyDriverBonusesRating.
+  ///
+  /// In es, this message translates to:
+  /// **'Calificación'**
+  String get bodyDriverBonusesRating;
+
+  /// No description provided for @bodyDriverBonusesFastTime.
+  ///
+  /// In es, this message translates to:
+  /// **'Tiempo Rápido'**
+  String get bodyDriverBonusesFastTime;
+
+  /// No description provided for @bodyDriverBonusesTrips.
+  ///
+  /// In es, this message translates to:
+  /// **'Viajes'**
+  String get bodyDriverBonusesTrips;
+
+  /// No description provided for @bodyDriverBonusesComments.
+  ///
+  /// In es, this message translates to:
+  /// **'Comentarios'**
+  String get bodyDriverBonusesComments;
+
+  /// No description provided for @labelDriverBonusesThisMonth.
+  ///
+  /// In es, this message translates to:
+  /// **'este mes'**
+  String get labelDriverBonusesThisMonth;
+
+  /// No description provided for @bodyDriverBonusesHistory.
+  ///
+  /// In es, this message translates to:
+  /// **'Historial de Bonificaciones'**
+  String get bodyDriverBonusesHistory;
 }
 
 class _AppLocalizationsDelegate

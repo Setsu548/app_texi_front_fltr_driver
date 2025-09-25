@@ -4,11 +4,15 @@ class LabelText extends StatelessWidget {
   final String text;
   final Color? color;
   final TextAlign? textAlign;
+  final int? maxLines;
+  final TextOverflow? overflow;
 
   const LabelText(
     this.text, {
     this.color,
     this.textAlign = TextAlign.start,
+    this.maxLines,         
+    this.overflow,  
     Key? key,
   }) : super(key: key);
 
@@ -21,6 +25,8 @@ class LabelText extends StatelessWidget {
       ),
       textAlign: textAlign,
       softWrap: true,
+      maxLines: maxLines,       
+      overflow: overflow, 
     );
   }
 }
