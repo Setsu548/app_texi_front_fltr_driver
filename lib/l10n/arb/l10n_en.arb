@@ -265,5 +265,19 @@
   "bodyDriverBonusesTrips": "Trips",
   "bodyDriverBonusesComments": "Comments",
   "labelDriverBonusesThisMonth": "this month",
-  "bodyDriverBonusesHistory": "Bonus history"
+  "bodyDriverBonusesHistory": "Bonus history",
+
+  "titleCancelTripView": "Cancel trip",
+  "bodyCancelTripReasonIntro": "Tell us the reason for your cancellation",
+  "bodyCancelTripQuestion": "Why do you want to cancel your trip?",
+  "labelCancelTripAddCommentOptional": "Add comment (optional)",
+  "hintCancelTripAddComment": "Write an additional comment...",
+  "labelCancelTripReasonVisibleTo": "The selected reason will be visible to the driver and TEXI",
+  "btnCancelTripConfirm": "Confirm cancellation",
+
+  "hintChatInputWriteMessage": "Type a message...",
+  "statusPresenceOnline": "Online",
+  "btnCancel": "Cancel",
+  "btnSelect": "Select",
+  "btnBack": "Back"
 }

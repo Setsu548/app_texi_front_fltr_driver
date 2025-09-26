@@ -768,4 +768,43 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get bodyDriverBonusesHistory => 'Historial de Bonificaciones';
+
+  @override
+  String get titleCancelTripView => 'Cancelar viaje';
+
+  @override
+  String get bodyCancelTripReasonIntro =>
+      'Indícanos el motivo de tu cancelación';
+
+  @override
+  String get bodyCancelTripQuestion => '¿Por qué deseas cancelar tu viaje?';
+
+  @override
+  String get labelCancelTripAddCommentOptional =>
+      'Añadir comentario (opcional)';
+
+  @override
+  String get hintCancelTripAddComment => 'Escribe un comentario adicional...';
+
+  @override
+  String get labelCancelTripReasonVisibleTo =>
+      'El motivo seleccionado será visto por el conductor y TEXI';
+
+  @override
+  String get btnCancelTripConfirm => 'Confirmar cancelación';
+
+  @override
+  String get hintChatInputWriteMessage => 'Escribe un mensaje...';
+
+  @override
+  String get statusPresenceOnline => 'En línea';
+
+  @override
+  String get btnCancel => 'Cancelar';
+
+  @override
+  String get btnSelect => 'Select';
+
+  @override
+  String get btnBack => 'Volver';
 }

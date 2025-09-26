@@ -9,6 +9,7 @@ import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class BonusesView extends HookWidget {
   const BonusesView({super.key});
@@ -225,7 +226,9 @@ class BonusesView extends HookWidget {
         ),
         SecondaryVariantButton(
           text: context.intl.btnDriverProfileBack, 
-          onPressed: (){},
+          onPressed: (){
+            context.pop();
+          },
           borderColor: lightColorScheme.primary,
         )
       ],

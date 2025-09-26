@@ -267,5 +267,19 @@
   "bodyDriverBonusesTrips": "Viajes",
   "bodyDriverBonusesComments": "Comentarios",
   "labelDriverBonusesThisMonth": "este mes",
-  "bodyDriverBonusesHistory": "Historial de Bonificaciones"
+  "bodyDriverBonusesHistory": "Historial de Bonificaciones",
+
+  "titleCancelTripView": "Cancelar viaje",
+  "bodyCancelTripReasonIntro": "Indícanos el motivo de tu cancelación",
+  "bodyCancelTripQuestion": "¿Por qué deseas cancelar tu viaje?",
+  "labelCancelTripAddCommentOptional": "Añadir comentario (opcional)",
+  "hintCancelTripAddComment": "Escribe un comentario adicional...",
+  "labelCancelTripReasonVisibleTo": "El motivo seleccionado será visto por el conductor y TEXI",
+  "btnCancelTripConfirm": "Confirmar cancelación",
+
+  "hintChatInputWriteMessage": "Escribe un mensaje...",
+  "statusPresenceOnline": "En línea",
+  "btnCancel": "Cancelar",
+  "btnSelect": "Select",
+  "btnBack": "Volver"
 }

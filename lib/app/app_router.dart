@@ -1,4 +1,6 @@
+import 'package:app_texi_fltr_driver/dashboard/screen/cancel_trip_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/driver_auth_screen.dart';
+import 'package:app_texi_fltr_driver/dashboard/screen/driver_chat_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/driver_dashboard_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/driver_dropoff_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/driver_pickup_screen.dart';
@@ -248,6 +250,26 @@ final GoRouter appRouter = GoRouter(
         return getBuilder(
           state,
           screen: const TravelRatingScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/dashboard/cancel_trip',
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return getBuilder(
+          state,
+          screen: const CancelTripScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      path: '/dashboard/driver_chat',
+      parentNavigatorKey: _rootNavigatorKey,
+      pageBuilder: (BuildContext context, GoRouterState state) {
+        return getBuilder(
+          state,
+          screen: const DriverChatScreen(),
         );
       },
     ),

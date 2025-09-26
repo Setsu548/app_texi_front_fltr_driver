@@ -7,6 +7,7 @@ import 'package:app_texi_fltr_driver/app/widgets/pill_switch_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/travel_request_widget.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
+import 'package:app_texi_fltr_driver/navigation/utils/format_long_date_two_es.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class DriverDashboardView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isOn = useState(false); 
+    final selectedDate = useState<DateTime>(DateTime.now());
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,7 +27,7 @@ class DriverDashboardView extends HookWidget {
         Row(
           children: [
             Expanded(child: SizedBox()),
-            DateChip(text: '25 Julio 2025'),
+            DateChip(text: formatLongDateTwoEs(selectedDate.value)),
           ],
         ),
         SizedBox(height: 20),
@@ -101,21 +103,27 @@ class DriverDashboardView extends HookWidget {
           avatarUrl: 'assets/images/texi.png',
           nameDriver: 'Maria Roberta',
           ratingDriver: 4.8,
-          onPressedAccept: (){},
+          onPressedAccept: (){
+            appRouter.push('/dashboard/driver_pickup');
+          },
         ),
         SizedBox(height: 20),
         TravelRequest(
           originTime: '3 min',
           originDescription: 'Calle Durango 215, Zona Norte',
           destinationDescription: 'Aeropuerto Internacional de la Ciudad de Cochabamba',
-          onPressedDetail: (){},
+          onPressedDetail: (){
+            appRouter.push('/dashboard/travel_details');
+          },
           distance: '12.8 Km',
           estimatedTime: '35 min',
           earnings: '\$20 Bs.',
           avatarUrl: 'assets/images/texi.png',
           nameDriver: 'Carlos Mamani',
           ratingDriver: 4.5,
-          onPressedAccept: (){},
+          onPressedAccept: (){
+            appRouter.push('/dashboard/driver_pickup');
+          },
         ),
       ],
     );

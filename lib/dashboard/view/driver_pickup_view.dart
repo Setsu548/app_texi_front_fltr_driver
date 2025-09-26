@@ -63,7 +63,9 @@ class DriverPickupView extends HookWidget {
             Expanded(
               child: SecondaryVariantButton(
                 text: context.intl.secondaryVariantButtonMessage,
-                onPressed: (){},
+                onPressed: (){
+                  appRouter.push('/dashboard/driver_chat');
+                },
               ),
             ),
           ],
@@ -79,7 +81,9 @@ class DriverPickupView extends HookWidget {
         LinkTextPrimary(
           context.intl.commonCancel, 
           colorText: lightColorScheme.error,
-          onTap: (){}
+          onTap: (){
+            appRouter.push('/dashboard/cancel_trip');
+          }
         )
       ],
     );

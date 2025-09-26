@@ -1,17 +1,20 @@
 import 'package:app_texi_fltr_driver/app/widgets/body_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/card_on_surface_widget.dart';
+import 'package:app_texi_fltr_driver/app/widgets/earnings_date_type_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/link_text_primary_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/metric_progress_tile.dart';
 import 'package:app_texi_fltr_driver/app/widgets/month_selector_chip_widget.dart';
-import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/trip_list_tile_widget.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
+import 'package:app_texi_fltr_driver/navigation/utils/bottom_sheet.dart';
+import 'package:app_texi_fltr_driver/navigation/utils/format_long_date_es.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class EarningsView extends HookWidget {
   const EarningsView({super.key});
@@ -25,6 +28,16 @@ class EarningsView extends HookWidget {
       TripListTile(dateLabel: 'Hoy, 10:45', origin: 'Residencial Las Palmas', destination: 'Hospital', priceText: 'Bs. 63.50'),
       TripListTile(dateLabel: 'Ayer, 19:20', origin: 'Terminal', destination: 'Hotel Continental', priceText: 'Bs. 95.00'),
     ];
+        
+    final selectedIndex = useState<int?>(null);
+
+    final dates = [
+      'Diario',
+      'Semanal',
+      'Mensual'
+    ];
+
+    final selectedDate = useState<DateTime>(DateTime.now());
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -44,8 +57,16 @@ class EarningsView extends HookWidget {
               child: SizedBox()
             ),
             MonthSelectorChip(
-              label: 'Ago 2023',
-              onTap: () {},
+              label: formatLongDateEs(selectedDate.value),
+              onTap: ()  async {
+                final picked = await showBottomSheetDatePicker(
+                  context,
+                  initialDate: selectedDate.value,
+                );
+                if (picked != null) {
+                  selectedDate.value = picked; 
+                }
+              }
             )
           ],
         ),
@@ -90,33 +111,19 @@ class EarningsView extends HookWidget {
         ),
         SizedBox(height: 20),
         Row(
-          children: [
-            Expanded(
-              child: PrimaryVariantButton(
-                backgroundColor: lightColorScheme.primary,
-                text: context.intl.btnDriverEarningsDaily,
-                onPressed: (){},
+          children: List.generate(dates.length, (i) {
+            final selected = selectedIndex.value == i;
+            return Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                child: EarningsDateType(
+                  text: dates[i],
+                  isSelected: selected,
+                  onTap: () => selectedIndex.value = i,
+                ),
               ),
-            ),
-            SizedBox(width: 10),
-            Expanded(
-              child: PrimaryVariantButton(
-                backgroundColor: lightColorScheme.secondaryContainer,
-                colorText: lightColorScheme.primary,
-                text: context.intl.btnDriverEarningsWeekly,
-                onPressed: (){},
-              ),
-            ),
-            SizedBox(width: 10),
-            Expanded(
-              child: PrimaryVariantButton(
-                backgroundColor: lightColorScheme.secondaryContainer,
-                colorText: lightColorScheme.primary,
-                text: context.intl.btnDriverEarningsMonthly,
-                onPressed: (){},
-              ),
-            ),
-          ],
+            );
+          }),
         ),
         SizedBox(height: 20),
         CardOnSurface(
@@ -278,7 +285,9 @@ class EarningsView extends HookWidget {
         ),
         SecondaryVariantButton(
           text: context.intl.btnDriverProfileBack, 
-          onPressed: (){},
+          onPressed: (){
+            context.pop();
+          },
           borderColor: lightColorScheme.primary,
         )
       ],

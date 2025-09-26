@@ -14,6 +14,7 @@ import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class TravelDetailsView extends HookWidget {
   const TravelDetailsView({super.key});
@@ -103,7 +104,9 @@ class TravelDetailsView extends HookWidget {
         SizedBox(height: 20),
         SecondaryVariantButton(
           text: context.intl.secondaryVariantButtonBack, 
-          onPressed: (){}
+          onPressed: (){
+            context.pop();
+          }
         )
       ],
     );

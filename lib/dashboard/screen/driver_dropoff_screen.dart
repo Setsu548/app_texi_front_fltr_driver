@@ -13,8 +13,13 @@ class DriverDropoffScreen extends HookWidget {
     return AppScaffold(
       loadingOverlay: true,
       appBar: AppBarLogoHome(context),
-      endDrawer: Drawer( 
-        child: SideMenuView()
+      endDrawer: Padding(
+        padding: EdgeInsets.only(
+          top: MediaQuery.paddingOf(context).top - 50 + kToolbarHeight,
+        ),
+        child: Drawer(
+          child: SideMenuView(),
+        ),
       ),
       disableBackButton: true,
       onBackButtonPressed: () async {

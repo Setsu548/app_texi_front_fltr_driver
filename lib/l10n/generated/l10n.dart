@@ -1543,6 +1543,78 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Historial de Bonificaciones'**
   String get bodyDriverBonusesHistory;
+
+  /// No description provided for @titleCancelTripView.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar viaje'**
+  String get titleCancelTripView;
+
+  /// No description provided for @bodyCancelTripReasonIntro.
+  ///
+  /// In es, this message translates to:
+  /// **'Indícanos el motivo de tu cancelación'**
+  String get bodyCancelTripReasonIntro;
+
+  /// No description provided for @bodyCancelTripQuestion.
+  ///
+  /// In es, this message translates to:
+  /// **'¿Por qué deseas cancelar tu viaje?'**
+  String get bodyCancelTripQuestion;
+
+  /// No description provided for @labelCancelTripAddCommentOptional.
+  ///
+  /// In es, this message translates to:
+  /// **'Añadir comentario (opcional)'**
+  String get labelCancelTripAddCommentOptional;
+
+  /// No description provided for @hintCancelTripAddComment.
+  ///
+  /// In es, this message translates to:
+  /// **'Escribe un comentario adicional...'**
+  String get hintCancelTripAddComment;
+
+  /// No description provided for @labelCancelTripReasonVisibleTo.
+  ///
+  /// In es, this message translates to:
+  /// **'El motivo seleccionado será visto por el conductor y TEXI'**
+  String get labelCancelTripReasonVisibleTo;
+
+  /// No description provided for @btnCancelTripConfirm.
+  ///
+  /// In es, this message translates to:
+  /// **'Confirmar cancelación'**
+  String get btnCancelTripConfirm;
+
+  /// No description provided for @hintChatInputWriteMessage.
+  ///
+  /// In es, this message translates to:
+  /// **'Escribe un mensaje...'**
+  String get hintChatInputWriteMessage;
+
+  /// No description provided for @statusPresenceOnline.
+  ///
+  /// In es, this message translates to:
+  /// **'En línea'**
+  String get statusPresenceOnline;
+
+  /// No description provided for @btnCancel.
+  ///
+  /// In es, this message translates to:
+  /// **'Cancelar'**
+  String get btnCancel;
+
+  /// No description provided for @btnSelect.
+  ///
+  /// In es, this message translates to:
+  /// **'Select'**
+  String get btnSelect;
+
+  /// No description provided for @btnBack.
+  ///
+  /// In es, this message translates to:
+  /// **'Volver'**
+  String get btnBack;
 }
 
 class _AppLocalizationsDelegate

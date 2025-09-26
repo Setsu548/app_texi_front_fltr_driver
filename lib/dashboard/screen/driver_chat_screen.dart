@@ -1,12 +1,12 @@
 import 'package:app_texi_fltr_driver/app/app_bar_logo_home.dart';
-import 'package:app_texi_fltr_driver/dashboard/view/travel_details_view.dart';
+import 'package:app_texi_fltr_driver/dashboard/view/driver_chat_view.dart';
 import 'package:app_texi_fltr_driver/navigation/view/side_menu_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../app/app_scaffold.dart';
 
-class TravelDetailsScreen extends HookWidget {
-  const TravelDetailsScreen({super.key});
+class DriverChatScreen extends HookWidget {
+  const DriverChatScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +25,9 @@ class TravelDetailsScreen extends HookWidget {
       onBackButtonPressed: () async {
         return Future.value(true);
       },
-      body: ListView(
+      body: Padding(
         padding: EdgeInsets.all(10.0),
-        children: [
-          SizedBox(height: 10),
-          TravelDetailsView()
-        ]
+        child: DriverChatView()
       ),
     );
   }

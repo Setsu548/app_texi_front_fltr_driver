@@ -9,6 +9,7 @@ import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileView extends HookWidget {
   const ProfileView({super.key});
@@ -209,42 +210,50 @@ class ProfileView extends HookWidget {
         Row(
           children: [
             Expanded(
-              child: CardOnSurface(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                padding: EdgeInsetsGeometry.all(20),
-                backgroundColor: lightColorScheme.secondary,
-                children: [
-                  Icon(
-                    Icons.restart_alt_rounded,
-                    size: 50,
-                    color: lightColorScheme.primary,
-                  ),
-                  SizedBox(height: 10),
-                  BodyText(
-                    context.intl.cardDriverProfileTripHistory,
-                    textAlign: TextAlign.center,
-                  )
-                ]
+              child: InkWell(
+                splashColor: Colors.transparent,
+                onTap: (){},
+                child: CardOnSurface(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  padding: EdgeInsetsGeometry.all(20),
+                  backgroundColor: lightColorScheme.secondary,
+                  children: [
+                    Icon(
+                      Icons.restart_alt_rounded,
+                      size: 50,
+                      color: lightColorScheme.primary,
+                    ),
+                    SizedBox(height: 10),
+                    BodyText(
+                      context.intl.cardDriverProfileTripHistory,
+                      textAlign: TextAlign.center,
+                    )
+                  ]
+                ),
               )
             ),
             SizedBox(width: 10),
             Expanded(
-              child: CardOnSurface(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                padding: EdgeInsetsGeometry.all(20),
-                backgroundColor: lightColorScheme.secondary,
-                children: [
-                  Icon(
-                    Icons.attach_money,
-                    size: 50,
-                    color: lightColorScheme.primary,
-                  ),
-                  SizedBox(height: 10),
-                  BodyText(
-                    context.intl.cardDriverProfileEarnings,
-                    textAlign: TextAlign.center,
-                  )
-                ]
+              child: InkWell(
+                splashColor: Colors.transparent,
+                onTap: (){},
+                child: CardOnSurface(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  padding: EdgeInsetsGeometry.all(20),
+                  backgroundColor: lightColorScheme.secondary,
+                  children: [
+                    Icon(
+                      Icons.attach_money,
+                      size: 50,
+                      color: lightColorScheme.primary,
+                    ),
+                    SizedBox(height: 10),
+                    BodyText(
+                      context.intl.cardDriverProfileEarnings,
+                      textAlign: TextAlign.center,
+                    )
+                  ]
+                ),
               )
             ),
           ],
@@ -298,7 +307,9 @@ class ProfileView extends HookWidget {
         ),
         SecondaryVariantButton(
           text: context.intl.btnDriverProfileBack, 
-          onPressed: (){},
+          onPressed: (){
+            context.pop();
+          },
           borderColor: lightColorScheme.primary,
         )
       ],

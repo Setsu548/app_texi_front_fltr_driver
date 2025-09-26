@@ -6,15 +6,23 @@ import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/trip_summary_card_widget.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
+import 'package:app_texi_fltr_driver/navigation/utils/bottom_sheet.dart';
+import 'package:app_texi_fltr_driver/navigation/utils/format_date.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class TravelHistoryView extends HookWidget {
   const TravelHistoryView({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    final selectedDateFrom = useState<DateTime>(
+      DateTime.now().subtract(const Duration(days: 1)),
+    );
+    final selectedDateTo = useState<DateTime>(DateTime.now());
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,14 +67,30 @@ class TravelHistoryView extends HookWidget {
               children: [
                 FilterDateField(
                   label: context.intl.labelTravelHistoryFrom,
-                  dateText: '01/05/2023',
-                  onTap: () {},
+                  dateText: formatDate(selectedDateFrom.value),
+                  onTap: () async {
+                    final picked = await showBottomSheetDatePicker(
+                      context,
+                      initialDate: selectedDateFrom.value,
+                    );
+                    if (picked != null) {
+                      selectedDateFrom.value = picked; 
+                    }
+                  }
                 ),
                 SizedBox(width: 12),
                 FilterDateField(
                   label: context.intl.labelTravelHistoryTo,
-                  dateText: '31/05/2023',
-                  onTap: () { },
+                  dateText: formatDate(selectedDateTo.value),
+                  onTap: () async {
+                    final picked = await showBottomSheetDatePicker(
+                      context,
+                      initialDate: selectedDateTo.value,
+                    );
+                    if (picked != null) {
+                      selectedDateTo.value = picked; 
+                    }
+                  }
                 ),
               ],
             ),
@@ -129,7 +153,9 @@ class TravelHistoryView extends HookWidget {
         ),
         SecondaryVariantButton(
           text: context.intl.btnDriverProfileBack, 
-          onPressed: (){},
+          onPressed: (){
+            context.pop();
+          },
           borderColor: lightColorScheme.primary,
         )
       ],
