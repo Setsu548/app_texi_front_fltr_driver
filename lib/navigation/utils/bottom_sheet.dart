@@ -38,11 +38,13 @@ Future<DateTime?> showBottomSheetDatePicker(
                   borderRadius: BorderRadius.circular(999),
                 ),
               ),
-              CalendarDatePicker(
-                initialDate: init,
-                firstDate: first,
-                lastDate: last,
-                onDateChanged: (d) => temp = d,
+              Flexible(
+                child: CalendarDatePicker(
+                  initialDate: init,
+                  firstDate: first,
+                  lastDate: last,
+                  onDateChanged: (d) => temp = d,
+                ),
               ),
               SizedBox(height: 8),
               Row(

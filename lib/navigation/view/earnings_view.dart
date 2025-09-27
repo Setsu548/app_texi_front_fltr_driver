@@ -157,7 +157,7 @@ class EarningsView extends HookWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BodyText(context.intl.bodyDriverEarningsTripsCompleted),
+                      LabelText(context.intl.bodyDriverEarningsTripsCompleted),
                       TitleText('124', color: lightColorScheme.primary,),
                     ],
                   ),
@@ -173,7 +173,7 @@ class EarningsView extends HookWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BodyText(context.intl.bodyDriverEarningsKilometersTraveled),
+                      LabelText(context.intl.bodyDriverEarningsKilometersTraveled),
                       TitleText('1,450 km', color: lightColorScheme.primary),
                     ],
                   ),
@@ -188,7 +188,7 @@ class EarningsView extends HookWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BodyText(context.intl.bodyDriverEarningsAvgPerTrip),
+                      LabelText(context.intl.bodyDriverEarningsAvgPerTrip),
                       TitleText('Bs. 70.53', color: lightColorScheme.primary),
                     ],
                   ),
@@ -203,7 +203,7 @@ class EarningsView extends HookWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      BodyText(context.intl.bodyDriverEarningsAvgPerKm),
+                      LabelText(context.intl.bodyDriverEarningsAvgPerKm),
                       TitleText('Bs. 6.03', color: lightColorScheme.primary),
                     ],
                   ),

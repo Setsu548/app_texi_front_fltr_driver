@@ -45,7 +45,7 @@ class TravelHistoryView extends HookWidget {
         ),
         SizedBox(height: 20),
         CardOnSurface(
-          padding: EdgeInsetsGeometry.all(20),
+          padding: EdgeInsetsGeometry.all(10),
           backgroundColor: lightColorScheme.secondary,
           children: [
             Row(

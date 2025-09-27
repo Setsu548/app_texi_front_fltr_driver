@@ -99,17 +99,18 @@ class BonusesView extends HookWidget {
           childAspectRatio: 1.3,
           children: [
             Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: lightColorScheme.secondary,
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(color: lightColorScheme.secondaryContainer),
               ),
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 22,
+                    radius: 20,
                     backgroundColor: lightColorScheme.secondaryContainer,
                     child: Icon(Icons.star_rounded,
                     size: 24, color: lightColorScheme.primary),
@@ -121,7 +122,7 @@ class BonusesView extends HookWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: lightColorScheme.secondary,
                 borderRadius: BorderRadius.circular(12),
@@ -131,7 +132,7 @@ class BonusesView extends HookWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 22,
+                    radius: 20,
                     backgroundColor: lightColorScheme.secondaryContainer,
                     child: Icon(Icons.speed_rounded,
                         size: 24, color: lightColorScheme.primary),
@@ -143,7 +144,7 @@ class BonusesView extends HookWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: lightColorScheme.secondary,
                 borderRadius: BorderRadius.circular(12),
@@ -153,7 +154,7 @@ class BonusesView extends HookWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 22,
+                    radius: 20,
                     backgroundColor: lightColorScheme.secondaryContainer,
                     child: Icon(Icons.alt_route_rounded,
                     size: 24, color: lightColorScheme.primary),
@@ -165,7 +166,7 @@ class BonusesView extends HookWidget {
               ),
             ),
             Container(
-              padding: EdgeInsets.all(16),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: lightColorScheme.secondary,
                 borderRadius: BorderRadius.circular(12),
@@ -175,7 +176,7 @@ class BonusesView extends HookWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
-                    radius: 22,
+                    radius: 20,
                     backgroundColor: lightColorScheme.secondaryContainer,
                     child: Icon(Icons.thumb_up_rounded,
                         size: 24, color: lightColorScheme.primary),

@@ -29,7 +29,7 @@ class FilterDateField extends StatelessWidget {
             onTap: onTap,
             overlayColor: MaterialStateProperty.all(Colors.transparent),
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 8),
               decoration: BoxDecoration(
                 color: lightColorScheme.secondaryContainer,
                 borderRadius: BorderRadius.circular(10),
