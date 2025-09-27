@@ -210,49 +210,57 @@ class ProfileView extends HookWidget {
         Row(
           children: [
             Expanded(
-              child: InkWell(
-                splashColor: Colors.transparent,
-                onTap: (){},
-                child: CardOnSurface(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  padding: EdgeInsetsGeometry.all(20),
-                  backgroundColor: lightColorScheme.secondary,
-                  children: [
-                    Icon(
-                      Icons.restart_alt_rounded,
-                      size: 50,
-                      color: lightColorScheme.primary,
-                    ),
-                    SizedBox(height: 10),
-                    BodyText(
-                      context.intl.cardDriverProfileTripHistory,
-                      textAlign: TextAlign.center,
-                    )
-                  ]
+              child: SizedBox(
+                height: 160,
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  onTap: (){},
+                  child: CardOnSurface(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    padding: EdgeInsetsGeometry.all(20),
+                    backgroundColor: lightColorScheme.secondary,
+                    children: [
+                      Icon(
+                        Icons.restart_alt_rounded,
+                        size: 50,
+                        color: lightColorScheme.primary,
+                      ),
+                      SizedBox(height: 10),
+                      BodyText(
+                        context.intl.cardDriverProfileTripHistory,
+                        textAlign: TextAlign.center,
+                      )
+                    ]
+                  ),
                 ),
               )
             ),
             SizedBox(width: 10),
             Expanded(
-              child: InkWell(
-                splashColor: Colors.transparent,
-                onTap: (){},
-                child: CardOnSurface(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  padding: EdgeInsetsGeometry.all(20),
-                  backgroundColor: lightColorScheme.secondary,
-                  children: [
-                    Icon(
-                      Icons.attach_money,
-                      size: 50,
-                      color: lightColorScheme.primary,
-                    ),
-                    SizedBox(height: 10),
-                    BodyText(
-                      context.intl.cardDriverProfileEarnings,
-                      textAlign: TextAlign.center,
-                    )
-                  ]
+              child: SizedBox(
+                height: 160,
+                child: InkWell(
+                  splashColor: Colors.transparent,
+                  onTap: (){},
+                  child: CardOnSurface(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    padding: EdgeInsetsGeometry.all(20),
+                    backgroundColor: lightColorScheme.secondary,
+                    children: [
+                      Icon(
+                        Icons.attach_money,
+                        size: 50,
+                        color: lightColorScheme.primary,
+                      ),
+                      SizedBox(height: 10),
+                      BodyText(
+                        context.intl.cardDriverProfileEarnings,
+                        textAlign: TextAlign.center,
+                      )
+                    ]
+                  ),
                 ),
               )
             ),

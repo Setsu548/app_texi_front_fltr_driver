@@ -1,4 +1,4 @@
-import 'package:app_texi_fltr_driver/app/widgets/body_text_widget.dart';
+import 'package:app_texi_fltr_driver/app/widgets/label_text_widget.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -44,12 +44,12 @@ class EarningsDateType extends StatelessWidget {
       overlayColor: MaterialStateProperty.all(Colors.transparent),
       splashFactory: NoSplash.splashFactory,
       child: Container(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
         decoration: BoxDecoration(
           color: bg,
           borderRadius: BorderRadius.circular(12),
         ),
-        child: Center(child: BodyText(text, color: tx)),
+        child: Center(child: LabelText(text, color: tx)),
       ),
     );
   }

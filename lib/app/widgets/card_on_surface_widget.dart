@@ -5,6 +5,7 @@ class CardOnSurface extends StatelessWidget {
   final List<Widget> children;
   final Color? backgroundColor;
   final CrossAxisAlignment crossAxisAlignment;
+  final MainAxisAlignment mainAxisAlignment;
   final EdgeInsetsGeometry padding; 
 
   const CardOnSurface({
@@ -12,6 +13,7 @@ class CardOnSurface extends StatelessWidget {
     required this.children,
     this.backgroundColor,
     this.crossAxisAlignment = CrossAxisAlignment.start,
+    this.mainAxisAlignment = MainAxisAlignment.start,
     this.padding = const EdgeInsets.all(30), 
   });
 
@@ -29,6 +31,7 @@ class CardOnSurface extends StatelessWidget {
           padding: padding, 
           child: Column(
             crossAxisAlignment: crossAxisAlignment,
+            mainAxisAlignment: mainAxisAlignment,
             children: children,
           ),
         ),

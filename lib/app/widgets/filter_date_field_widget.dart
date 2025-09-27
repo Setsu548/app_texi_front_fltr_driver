@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../theme/main_theme.dart';
-import '../widgets/body_text_widget.dart';
 import '../widgets/label_text_widget.dart';
 
 class FilterDateField extends StatelessWidget {
@@ -37,9 +36,9 @@ class FilterDateField extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Icon(icon, size: 20, color: lightColorScheme.onSurface),
+                  Icon(icon, size: 15, color: lightColorScheme.onSurface),
                   SizedBox(width: 10),
-                  BodyText(dateText),
+                  LabelText(dateText),
                 ],
               ),
             ),
