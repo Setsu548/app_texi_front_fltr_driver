@@ -1,3 +1,4 @@
+import 'package:app_texi_fltr_driver/app/widgets/primary_loading_widget.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -13,6 +14,25 @@ class SecurityLoginScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final isReady = useState(false);
+    final isMounted = useIsMounted();
+
+    useEffect(() {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        try {
+          await Future.delayed(const Duration(milliseconds: 900));
+
+        } finally {
+          if (isMounted()) isReady.value = true;
+        }
+      });
+      return null;
+    }, const []);
+
+    if (!isReady.value) {
+      return PrimaryLoading();
+    }
           return AppScaffold(
             appBar: null,
             loadingOverlay: true,

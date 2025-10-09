@@ -1,4 +1,5 @@
 import 'package:app_texi_fltr_driver/app/app_bar_logo_home.dart';
+import 'package:app_texi_fltr_driver/app/widgets/secondary_loading_widget.dart';
 import 'package:app_texi_fltr_driver/dashboard/view/travel_details_view.dart';
 import 'package:app_texi_fltr_driver/navigation/view/side_menu_view.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,26 @@ class TravelDetailsScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final isReady = useState(false);
+    final isMounted = useIsMounted();
+
+    useEffect(() {
+      WidgetsBinding.instance.addPostFrameCallback((_) async {
+        try {
+          await Future.delayed(const Duration(milliseconds: 900));
+
+        } finally {
+          if (isMounted()) isReady.value = true;
+        }
+      });
+      return null;
+    }, const []);
+
+    if (!isReady.value) {
+      return SecondaryLoading();
+    }
+    
     return AppScaffold(
       loadingOverlay: true,
       appBar: AppBarLogoHome(context),
