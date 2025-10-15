@@ -1,10 +1,10 @@
-import 'package:app_texi_fltr_driver/security/view/welcome_view.dart';
+import 'package:app_texi_fltr_driver/login/view/vehicle_info_form_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import '../../app/app_scaffold.dart';
 
-class WelcomeScreen extends HookWidget {
-  const WelcomeScreen({super.key});
+class VehicleInfoFormScreen extends HookWidget {
+  const VehicleInfoFormScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class WelcomeScreen extends HookWidget {
         padding: EdgeInsets.all(10.0),
         children: [
           SizedBox(height: 40),
-          WelcomeView()
+          VehicleInfoFormView(),
         ]
       ),
     );

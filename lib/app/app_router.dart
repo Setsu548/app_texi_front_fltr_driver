@@ -10,23 +10,23 @@ import 'package:app_texi_fltr_driver/navigation/screen/bonuses_screen.dart';
 import 'package:app_texi_fltr_driver/navigation/screen/earnings_screen.dart';
 import 'package:app_texi_fltr_driver/navigation/screen/profile_screen.dart';
 import 'package:app_texi_fltr_driver/navigation/screen/travel_history_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/driver_license_verification_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/identity_verification_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/personal_info_form_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/registration_confirmation_person_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/registration_confirmation_vehicle_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/vehicle_found_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/vehicle_info_form_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/vehicle_photo_registration_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/vehicle_plate_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/vehicle_search_result_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/vehicle_selection_screen.dart';
-import 'package:app_texi_fltr_driver/security/screen/welcome_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/driver_license_verification_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/identity_verification_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/personal_info_form_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/registration_confirmation_person_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/registration_confirmation_vehicle_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/vehicle_found_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/vehicle_info_form_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/vehicle_photo_registration_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/vehicle_plate_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/vehicle_search_result_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/vehicle_selection_screen.dart';
+import 'package:app_texi_fltr_driver/login/screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 
-import '../security/screen/security_login_screen.dart';
+import '../login/screen/security_login_screen.dart';
 import 'screen/app_demo_screen.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
