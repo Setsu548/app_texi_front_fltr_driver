@@ -281,5 +281,6 @@
   "statusPresenceOnline": "En línea",
   "btnCancel": "Cancelar",
   "btnSelect": "Select",
-  "btnBack": "Volver"
+  "btnBack": "Volver",
+  "labelProfession": "Profesión"
 }

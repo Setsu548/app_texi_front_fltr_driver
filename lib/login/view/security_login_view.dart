@@ -1,5 +1,7 @@
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
+import 'package:app_texi_fltr_driver/login/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
@@ -14,6 +16,9 @@ class SecurityLoginView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userNameController = useTextEditingController(text: '');
+    final passwordController = useTextEditingController(text: '');
+
     return Padding(
       padding: const EdgeInsets.only(left: 30.0,right: 30),
       child: Column(
@@ -21,6 +26,7 @@ class SecurityLoginView extends HookWidget {
         LabelFieldWidget(
           label: context.intl.bodyTextPhone,
           field: InternationalPhoneNumberInput(
+            textFieldController: userNameController,
             onInputChanged: (PhoneNumber number) {
               print(number.phoneNumber);
             },
@@ -28,7 +34,6 @@ class SecurityLoginView extends HookWidget {
               selectorType: PhoneInputSelectorType.DROPDOWN,
             ),
             initialValue: PhoneNumber(isoCode: 'BO'),
-            textFieldController: TextEditingController(),
             inputDecoration: InputDecoration(
               hintText: '',
             ),
@@ -38,6 +43,7 @@ class SecurityLoginView extends HookWidget {
         LabelFieldWidget(
           label: context.intl.labelPassword,
           field: TextFormField(
+            controller: passwordController,
             keyboardType: TextInputType.text,
             onSaved: (_) => {},
             maxLength: 40,
@@ -65,7 +71,18 @@ class SecurityLoginView extends HookWidget {
         PrimaryVariantButton(
           text: context.intl.primaryVariantButtonSignIn,
           onPressed: (){
-            appRouter.go('/dashboard/driver_dashboard');
+            context.read<LoginBloc>().add(LoginEvent.loginInit(
+                userName: userNameController.text, 
+                password: passwordController.text,
+                success: (res){ 
+                  appRouter.go('/dashboard/driver_dashboard');
+                },
+                error: (error){
+                  
+                }
+              )
+            );
+            
           }
         ),
         SizedBox(height: 10),

@@ -8,7 +8,7 @@ class ApiDio {
 
   factory ApiDio() {
     final dio = Dio(BaseOptions(
-      baseUrl: 'http://ec2-3-14-153-133.us-east-2.compute.amazonaws.com:8001/api/v1',
+      baseUrl: 'http://ec2-3-150-198-57.us-east-2.compute.amazonaws.com:8001/api/v1',
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       headers: {

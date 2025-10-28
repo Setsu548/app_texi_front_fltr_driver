@@ -30,6 +30,7 @@ class DriverLicenseVerificationView extends HookWidget {
               label: context.intl.labeledDropdownLicenseCategory, 
               colorLabel: lightColorScheme.surface,
               hint: context.intl.labeledDropdownLicenseCategoryHint, 
+              onChanged: (value){},
               items: [
                 DropdownMenuItem(
                   value: 'Categoría "A"',

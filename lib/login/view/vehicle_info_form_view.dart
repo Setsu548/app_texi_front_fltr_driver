@@ -34,6 +34,7 @@ class VehicleInfoFormView extends HookWidget {
               label: context.intl.labeledDropdownVehicleBrand, 
               colorLabel: lightColorScheme.surface,
               hint: context.intl.labeledDropdownVehicleBrandHint, 
+              onChanged: (value){},
               items: [
                 DropdownMenuItem(
                   value: "Toyota",
@@ -58,6 +59,7 @@ class VehicleInfoFormView extends HookWidget {
               label: context.intl.labeledDropdownVehicleYear, 
               colorLabel: lightColorScheme.surface,
               hint: context.intl.labeledDropdownVehicleYearHint, 
+              onChanged: (value){},
               items: [
                 DropdownMenuItem(
                   value: "2018",

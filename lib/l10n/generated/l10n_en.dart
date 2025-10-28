@@ -802,4 +802,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get btnBack => 'Back';
+
+  @override
+  String get labelProfession => 'Profession';
 }

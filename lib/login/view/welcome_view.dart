@@ -75,7 +75,7 @@ class WelcomeView extends HookWidget {
               decoration: BoxDecoration(
                 color: lightColorScheme.secondaryContainer,
                 image: DecorationImage(
-                  image: AssetImage('assets/images/texi.png'),
+                  image: AssetImage('assets/images/bienvenido.gif'),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -92,7 +92,12 @@ class WelcomeView extends HookWidget {
         SizedBox(height: 20),
         LabelText(context.intl.labelTextTermsAndConditions, color: lightColorScheme.secondaryContainer, textAlign: TextAlign.center),
         SizedBox(height: 20),
-        SecondaryVariantButton(text: context.intl.secondaryVariantButtonCancel, onPressed: (){}),
+        SecondaryVariantButton(
+          text: context.intl.secondaryVariantButtonCancel, 
+          onPressed: (){
+            appRouter.pop();
+          }
+        ),
       ],
     );
   }

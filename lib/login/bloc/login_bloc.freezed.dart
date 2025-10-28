@@ -160,6 +160,20 @@ mixin _$LoginEvent {
       String password,
     )
     loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -172,6 +186,20 @@ mixin _$LoginEvent {
       String password,
     )?
     loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -184,22 +212,42 @@ mixin _$LoginEvent {
       String password,
     )?
     loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -278,6 +326,20 @@ class _$InitialEventImpl implements _InitialEvent {
       String password,
     )
     loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
   }) {
     return initial();
   }
@@ -294,6 +356,20 @@ class _$InitialEventImpl implements _InitialEvent {
       String password,
     )?
     loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
   }) {
     return initial?.call();
   }
@@ -310,6 +386,20 @@ class _$InitialEventImpl implements _InitialEvent {
       String password,
     )?
     loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -323,6 +413,8 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
   }) {
     return initial(this);
   }
@@ -332,6 +424,8 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
   }) {
     return initial?.call(this);
   }
@@ -341,6 +435,8 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -485,6 +581,20 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
       String password,
     )
     loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
   }) {
     return loginInit(befor, success, error, userName, password);
   }
@@ -501,6 +611,20 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
       String password,
     )?
     loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
   }) {
     return loginInit?.call(befor, success, error, userName, password);
   }
@@ -517,6 +641,20 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
       String password,
     )?
     loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
     required TResult orElse(),
   }) {
     if (loginInit != null) {
@@ -530,6 +668,8 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
   }) {
     return loginInit(this);
   }
@@ -539,6 +679,8 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
   }) {
     return loginInit?.call(this);
   }
@@ -548,6 +690,8 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
     required TResult orElse(),
   }) {
     if (loginInit != null) {
@@ -576,5 +720,526 @@ abstract class _LoginInitEvent implements LoginEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoginInitEventImplCopyWith<_$LoginInitEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RegisterPersonalEventImplCopyWith<$Res> {
+  factory _$$RegisterPersonalEventImplCopyWith(
+    _$RegisterPersonalEventImpl value,
+    $Res Function(_$RegisterPersonalEventImpl) then,
+  ) = __$$RegisterPersonalEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    dynamic Function(dynamic)? befor,
+    dynamic Function(dynamic)? success,
+    dynamic Function(dynamic)? error,
+    PersonalInfoModel personalInfo,
+  });
+}
+
+/// @nodoc
+class __$$RegisterPersonalEventImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$RegisterPersonalEventImpl>
+    implements _$$RegisterPersonalEventImplCopyWith<$Res> {
+  __$$RegisterPersonalEventImplCopyWithImpl(
+    _$RegisterPersonalEventImpl _value,
+    $Res Function(_$RegisterPersonalEventImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? befor = freezed,
+    Object? success = freezed,
+    Object? error = freezed,
+    Object? personalInfo = null,
+  }) {
+    return _then(
+      _$RegisterPersonalEventImpl(
+        befor: freezed == befor
+            ? _value.befor
+            : befor // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        success: freezed == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        personalInfo: null == personalInfo
+            ? _value.personalInfo
+            : personalInfo // ignore: cast_nullable_to_non_nullable
+                  as PersonalInfoModel,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
+  const _$RegisterPersonalEventImpl({
+    this.befor,
+    this.success,
+    this.error,
+    required this.personalInfo,
+  });
+
+  @override
+  final dynamic Function(dynamic)? befor;
+  @override
+  final dynamic Function(dynamic)? success;
+  @override
+  final dynamic Function(dynamic)? error;
+  @override
+  final PersonalInfoModel personalInfo;
+
+  @override
+  String toString() {
+    return 'LoginEvent.registerPersonal(befor: $befor, success: $success, error: $error, personalInfo: $personalInfo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RegisterPersonalEventImpl &&
+            (identical(other.befor, befor) || other.befor == befor) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.personalInfo, personalInfo) ||
+                other.personalInfo == personalInfo));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, befor, success, error, personalInfo);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RegisterPersonalEventImplCopyWith<_$RegisterPersonalEventImpl>
+  get copyWith =>
+      __$$RegisterPersonalEventImplCopyWithImpl<_$RegisterPersonalEventImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )
+    loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
+  }) {
+    return registerPersonal(befor, success, error, personalInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+  }) {
+    return registerPersonal?.call(befor, success, error, personalInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    required TResult orElse(),
+  }) {
+    if (registerPersonal != null) {
+      return registerPersonal(befor, success, error, personalInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
+  }) {
+    return registerPersonal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
+  }) {
+    return registerPersonal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
+    required TResult orElse(),
+  }) {
+    if (registerPersonal != null) {
+      return registerPersonal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RegisterPersonalEvent implements LoginEvent {
+  const factory _RegisterPersonalEvent({
+    final dynamic Function(dynamic)? befor,
+    final dynamic Function(dynamic)? success,
+    final dynamic Function(dynamic)? error,
+    required final PersonalInfoModel personalInfo,
+  }) = _$RegisterPersonalEventImpl;
+
+  dynamic Function(dynamic)? get befor;
+  dynamic Function(dynamic)? get success;
+  dynamic Function(dynamic)? get error;
+  PersonalInfoModel get personalInfo;
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$RegisterPersonalEventImplCopyWith<_$RegisterPersonalEventImpl>
+  get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DocumentInfoEventImplCopyWith<$Res> {
+  factory _$$DocumentInfoEventImplCopyWith(
+    _$DocumentInfoEventImpl value,
+    $Res Function(_$DocumentInfoEventImpl) then,
+  ) = __$$DocumentInfoEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    dynamic Function(dynamic)? befor,
+    dynamic Function(dynamic)? success,
+    dynamic Function(dynamic)? error,
+    DocumentInfo documentInfo,
+  });
+}
+
+/// @nodoc
+class __$$DocumentInfoEventImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$DocumentInfoEventImpl>
+    implements _$$DocumentInfoEventImplCopyWith<$Res> {
+  __$$DocumentInfoEventImplCopyWithImpl(
+    _$DocumentInfoEventImpl _value,
+    $Res Function(_$DocumentInfoEventImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? befor = freezed,
+    Object? success = freezed,
+    Object? error = freezed,
+    Object? documentInfo = null,
+  }) {
+    return _then(
+      _$DocumentInfoEventImpl(
+        befor: freezed == befor
+            ? _value.befor
+            : befor // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        success: freezed == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        documentInfo: null == documentInfo
+            ? _value.documentInfo
+            : documentInfo // ignore: cast_nullable_to_non_nullable
+                  as DocumentInfo,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
+  const _$DocumentInfoEventImpl({
+    this.befor,
+    this.success,
+    this.error,
+    required this.documentInfo,
+  });
+
+  @override
+  final dynamic Function(dynamic)? befor;
+  @override
+  final dynamic Function(dynamic)? success;
+  @override
+  final dynamic Function(dynamic)? error;
+  @override
+  final DocumentInfo documentInfo;
+
+  @override
+  String toString() {
+    return 'LoginEvent.documentInfo(befor: $befor, success: $success, error: $error, documentInfo: $documentInfo)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DocumentInfoEventImpl &&
+            (identical(other.befor, befor) || other.befor == befor) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.documentInfo, documentInfo) ||
+                other.documentInfo == documentInfo));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, befor, success, error, documentInfo);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DocumentInfoEventImplCopyWith<_$DocumentInfoEventImpl> get copyWith =>
+      __$$DocumentInfoEventImplCopyWithImpl<_$DocumentInfoEventImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )
+    loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
+  }) {
+    return documentInfo(befor, success, error, this.documentInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+  }) {
+    return documentInfo?.call(befor, success, error, this.documentInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    required TResult orElse(),
+  }) {
+    if (documentInfo != null) {
+      return documentInfo(befor, success, error, this.documentInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
+  }) {
+    return documentInfo(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
+  }) {
+    return documentInfo?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
+    required TResult orElse(),
+  }) {
+    if (documentInfo != null) {
+      return documentInfo(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DocumentInfoEvent implements LoginEvent {
+  const factory _DocumentInfoEvent({
+    final dynamic Function(dynamic)? befor,
+    final dynamic Function(dynamic)? success,
+    final dynamic Function(dynamic)? error,
+    required final DocumentInfo documentInfo,
+  }) = _$DocumentInfoEventImpl;
+
+  dynamic Function(dynamic)? get befor;
+  dynamic Function(dynamic)? get success;
+  dynamic Function(dynamic)? get error;
+  DocumentInfo get documentInfo;
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DocumentInfoEventImplCopyWith<_$DocumentInfoEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

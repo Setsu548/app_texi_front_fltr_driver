@@ -1615,6 +1615,12 @@ abstract class AppLocalizations {
   /// In es, this message translates to:
   /// **'Volver'**
   String get btnBack;
+
+  /// No description provided for @labelProfession.
+  ///
+  /// In es, this message translates to:
+  /// **'Profesión'**
+  String get labelProfession;
 }
 
 class _AppLocalizationsDelegate

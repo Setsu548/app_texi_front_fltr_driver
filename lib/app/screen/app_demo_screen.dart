@@ -315,6 +315,7 @@ class AppDemoFormView extends HookWidget {
                   LabeledDropdown<String>(
                     label: "Departamento",
                     hint: "Selecciona una ciudad",
+                    onChanged: (value){},
                     items: [
                       DropdownMenuItem(
                         value: "Cochabamba",

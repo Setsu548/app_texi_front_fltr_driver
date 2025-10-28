@@ -8,6 +8,7 @@ class LabeledDropdown<T> extends HookWidget {
   final Color? colorLabel;
   final String hint;
   final List<DropdownMenuItem<T>> items;
+  final Function(T?)? onChanged;
 
   const LabeledDropdown({
     super.key,
@@ -15,6 +16,7 @@ class LabeledDropdown<T> extends HookWidget {
     this.colorLabel,
     required this.hint,
     required this.items,
+    required this.onChanged
   });
 
   @override
@@ -31,7 +33,12 @@ class LabeledDropdown<T> extends HookWidget {
           const SizedBox(height: 6),
           DropdownButtonFormField<T>(
             value: selectedValue.value,
-            onChanged: (val) => selectedValue.value = val, 
+            onChanged: (val) {
+              selectedValue.value = val;
+              if (onChanged != null) {
+                onChanged!(val); // 👈 Llama al callback
+              }
+            }, 
             items: items,
             decoration: InputDecoration(
               hintText: hint,
