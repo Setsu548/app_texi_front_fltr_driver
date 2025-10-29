@@ -1607,7 +1607,7 @@ abstract class AppLocalizations {
   /// No description provided for @btnSelect.
   ///
   /// In es, this message translates to:
-  /// **'Select'**
+  /// **'Seleccionar'**
   String get btnSelect;
 
   /// No description provided for @btnBack.

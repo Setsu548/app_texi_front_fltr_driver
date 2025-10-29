@@ -98,6 +98,7 @@ class WelcomeView extends HookWidget {
             appRouter.pop();
           }
         ),
+        SizedBox(height: 20),
       ],
     );
   }

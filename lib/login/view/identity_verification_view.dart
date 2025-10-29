@@ -17,6 +17,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../app/widgets/loading_dialog.dart';
 import '../bloc/login_bloc.dart';
 import '../models/document_info.dart';
 
@@ -98,22 +99,27 @@ class IdentityVerificationView extends HookWidget {
             );
             context.read<LoginBloc>().add(LoginEvent.documentInfo(
               documentInfo: documentInfo,
+              befor: (res){
+                showLoadingDialog(context);
+              },
               success: (res){
-                if (profilePhoto.value != null) {
-
+                if (profilePhoto.value != null && backPhoto.value != null && frontPhoto.value != null) {
+                  hideLoadingDialog(context);
+                  appRouter.push('/security/driver_license_verification');
                 } else {
                   print('⚠️ No se ha tomado la foto');
                 }
-                appRouter.push('/security/driver_license_verification');
+                
               },
               error: (err){
-
+                hideLoadingDialog(context);
               }
             ));
           }
         ),
         SizedBox(height: 20),
-        SecondaryVariantButton(text: context.intl.secondaryVariantButtonContinueLater, onPressed: (){})
+        SecondaryVariantButton(text: context.intl.secondaryVariantButtonContinueLater, onPressed: (){}),
+        SizedBox(height: 20),
       ],
     );
   }

@@ -803,7 +803,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get btnCancel => 'Cancelar';
 
   @override
-  String get btnSelect => 'Select';
+  String get btnSelect => 'Seleccionar';
 
   @override
   String get btnBack => 'Volver';

@@ -139,13 +139,62 @@ class PersonalInfoModel {
 }
 
 class PersonalInfoResponse {
-  final String data;
+  final String uuid;
+  final String phoneNumber;
+  final bool isVerified;
+  PersonalInfoResponse({
+    required this.uuid,
+    required this.phoneNumber,
+    required this.isVerified,
+  });
 
-  PersonalInfoResponse({required this.data,});
 
-  factory PersonalInfoResponse.fromJson(Map<String, dynamic> json) {
+  PersonalInfoResponse copyWith({
+    String? uuid,
+    String? phoneNumber,
+    bool? isVerified,
+  }) {
     return PersonalInfoResponse(
-      data: json['data'] ?? '',
+      uuid: uuid ?? this.uuid,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      isVerified: isVerified ?? this.isVerified,
     );
   }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'uuid': uuid,
+      'phoneNumber': phoneNumber,
+      'isVerified': isVerified,
+    };
+  }
+
+  factory PersonalInfoResponse.fromMap(Map<String, dynamic> map) {
+    return PersonalInfoResponse(
+      uuid: map['uuid'] as String,
+      phoneNumber: map['phoneNumber'] as String,
+      isVerified: map['isVerified'] as bool,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory PersonalInfoResponse.fromJson(String source) => PersonalInfoResponse.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'PersonalInfoResponse(uuid: $uuid, phoneNumber: $phoneNumber, isVerified: $isVerified)';
+
+  @override
+  bool operator ==(covariant PersonalInfoResponse other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.uuid == uuid &&
+      other.phoneNumber == phoneNumber &&
+      other.isVerified == isVerified;
+  }
+
+  @override
+  int get hashCode => uuid.hashCode ^ phoneNumber.hashCode ^ isVerified.hashCode;
 }
+

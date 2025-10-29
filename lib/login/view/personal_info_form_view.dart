@@ -14,9 +14,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
+import '../../app/widgets/date_picker_field_widget.dart';
 import '../../app/widgets/label_field_widget.dart';
+import '../../app/widgets/loading_dialog.dart';
 import '../bloc/login_bloc.dart';
 import '../models/personal_info_model.dart';
+import '../utils/bottom_sheet.dart';
+import '../utils/format_date.dart';
+import '../utils/format_long_date_es.dart';
 
 class PersonalInfoFormView extends HookWidget {
   const PersonalInfoFormView({super.key});
@@ -32,6 +37,7 @@ class PersonalInfoFormView extends HookWidget {
     final province = useState<String?>(null);
     final emailController = useTextEditingController(text: '');
     final professionController = useTextEditingController(text: '');
+    final selectedDate = useState<DateTime>(DateTime.now());
 
 
     return Column(
@@ -103,13 +109,14 @@ class PersonalInfoFormView extends HookWidget {
               controller: passwordController,
               label: context.intl.labelPassword,
               colorLabel: lightColorScheme.surface, 
+              isPassword: true,
               hint: ''
             ),
             LabeledTextField(
               controller: professionController,
               label: context.intl.labelProfession,
               colorLabel: lightColorScheme.surface, 
-              hint: '',
+              hint: 'Ingresar una profesión',
             ),
             LabeledTextField(
               controller: addressController,
@@ -163,36 +170,54 @@ class PersonalInfoFormView extends HookWidget {
               colorLabel: lightColorScheme.surface, 
               hint: context.intl.labeledTextFieldEmailHint
             ),
+            DatePickerField(
+              backgroundColor: lightColorScheme.onSecondary,
+              borderColor: lightColorScheme.surface,
+              arrowColor: lightColorScheme.surface,
+              dateText: formatDate(selectedDate.value),
+              onTap: () async {
+                final picked = await showBottomSheetDatePicker(
+                  context,
+                );
+                if (picked != null) {
+                  selectedDate.value = picked; 
+                }
+              }
+            ),
           ],
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
           text: context.intl.primaryVariantButtonContinue, 
           onPressed: (){
-            // appRouter.push('/security/identity_verification');
-            final personalInfo = PersonalInfoModel(
-              phoneNumber: phoneController.text,
-              password: passwordController.text,
-              firstName: firstNameController.text,
-              lastName: lastNameNameController.text,
-              email: emailController.text,
-              address: addressController.text,
-              profession: professionController.text,
-              country: 'Bolivia',
-              city: department.value!,
-              province: province.value!,
-              gender: '',
-              birthDate: '1985-03-22'
-            );
-            context.read<LoginBloc>().add(LoginEvent.registerPersonal(
-              personalInfo: personalInfo,
-              success: (res){
-                appRouter.push('/security/identity_verification');
-              },
-              error: (err){
-
-              }
-            ));
+            appRouter.push('/security/identity_verification');
+            // final personalInfo = PersonalInfoModel(
+            //   phoneNumber: phoneController.text,
+            //   password: passwordController.text,
+            //   firstName: firstNameController.text,
+            //   lastName: lastNameNameController.text,
+            //   email: emailController.text,
+            //   address: addressController.text,
+            //   profession: professionController.text,
+            //   country: 'Bolivia',
+            //   city: department.value!,
+            //   province: province.value!,
+            //   gender: '',
+            //   birthDate: formatShortDateEs(selectedDate.value)
+            // );
+            // context.read<LoginBloc>().add(LoginEvent.registerPersonal(
+            //   personalInfo: personalInfo,
+            //   befor: (res){
+            //     showLoadingDialog(context);
+            //   },
+            //   success: (res){
+            //     hideLoadingDialog(context);
+            //     appRouter.push('/security/identity_verification');
+            //   },
+            //   error: (err){
+            //     hideLoadingDialog(context);
+            //   }
+            // ));
           }
         ),
         SizedBox(height: 20),
@@ -201,7 +226,8 @@ class PersonalInfoFormView extends HookWidget {
           onPressed: (){
             appRouter.pop();
           }
-        )
+        ),
+        SizedBox(height: 20),
       ],
     );
   }

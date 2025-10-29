@@ -86,6 +86,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
   Future<void> _registerPersonal(_RegisterPersonalEvent event, Emitter<LoginState> emit) async {
     try {
+      event.befor!('init');
       final res = await authService.personalInfo(event.personalInfo);
       if (res.success) {
           print('✅ ${res.message}');
@@ -96,11 +97,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           event.error!(res);
         }
     } catch (e) {
+      event.error!(e);
       print('❌ Error inesperado: $e');
     }
   }
   Future<void> _documentInfo(_DocumentInfoEvent event, Emitter<LoginState> emit) async {
     try {
+      event.befor!('init');
       final res = await authService.documentInfo(event.documentInfo);
       if (res.success) {
           print('✅ ${res.message}');
@@ -111,6 +114,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           event.error!(res);
         }
     } catch (e) {
+      event.error!(e);
       print('❌ Error inesperado: $e');
     }
   }

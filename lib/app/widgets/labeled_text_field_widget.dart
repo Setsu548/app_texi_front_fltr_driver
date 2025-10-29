@@ -10,6 +10,7 @@ class LabeledTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final String? prefixText; 
   final TextEditingController? controller;
+  final bool isPassword; // 👈 NUEVO
 
 
   const LabeledTextField({
@@ -20,11 +21,14 @@ class LabeledTextField extends StatelessWidget {
     this.colorPrefix,
     this.keyboardType = TextInputType.text,
     this.prefixText,
-    this.controller
+    this.controller,
+    this.isPassword = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Column(
@@ -51,6 +55,7 @@ class LabeledTextField extends StatelessWidget {
                   style: TextStyle(color: lightColorScheme.surface),
                   maxLength: 50,
                   keyboardType: keyboardType,
+                  obscureText: isPassword,
                   decoration: InputDecoration(
                     hintStyle: TextStyle(
                       color: lightColorScheme.secondaryContainer,
