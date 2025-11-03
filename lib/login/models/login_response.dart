@@ -11,6 +11,17 @@ class LoginResponse {
   }
 }
 
+class LogoutResponse {
+  final String data;
+
+  LogoutResponse({required this.data,});
+
+  factory LogoutResponse.fromJson(Map<String, dynamic> json) {
+    return LogoutResponse(
+      data: json['data'] ?? '',
+    );
+  }
+}
 // class User {
 //   final int id;
 //   final String name;

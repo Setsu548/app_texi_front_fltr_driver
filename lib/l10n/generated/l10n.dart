@@ -821,7 +821,7 @@ abstract class AppLocalizations {
   /// No description provided for @labeledTextFieldVehiclePlateHint.
   ///
   /// In es, this message translates to:
-  /// **'Ej. ABC-123'**
+  /// **'Ej. 1234-ABC'**
   String get labeledTextFieldVehiclePlateHint;
 
   /// No description provided for @radioGroupVehicleColor.

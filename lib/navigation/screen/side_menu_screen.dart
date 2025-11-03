@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import '../../app/app_bar_logo_home.dart';
 import '../../app/app_scaffold.dart';
 import '../view/side_menu_view.dart';
 
@@ -9,10 +10,8 @@ class SideMenuScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      
       loadingOverlay: true,
-      appBar: null, 
-      disableBackButton: true,
+      appBar: AppBarLogoHome(context,showMenu: false),
       onBackButtonPressed: () async {
         return Future.value(true);
       },

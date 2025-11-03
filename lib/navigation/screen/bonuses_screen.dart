@@ -1,6 +1,7 @@
 import 'package:app_texi_fltr_driver/navigation/view/bonuses_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import '../../app/app_bar_logo_home.dart';
 import '../../app/app_scaffold.dart';
 
 class BonusesScreen extends HookWidget {
@@ -9,17 +10,14 @@ class BonusesScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      
       loadingOverlay: true,
-      appBar: null, 
-      disableBackButton: true,
+      appBar: AppBarLogoHome(context,showMenu: false),
       onBackButtonPressed: () async {
         return Future.value(true);
       },
       body: ListView(
         padding: EdgeInsets.all(10.0),
         children: [
-          SizedBox(height: 40),
           BonusesView()
         ]
       ),

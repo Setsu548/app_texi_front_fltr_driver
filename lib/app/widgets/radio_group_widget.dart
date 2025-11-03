@@ -8,6 +8,7 @@ class RadioGroup extends HookWidget {
   final String label;
   final Color? colorLabel;
   final String? initialValue; 
+  final ValueChanged<String>? onChanged;
 
   const RadioGroup({
     super.key,
@@ -15,6 +16,7 @@ class RadioGroup extends HookWidget {
     this.colorLabel,
     required this.options,
     this.initialValue,
+    this.onChanged
   });
 
   @override
@@ -40,6 +42,7 @@ class RadioGroup extends HookWidget {
                       groupValue: selectedValue.value,
                       onChanged: (value) {
                         selectedValue.value = value;
+                        if (onChanged != null) onChanged!(option);
                       },
                       fillColor: MaterialStateProperty.resolveWith<Color>((states) {
                         if (states.contains(MaterialState.selected)) {

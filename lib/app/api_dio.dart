@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'secure_storage.dart';
 
 class ApiDio {
@@ -23,6 +24,7 @@ class ApiDio {
         String? token = await SecureTokenStorage.getToken();
         if (token != null) {
           options.headers['Authorization'] = 'Bearer $token';
+          debugPrint('🚗 token $token');
         }
         // continuar
         return handler.next(options);

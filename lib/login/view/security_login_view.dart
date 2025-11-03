@@ -8,6 +8,7 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import '../../app/app_router.dart';
 import '../../app/widgets/body_text_widget.dart';
 import '../../app/widgets/label_field_widget.dart';
+import '../../app/widgets/loading_dialog.dart';
 import '../../app/widgets/primary_variant_button.dart';
 import '../../theme/main_theme.dart';
 
@@ -18,6 +19,7 @@ class SecurityLoginView extends HookWidget {
   Widget build(BuildContext context) {
     final userNameController = useTextEditingController(text: '');
     final passwordController = useTextEditingController(text: '');
+    final dialCode = useState<String?>(null);
 
     return Padding(
       padding: const EdgeInsets.only(left: 30.0,right: 30),
@@ -28,7 +30,8 @@ class SecurityLoginView extends HookWidget {
           field: InternationalPhoneNumberInput(
             textFieldController: userNameController,
             onInputChanged: (PhoneNumber number) {
-              print(number.phoneNumber);
+              dialCode.value = number.dialCode ?? '';
+              print('📞 Número completo: ${dialCode.value}');
             },
             selectorConfig: const SelectorConfig(
               selectorType: PhoneInputSelectorType.DROPDOWN,
@@ -47,6 +50,7 @@ class SecurityLoginView extends HookWidget {
             keyboardType: TextInputType.text,
             onSaved: (_) => {},
             maxLength: 40,
+            obscureText:true,
             buildCounter: (
             BuildContext context, {
             required int currentLength,
@@ -55,7 +59,12 @@ class SecurityLoginView extends HookWidget {
             }) =>
               null,
               validator: (newValue) {
-              if (newValue == null || newValue == '') return context.intl.commonRequiredFieldError;
+                if (newValue == null || newValue.isEmpty) {
+                  return context.intl.commonRequiredFieldError;
+                }
+                if (newValue.length < 8) {
+                  return 'La contraseña debe tener al menos 8 caracteres';
+                }
                 return null;
               },
           ),
@@ -72,13 +81,22 @@ class SecurityLoginView extends HookWidget {
           text: context.intl.primaryVariantButtonSignIn,
           onPressed: (){
             context.read<LoginBloc>().add(LoginEvent.loginInit(
-                userName: userNameController.text, 
+                userName: '${dialCode.value ?? ''}${userNameController.text}', 
                 password: passwordController.text,
-                success: (res){ 
+                befor: (res){
+                  showLoadingDialog(context);
+                },
+                success: (res){
+                  hideLoadingDialog(context);
                   appRouter.go('/dashboard/driver_dashboard');
                 },
                 error: (error){
-                  
+                  hideLoadingDialog(context);
+                  showErrorDialog(
+                    context,
+                    Icons.error_outline,
+                    error.message,
+                  );
                 }
               )
             );

@@ -43,7 +43,7 @@ class DocumentInfo {
     return <String, dynamic>{
       'uuid': uuid,
       'document_type': documentType,
-      'documentNumber': documentNumber,
+      'document_number': documentNumber,
       'front_document': frontDocument,
       'back_document': backDocument,
       'face_image': faceImage,
@@ -55,7 +55,7 @@ class DocumentInfo {
     return DocumentInfo(
       uuid: map['uuid'] != null ? map['uuid'] as String : null,
       documentType: map['document_type'] as int,
-      documentNumber: map['documentNumber'] as String,
+      documentNumber: map['document_number'] as String,
       frontDocument: map['front_document'] as String,
       backDocument: map['back_document'] as String,
       faceImage: map['face_image'] as String,

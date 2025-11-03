@@ -6,9 +6,15 @@ import '../theme/main_theme.dart';
 import 'app_responsive.dart';
 
 class AppBarLogoHome extends HookWidget implements PreferredSizeWidget {
-  AppBarLogoHome(BuildContext context, {Key? key})
-      : preferredSize = Size.fromHeight(AppResponsive.isSmallScreen(context) ? kToolbarHeight : 120),
-        super(key: key);
+  final bool showMenu;
+
+  AppBarLogoHome(
+    BuildContext context, {
+    super.key,
+    this.showMenu = true, // por defecto se muestra el menú
+  })  : preferredSize = Size.fromHeight(
+          AppResponsive.isSmallScreen(context) ? kToolbarHeight : 120,
+        );
 
   @override
   final Size preferredSize;
@@ -23,14 +29,16 @@ class AppBarLogoHome extends HookWidget implements PreferredSizeWidget {
         style: TextStyle(color: lightColorScheme.primary),
       ),
       centerTitle: true,  
-      actions: [
-        Builder(
-          builder: (context) => IconButton(
-            icon: Icon(Icons.menu, color: lightColorScheme.primary),
-            onPressed: () => {Scaffold.of(context).openEndDrawer()},
-          ),
-        ),
-      ],
+      actions: showMenu
+          ? [
+              Builder(
+                builder: (context) => IconButton(
+                  icon: Icon(Icons.menu, color: lightColorScheme.primary),
+                  onPressed: () => Scaffold.of(context).openEndDrawer(),
+                ),
+              ),
+            ]
+          : null,
       toolbarHeight: preferredSize.height,
     );
   }

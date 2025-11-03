@@ -391,7 +391,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get labeledTextFieldVehiclePlate => 'Número de Placa';
 
   @override
-  String get labeledTextFieldVehiclePlateHint => 'Ej. ABC-123';
+  String get labeledTextFieldVehiclePlateHint => 'Ej. 1234-ABC';
 
   @override
   String get radioGroupVehicleColor => 'Color*';

@@ -1,6 +1,7 @@
 import 'package:app_texi_fltr_driver/login/view/vehicle_info_form_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import '../../app/app_bar_logo_home.dart';
 import '../../app/app_scaffold.dart';
 
 class VehicleInfoFormScreen extends HookWidget {
@@ -10,7 +11,7 @@ class VehicleInfoFormScreen extends HookWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       loadingOverlay: true,
-      appBar: null,
+      appBar: AppBarLogoHome(context, showMenu: false),
       disableBackButton: true,
       onBackButtonPressed: () async {
         return Future.value(true);
@@ -18,7 +19,6 @@ class VehicleInfoFormScreen extends HookWidget {
       body: ListView(
         padding: EdgeInsets.all(10.0),
         children: [
-          SizedBox(height: 40),
           VehicleInfoFormView(),
         ]
       ),

@@ -164,16 +164,16 @@ class PersonalInfoResponse {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'uuid': uuid,
-      'phoneNumber': phoneNumber,
-      'isVerified': isVerified,
+      'phone_number': phoneNumber,
+      'is_verified': isVerified,
     };
   }
 
   factory PersonalInfoResponse.fromMap(Map<String, dynamic> map) {
     return PersonalInfoResponse(
       uuid: map['uuid'] as String,
-      phoneNumber: map['phoneNumber'] as String,
-      isVerified: map['isVerified'] as bool,
+      phoneNumber: map['phone_number'] as String,
+      isVerified: map['is_verified'] as bool,
     );
   }
 
@@ -196,5 +196,65 @@ class PersonalInfoResponse {
 
   @override
   int get hashCode => uuid.hashCode ^ phoneNumber.hashCode ^ isVerified.hashCode;
+}
+
+class UpdateUser {
+  bool isVerified;
+  String phoneNumber;
+  String uuid;
+  UpdateUser({
+    required this.isVerified,
+    required this.phoneNumber,
+    required this.uuid,
+  });
+  
+
+  UpdateUser copyWith({
+    bool? isVerified,
+    String? phoneNumber,
+    String? uuid,
+  }) {
+    return UpdateUser(
+      isVerified: isVerified ?? this.isVerified,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      uuid: uuid ?? this.uuid,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'is_verified': isVerified,
+      'phone_number': phoneNumber,
+      'uuid': uuid,
+    };
+  }
+
+  factory UpdateUser.fromMap(Map<String, dynamic> map) {
+    return UpdateUser(
+      isVerified: map['is_verified'] as bool,
+      phoneNumber: map['phone_number'] as String,
+      uuid: map['uuid'] as String,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory UpdateUser.fromJson(String source) => UpdateUser.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'UpdateUser(isVerified: $isVerified, phoneNumber: $phoneNumber, uuid: $uuid)';
+
+  @override
+  bool operator ==(covariant UpdateUser other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.isVerified == isVerified &&
+      other.phoneNumber == phoneNumber &&
+      other.uuid == uuid;
+  }
+
+  @override
+  int get hashCode => isVerified.hashCode ^ phoneNumber.hashCode ^ uuid.hashCode;
 }
 

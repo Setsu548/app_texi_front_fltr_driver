@@ -132,7 +132,7 @@
   "labeledDropdownVehicleYear": "Año*",
   "labeledDropdownVehicleYearHint": "Selecciona el año",
   "labeledTextFieldVehiclePlate": "Número de Placa*",
-  "labeledTextFieldVehiclePlateHint": "Ej. ABC-123",
+  "labeledTextFieldVehiclePlateHint": "Ej. 1234-ABC",
   "radioGroupVehicleColor": "Color*",
   "radioGroupVehicleType": "Tipo de Vehículo",
   "bodyTextVehicleOwnership": "Tarjeta de Propiedad del Vehículo",

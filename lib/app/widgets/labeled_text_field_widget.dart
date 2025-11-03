@@ -10,7 +10,9 @@ class LabeledTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final String? prefixText; 
   final TextEditingController? controller;
-  final bool isPassword; // 👈 NUEVO
+  final bool isPassword;
+  final String? Function(String?)? validator;
+  final int? maxLength;
 
 
   const LabeledTextField({
@@ -23,6 +25,8 @@ class LabeledTextField extends StatelessWidget {
     this.prefixText,
     this.controller,
     this.isPassword = false,
+    this.validator,
+    this.maxLength = 25
   });
 
   @override
@@ -49,11 +53,12 @@ class LabeledTextField extends StatelessWidget {
                 const SizedBox(width: 8), 
               ],
               Expanded(
-                child: TextField(
+                child: TextFormField(
                   controller: controller,
+                  validator: validator,
                   cursorColor: lightColorScheme.secondaryContainer,
                   style: TextStyle(color: lightColorScheme.surface),
-                  maxLength: 50,
+                  maxLength: maxLength,
                   keyboardType: keyboardType,
                   obscureText: isPassword,
                   decoration: InputDecoration(

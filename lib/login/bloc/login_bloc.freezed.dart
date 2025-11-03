@@ -18,6 +18,16 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$LoginState {
   String? get token => throw _privateConstructorUsedError;
+  String? get nombre => throw _privateConstructorUsedError;
+  String? get ci => throw _privateConstructorUsedError;
+  String? get telefono => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
+  String? get categoria => throw _privateConstructorUsedError;
+  String? get uuid => throw _privateConstructorUsedError;
+  String? get cartId => throw _privateConstructorUsedError;
+  VehicleModel? get vehicleModel => throw _privateConstructorUsedError;
+  List<VehicleModel> get listUsersVehicle => throw _privateConstructorUsedError;
+  bool? get loadingListVehicle => throw _privateConstructorUsedError;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -33,7 +43,19 @@ abstract class $LoginStateCopyWith<$Res> {
     $Res Function(LoginState) then,
   ) = _$LoginStateCopyWithImpl<$Res, LoginState>;
   @useResult
-  $Res call({String? token});
+  $Res call({
+    String? token,
+    String? nombre,
+    String? ci,
+    String? telefono,
+    String? email,
+    String? categoria,
+    String? uuid,
+    String? cartId,
+    VehicleModel? vehicleModel,
+    List<VehicleModel> listUsersVehicle,
+    bool? loadingListVehicle,
+  });
 }
 
 /// @nodoc
@@ -50,13 +72,65 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? token = freezed}) {
+  $Res call({
+    Object? token = freezed,
+    Object? nombre = freezed,
+    Object? ci = freezed,
+    Object? telefono = freezed,
+    Object? email = freezed,
+    Object? categoria = freezed,
+    Object? uuid = freezed,
+    Object? cartId = freezed,
+    Object? vehicleModel = freezed,
+    Object? listUsersVehicle = null,
+    Object? loadingListVehicle = freezed,
+  }) {
     return _then(
       _value.copyWith(
             token: freezed == token
                 ? _value.token
                 : token // ignore: cast_nullable_to_non_nullable
                       as String?,
+            nombre: freezed == nombre
+                ? _value.nombre
+                : nombre // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            ci: freezed == ci
+                ? _value.ci
+                : ci // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            telefono: freezed == telefono
+                ? _value.telefono
+                : telefono // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            email: freezed == email
+                ? _value.email
+                : email // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            categoria: freezed == categoria
+                ? _value.categoria
+                : categoria // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            uuid: freezed == uuid
+                ? _value.uuid
+                : uuid // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            cartId: freezed == cartId
+                ? _value.cartId
+                : cartId // ignore: cast_nullable_to_non_nullable
+                      as String?,
+            vehicleModel: freezed == vehicleModel
+                ? _value.vehicleModel
+                : vehicleModel // ignore: cast_nullable_to_non_nullable
+                      as VehicleModel?,
+            listUsersVehicle: null == listUsersVehicle
+                ? _value.listUsersVehicle
+                : listUsersVehicle // ignore: cast_nullable_to_non_nullable
+                      as List<VehicleModel>,
+            loadingListVehicle: freezed == loadingListVehicle
+                ? _value.loadingListVehicle
+                : loadingListVehicle // ignore: cast_nullable_to_non_nullable
+                      as bool?,
           )
           as $Val,
     );
@@ -72,7 +146,19 @@ abstract class _$$LoginStateImplCopyWith<$Res>
   ) = __$$LoginStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? token});
+  $Res call({
+    String? token,
+    String? nombre,
+    String? ci,
+    String? telefono,
+    String? email,
+    String? categoria,
+    String? uuid,
+    String? cartId,
+    VehicleModel? vehicleModel,
+    List<VehicleModel> listUsersVehicle,
+    bool? loadingListVehicle,
+  });
 }
 
 /// @nodoc
@@ -88,13 +174,65 @@ class __$$LoginStateImplCopyWithImpl<$Res>
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({Object? token = freezed}) {
+  $Res call({
+    Object? token = freezed,
+    Object? nombre = freezed,
+    Object? ci = freezed,
+    Object? telefono = freezed,
+    Object? email = freezed,
+    Object? categoria = freezed,
+    Object? uuid = freezed,
+    Object? cartId = freezed,
+    Object? vehicleModel = freezed,
+    Object? listUsersVehicle = null,
+    Object? loadingListVehicle = freezed,
+  }) {
     return _then(
       _$LoginStateImpl(
         token: freezed == token
             ? _value.token
             : token // ignore: cast_nullable_to_non_nullable
                   as String?,
+        nombre: freezed == nombre
+            ? _value.nombre
+            : nombre // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        ci: freezed == ci
+            ? _value.ci
+            : ci // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        telefono: freezed == telefono
+            ? _value.telefono
+            : telefono // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        email: freezed == email
+            ? _value.email
+            : email // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        categoria: freezed == categoria
+            ? _value.categoria
+            : categoria // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        uuid: freezed == uuid
+            ? _value.uuid
+            : uuid // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        cartId: freezed == cartId
+            ? _value.cartId
+            : cartId // ignore: cast_nullable_to_non_nullable
+                  as String?,
+        vehicleModel: freezed == vehicleModel
+            ? _value.vehicleModel
+            : vehicleModel // ignore: cast_nullable_to_non_nullable
+                  as VehicleModel?,
+        listUsersVehicle: null == listUsersVehicle
+            ? _value._listUsersVehicle
+            : listUsersVehicle // ignore: cast_nullable_to_non_nullable
+                  as List<VehicleModel>,
+        loadingListVehicle: freezed == loadingListVehicle
+            ? _value.loadingListVehicle
+            : loadingListVehicle // ignore: cast_nullable_to_non_nullable
+                  as bool?,
       ),
     );
   }
@@ -103,14 +241,63 @@ class __$$LoginStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LoginStateImpl implements _LoginState {
-  const _$LoginStateImpl({this.token});
+  const _$LoginStateImpl({
+    this.token,
+    this.nombre = null,
+    this.ci = null,
+    this.telefono = null,
+    this.email = null,
+    this.categoria = null,
+    this.uuid = null,
+    this.cartId = null,
+    this.vehicleModel = null,
+    final List<VehicleModel> listUsersVehicle = const [],
+    this.loadingListVehicle = false,
+  }) : _listUsersVehicle = listUsersVehicle;
 
   @override
   final String? token;
+  @override
+  @JsonKey()
+  final String? nombre;
+  @override
+  @JsonKey()
+  final String? ci;
+  @override
+  @JsonKey()
+  final String? telefono;
+  @override
+  @JsonKey()
+  final String? email;
+  @override
+  @JsonKey()
+  final String? categoria;
+  @override
+  @JsonKey()
+  final String? uuid;
+  @override
+  @JsonKey()
+  final String? cartId;
+  @override
+  @JsonKey()
+  final VehicleModel? vehicleModel;
+  final List<VehicleModel> _listUsersVehicle;
+  @override
+  @JsonKey()
+  List<VehicleModel> get listUsersVehicle {
+    if (_listUsersVehicle is EqualUnmodifiableListView)
+      return _listUsersVehicle;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_listUsersVehicle);
+  }
+
+  @override
+  @JsonKey()
+  final bool? loadingListVehicle;
 
   @override
   String toString() {
-    return 'LoginState(token: $token)';
+    return 'LoginState(token: $token, nombre: $nombre, ci: $ci, telefono: $telefono, email: $email, categoria: $categoria, uuid: $uuid, cartId: $cartId, vehicleModel: $vehicleModel, listUsersVehicle: $listUsersVehicle, loadingListVehicle: $loadingListVehicle)';
   }
 
   @override
@@ -118,11 +305,41 @@ class _$LoginStateImpl implements _LoginState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginStateImpl &&
-            (identical(other.token, token) || other.token == token));
+            (identical(other.token, token) || other.token == token) &&
+            (identical(other.nombre, nombre) || other.nombre == nombre) &&
+            (identical(other.ci, ci) || other.ci == ci) &&
+            (identical(other.telefono, telefono) ||
+                other.telefono == telefono) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.categoria, categoria) ||
+                other.categoria == categoria) &&
+            (identical(other.uuid, uuid) || other.uuid == uuid) &&
+            (identical(other.cartId, cartId) || other.cartId == cartId) &&
+            (identical(other.vehicleModel, vehicleModel) ||
+                other.vehicleModel == vehicleModel) &&
+            const DeepCollectionEquality().equals(
+              other._listUsersVehicle,
+              _listUsersVehicle,
+            ) &&
+            (identical(other.loadingListVehicle, loadingListVehicle) ||
+                other.loadingListVehicle == loadingListVehicle));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, token);
+  int get hashCode => Object.hash(
+    runtimeType,
+    token,
+    nombre,
+    ci,
+    telefono,
+    email,
+    categoria,
+    uuid,
+    cartId,
+    vehicleModel,
+    const DeepCollectionEquality().hash(_listUsersVehicle),
+    loadingListVehicle,
+  );
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -134,10 +351,42 @@ class _$LoginStateImpl implements _LoginState {
 }
 
 abstract class _LoginState implements LoginState {
-  const factory _LoginState({final String? token}) = _$LoginStateImpl;
+  const factory _LoginState({
+    final String? token,
+    final String? nombre,
+    final String? ci,
+    final String? telefono,
+    final String? email,
+    final String? categoria,
+    final String? uuid,
+    final String? cartId,
+    final VehicleModel? vehicleModel,
+    final List<VehicleModel> listUsersVehicle,
+    final bool? loadingListVehicle,
+  }) = _$LoginStateImpl;
 
   @override
   String? get token;
+  @override
+  String? get nombre;
+  @override
+  String? get ci;
+  @override
+  String? get telefono;
+  @override
+  String? get email;
+  @override
+  String? get categoria;
+  @override
+  String? get uuid;
+  @override
+  String? get cartId;
+  @override
+  VehicleModel? get vehicleModel;
+  @override
+  List<VehicleModel> get listUsersVehicle;
+  @override
+  bool? get loadingListVehicle;
 
   /// Create a copy of LoginState
   /// with the given fields replaced by the non-null parameter values.
@@ -164,6 +413,12 @@ mixin _$LoginEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )
     registerPersonal,
@@ -174,6 +429,41 @@ mixin _$LoginEvent {
       DocumentInfo documentInfo,
     )
     documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
@@ -190,6 +480,12 @@ mixin _$LoginEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -200,6 +496,41 @@ mixin _$LoginEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
@@ -216,6 +547,12 @@ mixin _$LoginEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -226,28 +563,81 @@ mixin _$LoginEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
     required TResult Function(_RegisterPersonalEvent value) registerPersonal,
     required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
     TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
   }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
     TResult Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
     required TResult orElse(),
   }) => throw _privateConstructorUsedError;
 }
@@ -330,6 +720,12 @@ class _$InitialEventImpl implements _InitialEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )
     registerPersonal,
@@ -340,6 +736,41 @@ class _$InitialEventImpl implements _InitialEvent {
       DocumentInfo documentInfo,
     )
     documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
   }) {
     return initial();
   }
@@ -360,6 +791,12 @@ class _$InitialEventImpl implements _InitialEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -370,6 +807,41 @@ class _$InitialEventImpl implements _InitialEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
   }) {
     return initial?.call();
   }
@@ -390,6 +862,12 @@ class _$InitialEventImpl implements _InitialEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -400,6 +878,41 @@ class _$InitialEventImpl implements _InitialEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -413,8 +926,14 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
     required TResult Function(_RegisterPersonalEvent value) registerPersonal,
     required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
   }) {
     return initial(this);
   }
@@ -424,8 +943,14 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
     TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
   }) {
     return initial?.call(this);
   }
@@ -435,8 +960,14 @@ class _$InitialEventImpl implements _InitialEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
     TResult Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -585,6 +1116,12 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )
     registerPersonal,
@@ -595,6 +1132,41 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
       DocumentInfo documentInfo,
     )
     documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
   }) {
     return loginInit(befor, success, error, userName, password);
   }
@@ -615,6 +1187,12 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -625,6 +1203,41 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
   }) {
     return loginInit?.call(befor, success, error, userName, password);
   }
@@ -645,6 +1258,12 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -655,6 +1274,41 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
     required TResult orElse(),
   }) {
     if (loginInit != null) {
@@ -668,8 +1322,14 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
     required TResult Function(_RegisterPersonalEvent value) registerPersonal,
     required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
   }) {
     return loginInit(this);
   }
@@ -679,8 +1339,14 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
     TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
   }) {
     return loginInit?.call(this);
   }
@@ -690,8 +1356,14 @@ class _$LoginInitEventImpl implements _LoginInitEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
     TResult Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
     required TResult orElse(),
   }) {
     if (loginInit != null) {
@@ -720,6 +1392,386 @@ abstract class _LoginInitEvent implements LoginEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LoginInitEventImplCopyWith<_$LoginInitEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LogoutEventImplCopyWith<$Res> {
+  factory _$$LogoutEventImplCopyWith(
+    _$LogoutEventImpl value,
+    $Res Function(_$LogoutEventImpl) then,
+  ) = __$$LogoutEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    dynamic Function(dynamic)? befor,
+    dynamic Function(dynamic)? success,
+    dynamic Function(dynamic)? error,
+  });
+}
+
+/// @nodoc
+class __$$LogoutEventImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$LogoutEventImpl>
+    implements _$$LogoutEventImplCopyWith<$Res> {
+  __$$LogoutEventImplCopyWithImpl(
+    _$LogoutEventImpl _value,
+    $Res Function(_$LogoutEventImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? befor = freezed,
+    Object? success = freezed,
+    Object? error = freezed,
+  }) {
+    return _then(
+      _$LogoutEventImpl(
+        befor: freezed == befor
+            ? _value.befor
+            : befor // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        success: freezed == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$LogoutEventImpl implements _LogoutEvent {
+  const _$LogoutEventImpl({this.befor, this.success, this.error});
+
+  @override
+  final dynamic Function(dynamic)? befor;
+  @override
+  final dynamic Function(dynamic)? success;
+  @override
+  final dynamic Function(dynamic)? error;
+
+  @override
+  String toString() {
+    return 'LoginEvent.logout(befor: $befor, success: $success, error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LogoutEventImpl &&
+            (identical(other.befor, befor) || other.befor == befor) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.error, error) || other.error == error));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, befor, success, error);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LogoutEventImplCopyWith<_$LogoutEventImpl> get copyWith =>
+      __$$LogoutEventImplCopyWithImpl<_$LogoutEventImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )
+    loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
+  }) {
+    return logout(befor, success, error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+  }) {
+    return logout?.call(befor, success, error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(befor, success, error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
+  }) {
+    return logout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
+  }) {
+    return logout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LogoutEvent implements LoginEvent {
+  const factory _LogoutEvent({
+    final dynamic Function(dynamic)? befor,
+    final dynamic Function(dynamic)? success,
+    final dynamic Function(dynamic)? error,
+  }) = _$LogoutEventImpl;
+
+  dynamic Function(dynamic)? get befor;
+  dynamic Function(dynamic)? get success;
+  dynamic Function(dynamic)? get error;
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$LogoutEventImplCopyWith<_$LogoutEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -848,6 +1900,12 @@ class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )
     registerPersonal,
@@ -858,6 +1916,41 @@ class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
       DocumentInfo documentInfo,
     )
     documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
   }) {
     return registerPersonal(befor, success, error, personalInfo);
   }
@@ -878,6 +1971,12 @@ class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -888,6 +1987,41 @@ class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
   }) {
     return registerPersonal?.call(befor, success, error, personalInfo);
   }
@@ -908,6 +2042,12 @@ class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -918,6 +2058,41 @@ class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
     required TResult orElse(),
   }) {
     if (registerPersonal != null) {
@@ -931,8 +2106,14 @@ class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
     required TResult Function(_RegisterPersonalEvent value) registerPersonal,
     required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
   }) {
     return registerPersonal(this);
   }
@@ -942,8 +2123,14 @@ class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
     TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
   }) {
     return registerPersonal?.call(this);
   }
@@ -953,8 +2140,14 @@ class _$RegisterPersonalEventImpl implements _RegisterPersonalEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
     TResult Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
     required TResult orElse(),
   }) {
     if (registerPersonal != null) {
@@ -1108,6 +2301,12 @@ class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )
     registerPersonal,
@@ -1118,6 +2317,41 @@ class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
       DocumentInfo documentInfo,
     )
     documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
   }) {
     return documentInfo(befor, success, error, this.documentInfo);
   }
@@ -1138,6 +2372,12 @@ class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -1148,6 +2388,41 @@ class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
   }) {
     return documentInfo?.call(befor, success, error, this.documentInfo);
   }
@@ -1168,6 +2443,12 @@ class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
       dynamic Function(dynamic)? befor,
       dynamic Function(dynamic)? success,
       dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
       PersonalInfoModel personalInfo,
     )?
     registerPersonal,
@@ -1178,6 +2459,41 @@ class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
       DocumentInfo documentInfo,
     )?
     documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
     required TResult orElse(),
   }) {
     if (documentInfo != null) {
@@ -1191,8 +2507,14 @@ class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialEvent value) initial,
     required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
     required TResult Function(_RegisterPersonalEvent value) registerPersonal,
     required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
   }) {
     return documentInfo(this);
   }
@@ -1202,8 +2524,14 @@ class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialEvent value)? initial,
     TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
     TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
   }) {
     return documentInfo?.call(this);
   }
@@ -1213,8 +2541,14 @@ class _$DocumentInfoEventImpl implements _DocumentInfoEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialEvent value)? initial,
     TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
     TResult Function(_RegisterPersonalEvent value)? registerPersonal,
     TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
     required TResult orElse(),
   }) {
     if (documentInfo != null) {
@@ -1241,5 +2575,2007 @@ abstract class _DocumentInfoEvent implements LoginEvent {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$DocumentInfoEventImplCopyWith<_$DocumentInfoEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VehicleRegisterEventImplCopyWith<$Res> {
+  factory _$$VehicleRegisterEventImplCopyWith(
+    _$VehicleRegisterEventImpl value,
+    $Res Function(_$VehicleRegisterEventImpl) then,
+  ) = __$$VehicleRegisterEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    dynamic Function(dynamic)? befor,
+    dynamic Function(dynamic)? success,
+    dynamic Function(dynamic)? error,
+    VehicleModel vehicleModel,
+  });
+}
+
+/// @nodoc
+class __$$VehicleRegisterEventImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$VehicleRegisterEventImpl>
+    implements _$$VehicleRegisterEventImplCopyWith<$Res> {
+  __$$VehicleRegisterEventImplCopyWithImpl(
+    _$VehicleRegisterEventImpl _value,
+    $Res Function(_$VehicleRegisterEventImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? befor = freezed,
+    Object? success = freezed,
+    Object? error = freezed,
+    Object? vehicleModel = null,
+  }) {
+    return _then(
+      _$VehicleRegisterEventImpl(
+        befor: freezed == befor
+            ? _value.befor
+            : befor // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        success: freezed == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        vehicleModel: null == vehicleModel
+            ? _value.vehicleModel
+            : vehicleModel // ignore: cast_nullable_to_non_nullable
+                  as VehicleModel,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$VehicleRegisterEventImpl implements _VehicleRegisterEvent {
+  const _$VehicleRegisterEventImpl({
+    this.befor,
+    this.success,
+    this.error,
+    required this.vehicleModel,
+  });
+
+  @override
+  final dynamic Function(dynamic)? befor;
+  @override
+  final dynamic Function(dynamic)? success;
+  @override
+  final dynamic Function(dynamic)? error;
+  @override
+  final VehicleModel vehicleModel;
+
+  @override
+  String toString() {
+    return 'LoginEvent.vehicleRegister(befor: $befor, success: $success, error: $error, vehicleModel: $vehicleModel)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VehicleRegisterEventImpl &&
+            (identical(other.befor, befor) || other.befor == befor) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.vehicleModel, vehicleModel) ||
+                other.vehicleModel == vehicleModel));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, befor, success, error, vehicleModel);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VehicleRegisterEventImplCopyWith<_$VehicleRegisterEventImpl>
+  get copyWith =>
+      __$$VehicleRegisterEventImplCopyWithImpl<_$VehicleRegisterEventImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )
+    loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
+  }) {
+    return vehicleRegister(befor, success, error, vehicleModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+  }) {
+    return vehicleRegister?.call(befor, success, error, vehicleModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (vehicleRegister != null) {
+      return vehicleRegister(befor, success, error, vehicleModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
+  }) {
+    return vehicleRegister(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
+  }) {
+    return vehicleRegister?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (vehicleRegister != null) {
+      return vehicleRegister(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _VehicleRegisterEvent implements LoginEvent {
+  const factory _VehicleRegisterEvent({
+    final dynamic Function(dynamic)? befor,
+    final dynamic Function(dynamic)? success,
+    final dynamic Function(dynamic)? error,
+    required final VehicleModel vehicleModel,
+  }) = _$VehicleRegisterEventImpl;
+
+  dynamic Function(dynamic)? get befor;
+  dynamic Function(dynamic)? get success;
+  dynamic Function(dynamic)? get error;
+  VehicleModel get vehicleModel;
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$VehicleRegisterEventImplCopyWith<_$VehicleRegisterEventImpl>
+  get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateUserEventImplCopyWith<$Res> {
+  factory _$$UpdateUserEventImplCopyWith(
+    _$UpdateUserEventImpl value,
+    $Res Function(_$UpdateUserEventImpl) then,
+  ) = __$$UpdateUserEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    dynamic Function(dynamic)? befor,
+    dynamic Function(dynamic)? success,
+    dynamic Function(dynamic)? error,
+    String uuid,
+  });
+}
+
+/// @nodoc
+class __$$UpdateUserEventImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$UpdateUserEventImpl>
+    implements _$$UpdateUserEventImplCopyWith<$Res> {
+  __$$UpdateUserEventImplCopyWithImpl(
+    _$UpdateUserEventImpl _value,
+    $Res Function(_$UpdateUserEventImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? befor = freezed,
+    Object? success = freezed,
+    Object? error = freezed,
+    Object? uuid = null,
+  }) {
+    return _then(
+      _$UpdateUserEventImpl(
+        befor: freezed == befor
+            ? _value.befor
+            : befor // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        success: freezed == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        uuid: null == uuid
+            ? _value.uuid
+            : uuid // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$UpdateUserEventImpl implements _UpdateUserEvent {
+  const _$UpdateUserEventImpl({
+    this.befor,
+    this.success,
+    this.error,
+    required this.uuid,
+  });
+
+  @override
+  final dynamic Function(dynamic)? befor;
+  @override
+  final dynamic Function(dynamic)? success;
+  @override
+  final dynamic Function(dynamic)? error;
+  @override
+  final String uuid;
+
+  @override
+  String toString() {
+    return 'LoginEvent.updateUser(befor: $befor, success: $success, error: $error, uuid: $uuid)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateUserEventImpl &&
+            (identical(other.befor, befor) || other.befor == befor) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.uuid, uuid) || other.uuid == uuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, befor, success, error, uuid);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateUserEventImplCopyWith<_$UpdateUserEventImpl> get copyWith =>
+      __$$UpdateUserEventImplCopyWithImpl<_$UpdateUserEventImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )
+    loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
+  }) {
+    return updateUser(befor, success, error, uuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+  }) {
+    return updateUser?.call(befor, success, error, uuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (updateUser != null) {
+      return updateUser(befor, success, error, uuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
+  }) {
+    return updateUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
+  }) {
+    return updateUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (updateUser != null) {
+      return updateUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateUserEvent implements LoginEvent {
+  const factory _UpdateUserEvent({
+    final dynamic Function(dynamic)? befor,
+    final dynamic Function(dynamic)? success,
+    final dynamic Function(dynamic)? error,
+    required final String uuid,
+  }) = _$UpdateUserEventImpl;
+
+  dynamic Function(dynamic)? get befor;
+  dynamic Function(dynamic)? get success;
+  dynamic Function(dynamic)? get error;
+  String get uuid;
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateUserEventImplCopyWith<_$UpdateUserEventImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$VehicleImagesCarEventImplCopyWith<$Res> {
+  factory _$$VehicleImagesCarEventImplCopyWith(
+    _$VehicleImagesCarEventImpl value,
+    $Res Function(_$VehicleImagesCarEventImpl) then,
+  ) = __$$VehicleImagesCarEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    dynamic Function(dynamic)? befor,
+    dynamic Function(dynamic)? success,
+    dynamic Function(dynamic)? error,
+    VehicleImagesCard vehicleImagesCar,
+  });
+}
+
+/// @nodoc
+class __$$VehicleImagesCarEventImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$VehicleImagesCarEventImpl>
+    implements _$$VehicleImagesCarEventImplCopyWith<$Res> {
+  __$$VehicleImagesCarEventImplCopyWithImpl(
+    _$VehicleImagesCarEventImpl _value,
+    $Res Function(_$VehicleImagesCarEventImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? befor = freezed,
+    Object? success = freezed,
+    Object? error = freezed,
+    Object? vehicleImagesCar = null,
+  }) {
+    return _then(
+      _$VehicleImagesCarEventImpl(
+        befor: freezed == befor
+            ? _value.befor
+            : befor // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        success: freezed == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        vehicleImagesCar: null == vehicleImagesCar
+            ? _value.vehicleImagesCar
+            : vehicleImagesCar // ignore: cast_nullable_to_non_nullable
+                  as VehicleImagesCard,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$VehicleImagesCarEventImpl implements _VehicleImagesCarEvent {
+  const _$VehicleImagesCarEventImpl({
+    this.befor,
+    this.success,
+    this.error,
+    required this.vehicleImagesCar,
+  });
+
+  @override
+  final dynamic Function(dynamic)? befor;
+  @override
+  final dynamic Function(dynamic)? success;
+  @override
+  final dynamic Function(dynamic)? error;
+  @override
+  final VehicleImagesCard vehicleImagesCar;
+
+  @override
+  String toString() {
+    return 'LoginEvent.vehicleImagesCar(befor: $befor, success: $success, error: $error, vehicleImagesCar: $vehicleImagesCar)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$VehicleImagesCarEventImpl &&
+            (identical(other.befor, befor) || other.befor == befor) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.vehicleImagesCar, vehicleImagesCar) ||
+                other.vehicleImagesCar == vehicleImagesCar));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, befor, success, error, vehicleImagesCar);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$VehicleImagesCarEventImplCopyWith<_$VehicleImagesCarEventImpl>
+  get copyWith =>
+      __$$VehicleImagesCarEventImplCopyWithImpl<_$VehicleImagesCarEventImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )
+    loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
+  }) {
+    return vehicleImagesCar(befor, success, error, this.vehicleImagesCar);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+  }) {
+    return vehicleImagesCar?.call(befor, success, error, this.vehicleImagesCar);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (vehicleImagesCar != null) {
+      return vehicleImagesCar(befor, success, error, this.vehicleImagesCar);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
+  }) {
+    return vehicleImagesCar(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
+  }) {
+    return vehicleImagesCar?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (vehicleImagesCar != null) {
+      return vehicleImagesCar(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _VehicleImagesCarEvent implements LoginEvent {
+  const factory _VehicleImagesCarEvent({
+    final dynamic Function(dynamic)? befor,
+    final dynamic Function(dynamic)? success,
+    final dynamic Function(dynamic)? error,
+    required final VehicleImagesCard vehicleImagesCar,
+  }) = _$VehicleImagesCarEventImpl;
+
+  dynamic Function(dynamic)? get befor;
+  dynamic Function(dynamic)? get success;
+  dynamic Function(dynamic)? get error;
+  VehicleImagesCard get vehicleImagesCar;
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$VehicleImagesCarEventImplCopyWith<_$VehicleImagesCarEventImpl>
+  get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetVehiclePlateEventImplCopyWith<$Res> {
+  factory _$$GetVehiclePlateEventImplCopyWith(
+    _$GetVehiclePlateEventImpl value,
+    $Res Function(_$GetVehiclePlateEventImpl) then,
+  ) = __$$GetVehiclePlateEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    dynamic Function(dynamic)? befor,
+    dynamic Function(dynamic)? success,
+    dynamic Function(dynamic)? error,
+    String? plate,
+  });
+}
+
+/// @nodoc
+class __$$GetVehiclePlateEventImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$GetVehiclePlateEventImpl>
+    implements _$$GetVehiclePlateEventImplCopyWith<$Res> {
+  __$$GetVehiclePlateEventImplCopyWithImpl(
+    _$GetVehiclePlateEventImpl _value,
+    $Res Function(_$GetVehiclePlateEventImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? befor = freezed,
+    Object? success = freezed,
+    Object? error = freezed,
+    Object? plate = freezed,
+  }) {
+    return _then(
+      _$GetVehiclePlateEventImpl(
+        befor: freezed == befor
+            ? _value.befor
+            : befor // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        success: freezed == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        plate: freezed == plate
+            ? _value.plate
+            : plate // ignore: cast_nullable_to_non_nullable
+                  as String?,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$GetVehiclePlateEventImpl implements _GetVehiclePlateEvent {
+  const _$GetVehiclePlateEventImpl({
+    this.befor,
+    this.success,
+    this.error,
+    this.plate,
+  });
+
+  @override
+  final dynamic Function(dynamic)? befor;
+  @override
+  final dynamic Function(dynamic)? success;
+  @override
+  final dynamic Function(dynamic)? error;
+  @override
+  final String? plate;
+
+  @override
+  String toString() {
+    return 'LoginEvent.getVehiclePlate(befor: $befor, success: $success, error: $error, plate: $plate)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetVehiclePlateEventImpl &&
+            (identical(other.befor, befor) || other.befor == befor) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.plate, plate) || other.plate == plate));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, befor, success, error, plate);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetVehiclePlateEventImplCopyWith<_$GetVehiclePlateEventImpl>
+  get copyWith =>
+      __$$GetVehiclePlateEventImplCopyWithImpl<_$GetVehiclePlateEventImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )
+    loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
+  }) {
+    return getVehiclePlate(befor, success, error, plate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+  }) {
+    return getVehiclePlate?.call(befor, success, error, plate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (getVehiclePlate != null) {
+      return getVehiclePlate(befor, success, error, plate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
+  }) {
+    return getVehiclePlate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
+  }) {
+    return getVehiclePlate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (getVehiclePlate != null) {
+      return getVehiclePlate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetVehiclePlateEvent implements LoginEvent {
+  const factory _GetVehiclePlateEvent({
+    final dynamic Function(dynamic)? befor,
+    final dynamic Function(dynamic)? success,
+    final dynamic Function(dynamic)? error,
+    final String? plate,
+  }) = _$GetVehiclePlateEventImpl;
+
+  dynamic Function(dynamic)? get befor;
+  dynamic Function(dynamic)? get success;
+  dynamic Function(dynamic)? get error;
+  String? get plate;
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GetVehiclePlateEventImplCopyWith<_$GetVehiclePlateEventImpl>
+  get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateVehicleEventImplCopyWith<$Res> {
+  factory _$$UpdateVehicleEventImplCopyWith(
+    _$UpdateVehicleEventImpl value,
+    $Res Function(_$UpdateVehicleEventImpl) then,
+  ) = __$$UpdateVehicleEventImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({
+    dynamic Function(dynamic)? befor,
+    dynamic Function(dynamic)? success,
+    dynamic Function(dynamic)? error,
+    String uuid,
+  });
+}
+
+/// @nodoc
+class __$$UpdateVehicleEventImplCopyWithImpl<$Res>
+    extends _$LoginEventCopyWithImpl<$Res, _$UpdateVehicleEventImpl>
+    implements _$$UpdateVehicleEventImplCopyWith<$Res> {
+  __$$UpdateVehicleEventImplCopyWithImpl(
+    _$UpdateVehicleEventImpl _value,
+    $Res Function(_$UpdateVehicleEventImpl) _then,
+  ) : super(_value, _then);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? befor = freezed,
+    Object? success = freezed,
+    Object? error = freezed,
+    Object? uuid = null,
+  }) {
+    return _then(
+      _$UpdateVehicleEventImpl(
+        befor: freezed == befor
+            ? _value.befor
+            : befor // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        success: freezed == success
+            ? _value.success
+            : success // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        error: freezed == error
+            ? _value.error
+            : error // ignore: cast_nullable_to_non_nullable
+                  as dynamic Function(dynamic)?,
+        uuid: null == uuid
+            ? _value.uuid
+            : uuid // ignore: cast_nullable_to_non_nullable
+                  as String,
+      ),
+    );
+  }
+}
+
+/// @nodoc
+
+class _$UpdateVehicleEventImpl implements _UpdateVehicleEvent {
+  const _$UpdateVehicleEventImpl({
+    this.befor,
+    this.success,
+    this.error,
+    required this.uuid,
+  });
+
+  @override
+  final dynamic Function(dynamic)? befor;
+  @override
+  final dynamic Function(dynamic)? success;
+  @override
+  final dynamic Function(dynamic)? error;
+  @override
+  final String uuid;
+
+  @override
+  String toString() {
+    return 'LoginEvent.updateVehicle(befor: $befor, success: $success, error: $error, uuid: $uuid)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateVehicleEventImpl &&
+            (identical(other.befor, befor) || other.befor == befor) &&
+            (identical(other.success, success) || other.success == success) &&
+            (identical(other.error, error) || other.error == error) &&
+            (identical(other.uuid, uuid) || other.uuid == uuid));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, befor, success, error, uuid);
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateVehicleEventImplCopyWith<_$UpdateVehicleEventImpl> get copyWith =>
+      __$$UpdateVehicleEventImplCopyWithImpl<_$UpdateVehicleEventImpl>(
+        this,
+        _$identity,
+      );
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )
+    loginInit,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )
+    logout,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )
+    registerPersonal,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )
+    documentInfo,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )
+    vehicleRegister,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateUser,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )
+    vehicleImagesCar,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )
+    getVehiclePlate,
+    required TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )
+    updateVehicle,
+  }) {
+    return updateVehicle(befor, success, error, uuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult? Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+  }) {
+    return updateVehicle?.call(befor, success, error, uuid);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String userName,
+      String password,
+    )?
+    loginInit,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+    )?
+    logout,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      PersonalInfoModel personalInfo,
+    )?
+    registerPersonal,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      DocumentInfo documentInfo,
+    )?
+    documentInfo,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleModel vehicleModel,
+    )?
+    vehicleRegister,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateUser,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      VehicleImagesCard vehicleImagesCar,
+    )?
+    vehicleImagesCar,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String? plate,
+    )?
+    getVehiclePlate,
+    TResult Function(
+      dynamic Function(dynamic)? befor,
+      dynamic Function(dynamic)? success,
+      dynamic Function(dynamic)? error,
+      String uuid,
+    )?
+    updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (updateVehicle != null) {
+      return updateVehicle(befor, success, error, uuid);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialEvent value) initial,
+    required TResult Function(_LoginInitEvent value) loginInit,
+    required TResult Function(_LogoutEvent value) logout,
+    required TResult Function(_RegisterPersonalEvent value) registerPersonal,
+    required TResult Function(_DocumentInfoEvent value) documentInfo,
+    required TResult Function(_VehicleRegisterEvent value) vehicleRegister,
+    required TResult Function(_UpdateUserEvent value) updateUser,
+    required TResult Function(_VehicleImagesCarEvent value) vehicleImagesCar,
+    required TResult Function(_GetVehiclePlateEvent value) getVehiclePlate,
+    required TResult Function(_UpdateVehicleEvent value) updateVehicle,
+  }) {
+    return updateVehicle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialEvent value)? initial,
+    TResult? Function(_LoginInitEvent value)? loginInit,
+    TResult? Function(_LogoutEvent value)? logout,
+    TResult? Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult? Function(_DocumentInfoEvent value)? documentInfo,
+    TResult? Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult? Function(_UpdateUserEvent value)? updateUser,
+    TResult? Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult? Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult? Function(_UpdateVehicleEvent value)? updateVehicle,
+  }) {
+    return updateVehicle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialEvent value)? initial,
+    TResult Function(_LoginInitEvent value)? loginInit,
+    TResult Function(_LogoutEvent value)? logout,
+    TResult Function(_RegisterPersonalEvent value)? registerPersonal,
+    TResult Function(_DocumentInfoEvent value)? documentInfo,
+    TResult Function(_VehicleRegisterEvent value)? vehicleRegister,
+    TResult Function(_UpdateUserEvent value)? updateUser,
+    TResult Function(_VehicleImagesCarEvent value)? vehicleImagesCar,
+    TResult Function(_GetVehiclePlateEvent value)? getVehiclePlate,
+    TResult Function(_UpdateVehicleEvent value)? updateVehicle,
+    required TResult orElse(),
+  }) {
+    if (updateVehicle != null) {
+      return updateVehicle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UpdateVehicleEvent implements LoginEvent {
+  const factory _UpdateVehicleEvent({
+    final dynamic Function(dynamic)? befor,
+    final dynamic Function(dynamic)? success,
+    final dynamic Function(dynamic)? error,
+    required final String uuid,
+  }) = _$UpdateVehicleEventImpl;
+
+  dynamic Function(dynamic)? get befor;
+  dynamic Function(dynamic)? get success;
+  dynamic Function(dynamic)? get error;
+  String get uuid;
+
+  /// Create a copy of LoginEvent
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UpdateVehicleEventImplCopyWith<_$UpdateVehicleEventImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

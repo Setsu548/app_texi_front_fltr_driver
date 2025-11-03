@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../navigation/view/side_menu_view.dart';
+import '../theme/main_theme.dart';
+
 class AppScaffold extends HookWidget {
   const AppScaffold({
     Key? key,
@@ -47,7 +50,10 @@ class AppScaffold extends HookWidget {
       child: Scaffold(
         appBar: appBar,
         bottomNavigationBar: bottomBar,
-        endDrawer: endDrawer,
+        endDrawer: Drawer(
+          backgroundColor: lightColorScheme.surface,
+          child: const SideMenuView(),
+        ),
         body: Align(
             alignment: Alignment.center,
             child: withPadding

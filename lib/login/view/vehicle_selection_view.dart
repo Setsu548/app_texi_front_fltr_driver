@@ -6,9 +6,10 @@ import 'package:app_texi_fltr_driver/app/widgets/primary_variant_button.dart';
 import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
+import 'package:app_texi_fltr_driver/login/bloc/login_bloc.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class VehicleSelectionView extends HookWidget {
@@ -16,72 +17,77 @@ class VehicleSelectionView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        CardOnSurface(
+    return BlocBuilder<LoginBloc, LoginState>(
+      builder: (context, state) {
+        return Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/texi.png',
-              width: 140,           
-              fit: BoxFit.contain,  
-            ),
-            TitleText(
-              context.intl.titleTextVehicleSelection,
-              color: lightColorScheme.surface,
-            ),
-            SizedBox(height: 20),
-            BodyText(
-              context.intl.bodyTextVehicleInstruction,
-              color: lightColorScheme.surface,
-              textAlign: TextAlign.center,
-            ),
-            SizedBox(height: 20),
-            PrimaryVariantButton(
-              text: context.intl.primaryVariantButtonRegisterNewVehicle, 
-              onPressed: (){
-                appRouter.push('/security/vehicle_info_form');
-              }
-            ),
-            SizedBox(height: 20),
-            PrimaryVariantButton(
-              text: context.intl.primaryVariantButtonSelectRegisteredVehicle, 
-              backgroundColor: lightColorScheme.surfaceBright,
-              onPressed: (){
-                appRouter.push('/security/vehicle_plate');
-              }
-            ),
-          ],
-        ),
-        SizedBox(height: 20),
-        CardOnSurface(
-          padding: EdgeInsetsGeometry.all(20),
-          backgroundColor: lightColorScheme.surfaceBright,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            CardOnSurface(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(
-                  Icons.info
+                Image.asset(
+                  'assets/images/texi.png',
+                  width: 140,
+                  fit: BoxFit.contain,
                 ),
-                SizedBox(width: 20),
-                Expanded(
-                  child: LabelText(
-                    context.intl.bodyTextRegisteredVehicleInfo,
-                    color: lightColorScheme.surface,
-                  ),
-                )
+                TitleText(
+                  context.intl.titleTextVehicleSelection,
+                  color: lightColorScheme.surface,
+                ),
+                SizedBox(height: 20),
+                BodyText(
+                  context.intl.bodyTextVehicleInstruction,
+                  color: lightColorScheme.surface,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(height: 20),
+                PrimaryVariantButton(
+                  text: context.intl.primaryVariantButtonRegisterNewVehicle,
+                  onPressed: () {
+                    appRouter.push('/security/vehicle_info_form');
+                  },
+                ),
+                // SizedBox(height: 20),
+                // PrimaryVariantButton(
+                //   text:
+                //       context.intl.primaryVariantButtonSelectRegisteredVehicle,
+                //   backgroundColor: lightColorScheme.surfaceBright,
+                //   onPressed: () {
+                //     appRouter.push('/security/vehicle_plate');
+                //   },
+                // ),
               ],
-            )
+            ),
+            SizedBox(height: 20),
+            CardOnSurface(
+              padding: EdgeInsetsGeometry.all(20),
+              backgroundColor: lightColorScheme.surfaceBright,
+              children: [
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Icon(Icons.info),
+                    SizedBox(width: 20),
+                    Expanded(
+                      child: LabelText(
+                        context.intl.bodyTextRegisteredVehicleInfo,
+                        color: lightColorScheme.surface,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            SecondaryVariantButton(
+              text: context.intl.secondaryVariantButtonCancel,
+              onPressed: () {
+                appRouter.pop();
+              },
+            ),
           ],
-        ),
-        SizedBox(height: 20),
-        SecondaryVariantButton(
-          text: context.intl.secondaryVariantButtonContinueLater, 
-          onPressed: (){}
-        )
-      ],
+        );
+      },
     );
   }
 }
