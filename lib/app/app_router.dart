@@ -6,6 +6,7 @@ import 'package:app_texi_fltr_driver/dashboard/screen/driver_dropoff_screen.dart
 import 'package:app_texi_fltr_driver/dashboard/screen/driver_pickup_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/travel_details_screen.dart';
 import 'package:app_texi_fltr_driver/dashboard/screen/travel_rating_screen.dart';
+import 'package:app_texi_fltr_driver/login/models/travel_model.dart';
 import 'package:app_texi_fltr_driver/navigation/screen/bonuses_screen.dart';
 import 'package:app_texi_fltr_driver/navigation/screen/earnings_screen.dart';
 import 'package:app_texi_fltr_driver/navigation/screen/profile_screen.dart';
@@ -24,7 +25,6 @@ import 'package:app_texi_fltr_driver/login/screen/vehicle_selection_screen.dart'
 import 'package:app_texi_fltr_driver/login/screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
 
 import '../login/screen/security_login_screen.dart';
 import 'screen/app_demo_screen.dart';
@@ -57,50 +57,35 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/demo',
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const AppDemoScreen(),
-        );
+        return getBuilder(state, screen: const AppDemoScreen());
       },
     ),
     GoRoute(
       path: '/security/login',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const SecurityLoginScreen(),
-        );
+        return getBuilder(state, screen: const SecurityLoginScreen());
       },
     ),
     GoRoute(
       path: '/security/welcome',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const WelcomeScreen(),
-        );
+        return getBuilder(state, screen: const WelcomeScreen());
       },
     ),
     GoRoute(
       path: '/security/personal_info_form',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const PersonalInfoFormScreen(),
-        );
+        return getBuilder(state, screen: const PersonalInfoFormScreen());
       },
     ),
     GoRoute(
       path: '/security/identity_verification',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const IdentityVerificationScreen(),
-        );
+        return getBuilder(state, screen: const IdentityVerificationScreen());
       },
     ),
     GoRoute(
@@ -127,50 +112,35 @@ final GoRouter appRouter = GoRouter(
       path: '/security/vehicle_selection',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const VehicleSelectionScreen(),
-        );
+        return getBuilder(state, screen: const VehicleSelectionScreen());
       },
     ),
     GoRoute(
       path: '/security/vehicle_plate',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const VehiclePlateScreen(),
-        );
+        return getBuilder(state, screen: const VehiclePlateScreen());
       },
     ),
     GoRoute(
       path: '/security/vehicle_found',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const VehicleFoundScreen(),
-        );
+        return getBuilder(state, screen: const VehicleFoundScreen());
       },
     ),
     GoRoute(
       path: '/security/vehicle_search_result',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const VehicleSearchResultScreen(),
-        );
+        return getBuilder(state, screen: const VehicleSearchResultScreen());
       },
     ),
     GoRoute(
       path: '/security/vehicle_info_form',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const VehicleInfoFormScreen(),
-        );
+        return getBuilder(state, screen: const VehicleInfoFormScreen());
       },
     ),
     GoRoute(
@@ -197,19 +167,17 @@ final GoRouter appRouter = GoRouter(
       path: '/dashboard/driver_dashboard',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const DriverDashboardScreen(),
-        );
+        return getBuilder(state, screen: const DriverDashboardScreen());
       },
     ),
     GoRoute(
       path: '/dashboard/travel_details',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
+        final travelModel = state.extra as TravelModel?;
         return getBuilder(
           state,
-          screen: const TravelDetailsScreen(),
+          screen: TravelDetailsScreen(travel: travelModel!),
         );
       },
     ),
@@ -217,108 +185,79 @@ final GoRouter appRouter = GoRouter(
       path: '/dashboard/driver_auth',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const DriverAuthScreen(),
-        );
+        return getBuilder(state, screen: const DriverAuthScreen());
       },
     ),
     GoRoute(
       path: '/dashboard/driver_pickup',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const DriverPickupScreen(),
-        );
+        return getBuilder(state, screen: const DriverPickupScreen());
       },
     ),
     GoRoute(
       path: '/dashboard/driver_dropoff',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const DriverDropoffScreen(),
-        );
+        return getBuilder(state, screen: const DriverDropoffScreen());
       },
     ),
     GoRoute(
       path: '/dashboard/travel_rating',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const TravelRatingScreen(),
-        );
+        return getBuilder(state, screen: const TravelRatingScreen());
       },
     ),
     GoRoute(
       path: '/dashboard/cancel_trip',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const CancelTripScreen(),
-        );
+        return getBuilder(state, screen: const CancelTripScreen());
       },
     ),
     GoRoute(
       path: '/dashboard/driver_chat',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const DriverChatScreen(),
-        );
+        return getBuilder(state, screen: const DriverChatScreen());
       },
     ),
     GoRoute(
       path: '/navigation/profile',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const ProfileScreen(),
-        );
+        return getBuilder(state, screen: const ProfileScreen());
       },
     ),
     GoRoute(
       path: '/navigation/travel_history',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const TravelHistoryScreen(),
-        );
+        return getBuilder(state, screen: const TravelHistoryScreen());
       },
     ),
     GoRoute(
       path: '/navigation/earnings',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const EarningsScreen(),
-        );
+        return getBuilder(state, screen: const EarningsScreen());
       },
     ),
     GoRoute(
       path: '/navigation/bonuses',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(
-          state,
-          screen: const BonusesScreen(),
-        );
+        return getBuilder(state, screen: const BonusesScreen());
       },
     ),
-  ]
+  ],
 );
 
 extension GoRouterExtension on GoRouter {
   void popUntil(String location, {Object? extra}) {
-    while (routerDelegate.currentConfiguration.matches.last.matchedLocation != location) {
+    while (routerDelegate.currentConfiguration.matches.last.matchedLocation !=
+        location) {
       if (!canPop()) {
         return;
       }
@@ -328,5 +267,6 @@ extension GoRouterExtension on GoRouter {
 }
 
 extension GoRouterHelper on BuildContext {
-  void popUntil(String location, {Object? extra}) => GoRouter.of(this).popUntil(location, extra: extra);
+  void popUntil(String location, {Object? extra}) =>
+      GoRouter.of(this).popUntil(location, extra: extra);
 }

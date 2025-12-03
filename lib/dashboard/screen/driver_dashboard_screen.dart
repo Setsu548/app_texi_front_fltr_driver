@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:app_texi_fltr_driver/app/app_bar_logo_home.dart';
 import 'package:app_texi_fltr_driver/app/app_scaffold.dart';
 import 'package:app_texi_fltr_driver/dashboard/view/driver_dashboard_view.dart';

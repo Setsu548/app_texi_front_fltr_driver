@@ -17,48 +17,59 @@ class TripMetrics extends StatelessWidget {
   });
 
   @override
-Widget build(BuildContext context) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Column(
-        children: [
-          LabelText(context.intl.labelTextDistance),
-          Row(
-            children: [
-              Icon(Icons.route, color: lightColorScheme.surfaceVariant, size: 20),
-              SizedBox(width: 5),
-              BodyText(distance)
-            ],
-          )
-        ],
-      ),
-      Column(
-        children: [
-          LabelText(context.intl.labelTextTime),
-          Row(
-            children: [
-              Icon(Icons.access_time, color: lightColorScheme.surfaceVariant, size: 20),
-              SizedBox(width: 5),
-              BodyText(time)
-            ],
-          )
-        ],
-      ),
-      Column(
-        children: [
-          LabelText(context.intl.labelTextTariff),
-          Row(
-            children: [
-              Icon(Icons.payments, color: lightColorScheme.surfaceVariant, size: 20),
-              SizedBox(width: 5),
-              BodyText('\$85')
-            ],
-          )
-        ],
-      ),
-    ],
-  );
-}
-
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          children: [
+            LabelText(context.intl.labelTextDistance),
+            Row(
+              children: [
+                Icon(
+                  Icons.route,
+                  color: lightColorScheme.surfaceVariant,
+                  size: 20,
+                ),
+                SizedBox(width: 5),
+                BodyText(distance),
+              ],
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            LabelText(context.intl.labelTextTime),
+            Row(
+              children: [
+                Icon(
+                  Icons.access_time,
+                  color: lightColorScheme.surfaceVariant,
+                  size: 20,
+                ),
+                SizedBox(width: 5),
+                BodyText(time),
+              ],
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            LabelText(context.intl.labelTextTariff),
+            Row(
+              children: [
+                Icon(
+                  Icons.payments,
+                  color: lightColorScheme.surfaceVariant,
+                  size: 20,
+                ),
+                SizedBox(width: 5),
+                BodyText(tariff),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
 }

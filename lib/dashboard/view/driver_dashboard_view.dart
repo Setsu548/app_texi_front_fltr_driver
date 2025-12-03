@@ -110,10 +110,10 @@ class DriverDashboardView extends HookWidget {
           nameDriver: travel.nameDriver,
           ratingDriver: travel.ratingDriver,
           onPressedAccept: () {
-            appRouter.push('/dashboard/driver_pickup');
+            appRouter.push('/dashboard/driver_pickup', extra: travel);
           },
           onPressedDetail: () {
-            appRouter.push('/dashboard/travel_details');
+            appRouter.push('/dashboard/travel_details', extra: travel);
           },
         ),
         SizedBox(height: 20),
