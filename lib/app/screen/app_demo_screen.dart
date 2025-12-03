@@ -51,33 +51,35 @@ class AppDemoScreen extends HookWidget {
     useListenable(controller);
 
     return AppScaffold(
-    loadingOverlay: true,
-    appBar: AppBarLogo(context),
-    body: TabBarView(
-      controller: controller,
-      children: const [
-        AppDemoTextsView(),
-        AppDemoBtnView(),
-        AppDemoCardView(),
-        AppDemoFormView(),
-        AppDemoOthersView(),
-      ],
-    ),
-    bottomBar: SafeArea( // 👈 evita que se pegue a los botones del sistema
-      child: TabBar(
+      loadingOverlay: true,
+      appBar: AppBarLogo(context),
+      body: TabBarView(
         controller: controller,
-        tabs: const [
-          Tab(text: 'Txt'),
-          Tab(text: 'Btn'),
-          Tab(text: 'Cards'),
-          Tab(text: 'Form'),
-          Tab(text: 'Otros'),
+        children: const [
+          AppDemoTextsView(),
+          AppDemoBtnView(),
+          AppDemoCardView(),
+          AppDemoFormView(),
+          AppDemoOthersView(),
         ],
       ),
-    ),
-  );
+      bottomBar: SafeArea(
+        // 👈 evita que se pegue a los botones del sistema
+        child: TabBar(
+          controller: controller,
+          tabs: const [
+            Tab(text: 'Txt'),
+            Tab(text: 'Btn'),
+            Tab(text: 'Cards'),
+            Tab(text: 'Form'),
+            Tab(text: 'Otros'),
+          ],
+        ),
+      ),
+    );
   }
 }
+
 class AppDemoTextsView extends HookWidget {
   const AppDemoTextsView({super.key});
 
@@ -89,57 +91,53 @@ class AppDemoTextsView extends HookWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding( 
-              padding: EdgeInsets.all(10), 
+            Padding(
+              padding: EdgeInsets.all(10),
               child: TitleText('TITLE TEXT'),
             ),
-            Padding( 
-              padding: EdgeInsets.all(10), 
-              child: BodyText('BODY TEXT'),
-            ),
-            Padding( 
-              padding: EdgeInsets.all(10), 
+            Padding(padding: EdgeInsets.all(10), child: BodyText('BODY TEXT')),
+            Padding(
+              padding: EdgeInsets.all(10),
               child: BodyTextBold('BODY TEXT BOLD'),
             ),
-            Padding( 
-              padding: EdgeInsets.all(10), 
+            Padding(
+              padding: EdgeInsets.all(10),
               child: BodyTextPrimary('BODY TEXT PRIMARY'),
             ),
-            Padding( 
-              padding: EdgeInsets.all(10), 
+            Padding(
+              padding: EdgeInsets.all(10),
               child: LabelText('LABEL TEXT'),
             ),
-            Padding( 
-              padding: EdgeInsets.all(10), 
-              child: LinkTextPrimary('LINK TEXT PRIMARY', onTap: () {},),
+            Padding(
+              padding: EdgeInsets.all(10),
+              child: LinkTextPrimary('LINK TEXT PRIMARY', onTap: () {}),
             ),
-            Container( 
-              padding: EdgeInsets.all(10), 
+            Container(
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: lightColorScheme.secondaryContainer, 
-                borderRadius: BorderRadius.circular(12), 
+                color: lightColorScheme.secondaryContainer,
+                borderRadius: BorderRadius.circular(12),
               ),
               child: LabelTextSecondary('LABEL TEXT SECONDARY'),
             ),
-            Padding( 
-              padding: EdgeInsets.all(10), 
+            Padding(
+              padding: EdgeInsets.all(10),
               child: SmallText('SMALL TEXT'),
             ),
-            Container( 
-              padding: EdgeInsets.all(10), 
+            Container(
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: lightColorScheme.secondaryContainer, 
-                borderRadius: BorderRadius.circular(12)
+                color: lightColorScheme.secondaryContainer,
+                borderRadius: BorderRadius.circular(12),
               ),
-              child: SmallTextSecondary('SMALL TEXT SECONDARY')
+              child: SmallTextSecondary('SMALL TEXT SECONDARY'),
             ),
           ],
         ),
-      )
-    ); 
+      ),
+    );
   }
 }
-
 
 class AppDemoBtnView extends HookWidget {
   const AppDemoBtnView({super.key});
@@ -152,68 +150,62 @@ class AppDemoBtnView extends HookWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              PrimaryButton(
-                text: 'Primary Button', 
-                onPressed: () {}
-              ),
+              PrimaryButton(text: 'Primary Button', onPressed: () {}),
               SizedBox(height: 10),
-              PrimaryVariantButton(text: 'Primary Variant Button', onPressed: (){}),
-              SizedBox(height: 10),
-              SecondaryButton(
-                text: 'Secondary Button',
+              PrimaryVariantButton(
+                text: 'Primary Variant Button',
                 onPressed: () {},
               ),
+              SizedBox(height: 10),
+              SecondaryButton(text: 'Secondary Button', onPressed: () {}),
               SizedBox(height: 10),
               SecondaryVariantButton(
                 text: 'Secondary Variant Button',
                 onPressed: () {},
               ),
               SizedBox(height: 10),
-              DangerButton(
-                text: 'Danger Button', 
-                onPressed: () {}
-              ),
-              SizedBox(height: 10,),
-              InlineButton(
-                text: 'Inline Button',
-                onPressed: () {},
-              ),
-              SizedBox(height: 10,),
+              DangerButton(text: 'Danger Button', onPressed: () {}),
+              SizedBox(height: 10),
+              InlineButton(text: 'Inline Button', onPressed: () {}),
+              SizedBox(height: 10),
               IconTextButton(
                 icon: Icons.add,
                 label: 'Icon Text Button',
-                onTap: (){},
+                onTap: () {},
               ),
               SizedBox(height: 10),
               DoubleIconButton(
-                leadingIcon: Icons.send, 
-                title: 'Double Icon Button', 
-                description: 'description', 
-                trailingIcon: Icons.home, 
-                onTap: (){}
+                leadingIcon: Icons.send,
+                title: 'Double Icon Button',
+                description: 'description',
+                trailingIcon: Icons.home,
+                onTap: () {},
               ),
               SizedBox(height: 10),
               DoubleIconButtonSecondary(
-                leadingIcon: Icons.home, 
-                title: 'Double Icon Button Secondary', 
-                description: 'description', 
-                trailingIcon: Icons.add, 
-                onTap: (){}
+                leadingIcon: Icons.home,
+                title: 'Double Icon Button Secondary',
+                description: 'description',
+                trailingIcon: Icons.add,
+                onTap: () {},
               ),
               SizedBox(height: 20),
-              SecondaryButtonIcon(text: 'Secondary Button Icon', onPressed: (){}, icon: Icons.home),
+              SecondaryButtonIcon(
+                text: 'Secondary Button Icon',
+                onPressed: () {},
+                icon: Icons.home,
+              ),
               SizedBox(height: 10),
-              LinkTextPrimary('Link Text Primary', onTap: (){}),
+              LinkTextPrimary('Link Text Primary', onTap: () {}),
               SizedBox(height: 10),
-              LinkTextSecondary('Link Text Secondary', onTap: (){}),
+              LinkTextSecondary('Link Text Secondary', onTap: () {}),
             ],
           ),
-        )
-      )
+        ),
+      ),
     );
   }
 }
-
 
 class AppDemoCardView extends HookWidget {
   const AppDemoCardView({super.key});
@@ -231,9 +223,17 @@ class AppDemoCardView extends HookWidget {
             SizedBox(height: 10),
             CardTertiary(children: [Text('Card Tertiary')]),
             SizedBox(height: 10),
-            CardOnSurface(children: [BodyText('Card On Surface', color: lightColorScheme.surface,)]),
+            CardOnSurface(
+              children: [
+                BodyText('Card On Surface', color: lightColorScheme.surface),
+              ],
+            ),
             SizedBox(height: 10),
-            CardPrimaryContainer(children: [BodyText('Card On Surface', color: lightColorScheme.surface,)]),
+            CardPrimaryContainer(
+              children: [
+                BodyText('Card On Surface', color: lightColorScheme.surface),
+              ],
+            ),
             SizedBox(height: 10),
             Row(
               children: [
@@ -277,10 +277,10 @@ class AppDemoCardView extends HookWidget {
                   ),
                 ),
               ],
-            )
-          ]
-        )
-      )
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -298,14 +298,8 @@ class AppDemoFormView extends HookWidget {
             children: [
               CardSecondary(
                 children: [
-                  LabeledTextField(
-                    label: "Nombres*",
-                    hint: "Ej. Juan Diego",
-                  ),
-                  LabeledTextField(
-                    label: "Apellidos*",
-                    hint: "Ej. Dias Soto",
-                  ),
+                  LabeledTextField(label: "Nombres*", hint: "Ej. Juan Diego"),
+                  LabeledTextField(label: "Apellidos*", hint: "Ej. Dias Soto"),
                   LabeledTextField(
                     label: "Numero de Telefono*",
                     hint: "77777777",
@@ -315,26 +309,35 @@ class AppDemoFormView extends HookWidget {
                   LabeledDropdown<String>(
                     label: "Departamento",
                     hint: "Selecciona una ciudad",
-                    onChanged: (value){},
+                    onChanged: (value) {},
                     items: [
                       DropdownMenuItem(
                         value: "Cochabamba",
-                        child: BodyText("Cochabamba", color: lightColorScheme.surface),
+                        child: BodyText(
+                          "Cochabamba",
+                          color: lightColorScheme.surface,
+                        ),
                       ),
                       DropdownMenuItem(
                         value: "La Paz",
-                        child: BodyText("La Paz", color: lightColorScheme.surface),
+                        child: BodyText(
+                          "La Paz",
+                          color: lightColorScheme.surface,
+                        ),
                       ),
                       DropdownMenuItem(
                         value: "Santa Cruz",
-                        child: BodyText("Santa Cruz", color: lightColorScheme.surface),
+                        child: BodyText(
+                          "Santa Cruz",
+                          color: lightColorScheme.surface,
+                        ),
                       ),
                     ],
                   ),
-                  RadioGroup(
-                    label: 'Color*',
-                    options: ["Blanco", "Negro", "Gris", "Rojo", "Azul", "Verde", "Plata", "Otro"],
-                  ),
+                  // RadioGroup(
+                  //   label: 'Color*',
+                  //   options: ["Blanco", "Negro", "Gris", "Rojo", "Azul", "Verde", "Plata", "Otro"],
+                  // ),
                   RadioGroupRow(
                     label: 'Tipo de Vehiculo',
                     options: ["Sedan", "SUV", "Hatchback"],
@@ -348,7 +351,6 @@ class AppDemoFormView extends HookWidget {
     );
   }
 }
-
 
 class AppDemoOthersView extends HookWidget {
   const AppDemoOthersView({super.key});
@@ -373,11 +375,10 @@ class AppDemoOthersView extends HookWidget {
             SizedBox(height: 10),
             DualTextLine(leftText: 'Dual Text', rightText: 'Line'),
             SizedBox(height: 10),
-            StarRating()
+            StarRating(),
           ],
-        )
-      )
+        ),
+      ),
     );
   }
 }
-

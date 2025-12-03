@@ -27,7 +27,6 @@ class VehicleInfoFormView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     final brand = useState<String?>(null);
     final modelVehicleController = useTextEditingController(text: '');
     final year = useState<int?>(null);
@@ -39,7 +38,10 @@ class VehicleInfoFormView extends HookWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TitleText(context.intl.titleTextVehicleInfo, color: lightColorScheme.primary),
+        TitleText(
+          context.intl.titleTextVehicleInfo,
+          color: lightColorScheme.primary,
+        ),
         LabelText(context.intl.labelTextEnterVehicleData),
         SizedBox(height: 20),
         CardOnSurface(
@@ -47,10 +49,10 @@ class VehicleInfoFormView extends HookWidget {
           padding: EdgeInsetsGeometry.all(20),
           children: [
             LabeledDropdown(
-              label: context.intl.labeledDropdownVehicleBrand, 
+              label: context.intl.labeledDropdownVehicleBrand,
               colorLabel: lightColorScheme.surface,
-              hint: context.intl.labeledDropdownVehicleBrandHint, 
-              onChanged: (value){
+              hint: context.intl.labeledDropdownVehicleBrandHint,
+              onChanged: (value) {
                 brand.value = value;
               },
               items: [
@@ -66,19 +68,19 @@ class VehicleInfoFormView extends HookWidget {
                   value: "Hyundai",
                   child: BodyText("Hyundai", color: lightColorScheme.surface),
                 ),
-              ]
+              ],
             ),
             LabeledTextField(
               controller: modelVehicleController,
-              label: context.intl.labeledTextFieldVehicleModel, 
+              label: context.intl.labeledTextFieldVehicleModel,
               colorLabel: lightColorScheme.surface,
-              hint: context.intl.labeledTextFieldVehicleModelHint
+              hint: context.intl.labeledTextFieldVehicleModelHint,
             ),
             LabeledDropdown(
-              label: context.intl.labeledDropdownVehicleYear, 
+              label: context.intl.labeledDropdownVehicleYear,
               colorLabel: lightColorScheme.surface,
-              hint: context.intl.labeledDropdownVehicleYearHint, 
-              onChanged: (value){
+              hint: context.intl.labeledDropdownVehicleYearHint,
+              onChanged: (value) {
                 year.value = int.tryParse(value!);
               },
               items: [
@@ -94,23 +96,23 @@ class VehicleInfoFormView extends HookWidget {
                   value: "2020",
                   child: BodyText("2020", color: lightColorScheme.surface),
                 ),
-              ]
+              ],
             ),
             LabeledTextField(
               controller: vehiclePlateController,
-              label: context.intl.labeledTextFieldVehiclePlate, 
+              label: context.intl.labeledTextFieldVehiclePlate,
               colorLabel: lightColorScheme.surface,
-              hint: context.intl.labeledTextFieldVehiclePlateHint
+              hint: context.intl.labeledTextFieldVehiclePlateHint,
             ),
-            RadioGroup(
-              label: context.intl.radioGroupVehicleColor,
-              colorLabel: lightColorScheme.surface,
-              options: ["Blanco", "Negro", "Gris", "Rojo", "Azul", "Verde", "Plata", "Otro"],
-              onChanged: (value) {
-                vehicleColor.value = value;
-                print('Color seleccionado: $value');
-              },
-            ),
+            // RadioGroup(
+            //   label: context.intl.radioGroupVehicleColor,
+            //   colorLabel: lightColorScheme.surface,
+            //   options: ["Blanco", "Negro", "Gris", "Rojo", "Azul", "Verde", "Plata", "Otro"],
+            //   onChanged: (value) {
+            //     vehicleColor.value = value;
+            //     print('Color seleccionado: $value');
+            //   },
+            // ),
             RadioGroupRow(
               label: context.intl.radioGroupVehicleType,
               colorLabel: lightColorScheme.surface,
@@ -128,12 +130,16 @@ class VehicleInfoFormView extends HookWidget {
             SizedBox(height: 20),
             LabeledTextField(
               controller: vehicleRuatController,
-              label: 'CRPVA', 
+              label: 'CRPVA',
               colorLabel: lightColorScheme.surface,
-              hint: 'Ingresar CRPVA del vehículo'
+              hint: 'Ingresar CRPVA del vehículo',
             ),
             SizedBox(height: 20),
-            LabelText(context.intl.labelTextConfirmVehicleData, color: lightColorScheme.surface, textAlign: TextAlign.center)
+            LabelText(
+              context.intl.labelTextConfirmVehicleData,
+              color: lightColorScheme.surface,
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
         SizedBox(height: 20),
@@ -147,32 +153,34 @@ class VehicleInfoFormView extends HookWidget {
                 Icon(Icons.info, color: lightColorScheme.surfaceVariant),
                 SizedBox(width: 20),
                 Expanded(
-                  child: 
-                    LabelText(context.intl.bodyTextVehicleInfoNotice,
-                    color: lightColorScheme.surface)
-                )
+                  child: LabelText(
+                    context.intl.bodyTextVehicleInfoNotice,
+                    color: lightColorScheme.surface,
+                  ),
+                ),
               ],
-            )
+            ),
           ],
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: context.intl.primaryVariantButtonContinue, 
+          text: context.intl.primaryVariantButtonContinue,
           onPressed: () async {
-              final vehicleInfo = VehicleModel(
-                brand: brand.value!, 
-                color: vehicleColor.value!, 
-                model: modelVehicleController.text,
-                license_plate: vehiclePlateController.text, 
-                tittle_deed: vehicleRuatController.text,
-                year: year.value!,
-              );
-              context.read<LoginBloc>().add(LoginEvent.vehicleRegister(
+            final vehicleInfo = VehicleModel(
+              brand: brand.value!,
+              color: vehicleColor.value!,
+              model: modelVehicleController.text,
+              license_plate: vehiclePlateController.text,
+              tittle_deed: vehicleRuatController.text,
+              year: year.value!,
+            );
+            context.read<LoginBloc>().add(
+              LoginEvent.vehicleRegister(
                 vehicleModel: vehicleInfo,
-                befor: (res){
+                befor: (res) {
                   showLoadingDialog(context);
                 },
-                success: (res){
+                success: (res) {
                   hideLoadingDialog(context);
                   showErrorDialog(
                     context,
@@ -180,28 +188,32 @@ class VehicleInfoFormView extends HookWidget {
                     res.message,
                     title: '',
                     color: lightColorScheme.surfaceDim,
-                    onAccept: (){
+                    onAccept: () {
                       Navigator.pop(context);
                       appRouter.push('/security/vehicle_photo_registration');
-                    }
+                    },
                   );
                 },
-                error: (err){
+                error: (err) {
                   hideLoadingDialog(context);
                   showErrorDialog(
-                        context,
-                        Icons.error_outline,
-                        err['details'] ?? 'Error desconocido',
-                        title: err['message'] ?? 'Error',
-                      );
-                }
-              ));
-          }
+                    context,
+                    Icons.error_outline,
+                    err['details'] ?? 'Error desconocido',
+                    title: err['message'] ?? 'Error',
+                  );
+                },
+              ),
+            );
+          },
         ),
         SizedBox(height: 20),
-        SecondaryVariantButton(text: context.intl.btnCancel, onPressed: (){
-          appRouter.pop();
-        }),
+        SecondaryVariantButton(
+          text: context.intl.btnCancel,
+          onPressed: () {
+            appRouter.pop();
+          },
+        ),
         SizedBox(height: 30),
       ],
     );
