@@ -14,9 +14,13 @@ enum TravelStatus {
 class TravelService {
   final db = FirebaseFirestore.instance;
 
-  Future<void> changeStatus(TravelStatus newStatus) async {
-    await db.collection('drive').doc('0qvko8CUw9u2Lh0mSHT0').update({
+  Future<void> changeStatus(TravelStatus newStatus,String issueId) async {
+    await db.collection('drive').doc(issueId).update({
       'status': newStatus.value,
     });
+  }
+
+  Future<void> deleteTravel(String issueId) async {
+    await db.collection('drive').doc(issueId).delete();
   }
 }

@@ -192,21 +192,24 @@ final GoRouter appRouter = GoRouter(
       path: '/dashboard/driver_pickup',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(state, screen: const DriverPickupScreen());
+        final travelModel = state.extra as TravelModel?;
+        return getBuilder(state, screen: DriverPickupScreen(travel: travelModel!));
       },
     ),
     GoRoute(
       path: '/dashboard/driver_dropoff',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(state, screen: const DriverDropoffScreen());
+        final travelModel = state.extra as TravelModel?;
+        return getBuilder(state, screen: DriverDropoffScreen(travel: travelModel!));
       },
     ),
     GoRoute(
       path: '/dashboard/travel_rating',
       parentNavigatorKey: _rootNavigatorKey,
       pageBuilder: (BuildContext context, GoRouterState state) {
-        return getBuilder(state, screen: const TravelRatingScreen());
+        final travelModel = state.extra as TravelModel?;
+        return getBuilder(state, screen: TravelRatingScreen(travel: travelModel!));
       },
     ),
     GoRoute(

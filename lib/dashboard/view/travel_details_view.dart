@@ -10,7 +10,7 @@ import 'package:app_texi_fltr_driver/app/widgets/secondary_variant_button_widget
 import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/trip_metrics_widget.dart';
 import 'package:app_texi_fltr_driver/dashboard/view/mini_map_box.dart';
-import 'package:app_texi_fltr_driver/dashboard/view/simulated_map_box.dart';
+// import 'package:app_texi_fltr_driver/dashboard/view/simulated_map_box.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/login/models/travel_model.dart';
 import 'package:app_texi_fltr_driver/login/service/travel_service.dart';
@@ -41,7 +41,7 @@ class TravelDetailsView extends HookWidget {
               ],
             ),
             LabelChip(
-              text: '15 min',
+              text: '${travel.estimatedTime} min',
               colorText: lightColorScheme.onSurface,
               background: lightColorScheme.surfaceVariant,
             ),
@@ -55,7 +55,7 @@ class TravelDetailsView extends HookWidget {
             DriverBasicInfo(
               personName: travel.nameDriver,
               rating: travel.ratingDriver,
-              numberTrips: '124',
+              numberTrips: '10',
             ),
             SizedBox(height: 20),
             OriginDestination(
@@ -121,8 +121,8 @@ class TravelDetailsView extends HookWidget {
         PrimaryVariantButton(
           text: context.intl.primaryVariantButtonAcceptTrip,
           onPressed: () async {
-            await TravelService().changeStatus(TravelStatus.inComming);
-            appRouter.push('/dashboard/driver_pickup');
+            await TravelService().changeStatus(TravelStatus.inComming,travel.id);
+            appRouter.push('/dashboard/driver_pickup',extra: travel);
           },
         ),
         SizedBox(height: 20),
@@ -132,6 +132,7 @@ class TravelDetailsView extends HookWidget {
             context.pop();
           },
         ),
+        SizedBox(height: 30),
       ],
     );
   }

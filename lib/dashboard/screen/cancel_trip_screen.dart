@@ -12,7 +12,7 @@ class CancelTripScreen extends HookWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       loadingOverlay: true,
-      appBar: AppBarLogoHome(context),
+      appBar: AppBarLogoHome(context,false,false),
       endDrawer: Padding(
         padding: EdgeInsets.only(
           top: MediaQuery.paddingOf(context).top - 50 + kToolbarHeight,

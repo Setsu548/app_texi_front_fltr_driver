@@ -1,4 +1,5 @@
 class TravelModel {
+  final String id;
   final String originTime;
   final String originDescription;
   final String destinationDescription;
@@ -20,6 +21,7 @@ class TravelModel {
   final double currentRouteLng;
 
   TravelModel({
+    required this.id,
     required this.originTime,
     required this.originDescription,
     required this.destinationDescription,
@@ -40,6 +42,7 @@ class TravelModel {
   factory TravelModel.fromFirebase(Map<String, dynamic> json) {
     return TravelModel(
       originTime: '5 min',
+      id: json['id'],
       originDescription: json['pasanger_start'],
       destinationDescription: json['pasanger_end'],
       distance: json['distance_km'] / 1,

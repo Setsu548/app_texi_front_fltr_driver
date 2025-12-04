@@ -11,7 +11,7 @@ class VehicleInfoFormScreen extends HookWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       loadingOverlay: true,
-      appBar: AppBarLogoHome(context, showMenu: false),
+      appBar: AppBarLogoHome(context,false,false),
       disableBackButton: true,
       onBackButtonPressed: () async {
         return Future.value(true);

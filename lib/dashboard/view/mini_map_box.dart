@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -20,6 +22,9 @@ class MiniMapBox extends StatefulWidget {
 
 class _MiniMapBoxState extends State<MiniMapBox> {
   GoogleMapController? controller;
+  BitmapDescriptor? startIcon;
+  BitmapDescriptor? endIcon;
+
   final polylinePoints = PolylinePoints(
     apiKey: "AIzaSyCF-G92s-uEnbhpEtvEJtYq_Ks8hDYh9jA",
   );
@@ -51,6 +56,20 @@ class _MiniMapBoxState extends State<MiniMapBox> {
       return points;
     }
     return [];
+  }
+
+  Future<void> loadMarkerIcons() async {
+    startIcon = await BitmapDescriptor.fromAssetImage(
+      const ImageConfiguration(size: Size(60, 60)),
+      "assets/images/pinOrigen.png",
+    );
+
+    endIcon = await BitmapDescriptor.fromAssetImage(
+      const ImageConfiguration(size: Size(60, 60)),
+      "assets/images/pinDestino.png",
+    );
+
+    setState(() {});
   }
 
   void zoomToFit({
@@ -86,6 +105,12 @@ class _MiniMapBoxState extends State<MiniMapBox> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    loadMarkerIcons();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       height: 300,
@@ -99,39 +124,65 @@ class _MiniMapBoxState extends State<MiniMapBox> {
         builder: (context, asyncSnapshot) {
           if (asyncSnapshot.hasData) {
             return GoogleMap(
-              onMapCreated: (c) {
-                controller = c;
-                zoomToFit(
-                  origin: widget.initialPosition,
-                  destination: widget.destinationPosition,
-                  controller: c,
-                );
-              },
-              initialCameraPosition: CameraPosition(
-                target: widget.initialPosition,
-                zoom: 13,
-              ),
-              zoomControlsEnabled: false,
-              myLocationEnabled: true,
-              myLocationButtonEnabled: false,
-              polylines: asyncSnapshot.data != null
-                  ? {
-                      Polyline(
-                        polylineId: PolylineId('route1'),
-                        points: (asyncSnapshot.data as List)
-                            .map(
-                              (e) => LatLng(
-                                (e as PointLatLng).latitude,
-                                e.longitude,
-                              ),
-                            )
-                            .toList(),
-                        color: Colors.blue,
-                        width: 5,
+                    onMapCreated: (c) {
+                      controller = c;
+                      zoomToFit(
+                        origin: widget.initialPosition,
+                        destination: widget.destinationPosition,
+                        controller: c,
+                      );
+                    },
+                    initialCameraPosition: CameraPosition(
+                      target: widget.initialPosition,
+                      zoom: 13,
+                    ),
+                    zoomGesturesEnabled: true,
+                    scrollGesturesEnabled: true,
+                    rotateGesturesEnabled: true,
+                    tiltGesturesEnabled: true,
+                    myLocationEnabled: true,
+                    gestureRecognizers: {
+                      Factory<OneSequenceGestureRecognizer>(
+                        () => EagerGestureRecognizer(),
                       ),
-                    }
-                  : {},
-            );
+                    },
+
+                    markers: {
+                      Marker(
+                        markerId: MarkerId("start"),
+                        position: widget.initialPosition,
+                        infoWindow: InfoWindow(title: "Inicio"),
+                        icon: startIcon ?? BitmapDescriptor.defaultMarker,
+                        anchor: Offset(0.5, 1.0), // opcional – ajusta la punta del pin
+                      ),
+
+                      Marker(
+                        markerId: MarkerId("end"),
+                        position: widget.destinationPosition,
+                        infoWindow: InfoWindow(title: "Destino"),
+                        icon: endIcon ?? BitmapDescriptor.defaultMarker,
+                        anchor: Offset(0.5, 1.0), // opcional
+                      ),
+                    },
+
+                    polylines: asyncSnapshot.data != null
+                        ? {
+                            Polyline(
+                              polylineId: PolylineId('route1'),
+                              points: (asyncSnapshot.data as List)
+                                  .map(
+                                    (e) => LatLng(
+                                      (e as PointLatLng).latitude,
+                                      e.longitude,
+                                    ),
+                                  )
+                                  .toList(),
+                              color: Colors.orange,
+                              width: 5,
+                            ),
+                          }
+                        : {},
+                  );
           }
 
           return Center(child: CircularProgressIndicator());

@@ -11,9 +11,8 @@ import 'secure_storage.dart';
 Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
-  // String? token = await SecureTokenStorage.getToken();
-  String? token = 'asdf';
+  
+  String? token = await SecureTokenStorage.getToken();
   if (token != null && token != '') {
     appRouter.go('/dashboard/driver_dashboard');
   }

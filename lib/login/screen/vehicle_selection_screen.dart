@@ -23,7 +23,7 @@ class VehicleSelectionScreen extends HookWidget {
 
     return AppScaffold(
       loadingOverlay: true,
-      appBar: AppBarLogoHome(context, showMenu: true),
+      appBar: AppBarLogoHome(context,false,false),
       onBackButtonPressed: () async {
         return Future.value(true);
       },
