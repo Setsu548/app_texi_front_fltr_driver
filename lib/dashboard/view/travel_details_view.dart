@@ -12,6 +12,7 @@ import 'package:app_texi_fltr_driver/app/widgets/trip_metrics_widget.dart';
 import 'package:app_texi_fltr_driver/dashboard/view/mini_map_box.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/login/models/travel_model.dart';
+import 'package:app_texi_fltr_driver/login/service/travel_service.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -119,7 +120,8 @@ class TravelDetailsView extends HookWidget {
         SizedBox(height: 20),
         PrimaryVariantButton(
           text: context.intl.primaryVariantButtonAcceptTrip,
-          onPressed: () {
+          onPressed: () async {
+            await TravelService().changeStatus(TravelStatus.inComming);
             appRouter.push('/dashboard/driver_pickup');
           },
         ),

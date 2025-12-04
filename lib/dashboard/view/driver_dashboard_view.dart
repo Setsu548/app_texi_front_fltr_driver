@@ -8,6 +8,7 @@ import 'package:app_texi_fltr_driver/app/widgets/title_text_widget.dart';
 import 'package:app_texi_fltr_driver/app/widgets/travel_request_widget.dart';
 import 'package:app_texi_fltr_driver/l10n/l10n_extension.dart';
 import 'package:app_texi_fltr_driver/login/models/travel_model.dart';
+import 'package:app_texi_fltr_driver/login/service/travel_service.dart';
 import 'package:app_texi_fltr_driver/navigation/utils/format_long_date_two_es.dart';
 import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -109,7 +110,8 @@ class DriverDashboardView extends HookWidget {
           avatarUrl: travel.avatarUrl,
           nameDriver: travel.nameDriver,
           ratingDriver: travel.ratingDriver,
-          onPressedAccept: () {
+          onPressedAccept: () async {
+            await TravelService().changeStatus(TravelStatus.inComming);
             appRouter.push('/dashboard/driver_pickup', extra: travel);
           },
           onPressedDetail: () {
