@@ -10,7 +10,10 @@ import 'package:app_texi_fltr_driver/theme/main_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import 'simulated_map_box.dart';
+
 class DriverPickupView extends HookWidget {
+  // Need to send travel model
   const DriverPickupView({super.key});
 
   @override
@@ -19,36 +22,34 @@ class DriverPickupView extends HookWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         PrimaryVariantButton(
-          text: context.intl.primaryVariantButtonHowToGet, 
-          onPressed: (){},
+          text: context.intl.primaryVariantButtonHowToGet,
+          onPressed: () {},
           backgroundColor: lightColorScheme.surfaceContainerHigh,
         ),
         SizedBox(height: 20),
-        DriverStatusInfo(
-          personName: 'Ana Martinez', 
-          rating: 4.9, 
-          time: '2:45'
-        ),
+        DriverStatusInfo(personName: 'Ana Martinez', rating: 4.9, time: '2:45'),
         SizedBox(height: 20),
         CardOnSurface(
           padding: EdgeInsetsGeometry.all(20),
           backgroundColor: lightColorScheme.secondary,
-          children: [ 
+          children: [
             InfoTileFlat(
-              icon: Icons.send, 
+              icon: Icons.send,
               colorIcon: lightColorScheme.surfaceVariant,
-              title: context.intl.infoTileFlatPickupPoint, 
-              description: 'Av. America 1240, Cochabamba'
+              title: context.intl.infoTileFlatPickupPoint,
+              description: 'Av. America 1240, Cochabamba',
             ),
             SizedBox(height: 10),
             InfoTileFlat(
-              icon: Icons.flag, 
+              icon: Icons.flag,
               colorIcon: lightColorScheme.surfaceVariant,
-              title: context.intl.labelTextDestination, 
-              description: 'Terminal de Buses Av. Ayachuco'
+              title: context.intl.labelTextDestination,
+              description: 'Terminal de Buses Av. Ayachuco',
             ),
-          ]
+          ],
         ),
+        SizedBox(height: 20),
+        SimulatedRouteMapPage(),
         SizedBox(height: 20),
         Row(
           children: [
@@ -56,14 +57,14 @@ class DriverPickupView extends HookWidget {
               child: PrimaryVariantButton(
                 backgroundColor: lightColorScheme.surfaceVariant,
                 text: context.intl.primaryVariantButtonIArrived,
-                onPressed: (){},
+                onPressed: () {},
               ),
             ),
             SizedBox(width: 10),
             Expanded(
               child: SecondaryVariantButton(
                 text: context.intl.secondaryVariantButtonMessage,
-                onPressed: (){
+                onPressed: () {
                   appRouter.push('/dashboard/driver_chat');
                 },
               ),
@@ -72,19 +73,19 @@ class DriverPickupView extends HookWidget {
         ),
         SizedBox(height: 20),
         PrimaryVariantButton(
-          text: context.intl.primaryVariantButtonStartTrip, 
-          onPressed: (){
+          text: context.intl.primaryVariantButtonStartTrip,
+          onPressed: () {
             appRouter.push('/dashboard/driver_dropoff');
-          }
+          },
         ),
         SizedBox(height: 20),
         LinkTextPrimary(
-          context.intl.commonCancel, 
+          context.intl.commonCancel,
           colorText: lightColorScheme.error,
-          onTap: (){
+          onTap: () {
             appRouter.push('/dashboard/cancel_trip');
-          }
-        )
+          },
+        ),
       ],
     );
   }
