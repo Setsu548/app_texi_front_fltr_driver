@@ -129,10 +129,10 @@ class DriverDashboardScreen extends HookWidget {
                       ],
                     ),
                   ),
-                  FutureBuilder(
-                    future: FirebaseFirestore.instance.collection('drive').get(),
+                  StreamBuilder(
+                    stream: FirebaseFirestore.instance.collection('drive').snapshots(),
                     builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
+                      if (!snapshot.hasData) {
                         return Center(
                           child: Padding(
                             padding: EdgeInsets.symmetric(vertical: 40),
@@ -140,7 +140,8 @@ class DriverDashboardScreen extends HookWidget {
                           ),
                         );
                       }
-                      if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+
+                      if (snapshot.data!.docs.isEmpty) {
                         return Center(child: Text("No hay solicitudes"));
                       }
 
