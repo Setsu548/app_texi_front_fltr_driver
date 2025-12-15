@@ -37,7 +37,7 @@ class PersonalInfoFormView extends HookWidget {
     final department = useState<String?>(null);
     final province = useState<String?>(null);
     final emailController = useTextEditingController(text: '');
-    final professionController = useTextEditingController(text: '');
+    // final professionController = useTextEditingController(text: '');
     final selectedDate = useState<DateTime>(DateTime.now());
     final dialCode = useState<String?>(null);
 
@@ -121,7 +121,7 @@ class PersonalInfoFormView extends HookWidget {
                   ),
                   validator: (newValue) {
                     if (newValue == null || newValue.isEmpty) {
-                      return context.intl.commonRequiredFieldError;
+                      return 'Numero Incorrecto';
                     }
                     if (newValue.length != 8) {
                       return 'El número de celular debe tener exactamente 8 dígitos';
@@ -146,18 +146,18 @@ class PersonalInfoFormView extends HookWidget {
                   return null;
                 },
               ),
-              LabeledTextField(
-                controller: professionController,
-                label: context.intl.labelProfession,
-                colorLabel: lightColorScheme.surface, 
-                hint: 'Ingresar una profesión',
-                validator: (newValue) {
-                  if (newValue == null || newValue.isEmpty) {
-                    return context.intl.commonRequiredFieldError;
-                  }
-                  return null;
-                },
-              ),
+              // LabeledTextField(
+              //   controller: professionController,
+              //   label: context.intl.labelProfession,
+              //   colorLabel: lightColorScheme.surface, 
+              //   hint: 'Ingresar una profesión',
+              //   validator: (newValue) {
+              //     if (newValue == null || newValue.isEmpty) {
+              //       return context.intl.commonRequiredFieldError;
+              //     }
+              //     return null;
+              //   },
+              // ),
               LabeledTextField(
                 controller: addressController,
                 label: context.intl.labeledTextFieldAddress,
@@ -227,9 +227,17 @@ class PersonalInfoFormView extends HookWidget {
                 label: context.intl.labeledTextFieldEmail,
                 colorLabel: lightColorScheme.surface, 
                 hint: context.intl.labeledTextFieldEmailHint,
+                maxLength: 100,
                 validator: (newValue) {
                   if (newValue == null || newValue.isEmpty) {
                     return context.intl.commonRequiredFieldError;
+                  }
+                  final emailRegExp = RegExp(
+                    r'^((?!\.)[\w\-_.]*[^.])(@\w+[\w\-_.]*)(\.\w+(\.\w+)?[^.\W])$',
+                  );
+
+                  if (!emailRegExp.hasMatch(newValue)) {
+                    return 'Formato Incorrecto';
                   }
                   return null;
                 },
@@ -263,7 +271,7 @@ class PersonalInfoFormView extends HookWidget {
                   lastName: lastNameNameController.text,
                   email: emailController.text,
                   address: addressController.text,
-                  profession: professionController.text,
+                  profession: '',
                   country: 'Bolivia',
                   city: department.value!,
                   province: province.value!,
