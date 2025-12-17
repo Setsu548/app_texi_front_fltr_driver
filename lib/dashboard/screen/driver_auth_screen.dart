@@ -12,15 +12,15 @@ class DriverAuthScreen extends HookWidget {
   Widget build(BuildContext context) {
     return AppScaffold(
       loadingOverlay: true,
-      appBar: AppBarLogoHome(context,false,false),
-      endDrawer: Padding(
-        padding: EdgeInsets.only(
-          top: MediaQuery.paddingOf(context).top - 50 + kToolbarHeight,
-        ),
-        child: Drawer(
-          child: SideMenuView(),
-        ),
-      ),
+      appBar: AppBarLogoHome(context,false,true),
+      // endDrawer: Padding(
+      //   padding: EdgeInsets.only(
+      //     top: MediaQuery.paddingOf(context).top - 50 + kToolbarHeight,
+      //   ),
+      //   child: Drawer(
+      //     child: SideMenuView(),
+      //   ),
+      // ),
       disableBackButton: true,
       onBackButtonPressed: () async {
         return Future.value(true);

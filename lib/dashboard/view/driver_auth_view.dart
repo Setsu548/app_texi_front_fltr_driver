@@ -35,11 +35,11 @@ class DriverAuthView extends HookWidget {
           text: context.intl.primaryVariantButtonStartScan, 
           onPressed: (){}
         ),
-        SizedBox(height: 20),
-        SecondaryVariantButton(
-          text: context.intl.secondaryVariantButtonBack, 
-          onPressed: (){}
-        ),
+        // SizedBox(height: 20),
+        // SecondaryVariantButton(
+        //   text: context.intl.secondaryVariantButtonBack, 
+        //   onPressed: (){}
+        // ),
         SizedBox(height: 20),
         LabelText(context.intl.labelTextBiometricInfoProtection, textAlign: TextAlign.center,)
       ],

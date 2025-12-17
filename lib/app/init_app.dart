@@ -12,7 +12,8 @@ Future<void> initApp() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   
-  await SecureTokenStorage.clearToken();
+  await SecureTokenStorage.saveToken('dddd');
+  
   String? token = await SecureTokenStorage.getToken();
   if (token != null && token != '') {
     appRouter.go('/dashboard/driver_dashboard');
