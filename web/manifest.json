@@ -1,6 +1,6 @@
 {
-    "name": "app_texi_fltr_driver",
-    "short_name": "app_texi_fltr_driver",
+    "name": "app_texi_driver",
+    "short_name": "app_texi_driver",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
