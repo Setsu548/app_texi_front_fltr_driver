@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 
 class AppTheme {
   static const Color _primaryColor = Color(0xFFFFD600);
@@ -21,7 +22,10 @@ class AppTheme {
         ),
       ),
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(foregroundColor: _primaryColor),
+        style: TextButton.styleFrom(
+          foregroundColor: _primaryColor,
+          textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
+        ),
       ),
     );
   }
@@ -41,7 +45,10 @@ class AppTheme {
         ),
       ),
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(foregroundColor: _primaryColor),
+        style: TextButton.styleFrom(
+          foregroundColor: _primaryColor,
+          textStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
+        ),
       ),
     );
   }
