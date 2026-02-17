@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:texi/features/auth/presentation/pages/auth_page.dart';
 import 'package:texi/features/register/presentation/pages/register_home_page.dart';
+import 'package:texi/features/register/presentation/pages/driver_form_page.dart';
 
 class AppRouter {
   static final routes = GoRouter(
@@ -9,6 +10,12 @@ class AppRouter {
       GoRoute(
         path: '/registerHome',
         builder: (context, state) => RegisterHomePage(),
+        routes: [
+          GoRoute(
+            path: 'personalInfo',
+            builder: (context, state) => DriverFormPage(),
+          ),
+        ],
       ),
     ],
   );

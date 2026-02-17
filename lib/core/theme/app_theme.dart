@@ -6,11 +6,18 @@ class AppTheme {
   static const Color _onPrimaryColor = Color(0xFF000000);
   static const Color _backgroundColor = Color(0xFF1a1a1a);
   static const Color _onBackgroundColor = Color(0xFFFFFFFF);
+  static const Color _onSurface = Color(0xFFFFFFFF);
 
   static ThemeData get lightTheme {
     return ThemeData(
       brightness: Brightness.light,
       primaryColor: _primaryColor,
+      colorScheme: ColorScheme.light(
+        primary: _primaryColor,
+        onPrimary: _onPrimaryColor,
+        onSurface: _onSurface,
+        surface: _backgroundColor,
+      ),
       scaffoldBackgroundColor: _backgroundColor,
       textTheme: const TextTheme(
         bodyMedium: TextStyle(color: _onBackgroundColor),
