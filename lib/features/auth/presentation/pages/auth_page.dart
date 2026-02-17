@@ -64,7 +64,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
               //Botón de registro
               TextButton(
                 onPressed: () {
-                  context.push('/registerHome');
+                  context.go('/registerHome');
                 },
                 child: Text(registerOpcion.i18n),
               ),
@@ -92,6 +92,9 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                             hidePassword
                                 ? Icons.visibility
                                 : Icons.visibility_off,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withValues(alpha: 0.5),
                           ),
                           onPressed: () {
                             ref.read(hidePasswordProvider.notifier).toggle();
