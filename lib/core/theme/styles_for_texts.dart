@@ -13,4 +13,12 @@ class StylesForTexts {
       fontWeight: FontWeight.bold,
     );
   }
+
+  TextStyle bodyStyle() {
+    return TextStyle(
+      color: Theme.of(context).colorScheme.onSurface,
+      fontSize: 14.5.sp,
+      fontWeight: FontWeight.w500,
+    );
+  }
 }
