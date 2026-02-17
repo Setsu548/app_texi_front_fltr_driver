@@ -5,6 +5,7 @@ const registerOpcion = 'Registrarse';
 const forgetPassword = '¿Olvidaste tu contraseña?';
 const phone = 'Teléfono';
 const password = 'Contraseña';
+const confirmPassword = 'Confirmar Contraseña';
 const login = 'Iniciar Sesión';
 const texiRegister = 'Texi Registro';
 const welcomeDriver = '¡Bienvenido Conductor!';
@@ -22,10 +23,23 @@ const cancel = 'Cancelar';
 const personalInformation = 'Información Personal';
 const names = 'Nombres';
 const lastName = 'Apellidos';
+const email = 'Correo Electrónico';
+const dateOfBirth = 'Fecha de Nacimiento';
+const code = 'Código';
 const address = 'Dirección';
 const department = 'Departamento';
 const city = 'Ciudad';
-const email = 'Correo Electrónico';
+const province = 'Provincia';
+const gender = 'Género';
+const formHeaderDescription =
+    'Por favor ingresa tus datos personales para completar tu registro en TEXI.';
+const continueButton = 'Continuar';
+const requiredField = 'Campo requerido';
+const invalidEmail = 'Correo electrónico inválido';
+const mustBeAdult = 'Debes ser mayor de edad para registrarte';
+const passwordMustBeAtLeast8Characters =
+    'La contraseña debe tener al menos 8 caracteres';
+const passwordMustMatch = 'Las contraseñas no coinciden';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-Mx', {
@@ -139,6 +153,12 @@ extension Localization on String {
       'es-MX': 'Cancelar',
       'es-BO': 'Cancelar',
     },
+    personalInformation: {
+      'en-US': 'Personal Information',
+      'es-ES': 'Información Personal',
+      'es-MX': 'Información Personal',
+      'es-BO': 'Información Personal',
+    },
     names: {
       'en-US': 'Names',
       'es-ES': 'Nombres',
@@ -147,9 +167,9 @@ extension Localization on String {
     },
     lastName: {
       'en-US': 'Last Name',
-      'es-ES': 'Apellido',
-      'es-MX': 'Apellido',
-      'es-BO': 'Apellido',
+      'es-ES': 'Apellidos',
+      'es-MX': 'Apellidos',
+      'es-BO': 'Apellidos',
     },
     address: {
       'en-US': 'Address',
@@ -174,6 +194,82 @@ extension Localization on String {
       'es-ES': 'Correo Electrónico',
       'es-MX': 'Correo Electrónico',
       'es-BO': 'Correo Electrónico',
+    },
+    province: {
+      'en-US': 'Province',
+      'es-ES': 'Provincia',
+      'es-MX': 'Provincia',
+      'es-BO': 'Provincia',
+    },
+    formHeaderDescription: {
+      'en-US':
+          'Please enter your personal information to complete your registration in TEXI.',
+      'es-ES':
+          'Por favor ingresa tus datos personales para completar tu registro en TEXI.',
+      'es-MX':
+          'Por favor ingresa tus datos personales para completar tu registro en TEXI.',
+      'es-BO':
+          'Por favor ingresa tus datos personales para completar tu registro en TEXI.',
+    },
+    confirmPassword: {
+      'en-US': 'Confirm Password',
+      'es-ES': 'Confirmar Contraseña',
+      'es-MX': 'Confirmar Contraseña',
+      'es-BO': 'Confirmar Contraseña',
+    },
+    gender: {
+      'en-US': 'Gender',
+      'es-ES': 'Género',
+      'es-MX': 'Género',
+      'es-BO': 'Género',
+    },
+    dateOfBirth: {
+      'en-US': 'Date of Birth',
+      'es-ES': 'Fecha de Nacimiento',
+      'es-MX': 'Fecha de Nacimiento',
+      'es-BO': 'Fecha de Nacimiento',
+    },
+    code: {
+      'en-US': 'Code',
+      'es-ES': 'Código',
+      'es-MX': 'Código',
+      'es-BO': 'Código',
+    },
+    continueButton: {
+      'en-US': 'Continue',
+      'es-ES': 'Continuar',
+      'es-MX': 'Continuar',
+      'es-BO': 'Continuar',
+    },
+    requiredField: {
+      'en-US': 'Required field',
+      'es-ES': 'Campo requerido',
+      'es-MX': 'Campo requerido',
+      'es-BO': 'Campo requerido',
+    },
+    invalidEmail: {
+      'en-US': 'Invalid email',
+      'es-ES': 'Correo electrónico inválido',
+      'es-MX': 'Correo electrónico inválido',
+      'es-BO': 'Correo electrónico inválido',
+    },
+    mustBeAdult: {
+      'en-US': 'You must be of legal age to register',
+      'es-ES': 'Debes ser mayor de edad para registrarte',
+      'es-MX': 'Debes ser mayor de edad para registrarte',
+      'es-BO': 'Debes ser mayor de edad para registrarte',
+    },
+    passwordMustBeAtLeast8Characters: {
+      'en-US': 'Password must be at least 8 characters',
+      'es-ES': 'La contraseña debe tener al menos 8 caracteres',
+      'es-MX': 'La contraseña debe tener al menos 8 caracteres',
+      'es-BO': 'La contraseña debe tener al menos 8 caracteres',
+    },
+    passwordMustMatch: {
+      'en-US': 'Passwords do not match',
+      'es-ES': 'Las contraseñas no coinciden',
+      'es-MX': 'Las contraseñas no coinciden',
+      'es-BO': 'Las contraseñas no coinciden',
     },
   });
 
