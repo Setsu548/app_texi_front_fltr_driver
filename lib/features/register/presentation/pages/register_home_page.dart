@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/core/widgets/cancel_elevated_button_widget.dart';
+import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/features/register/presentation/widgets/register_header_widget.dart';
 import 'package:texi/features/register/presentation/widgets/terms_conditions_widget.dart';
@@ -28,12 +28,12 @@ class RegisterHomePage extends StatelessWidget {
                 ElevatedButtonWidget(
                   label: startRegister.i18n,
                   iconImageAfter: Icon(Icons.arrow_forward),
-                  onPressed: () {},
+                  onPressed: () => context.go('/registerHome/personalInfo'),
                 ),
                 SizedBox(height: 2.h),
                 TermsConditionsWidget(),
                 SizedBox(height: 2.h),
-                CancelElevatedButtonWidget(
+                AnotherElevatedButtonWidget(
                   label: cancel.i18n,
                   onPressed: () {
                     context.go('/');
