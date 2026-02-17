@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-class CancelElevatedButtonWidget extends StatelessWidget {
+class AnotherElevatedButtonWidget extends StatelessWidget {
   final double width;
   final double height;
   final String label;
   final VoidCallback onPressed;
 
-  CancelElevatedButtonWidget({
+  AnotherElevatedButtonWidget({
     super.key,
     required this.label,
     required this.onPressed,
@@ -31,7 +31,14 @@ class CancelElevatedButtonWidget extends StatelessWidget {
         ),
 
         onPressed: onPressed,
-        child: Text(label),
+        child: Text(
+          label,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.75.sp,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
     );
   }

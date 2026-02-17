@@ -6,8 +6,10 @@ class LabelTextfieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final Widget? suffixIcon;
+  final String? Function(String?)? validator;
   final bool obscureText;
   final bool multipleLines;
+  final Function(String)? onChanged;
 
   const LabelTextfieldWidget({
     super.key,
@@ -15,8 +17,10 @@ class LabelTextfieldWidget extends StatelessWidget {
     required this.controller,
     required this.hintText,
     this.suffixIcon,
+    this.validator,
     this.obscureText = false,
     this.multipleLines = false,
+    this.onChanged,
   });
 
   @override
@@ -27,7 +31,10 @@ class LabelTextfieldWidget extends StatelessWidget {
       children: [
         Text(
           label,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         SizedBox(height: 1.15.h),
         Container(
@@ -36,20 +43,28 @@ class LabelTextfieldWidget extends StatelessWidget {
             color: Color(0xFF262626),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
-              color: Colors.yellow.withValues(alpha: 0.55),
+              color: Theme.of(
+                context,
+              ).colorScheme.primary.withValues(alpha: 0.45),
               width: 1.25,
             ),
           ),
-          child: TextFormField(
-            controller: controller,
-            obscureText: obscureText,
-            maxLines: multipleLines ? 5 : 1,
-            style: TextStyle(color: Colors.white),
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              hintText: hintText,
-              suffixIcon: suffixIcon,
-              hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.5)),
+          child: Center(
+            child: TextFormField(
+              controller: controller,
+              obscureText: obscureText,
+              maxLines: multipleLines ? 5 : 1,
+              style: TextStyle(color: Colors.white),
+              onChanged: onChanged,
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: hintText,
+                suffixIcon: suffixIcon,
+                hintStyle: TextStyle(
+                  color: Colors.white.withValues(alpha: 0.5),
+                ),
+              ),
+              validator: validator,
             ),
           ),
         ),
