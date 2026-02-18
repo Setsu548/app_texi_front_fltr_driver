@@ -10,9 +10,11 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.8
+  dio: ^5.9.1
   email_validator: ^3.0.0
   flutter:
     sdk: flutter
+  flutter_dotenv: ^6.0.0
   flutter_localization: ^0.3.3
   flutter_localizations:
     sdk: flutter
@@ -31,3 +33,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - .env

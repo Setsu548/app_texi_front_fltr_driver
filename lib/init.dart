@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:i18n_extension/i18n_extension.dart';
 import 'package:texi/core/lang/delegates_lang.dart';
@@ -7,6 +8,7 @@ import 'package:texi/main_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
   runApp(
     I18n(
       localizationsDelegates: localizationsDelegates,

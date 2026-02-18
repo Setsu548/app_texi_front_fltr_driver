@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/theme/styles_for_texts.dart';
 
-class FormHeaderWidget extends StatelessWidget {
-  const FormHeaderWidget({super.key});
+class DriverFormHeaderWidget extends StatelessWidget {
+  final String title;
+  final String description;
+  const DriverFormHeaderWidget({
+    super.key,
+    required this.title,
+    required this.description,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +19,10 @@ class FormHeaderWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            personalInformation.i18n,
-            style: StylesForTexts(context: context).headerStyle(),
-          ),
+          Text(title, style: StylesForTexts(context: context).headerStyle()),
           SizedBox(height: 1.15.h),
           Text(
-            formHeaderDescription.i18n,
+            description,
             style: StylesForTexts(context: context).bodyStyle(),
           ),
         ],

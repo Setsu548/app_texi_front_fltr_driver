@@ -40,6 +40,13 @@ const mustBeAdult = 'Debes ser mayor de edad para registrarte';
 const passwordMustBeAtLeast8Characters =
     'La contraseña debe tener al menos 8 caracteres';
 const passwordMustMatch = 'Las contraseñas no coinciden';
+const identityVerification = 'Verificación de Identidad';
+const identityVerificationDescription =
+    'Por favor, ingrese su número de identificación y suba las imágenes requeridas para verificar su identidad.';
+const driverNotFound = 'Conductor no encontrado';
+const maleI = 'Masculino';
+const femaleI = 'Femenino';
+const profession = 'Profesión';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-Mx', {
@@ -270,6 +277,46 @@ extension Localization on String {
       'es-ES': 'Las contraseñas no coinciden',
       'es-MX': 'Las contraseñas no coinciden',
       'es-BO': 'Las contraseñas no coinciden',
+    },
+    identityVerification: {
+      'en-US': 'Identity Verification',
+      'es-ES': 'Verificación de Identidad',
+      'es-MX': 'Verificación de Identidad',
+      'es-BO': 'Verificación de Identidad',
+    },
+    identityVerificationDescription: {
+      'en-US':
+          'Please enter your identification number and upload the required images to verify your identity.',
+      'es-ES':
+          'Por favor, ingrese su número de identificación y suba las imágenes requeridas para verificar su identidad.',
+      'es-MX':
+          'Por favor, ingrese su número de identificación y suba las imágenes requeridas para verificar su identidad.',
+      'es-BO':
+          'Por favor, ingrese su número de identificación y suba las imágenes requeridas para verificar su identidad.',
+    },
+    driverNotFound: {
+      'en-US': 'Driver not found',
+      'es-ES': 'Conductor no encontrado',
+      'es-MX': 'Conductor no encontrado',
+      'es-BO': 'Conductor no encontrado',
+    },
+    maleI: {
+      'en-US': 'Male',
+      'es-ES': 'Masculino',
+      'es-MX': 'Masculino',
+      'es-BO': 'Masculino',
+    },
+    femaleI: {
+      'en-US': 'Female',
+      'es-ES': 'Femenino',
+      'es-MX': 'Femenino',
+      'es-BO': 'Femenino',
+    },
+    profession: {
+      'en-US': 'Profession',
+      'es-ES': 'Profesión',
+      'es-MX': 'Profesión',
+      'es-BO': 'Profesión',
     },
   });
 

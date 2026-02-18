@@ -11,6 +11,7 @@ import 'package:texi/core/widgets/label_textfield_widget.dart';
 import 'package:texi/features/register/domain/entities/driver_entity.dart';
 import 'package:texi/features/register/presentation/providers/diver_form_provider.dart';
 import 'package:texi/features/register/presentation/widgets/driver_countries_dropdown_widget.dart';
+import 'package:texi/features/register/presentation/widgets/driver_gender_dropdown.dart';
 
 class DriverFormWidget extends ConsumerStatefulWidget {
   const DriverFormWidget({super.key});
@@ -28,9 +29,10 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
   final _addressController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  final _provinceController = TextEditingController();
-  final _cityController = TextEditingController();
-  final _genderController = TextEditingController();
+  //final _departmentController = TextEditingController();
+  final _professionController = TextEditingController();
+  //final _provinceController = TextEditingController();
+  //final _cityController = TextEditingController();
   final _birthDateController = TextEditingController();
   Widget checkPassword = SizedBox.shrink();
   Widget checkConfirmPassword = SizedBox.shrink();
@@ -44,9 +46,8 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
     _addressController.dispose();
     _passwordController.dispose();
     _confirmPasswordController.dispose();
-    _provinceController.dispose();
-    _cityController.dispose();
-    _genderController.dispose();
+    //_provinceController.dispose();
+    //_cityController.dispose();
     _birthDateController.dispose();
     super.dispose();
   }
@@ -54,6 +55,7 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
   @override
   Widget build(BuildContext context) {
     final birthDate = ref.watch(birthDateProvider);
+    final gender = ref.watch(genderProvider);
     return Form(
       key: _formKey,
       child: Column(
@@ -101,6 +103,7 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
             controller: _birthDateController,
             hintText: DatesUtilities.formatDate(birthDate),
             label: '${dateOfBirth.i18n} *',
+            readOnly: true,
             suffixIcon: IconButton(
               icon: Icon(
                 Icons.calendar_today,
@@ -132,9 +135,39 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
                   controller: _phoneController,
                   hintText: '77777777',
                   label: '${phone.i18n} *',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return requiredField.i18n;
+                    }
+                    return null;
+                  },
                 ),
               ),
             ],
+          ),
+          SizedBox(height: 1.5.h),
+          LabelTextfieldWidget(
+            controller: _professionController,
+            hintText: 'Conductor',
+            label: '${profession.i18n} *',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              return null;
+            },
+          ),
+          /* SizedBox(height: 1.5.h),
+          LabelTextfieldWidget(
+            controller: _departmentController,
+            hintText: 'Cochabamba',
+            label: '${department.i18n} *',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              return null;
+            },
           ),
           SizedBox(height: 1.5.h),
           Row(
@@ -157,7 +190,7 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
                 ),
               ),
             ],
-          ),
+          ), */
           SizedBox(height: 1.5.h),
           LabelTextfieldWidget(
             controller: _addressController,
@@ -171,11 +204,7 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
             },
           ),
           SizedBox(height: 1.5.h),
-          LabelTextfieldWidget(
-            controller: _genderController,
-            hintText: 'Masculino',
-            label: '${gender.i18n} *',
-          ),
+          DriverGenderDropdown(),
           SizedBox(height: 1.5.h),
           LabelTextfieldWidget(
             controller: _passwordController,
@@ -249,17 +278,18 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
             onPressed: () {
               if (_formKey.currentState!.validate()) {
                 final driver = DriverEntity(
-                  name: _nameController.text,
-                  lastName: _lastNameController.text,
-                  email: _emailController.text,
-                  phone: _phoneController.text,
-                  address: _addressController.text,
-                  password: _passwordController.text,
-                  province: _provinceController.text,
-                  city: _cityController.text,
-                  gender: _genderController.text,
+                  firstName: _nameController.text.trim(),
+                  lastName: _lastNameController.text.trim(),
+                  email: _emailController.text.trim(),
+                  phoneNumber: _phoneController.text.trim(),
+                  address: _addressController.text.trim(),
+                  password: _passwordController.text.trim(),
+                  /* province: _provinceController.text, */
+                  /* city: _cityController.text, */
+                  gender: gender.genders,
                   birthDate: _birthDateController.text,
-                  countryCode: ref.watch(localCountryProvider).dialCode,
+                  profession: _professionController.text.trim(),
+                  localityId: 0,
                 );
               }
             },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
+import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/features/register/presentation/widgets/driver_form_header_widget.dart';
 import 'package:texi/features/register/presentation/widgets/driver_form_widget.dart';
 
@@ -23,7 +24,10 @@ class _DriverFormPageState extends ConsumerState<DriverFormPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FormHeaderWidget(),
+              DriverFormHeaderWidget(
+                title: personalInformation.i18n,
+                description: formHeaderDescription.i18n,
+              ),
               SizedBox(height: 2.h),
               Expanded(child: SingleChildScrollView(child: DriverFormWidget())),
             ],

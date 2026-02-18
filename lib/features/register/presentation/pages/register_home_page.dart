@@ -27,7 +27,7 @@ class RegisterHomePage extends StatelessWidget {
                 SizedBox(height: 2.h),
                 ElevatedButtonWidget(
                   label: startRegister.i18n,
-                  iconImageAfter: Icon(Icons.arrow_forward),
+                  iconImageAfter: Icon(Icons.chevron_right),
                   onPressed: () => context.go('/registerHome/personalInfo'),
                 ),
                 SizedBox(height: 2.h),

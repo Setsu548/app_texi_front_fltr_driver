@@ -9,6 +9,7 @@ class LabelTextfieldWidget extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool obscureText;
   final bool multipleLines;
+  final bool? readOnly;
   final Function(String)? onChanged;
 
   const LabelTextfieldWidget({
@@ -20,6 +21,7 @@ class LabelTextfieldWidget extends StatelessWidget {
     this.validator,
     this.obscureText = false,
     this.multipleLines = false,
+    this.readOnly = false,
     this.onChanged,
   });
 
@@ -54,6 +56,7 @@ class LabelTextfieldWidget extends StatelessWidget {
               controller: controller,
               obscureText: obscureText,
               maxLines: multipleLines ? 5 : 1,
+              readOnly: readOnly!,
               style: TextStyle(color: Colors.white),
               onChanged: onChanged,
               decoration: InputDecoration(
