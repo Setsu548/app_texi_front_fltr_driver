@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi/core/router/app_router.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/label_textfield_widget.dart';
@@ -70,7 +71,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
               //Botón de registro
               TextButton(
                 onPressed: () {
-                  context.go('/registerHome');
+                  context.go(AppRouter.registerHomeLocation);
                 },
                 child: Text(registerOpcion.i18n),
               ),
@@ -129,9 +130,10 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                   final cockieDriver = await ValidateCokieDriver()
                       .validateCokieDriver(_phoneController.text);
                   if (cockieDriver == null) {
-                    _showMessage('No existe registro con ese número');
+                    _showMessage(doNotExistRegister.i18n);
                   } else {
-                    _showMessage('Complete el formulario de registro');
+                    _showMessage(completeProcessRegistration.i18n);
+                    _navigateToIdentityPage();
                   }
                 },
               ),
@@ -146,5 +148,9 @@ class _AuthPageState extends ConsumerState<AuthPage> {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(customSnackBar(message, context));
+  }
+
+  void _navigateToIdentityPage() {
+    context.go('/registerHome/identity');
   }
 }
