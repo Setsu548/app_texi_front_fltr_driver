@@ -9,6 +9,7 @@ environment:
   sdk: ^3.11.0
 
 dependencies:
+  connectivity_plus: ^7.0.0
   cupertino_icons: ^1.0.8
   dio: ^5.9.1
   dotted_border: ^3.1.0
