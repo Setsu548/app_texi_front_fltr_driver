@@ -3,9 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/label_textfield_widget.dart';
 import 'package:texi/features/auth/presentation/providers/auth_providers.dart';
+import 'package:texi/features/auth/services/validate_cokie_driver.dart';
+import 'package:texi/features/register/presentation/providers/driver_form_provider.dart';
 
 class AuthPage extends ConsumerStatefulWidget {
   const AuthPage({super.key});
@@ -18,9 +21,12 @@ class _AuthPageState extends ConsumerState<AuthPage> {
   final _formKey = GlobalKey<FormState>();
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final hidePassword = ref.watch(hidePasswordProvider);
+    final countryValue = ref.watch(localCountryProvider);
+
     return Scaffold(
       appBar: null,
       //Fondo de pantalla
@@ -78,7 +84,11 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                       LabelTextfieldWidget(
                         label: phone.i18n,
                         controller: _phoneController,
-                        hintText: '+591 71171741',
+                        hintText: '${countryValue.dialCode} 77777777',
+                        onTap: () => setState(() {
+                          _phoneController.text = countryValue.dialCode;
+                        }),
+                        isBold: true,
                       ),
                       SizedBox(height: 2.5.h),
                       //Campo de texto para la contraseña
@@ -87,6 +97,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                         controller: _passwordController,
                         hintText: '********',
                         obscureText: hidePassword,
+                        isBold: true,
                         suffixIcon: IconButton(
                           icon: Icon(
                             hidePassword
@@ -112,11 +123,28 @@ class _AuthPageState extends ConsumerState<AuthPage> {
               ),
               SizedBox(height: 10.h),
               //Botón de iniciar sesión
-              ElevatedButtonWidget(label: login.i18n, onPressed: () {}),
+              ElevatedButtonWidget(
+                label: login.i18n,
+                onPressed: () async {
+                  final cockieDriver = await ValidateCokieDriver()
+                      .validateCokieDriver(_phoneController.text);
+                  if (cockieDriver == null) {
+                    _showMessage('No existe registro con ese número');
+                  } else {
+                    _showMessage('Complete el formulario de registro');
+                  }
+                },
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _showMessage(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(customSnackBar(message, context));
   }
 }
