@@ -8,7 +8,7 @@ class RegisterHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: 22.w,
       /* decoration: BoxDecoration(

@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:phonecodes/phonecodes.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/features/register/presentation/providers/diver_form_provider.dart';
+import 'package:texi/features/register/presentation/providers/driver_form_provider.dart';
 
 class DriverCountriesDropdownWidget extends ConsumerStatefulWidget {
   const DriverCountriesDropdownWidget({super.key});
@@ -35,7 +35,9 @@ class _DriverCountriesDropdownWidgetState
           width: 25.w,
           padding: EdgeInsets.symmetric(horizontal: 2.w),
           decoration: BoxDecoration(
-            color: Color(0xFF262626),
+            color: Theme.of(
+              context,
+            ).colorScheme.tertiary.withValues(alpha: 0.2),
             border: Border.all(
               color: Theme.of(
                 context,

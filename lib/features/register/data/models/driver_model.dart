@@ -44,7 +44,7 @@ class DriverModel extends DriverEntity {
       /* 'province': province, */
       /* 'city': city, */
       'gender': gender,
-      'birthDate': birthDate,
+      'birthDate': birthDate.toIso8601String(),
       'profession': profession,
       'localityId': localityId,
     };

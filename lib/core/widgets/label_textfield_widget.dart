@@ -42,7 +42,9 @@ class LabelTextfieldWidget extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 2.45.w),
           decoration: BoxDecoration(
-            color: Color(0xFF262626),
+            color: Theme.of(
+              context,
+            ).colorScheme.tertiary.withValues(alpha: 0.2),
             borderRadius: BorderRadius.circular(10),
             border: Border.all(
               color: Theme.of(

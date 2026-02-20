@@ -13,3 +13,29 @@ enum Gender {
     }
   }
 }
+
+enum LicenseCategory {
+  a,
+  b,
+  c,
+  m,
+  p,
+  t;
+
+  String get licenseCategory {
+    switch (this) {
+      case LicenseCategory.a:
+        return 'A';
+      case LicenseCategory.b:
+        return 'B';
+      case LicenseCategory.c:
+        return 'C';
+      case LicenseCategory.m:
+        return 'M';
+      case LicenseCategory.p:
+        return 'P';
+      case LicenseCategory.t:
+        return 'T';
+    }
+  }
+}

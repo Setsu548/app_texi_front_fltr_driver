@@ -8,7 +8,7 @@ class DriverEntity {
   /* final String province;
   final String city; */
   final String gender;
-  final String birthDate;
+  final DateTime birthDate;
   final String profession;
   final int localityId;
 

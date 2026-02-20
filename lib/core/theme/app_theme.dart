@@ -7,6 +7,8 @@ class AppTheme {
   static const Color _backgroundColor = Color(0xFF1a1a1a);
   static const Color _onBackgroundColor = Color(0xFFFFFFFF);
   static const Color _onSurface = Color(0xFFFFFFFF);
+  static const Color _secondary = Color(0xFFFFFFFF);
+  static const Color _tertiary = Color(0xFF000000);
 
   static ThemeData get lightTheme {
     return ThemeData(
@@ -17,6 +19,8 @@ class AppTheme {
         onPrimary: _onPrimaryColor,
         onSurface: _onSurface,
         surface: _backgroundColor,
+        secondary: _secondary,
+        tertiary: _tertiary,
       ),
       scaffoldBackgroundColor: _backgroundColor,
       textTheme: const TextTheme(

@@ -47,6 +47,28 @@ const driverNotFound = 'Conductor no encontrado';
 const maleI = 'Masculino';
 const femaleI = 'Femenino';
 const profession = 'Profesión';
+const identificationNumber = 'Número de Identificación';
+const identificationNumberDescription = 'Ingrese su número de identificación';
+const identificationText =
+    'Ingrese el número que se encuentra en su documento de identidad';
+const frontIdentification = 'Identificación Frontal';
+const backIdentification = 'Identificación Posterior';
+const identificationMessage = 'Asegúrese que toda la información sea visible';
+const takeAPhoto = 'Tomar una foto';
+const uploadPhoto = 'Subir una foto';
+const profileImage = 'Foto de Perfil';
+const profileImageDescription = 'Tome una foto clara de su rostro';
+const continueLater = 'Continuar más tarde';
+const licenseVerification = 'Verificación de Licencia';
+const licenseVerificationDescription =
+    'Por favor sube las imágenes de tu documento para verificar tu licencia.';
+const category = 'Categoría';
+const categoryLicense = 'Categoría de Licencia';
+const categoryLicenseDescription =
+    'Selecciona la categoría que pertenece a tu licencia';
+const driverConfirmation = '¡Datos del registro!';
+const driverConfirmationDescription =
+    'Por favor verifique que los datos que se enviarán a su revisión son los correctos.';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-Mx', {
@@ -317,6 +339,124 @@ extension Localization on String {
       'es-ES': 'Profesión',
       'es-MX': 'Profesión',
       'es-BO': 'Profesión',
+    },
+    identificationNumber: {
+      'en-US': 'Identification Number',
+      'es-ES': 'Número de Identificación',
+      'es-MX': 'Número de Identificación',
+      'es-BO': 'Número de Identificación',
+    },
+    identificationNumberDescription: {
+      'en-US': 'Enter your identification number',
+      'es-ES': 'Ingrese su número de identificación',
+      'es-MX': 'Ingrese su número de identificación',
+      'es-BO': 'Ingrese su número de identificación',
+    },
+    identificationText: {
+      'en-US': 'Enter the number that appears on your identification document',
+      'es-ES':
+          'Ingrese el número que se encuentra en su documento de identidad',
+      'es-MX':
+          'Ingrese el número que se encuentra en su documento de identidad',
+      'es-BO':
+          'Ingrese el número que se encuentra en su documento de identidad',
+    },
+    frontIdentification: {
+      'en-US': 'Front Identification',
+      'es-ES': 'Identificación Frontal',
+      'es-MX': 'Identificación Frontal',
+      'es-BO': 'Identificación Frontal',
+    },
+    backIdentification: {
+      'en-US': 'Back Identification',
+      'es-ES': 'Identificación Posterior',
+      'es-MX': 'Identificación Posterior',
+      'es-BO': 'Identificación Posterior',
+    },
+    identificationMessage: {
+      'en-US': 'Make sure all information is visible',
+      'es-ES': 'Asegúrese que toda la información sea visible',
+      'es-MX': 'Asegúrese que toda la información sea visible',
+      'es-BO': 'Asegúrese que toda la información sea visible',
+    },
+    takeAPhoto: {
+      'en-US': 'Take a photo',
+      'es-ES': 'Tomar una foto',
+      'es-MX': 'Tomar una foto',
+      'es-BO': 'Tomar una foto',
+    },
+    uploadPhoto: {
+      'en-US': 'Upload a photo',
+      'es-ES': 'Subir una foto',
+      'es-MX': 'Subir una foto',
+      'es-BO': 'Subir una foto',
+    },
+    profileImage: {
+      'en-US': 'Profile Image',
+      'es-ES': 'Foto de Perfil',
+      'es-MX': 'Foto de Perfil',
+      'es-BO': 'Foto de Perfil',
+    },
+    profileImageDescription: {
+      'en-US': 'Take a clear photo of your face',
+      'es-ES': 'Tome una foto clara de su rostro',
+      'es-MX': 'Tome una foto clara de su rostro',
+      'es-BO': 'Tome una foto clara de su rostro',
+    },
+    continueLater: {
+      'en-US': 'Continue later',
+      'es-ES': 'Continuar más tarde',
+      'es-MX': 'Continuar más tarde',
+      'es-BO': 'Continuar más tarde',
+    },
+    licenseVerification: {
+      'en-US': 'License Verification',
+      'es-ES': 'Verificación de Licencia',
+      'es-MX': 'Verificación de Licencia',
+      'es-BO': 'Verificación de Licencia',
+    },
+    licenseVerificationDescription: {
+      'en-US':
+          'Please upload the images of your document to verify your license.',
+      'es-ES':
+          'Por favor suba las imágenes de su documento para verificar su licencia.',
+      'es-MX':
+          'Por favor suba las imágenes de su documento para verificar su licencia.',
+      'es-BO':
+          'Por favor suba las imágenes de su documento para verificar su licencia.',
+    },
+    categoryLicense: {
+      'en-US': 'License Category',
+      'es-ES': 'Categoría de Licencia',
+      'es-MX': 'Categoría de Licencia',
+      'es-BO': 'Categoría de Licencia',
+    },
+    categoryLicenseDescription: {
+      'en-US': 'Select the category that belongs to your license',
+      'es-ES': 'Selecciona la categoría que pertenece a tu licencia',
+      'es-MX': 'Selecciona la categoría que pertenece a tu licencia',
+      'es-BO': 'Selecciona la categoría que pertenece a tu licencia',
+    },
+    category: {
+      'en-US': 'Category',
+      'es-ES': 'Categoría',
+      'es-MX': 'Categoría',
+      'es-BO': 'Categoría',
+    },
+    driverConfirmation: {
+      'en-US': 'Registration Data!',
+      'es-ES': '¡Datos del registro!',
+      'es-MX': '¡Datos del registro!',
+      'es-BO': '¡Datos del registro!',
+    },
+    driverConfirmationDescription: {
+      'en-US': 'Please verify that the data sent for review is correct.',
+      'es-ES':
+          'Por favor verifique que los datos que se enviarán a su revisión son los correctos.',
+      'es-MX':
+          'Por favor verifique que los datos que se enviarán a su revisión son los correctos.',
+      'es-BO':
+          'Por favor verifique que los datos que se enviarán a su revisión son los correctos.',
     },
   });
 

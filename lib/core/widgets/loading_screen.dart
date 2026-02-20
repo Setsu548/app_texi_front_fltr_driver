@@ -5,8 +5,11 @@ class LoadingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox.shrink(
-      child: Center(child: CircularProgressIndicator()),
+    return SizedBox.expand(
+      child: Container(
+        color: Colors.black.withValues(alpha: 0.5),
+        child: const Center(child: CircularProgressIndicator()),
+      ),
     );
   }
 }
