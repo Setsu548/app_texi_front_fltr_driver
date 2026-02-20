@@ -71,7 +71,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
               //Botón de registro
               TextButton(
                 onPressed: () {
-                  context.go(AppRouter.registerHomeLocation);
+                  context.push(AppRouter.registerHomeLocation);
                 },
                 child: Text(registerOpcion.i18n),
               ),
