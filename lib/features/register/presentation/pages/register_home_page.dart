@@ -36,7 +36,7 @@ class RegisterHomePage extends StatelessWidget {
                 AnotherElevatedButtonWidget(
                   label: cancel.i18n,
                   onPressed: () {
-                    context.go('/');
+                    context.pop();
                   },
                 ),
               ],
