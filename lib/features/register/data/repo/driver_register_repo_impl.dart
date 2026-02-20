@@ -15,21 +15,17 @@ class DriverRegisterRepoImpl implements DriverRegisterRepo {
         data: DriverModel.fromEntity(driver).toJson(),
       );
       if (response.statusCode != 200) {
-        return DriverDataResModel.fromError(
-          success: false,
-          statusCode: response.statusCode!,
-          code: 'Fail',
-          message: 'Fail',
-          data: null,
-        );
+        print('RayOOOOOOOOSSSSS!!!!');
+        return DriverDataResModel.fromError(response.data);
       }
       return DriverDataResModel.fromJson(response.data);
     } catch (e) {
-      return DriverDataResModel.fromError(
+      print('salta aqui!!!!!!');
+      return DriverDataResModel.fromErrorCatch(
         success: false,
         statusCode: 500,
         code: 'Fail',
-        message: 'Fail',
+        message: e.toString(),
         data: null,
       );
     }

@@ -65,11 +65,16 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
     ref.listen(driverRegisterProvider, (previous, next) {
       next.whenOrNull(
         data: (data) {
-          if (data != null) {
-            SecureStorageService().saveDriver(data.data!);
+          if (data?.success == true) {
+            SecureStorageService().saveDriver(data!.data!);
             ScaffoldMessenger.of(
               context,
             ).showSnackBar(customSnackBar(data.message, context));
+            context.push('/registerHome/identity');
+          } else {
+            ScaffoldMessenger.of(
+              context,
+            ).showSnackBar(customSnackBar(data!.message, context));
           }
         },
         error: (error, stack) {
@@ -302,7 +307,7 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
                 iconImageAfter: Icon(Icons.chevron_right),
                 label: continueButton.i18n,
                 onPressed: () {
-                  /* if (_formKey.currentState!.validate()) {
+                  if (_formKey.currentState!.validate()) {
                     final driver = DriverEntity(
                       firstName: _nameController.text.trim(),
                       lastName: _lastNameController.text.trim(),
@@ -312,14 +317,13 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
                       password: _passwordController.text.trim(),
                       /* province: _provinceController.text, */
                       /* city: _cityController.text, */
-                      gender: gender.genders,
-                      birthDate: DateTime.parse(_birthDateController.text),
+                      gender: gender.genderToSave,
+                      birthDate: birthDate,
                       profession: _professionController.text.trim(),
-                      localityId: 0,
+                      localityId: 50,
                     );
                     ref.read(driverRegisterProvider.notifier).register(driver);
-                  } */
-                  context.push('/registerHome/identity');
+                  }
                 },
               ),
               SizedBox(height: 1.5.h),

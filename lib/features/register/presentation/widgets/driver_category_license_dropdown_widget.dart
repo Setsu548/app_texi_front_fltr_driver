@@ -54,7 +54,7 @@ class _DriverCategoryLicenseDropdownWidgetState
               items: licenseCategories.map((licenseCategory) {
                 return DropdownMenuItem(
                   value: licenseCategory,
-                  child: Text(licenseCategory.licenseCategory),
+                  child: Text('Categoria ${licenseCategory.licenseCategory}'),
                 );
               }).toList(),
               onChanged: (value) {

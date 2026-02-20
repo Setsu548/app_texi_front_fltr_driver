@@ -8,6 +8,7 @@ class DriverDataResModel extends DataApiResponse<DriverDataModel> {
     required super.code,
     required super.message,
     required super.data,
+    required super.error,
   });
 
   factory DriverDataResModel.fromJson(Map<String, dynamic> json) {
@@ -19,10 +20,26 @@ class DriverDataResModel extends DataApiResponse<DriverDataModel> {
       data: json['data'] != null
           ? DriverDataModel.fromJson(json['data'])
           : null,
+      error: json['error'] != null
+          ? ErrorResponse.fromJson(json['error'])
+          : null,
     );
   }
 
-  factory DriverDataResModel.fromError({
+  factory DriverDataResModel.fromError(Map<String, dynamic> json) {
+    return DriverDataResModel(
+      success: json['success'] ?? false,
+      statusCode: json['status_code'] ?? 0,
+      code: json['code'] ?? '',
+      message: json['message'] ?? '',
+      data: null,
+      error: json['error'] != null
+          ? ErrorResponse.fromJson(json['error'])
+          : null,
+    );
+  }
+
+  factory DriverDataResModel.fromErrorCatch({
     required bool success,
     required int statusCode,
     required String code,
@@ -33,7 +50,8 @@ class DriverDataResModel extends DataApiResponse<DriverDataModel> {
     statusCode: statusCode,
     code: code,
     message: message,
-    data: data,
+    data: null,
+    error: ErrorResponse(message: message, details: ''),
   );
 }
 

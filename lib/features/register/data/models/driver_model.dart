@@ -1,3 +1,4 @@
+import 'package:texi/core/utils/dates_utilities.dart';
 import 'package:texi/features/register/domain/entities/driver_entity.dart';
 
 class DriverModel extends DriverEntity {
@@ -35,18 +36,18 @@ class DriverModel extends DriverEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      'firstName': firstName,
-      'lastName': lastName,
+      'first_name': firstName,
+      'last_name': lastName,
       'email': email,
-      'phoneNumber': phoneNumber,
+      'phone_number': phoneNumber,
       'address': address,
       'password': password,
       /* 'province': province, */
       /* 'city': city, */
       'gender': gender,
-      'birthDate': birthDate.toIso8601String(),
+      'birth_date': DatesUtilities.dateToSave(birthDate),
       'profession': profession,
-      'localityId': localityId,
+      'locality_id': localityId,
     };
   }
 
@@ -61,7 +62,7 @@ class DriverModel extends DriverEntity {
       /* province: json['province'], */
       /* city: json['city'], */
       gender: json['gender'],
-      birthDate: json['birthDate'],
+      birthDate: DateTime.parse(json['birthDate']),
       profession: json['profession'],
       localityId: json['localityId'],
     );

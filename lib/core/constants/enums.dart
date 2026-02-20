@@ -12,6 +12,15 @@ enum Gender {
         return femaleI.i18n;
     }
   }
+
+  String get genderToSave {
+    switch (this) {
+      case Gender.male:
+        return 'male';
+      case Gender.female:
+        return 'female';
+    }
+  }
 }
 
 enum LicenseCategory {

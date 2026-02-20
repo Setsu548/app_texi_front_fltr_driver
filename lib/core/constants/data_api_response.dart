@@ -4,6 +4,7 @@ class DataApiResponse<T> {
   final String code;
   final String message;
   final T? data;
+  final ErrorResponse? error;
 
   DataApiResponse({
     required this.success,
@@ -11,6 +12,7 @@ class DataApiResponse<T> {
     required this.code,
     required this.message,
     required this.data,
+    required this.error,
   });
 
   factory DataApiResponse.fromJson(Map<String, dynamic> json) =>
@@ -20,6 +22,7 @@ class DataApiResponse<T> {
         code: json['code'] ?? '',
         message: json['message'] ?? '',
         data: json['data'] as T,
+        error: json['error'] as ErrorResponse,
       );
 
   factory DataApiResponse.fromError({
@@ -27,12 +30,25 @@ class DataApiResponse<T> {
     required int statusCode,
     required String code,
     required String message,
-    required T? data,
+    required ErrorResponse? error,
   }) => DataApiResponse(
     success: success,
     statusCode: statusCode,
     code: code,
     message: message,
-    data: data,
+    data: null,
+    error: error,
+  );
+}
+
+class ErrorResponse {
+  final String message;
+  final String details;
+
+  ErrorResponse({required this.message, required this.details});
+
+  factory ErrorResponse.fromJson(Map<String, dynamic> json) => ErrorResponse(
+    message: json['message'] ?? '',
+    details: json['details'] ?? '',
   );
 }
