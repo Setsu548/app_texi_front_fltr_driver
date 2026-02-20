@@ -69,6 +69,8 @@ const categoryLicenseDescription =
 const driverConfirmation = '¡Datos del registro!';
 const driverConfirmationDescription =
     'Por favor verifique que los datos que se enviarán a su revisión son los correctos.';
+const doNotExistRegister = 'No existe registro con ese número';
+const completeProcessRegistration = 'Complete el proceso de registro';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-Mx', {
@@ -457,6 +459,18 @@ extension Localization on String {
           'Por favor verifique que los datos que se enviarán a su revisión son los correctos.',
       'es-BO':
           'Por favor verifique que los datos que se enviarán a su revisión son los correctos.',
+    },
+    doNotExistRegister: {
+      'en-US': 'Do not exist register with this number',
+      'es-ES': 'No existe registro con ese número',
+      'es-MX': 'No existe registro con ese número',
+      'es-BO': 'No existe registro con ese número',
+    },
+    completeProcessRegistration: {
+      'en-US': 'Complete the registration process',
+      'es-ES': 'Complete el proceso de registro',
+      'es-MX': 'Complete el proceso de registro',
+      'es-BO': 'Complete el proceso de registro',
     },
   });
 
