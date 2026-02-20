@@ -10,19 +10,26 @@ import 'package:texi/features/register/presentation/pages/register_home_page.dar
 import 'package:texi/features/register/presentation/pages/driver_form_page.dart';
 
 class AppRouter {
+  static final String initialLocation = '/';
+  static final String registerHomeLocation = '/registerHome';
+  static final String registerPersonalInfoLocation = 'personalInfo';
+  static final String registerIdentityLocation = 'identity';
+  static final String registerLicenseLocation = 'license';
+  static final String registerConfirmationLocation = 'confirmation';
+
   static final routes = GoRouter(
     routes: [
-      GoRoute(path: '/', builder: (context, state) => AuthPage()),
+      GoRoute(path: initialLocation, builder: (context, state) => AuthPage()),
       GoRoute(
-        path: '/registerHome',
+        path: registerHomeLocation,
         builder: (context, state) => RegisterHomePage(),
         routes: [
           GoRoute(
-            path: 'personalInfo',
+            path: registerPersonalInfoLocation,
             builder: (context, state) => DriverFormPage(),
           ),
           GoRoute(
-            path: 'identity',
+            path: registerIdentityLocation,
             builder: (context, state) {
               return DriverIdentityPage();
               /* final driver = state.extra;
@@ -33,13 +40,13 @@ class AppRouter {
             },
           ),
           GoRoute(
-            path: 'license',
+            path: registerLicenseLocation,
             builder: (context, state) {
               return DriverLicensePage();
             },
           ),
           GoRoute(
-            path: 'confirmation',
+            path: registerConfirmationLocation,
             builder: (context, state) {
               return DriverConfirmationPage();
             },
