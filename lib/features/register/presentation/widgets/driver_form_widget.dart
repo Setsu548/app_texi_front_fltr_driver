@@ -6,16 +6,12 @@ import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/utils/dates_utilities.dart';
 import 'package:texi/core/widgets/another_elevated_button_widget.dart';
-import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/label_textfield_widget.dart';
 import 'package:texi/features/register/domain/entities/driver_entity.dart';
 import 'package:texi/features/register/presentation/providers/driver_form_provider.dart';
 import 'package:texi/features/register/presentation/widgets/driver_countries_dropdown_widget.dart';
 import 'package:texi/features/register/presentation/widgets/driver_gender_dropdown.dart';
-import 'package:texi/core/widgets/loading_screen.dart';
-
-import 'package:texi/core/utils/secure_storage_service.dart';
 
 class DriverFormWidget extends ConsumerStatefulWidget {
   const DriverFormWidget({super.key});
@@ -60,135 +56,112 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
   Widget build(BuildContext context) {
     final birthDate = ref.watch(birthDateProvider);
     final gender = ref.watch(genderProvider);
-    final registerState = ref.watch(driverRegisterProvider);
-
-    ref.listen(driverRegisterProvider, (previous, next) {
-      next.whenOrNull(
-        data: (data) {
-          if (data?.success == true) {
-            SecureStorageService().saveDriver(data!.data!);
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(customSnackBar(data.message, context));
-            context.push('/registerHome/identity');
-          } else {
-            ScaffoldMessenger.of(
-              context,
-            ).showSnackBar(customSnackBar(data!.message, context));
-          }
-        },
-        error: (error, stack) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(customSnackBar('Error: $error', context));
-        },
-      );
-    });
-
-    return Stack(
-      children: [
-        Form(
-          key: _formKey,
-          child: Column(
+    final countryValue = ref.watch(localCountryProvider);
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: [
+          LabelTextfieldWidget(
+            controller: _nameController,
+            hintText: 'Bruce',
+            label: '${names.i18n} *',
+            textCapitalization: TextCapitalization.words,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              return null;
+            },
+          ),
+          SizedBox(height: 1.5.h),
+          LabelTextfieldWidget(
+            controller: _lastNameController,
+            hintText: 'Wayne',
+            label: '${lastName.i18n} *',
+            textCapitalization: TextCapitalization.words,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              return null;
+            },
+          ),
+          SizedBox(height: 1.5.h),
+          LabelTextfieldWidget(
+            controller: _emailController,
+            hintText: 'email@email.com',
+            label: '${email.i18n} *',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              if (!EmailValidator.validate(value)) {
+                return invalidEmail.i18n;
+              }
+              return null;
+            },
+          ),
+          SizedBox(height: 1.5.h),
+          LabelTextfieldWidget(
+            controller: _birthDateController,
+            hintText: DatesUtilities.formatDate(birthDate),
+            label: '${dateOfBirth.i18n} *',
+            readOnly: true,
+            suffixIcon: IconButton(
+              icon: Icon(
+                Icons.calendar_today,
+                size: 17.5.sp,
+                color: Theme.of(
+                  context,
+                ).colorScheme.onSurface.withValues(alpha: 0.5),
+              ),
+              onPressed: () => _selectDate(context, birthDate),
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              if (!DatesUtilities.isAdult(birthDate)) {
+                return mustBeAdult.i18n;
+              }
+              return null;
+            },
+          ),
+          SizedBox(height: 1.5.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              LabelTextfieldWidget(
-                controller: _nameController,
-                hintText: 'Bruce',
-                label: '${names.i18n} *',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return requiredField.i18n;
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 1.5.h),
-              LabelTextfieldWidget(
-                controller: _lastNameController,
-                hintText: 'Wayne',
-                label: '${lastName.i18n} *',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return requiredField.i18n;
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 1.5.h),
-              LabelTextfieldWidget(
-                controller: _emailController,
-                hintText: 'email@email.com',
-                label: '${email.i18n} *',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return requiredField.i18n;
-                  }
-                  if (!EmailValidator.validate(value)) {
-                    return invalidEmail.i18n;
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 1.5.h),
-              LabelTextfieldWidget(
-                controller: _birthDateController,
-                hintText: DatesUtilities.formatDate(birthDate),
-                label: '${dateOfBirth.i18n} *',
-                readOnly: true,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    Icons.calendar_today,
-                    size: 17.5.sp,
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.onSurface.withValues(alpha: 0.5),
-                  ),
-                  onPressed: () => _selectDate(context, birthDate),
+              DriverCountriesDropdownWidget(),
+              SizedBox(
+                width: 60.w,
+                child: LabelTextfieldWidget(
+                  controller: _phoneController,
+                  hintText: '77777777',
+                  label: '${phone.i18n} *',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return requiredField.i18n;
+                    }
+                    return null;
+                  },
                 ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return requiredField.i18n;
-                  }
-                  if (!DatesUtilities.isAdult(birthDate)) {
-                    return mustBeAdult.i18n;
-                  }
-                  return null;
-                },
               ),
-              SizedBox(height: 1.5.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  DriverCountriesDropdownWidget(),
-                  SizedBox(
-                    width: 60.w,
-                    child: LabelTextfieldWidget(
-                      controller: _phoneController,
-                      hintText: '77777777',
-                      label: '${phone.i18n} *',
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return requiredField.i18n;
-                        }
-                        return null;
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 1.5.h),
-              LabelTextfieldWidget(
-                controller: _professionController,
-                hintText: 'Conductor',
-                label: '${profession.i18n} *',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return requiredField.i18n;
-                  }
-                  return null;
-                },
-              ),
-              /* SizedBox(height: 1.5.h),
+            ],
+          ),
+          SizedBox(height: 1.5.h),
+          LabelTextfieldWidget(
+            controller: _professionController,
+            hintText: 'Conductor',
+            textCapitalization: TextCapitalization.words,
+            label: '${profession.i18n} *',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              return null;
+            },
+          ),
+          /* SizedBox(height: 1.5.h),
           LabelTextfieldWidget(
             controller: _departmentController,
             hintText: 'Cochabamba',
@@ -222,122 +195,120 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
               ),
             ],
           ), */
-              SizedBox(height: 1.5.h),
-              LabelTextfieldWidget(
-                controller: _addressController,
-                hintText: 'Calle 123 #45-67',
-                label: '${address.i18n} *',
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return requiredField.i18n;
-                  }
-                  return null;
-                },
-              ),
-              SizedBox(height: 1.5.h),
-              DriverGenderDropdown(),
-              SizedBox(height: 1.5.h),
-              LabelTextfieldWidget(
-                controller: _passwordController,
-                hintText: '********',
-                label: '${password.i18n} *',
-                obscureText: true,
-                suffixIcon: checkPassword,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return requiredField.i18n;
-                  }
-                  if (value.length < 8) {
-                    return passwordMustBeAtLeast8Characters.i18n;
-                  }
-                  return null;
-                },
-                onChanged: (value) {
-                  if (value.length < 8) {
-                    setState(() {
-                      checkPassword = SizedBox.shrink();
-                    });
-                  } else {
-                    setState(() {
-                      checkPassword = Icon(
-                        Icons.check_circle,
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.primary.withValues(alpha: 0.5),
-                      );
-                    });
-                  }
-                },
-              ),
-              SizedBox(height: 1.5.h),
-              LabelTextfieldWidget(
-                controller: _confirmPasswordController,
-                hintText: '********',
-                label: '${confirmPassword.i18n} *',
-                obscureText: true,
-                suffixIcon: checkConfirmPassword,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return requiredField.i18n;
-                  }
-                  if (value != _passwordController.text) {
-                    return passwordMustMatch.i18n;
-                  }
-                  return null;
-                },
-                onChanged: (value) {
-                  if (value == _passwordController.text) {
-                    setState(() {
-                      checkConfirmPassword = Icon(
-                        Icons.check_circle,
-                        color: Theme.of(
-                          context,
-                        ).colorScheme.primary.withValues(alpha: 0.5),
-                      );
-                    });
-                  } else {
-                    setState(() {
-                      checkConfirmPassword = SizedBox.shrink();
-                    });
-                  }
-                },
-              ),
-              SizedBox(height: 1.5.h),
-              ElevatedButtonWidget(
-                iconImageAfter: Icon(Icons.chevron_right),
-                label: continueButton.i18n,
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    final driver = DriverEntity(
-                      firstName: _nameController.text.trim(),
-                      lastName: _lastNameController.text.trim(),
-                      email: _emailController.text.trim(),
-                      phoneNumber: _phoneController.text.trim(),
-                      address: _addressController.text.trim(),
-                      password: _passwordController.text.trim(),
-                      /* province: _provinceController.text, */
-                      /* city: _cityController.text, */
-                      gender: gender.genderToSave,
-                      birthDate: birthDate,
-                      profession: _professionController.text.trim(),
-                      localityId: 50,
-                    );
-                    ref.read(driverRegisterProvider.notifier).register(driver);
-                  }
-                },
-              ),
-              SizedBox(height: 1.5.h),
-              AnotherElevatedButtonWidget(
-                label: cancel.i18n,
-                onPressed: () => context.pop(),
-              ),
-              SizedBox(height: 1.5.h),
-            ],
+          SizedBox(height: 1.5.h),
+          LabelTextfieldWidget(
+            controller: _addressController,
+            hintText: 'Calle 123 #45-67',
+            label: '${address.i18n} *',
+            textCapitalization: TextCapitalization.words,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              return null;
+            },
           ),
-        ),
-        if (registerState.isLoading)
-          const Positioned.fill(child: LoadingScreen()),
-      ],
+          SizedBox(height: 1.5.h),
+          DriverGenderDropdown(),
+          SizedBox(height: 1.5.h),
+          LabelTextfieldWidget(
+            controller: _passwordController,
+            hintText: '********',
+            label: '${password.i18n} *',
+            obscureText: true,
+            suffixIcon: checkPassword,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              if (value.length < 8) {
+                return passwordMustBeAtLeast8Characters.i18n;
+              }
+              return null;
+            },
+            onChanged: (value) {
+              if (value.length < 8) {
+                setState(() {
+                  checkPassword = SizedBox.shrink();
+                });
+              } else {
+                setState(() {
+                  checkPassword = Icon(
+                    Icons.check_circle,
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.primary.withValues(alpha: 0.5),
+                  );
+                });
+              }
+            },
+          ),
+          SizedBox(height: 1.5.h),
+          LabelTextfieldWidget(
+            controller: _confirmPasswordController,
+            hintText: '********',
+            label: '${confirmPassword.i18n} *',
+            obscureText: true,
+            suffixIcon: checkConfirmPassword,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return requiredField.i18n;
+              }
+              if (value != _passwordController.text) {
+                return passwordMustMatch.i18n;
+              }
+              return null;
+            },
+            onChanged: (value) {
+              if (value == _passwordController.text) {
+                setState(() {
+                  checkConfirmPassword = Icon(
+                    Icons.check_circle,
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.primary.withValues(alpha: 0.5),
+                  );
+                });
+              } else {
+                setState(() {
+                  checkConfirmPassword = SizedBox.shrink();
+                });
+              }
+            },
+          ),
+          SizedBox(height: 1.5.h),
+          ElevatedButtonWidget(
+            iconImageAfter: Icon(Icons.chevron_right),
+            label: continueButton.i18n,
+            onPressed: () {
+              if (_formKey.currentState!.validate()) {
+                final driver = DriverEntity(
+                  firstName: _nameController.text.trim(),
+                  lastName: _lastNameController.text.trim(),
+                  email: _emailController.text.trim(),
+                  phoneNumber:
+                      '${countryValue.dialCode}${_phoneController.text.trim()}',
+                  address: _addressController.text.trim(),
+                  password: _passwordController.text.trim(),
+                  /* province: _provinceController.text, */
+                  /* city: _cityController.text, */
+                  gender: gender.genderToSave,
+                  birthDate: birthDate,
+                  profession: _professionController.text.trim(),
+                  localityId: 50,
+                );
+                ref.read(driverRegisterProvider.notifier).register(driver);
+              }
+            },
+          ),
+          SizedBox(height: 1.5.h),
+          AnotherElevatedButtonWidget(
+            label: cancel.i18n,
+            onPressed: () => context.pop(),
+          ),
+          SizedBox(height: 1.5.h),
+        ],
+      ),
     );
   }
 

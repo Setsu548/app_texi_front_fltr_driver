@@ -162,7 +162,7 @@ class _DriverIdentityPageState extends State<DriverIdentityPage> {
               AnotherElevatedButtonWidget(
                 label: continueLater.i18n,
                 onPressed: () {
-                  // TODO: Implementar lógica para guardar borrador o salir.
+                  context.go('/registerHome');
                 },
               ),
               SizedBox(height: 2.h),
