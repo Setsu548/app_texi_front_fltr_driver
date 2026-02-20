@@ -71,6 +71,8 @@ const driverConfirmationDescription =
     'Por favor verifique que los datos que se enviarán a su revisión son los correctos.';
 const doNotExistRegister = 'No existe registro con ese número';
 const completeProcessRegistration = 'Complete el proceso de registro';
+const cameraText = 'Cámara';
+const galleryText = 'Galería';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-Mx', {
@@ -471,6 +473,18 @@ extension Localization on String {
       'es-ES': 'Complete el proceso de registro',
       'es-MX': 'Complete el proceso de registro',
       'es-BO': 'Complete el proceso de registro',
+    },
+    cameraText: {
+      'en-US': 'Camera',
+      'es-ES': 'Cámara',
+      'es-MX': 'Cámara',
+      'es-BO': 'Cámara',
+    },
+    galleryText: {
+      'en-US': 'Gallery',
+      'es-ES': 'Galería',
+      'es-MX': 'Galería',
+      'es-BO': 'Galería',
     },
   });
 
