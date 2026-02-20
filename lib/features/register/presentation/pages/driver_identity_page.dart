@@ -5,11 +5,11 @@ import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
-import 'package:texi/features/register/presentation/widgets/driver_back_identification_section.dart';
+import 'package:texi/features/register/presentation/widgets/dirver_identification/driver_back_identification_section.dart';
 import 'package:texi/features/register/presentation/widgets/driver_form_header_widget.dart';
-import 'package:texi/features/register/presentation/widgets/driver_front_identification_section.dart';
-import 'package:texi/features/register/presentation/widgets/driver_identity_iput.dart';
-import 'package:texi/features/register/presentation/widgets/driver_profile_image_section.dart';
+import 'package:texi/features/register/presentation/widgets/dirver_identification/driver_front_identification_section.dart';
+import 'package:texi/features/register/presentation/widgets/dirver_identification/driver_identity_iput.dart';
+import 'package:texi/features/register/presentation/widgets/dirver_identification/driver_profile_image_section.dart';
 
 /// [DriverIdentityPage]
 ///
@@ -162,7 +162,7 @@ class _DriverIdentityPageState extends State<DriverIdentityPage> {
               AnotherElevatedButtonWidget(
                 label: continueLater.i18n,
                 onPressed: () {
-                  context.go('/registerHome');
+                  context.pop();
                 },
               ),
               SizedBox(height: 2.h),

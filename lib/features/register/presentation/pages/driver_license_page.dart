@@ -5,10 +5,10 @@ import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
-import 'package:texi/features/register/presentation/widgets/driver_back_license_widget.dart';
-import 'package:texi/features/register/presentation/widgets/driver_category_license_dropdown_widget.dart';
+import 'package:texi/features/register/presentation/widgets/driver_license/driver_back_license_widget.dart';
+import 'package:texi/features/register/presentation/widgets/driver_license/driver_category_license_dropdown_widget.dart';
 import 'package:texi/features/register/presentation/widgets/driver_form_header_widget.dart';
-import 'package:texi/features/register/presentation/widgets/driver_front_license_widget.dart';
+import 'package:texi/features/register/presentation/widgets/driver_license/driver_front_license_widget.dart';
 
 class DriverLicensePage extends StatelessWidget {
   const DriverLicensePage({super.key});
