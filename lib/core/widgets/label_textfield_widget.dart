@@ -4,25 +4,31 @@ import 'package:sizer/sizer.dart';
 class LabelTextfieldWidget extends StatelessWidget {
   final String label;
   final TextEditingController controller;
-  final String hintText;
+  final TextCapitalization textCapitalization;
+  final String? hintText;
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
   final bool obscureText;
   final bool multipleLines;
   final bool? readOnly;
+  final bool? isBold;
   final Function(String)? onChanged;
+  final Function()? onTap;
 
   const LabelTextfieldWidget({
     super.key,
     required this.label,
     required this.controller,
-    required this.hintText,
+    this.hintText,
     this.suffixIcon,
     this.validator,
     this.obscureText = false,
     this.multipleLines = false,
     this.readOnly = false,
+    this.isBold = false,
+    this.textCapitalization = TextCapitalization.none,
     this.onChanged,
+    this.onTap,
   });
 
   @override
@@ -57,9 +63,13 @@ class LabelTextfieldWidget extends StatelessWidget {
             child: TextFormField(
               controller: controller,
               obscureText: obscureText,
+              textCapitalization: textCapitalization,
               maxLines: multipleLines ? 5 : 1,
               readOnly: readOnly!,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: isBold! ? FontWeight.bold : FontWeight.normal,
+              ),
               onChanged: onChanged,
               decoration: InputDecoration(
                 border: InputBorder.none,
@@ -70,6 +80,7 @@ class LabelTextfieldWidget extends StatelessWidget {
                 ),
               ),
               validator: validator,
+              onTap: onTap,
             ),
           ),
         ),
