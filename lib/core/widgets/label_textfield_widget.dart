@@ -14,6 +14,7 @@ class LabelTextfieldWidget extends StatelessWidget {
   final bool? isBold;
   final Function(String)? onChanged;
   final Function()? onTap;
+  final TextInputType? keyboardType;
 
   const LabelTextfieldWidget({
     super.key,
@@ -29,6 +30,7 @@ class LabelTextfieldWidget extends StatelessWidget {
     this.textCapitalization = TextCapitalization.none,
     this.onChanged,
     this.onTap,
+    this.keyboardType,
   });
 
   @override
@@ -66,6 +68,7 @@ class LabelTextfieldWidget extends StatelessWidget {
               textCapitalization: textCapitalization,
               maxLines: multipleLines ? 5 : 1,
               readOnly: readOnly!,
+              keyboardType: keyboardType,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: isBold! ? FontWeight.bold : FontWeight.normal,

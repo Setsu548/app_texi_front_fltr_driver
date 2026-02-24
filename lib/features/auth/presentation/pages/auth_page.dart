@@ -86,6 +86,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                         label: phone.i18n,
                         controller: _phoneController,
                         hintText: '${countryValue.dialCode} 77777777',
+                        keyboardType: TextInputType.phone,
                         onTap: () => setState(() {
                           _phoneController.text = countryValue.dialCode;
                         }),

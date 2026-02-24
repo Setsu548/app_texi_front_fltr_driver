@@ -5,8 +5,6 @@ class DriverEntity {
   final String phoneNumber;
   final String address;
   final String password;
-  /* final String province;
-  final String city; */
   final String gender;
   final DateTime birthDate;
   final String profession;
@@ -19,8 +17,6 @@ class DriverEntity {
     required this.phoneNumber,
     required this.address,
     required this.password,
-    /* required this.province, */
-    /* required this.city, */
     required this.gender,
     required this.birthDate,
     required this.profession,

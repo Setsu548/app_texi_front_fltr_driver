@@ -11,7 +11,9 @@ import 'package:texi/core/widgets/label_textfield_widget.dart';
 import 'package:texi/features/register/domain/entities/driver_entity.dart';
 import 'package:texi/features/register/presentation/providers/driver_form_provider.dart';
 import 'package:texi/features/register/presentation/widgets/driver_countries_dropdown_widget.dart';
+import 'package:texi/features/register/presentation/widgets/driver_department_dropdown.dart';
 import 'package:texi/features/register/presentation/widgets/driver_gender_dropdown.dart';
+import 'package:texi/features/register/presentation/widgets/driver_locality_dropdown.dart';
 
 class DriverFormWidget extends ConsumerStatefulWidget {
   const DriverFormWidget({super.key});
@@ -149,6 +151,11 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
             ],
           ),
           SizedBox(height: 1.5.h),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [DriverDepartmentDropdown(), DriverLocalityDropdown()],
+          ),
+          SizedBox(height: 1.5.h),
           LabelTextfieldWidget(
             controller: _professionController,
             hintText: 'Conductor',
@@ -161,40 +168,6 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
               return null;
             },
           ),
-          /* SizedBox(height: 1.5.h),
-          LabelTextfieldWidget(
-            controller: _departmentController,
-            hintText: 'Cochabamba',
-            label: '${department.i18n} *',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return requiredField.i18n;
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 1.5.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                width: 40.w,
-                child: LabelTextfieldWidget(
-                  controller: _provinceController,
-                  hintText: 'Cercado',
-                  label: '${province.i18n} *',
-                ),
-              ),
-              SizedBox(
-                width: 40.w,
-                child: LabelTextfieldWidget(
-                  controller: _cityController,
-                  hintText: 'Cochabamba',
-                  label: '${city.i18n} *',
-                ),
-              ),
-            ],
-          ), */
           SizedBox(height: 1.5.h),
           LabelTextfieldWidget(
             controller: _addressController,
@@ -290,12 +263,10 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
                       '${countryValue.dialCode}${_phoneController.text.trim()}',
                   address: _addressController.text.trim(),
                   password: _passwordController.text.trim(),
-                  /* province: _provinceController.text, */
-                  /* city: _cityController.text, */
                   gender: gender.genderToSave,
                   birthDate: birthDate,
                   profession: _professionController.text.trim(),
-                  localityId: 50,
+                  localityId: ref.watch(localitySelectedProvider).id,
                 );
                 ref.read(driverRegisterProvider.notifier).register(driver);
               }

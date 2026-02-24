@@ -73,6 +73,7 @@ const doNotExistRegister = 'No existe registro con ese número';
 const completeProcessRegistration = 'Complete el proceso de registro';
 const cameraText = 'Cámara';
 const galleryText = 'Galería';
+const locality = 'Localidad';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-Mx', {
@@ -485,6 +486,12 @@ extension Localization on String {
       'es-ES': 'Galería',
       'es-MX': 'Galería',
       'es-BO': 'Galería',
+    },
+    locality: {
+      'en-US': 'Locality',
+      'es-ES': 'Localidad',
+      'es-MX': 'Localidad',
+      'es-BO': 'Localidad',
     },
   });
 

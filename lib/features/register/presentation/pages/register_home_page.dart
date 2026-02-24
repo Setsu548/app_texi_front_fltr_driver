@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi/core/router/app_router.dart';
 import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/features/register/presentation/widgets/register_header_widget.dart';
@@ -36,7 +37,7 @@ class RegisterHomePage extends StatelessWidget {
                 AnotherElevatedButtonWidget(
                   label: cancel.i18n,
                   onPressed: () {
-                    context.pop();
+                    context.go(AppRouter.initialLocation);
                   },
                 ),
               ],

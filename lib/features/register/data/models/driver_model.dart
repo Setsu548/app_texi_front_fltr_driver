@@ -9,8 +9,6 @@ class DriverModel extends DriverEntity {
     required super.phoneNumber,
     required super.address,
     required super.password,
-    /* required super.province, */
-    /* required super.city, */
     required super.gender,
     required super.birthDate,
     required super.profession,
@@ -25,8 +23,6 @@ class DriverModel extends DriverEntity {
       phoneNumber: entity.phoneNumber,
       address: entity.address,
       password: entity.password,
-      /* province: entity.province, */
-      /* city: entity.city, */
       gender: entity.gender,
       birthDate: entity.birthDate,
       profession: entity.profession,
@@ -42,8 +38,6 @@ class DriverModel extends DriverEntity {
       'phone_number': phoneNumber,
       'address': address,
       'password': password,
-      /* 'province': province, */
-      /* 'city': city, */
       'gender': gender,
       'birth_date': DatesUtilities.dateToSave(birthDate),
       'profession': profession,
@@ -59,8 +53,6 @@ class DriverModel extends DriverEntity {
       phoneNumber: json['phoneNumber'],
       address: json['address'],
       password: json['password'],
-      /* province: json['province'], */
-      /* city: json['city'], */
       gender: json['gender'],
       birthDate: DateTime.parse(json['birthDate']),
       profession: json['profession'],
