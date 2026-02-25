@@ -5,13 +5,13 @@ class ElevatedButtonWidget extends StatelessWidget {
   final double width;
   final double height;
   final String label;
-  final VoidCallback onPressed;
+  final void Function()? onPressed;
   final Widget? iconImageBefore;
   final Widget? iconImageAfter;
   ElevatedButtonWidget({
     super.key,
     required this.label,
-    required this.onPressed,
+    this.onPressed,
     this.iconImageBefore,
     this.iconImageAfter,
     double? width,

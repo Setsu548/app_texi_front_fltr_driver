@@ -1,5 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:texi/features/register/data/models/driver_data_res_model.dart';
+import 'package:texi/features/register_driver/data/models/driver_data_res_model.dart';
 
 class SecureStorageService {
   static final SecureStorageService _instance =
@@ -13,13 +13,8 @@ class SecureStorageService {
   static const _keyDriverData = 'texi_driver';
 
   Future<void> saveDriver(DriverDataModel driver) async {
-    try {
-      final String value = driver.toRawJson();
-      await _secureStorage.write(key: _keyDriverData, value: value);
-      print('Datos guardados en la cokie');
-    } catch (e) {
-      print('Error guardando datos seguros: $e');
-    }
+    final String value = driver.toRawJson();
+    await _secureStorage.write(key: _keyDriverData, value: value);
   }
 
   Future<DriverDataModel?> getDriver() async {
@@ -30,7 +25,6 @@ class SecureStorageService {
 
       return DriverDataModel.fromRawJson(value);
     } catch (e) {
-      print('Error leyendo datos seguros: $e');
       return null;
     }
   }

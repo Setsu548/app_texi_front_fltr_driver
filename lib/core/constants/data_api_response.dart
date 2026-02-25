@@ -21,8 +21,10 @@ class DataApiResponse<T> {
         statusCode: json['status_code'] ?? 0,
         code: json['code'] ?? '',
         message: json['message'] ?? '',
-        data: json['data'] as T,
-        error: json['error'] as ErrorResponse,
+        data: json['data'] != null ? json['data'] as T : null,
+        error: json['error'] != null
+            ? ErrorResponse.fromJson(json['error'])
+            : null,
       );
 
   factory DataApiResponse.fromError({

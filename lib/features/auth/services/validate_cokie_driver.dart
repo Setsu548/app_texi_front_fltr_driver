@@ -1,5 +1,5 @@
 import 'package:texi/core/utils/secure_storage_service.dart';
-import 'package:texi/features/register/data/models/driver_data_res_model.dart';
+import 'package:texi/features/register_driver/data/models/driver_data_res_model.dart';
 
 class ValidateCokieDriver {
   final SecureStorageService _secureStorageService = SecureStorageService();

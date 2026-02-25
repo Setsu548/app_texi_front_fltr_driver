@@ -5,11 +5,11 @@ class DatesUtilities {
     final locale = I18n.locale;
     switch (locale.countryCode) {
       case 'BO':
-        return '${date.day}-${date.month}-${date.year}';
+        return '${date.day.toString().padLeft(2, '0')}-${date.month.toString().padLeft(2, '0')}-${date.year}';
       case 'US':
-        return '${date.month}-${date.day}-${date.year}';
+        return '${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}-${date.year}';
       default:
-        return '${date.month}-${date.day}-${date.year}';
+        return '${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}-${date.year}';
     }
   }
 

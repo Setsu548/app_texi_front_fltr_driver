@@ -9,7 +9,7 @@ import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/label_textfield_widget.dart';
 import 'package:texi/features/auth/presentation/providers/auth_providers.dart';
 import 'package:texi/features/auth/services/validate_cokie_driver.dart';
-import 'package:texi/features/register/presentation/providers/driver_form_provider.dart';
+import 'package:texi/features/register_driver/presentation/providers/driver_form_provider.dart';
 
 class AuthPage extends ConsumerStatefulWidget {
   const AuthPage({super.key});
@@ -71,7 +71,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
               //Botón de registro
               TextButton(
                 onPressed: () {
-                  context.push(AppRouter.registerHomeLocation);
+                  context.go(AppRouter.registerHomeLocation);
                 },
                 child: Text(registerOpcion.i18n),
               ),
@@ -131,6 +131,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                   final cockieDriver = await ValidateCokieDriver()
                       .validateCokieDriver(_phoneController.text);
                   if (cockieDriver == null) {
+                    //TODO: Intentar iniciar sesion con el numero de telefono y contraseña
                     _showMessage(doNotExistRegister.i18n);
                   } else {
                     _showMessage(completeProcessRegistration.i18n);

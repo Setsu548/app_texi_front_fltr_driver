@@ -1,15 +1,14 @@
-//import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-//import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/features/auth/presentation/pages/auth_page.dart';
-import 'package:texi/features/register/presentation/pages/driver_confirmation_page.dart';
-//import 'package:texi/features/register/domain/entities/driver_entity.dart';
-import 'package:texi/features/register/presentation/pages/driver_identity_page.dart';
-import 'package:texi/features/register/presentation/pages/driver_license_page.dart';
-import 'package:texi/features/register/presentation/pages/register_home_page.dart';
-import 'package:texi/features/register/presentation/pages/driver_form_page.dart';
+import 'package:texi/features/register_driver/presentation/pages/driver_confirmation_page.dart';
+import 'package:texi/features/register_driver/presentation/pages/driver_identity_page.dart';
+import 'package:texi/features/register_driver/presentation/pages/driver_license_page.dart';
+import 'package:texi/features/register_driver/presentation/pages/register_home_page.dart';
+import 'package:texi/features/register_driver/presentation/pages/driver_form_page.dart';
 
 class AppRouter {
+  AppRouter._();
+
   static final String initialLocation = '/';
   static final String registerHomeLocation = '/registerHome';
   static final String registerPersonalInfoLocation = 'personalInfo';
@@ -18,6 +17,7 @@ class AppRouter {
   static final String registerConfirmationLocation = 'confirmation';
 
   static final routes = GoRouter(
+    initialLocation: initialLocation,
     routes: [
       GoRoute(path: initialLocation, builder: (context, state) => AuthPage()),
       GoRoute(
@@ -30,26 +30,15 @@ class AppRouter {
           ),
           GoRoute(
             path: registerIdentityLocation,
-            builder: (context, state) {
-              return DriverIdentityPage();
-              /* final driver = state.extra;
-              if (driver is DriverEntity) {
-                return DriverIdentityPage();
-              }
-              return Scaffold(body: Center(child: Text(driverNotFound.i18n))); */
-            },
+            builder: (context, state) => DriverIdentityPage(),
           ),
           GoRoute(
             path: registerLicenseLocation,
-            builder: (context, state) {
-              return DriverLicensePage();
-            },
+            builder: (context, state) => DriverLicensePage(),
           ),
           GoRoute(
             path: registerConfirmationLocation,
-            builder: (context, state) {
-              return DriverConfirmationPage();
-            },
+            builder: (context, state) => DriverConfirmationPage(),
           ),
         ],
       ),

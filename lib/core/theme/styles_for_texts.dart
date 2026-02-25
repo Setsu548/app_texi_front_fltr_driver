@@ -14,10 +14,18 @@ class StylesForTexts {
     );
   }
 
+  TextStyle headerStyleSmall() {
+    return TextStyle(
+      color: Theme.of(context).colorScheme.onSurface,
+      fontSize: 18.sp,
+      fontWeight: FontWeight.bold,
+    );
+  }
+
   TextStyle bodyStyle() {
     return TextStyle(
       color: Theme.of(context).colorScheme.onSurface,
-      fontSize: 14.5.sp,
+      fontSize: 15.15.sp,
       fontWeight: FontWeight.w500,
     );
   }

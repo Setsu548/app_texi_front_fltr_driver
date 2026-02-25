@@ -5,12 +5,16 @@ class AnotherElevatedButtonWidget extends StatelessWidget {
   final double width;
   final double height;
   final String label;
-  final VoidCallback onPressed;
+  final void Function()? onPressed;
+  final Widget? iconImageBefore;
+  final Widget? iconImageAfter;
 
   AnotherElevatedButtonWidget({
     super.key,
     required this.label,
-    required this.onPressed,
+    this.onPressed,
+    this.iconImageBefore,
+    this.iconImageAfter,
     double? width,
     double? height,
   }) : width = width ?? 80.w,
@@ -31,14 +35,32 @@ class AnotherElevatedButtonWidget extends StatelessWidget {
         ),
 
         onPressed: onPressed,
-        child: Text(
-          label,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.75.sp,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        child: iconImageBefore != null || iconImageAfter != null
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  iconImageBefore != null ? iconImageBefore! : SizedBox(),
+                  if (iconImageBefore != null) SizedBox(width: 1.25.w),
+                  Text(
+                    label,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.75.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  if (iconImageAfter != null) SizedBox(width: 1.25.w),
+                  iconImageAfter != null ? iconImageAfter! : SizedBox(),
+                ],
+              )
+            : Text(
+                label,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.75.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
       ),
     );
   }

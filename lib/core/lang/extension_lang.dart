@@ -53,6 +53,8 @@ const identificationText =
     'Ingrese el número que se encuentra en su documento de identidad';
 const frontIdentification = 'Identificación Frontal';
 const backIdentification = 'Identificación Posterior';
+const frontLicense = 'Licencia Frontal';
+const backLicense = 'Licencia Posterior';
 const identificationMessage = 'Asegúrese que toda la información sea visible';
 const takeAPhoto = 'Tomar una foto';
 const uploadPhoto = 'Subir una foto';
@@ -74,9 +76,67 @@ const completeProcessRegistration = 'Complete el proceso de registro';
 const cameraText = 'Cámara';
 const galleryText = 'Galería';
 const locality = 'Localidad';
+const selectAllPhotos = 'Seleccione todas las fotos';
+const expirationDate = 'Fecha de Expiración';
+const expirationDateMessage =
+    'Seleccione la fecha de expiración de su licencia';
+const exipirationDateWarning =
+    'La fecha de expiración debe ser mayor a 90 días';
+const enterDocumentNumber = 'Ingrese el número de su documento';
+const enterExpirationDate = 'Ingrese la fecha de expiración';
+const identificationRegisteredSuccessfully =
+    'Identificación registrada correctamente';
+const driverResumeInfo = 'Resumen de información';
+const sendRequest = 'Enviar Solicitud';
+const edit = 'Editar';
+const confirmationMessage =
+    'Todos los datos han sido enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.';
+const registerVehicleHomeDes =
+    'Si ya ha registrado un vehículo anteriormente, puede seleccionarlo de la lista de vehículos registrados. De lo contrario, registre un nuevo vehículo para comenzar.';
+const registerVehicleTitle = 'Selección de Vehículo';
+const vehicleInfoTitle = 'Información del Vehículo';
+const step2Of5 = 'Paso 2 de 5';
+const vehicleData = 'Datos del Vehículo';
+const vehicleDataDesc = 'Ingresa los detalles técnicos de tu unidad.';
+const vehicleBrand = 'Marca del Vehículo';
+const vehicleBrandHint = 'Ej. Toyota';
+const vehicleModel = 'Modelo';
+const vehicleModelHint = 'Ej. Corolla';
+const vehicleYear = 'Año';
+const vehicleYearHint = '2023';
+const vehiclePlate = 'Número de Placa';
+const vehiclePlateHint = 'ABC-123';
+const exteriorColor = 'Color Exterior';
+const colorWhite = 'Blanco';
+const colorBlack = 'Negro';
+const colorGray = 'Gris';
+const colorRed = 'Rojo';
+const colorBlue = 'Azul';
+const vehicleTypeStr = 'Tipo de Vehículo';
+const typeSedan = 'Sedán';
+const typeHatchback = 'Hatchback';
+const typeSUV = 'SUV';
+const typeMinivan = 'Minivan/Van';
+const propertyCard = 'Tarjeta de Propiedad';
+const uploadPhotoOrDoc = 'Subir foto o documento';
+const jpgPngPdfLimit = 'JPG, PNG o PDF hasta 5MB';
+const errorCookie = 'Error al obtener el cookie';
+const confirmationSuccess = 'Confirmación enviada con éxito';
+const vehiclePhotos = 'Fotografías del Vehículo';
+const vehiclePhotosDescription =
+    'Para completar el registro, necesitamos fotos claras de los cuatro lados de su vehículo.';
+const goodLightingRequired = 'Buena iluminación requerida';
+const goodLightingDescription =
+    'Asegúrese de tomar las fotos con buena iluminación para una verificación rápida.';
+const vehicleFront = 'Frente del vehículo';
+const vehicleLeftSide = 'Lateral izquierdo';
+const vehicleRightSide = 'Lateral derecho';
+const vehicleBackSide = 'Parte trasera';
+const requiredText = 'REQUERIDO';
+const ciDNI = 'CI/DNI';
 
 extension Localization on String {
-  static const _translations = ConstTranslations('es-Mx', {
+  static const _translations = ConstTranslations('es-MX', {
     loginDescription: {
       'en-US': 'Platform for drivers',
       'es-ES': 'Plataforma para conductores',
@@ -492,6 +552,335 @@ extension Localization on String {
       'es-ES': 'Localidad',
       'es-MX': 'Localidad',
       'es-BO': 'Localidad',
+    },
+    selectAllPhotos: {
+      'en-US': 'Select all photos',
+      'es-ES': 'Seleccione todas las fotos',
+      'es-MX': 'Seleccione todas las fotos',
+      'es-BO': 'Seleccione todas las fotos',
+    },
+    expirationDate: {
+      'en-US': 'Expiration Date',
+      'es-ES': 'Fecha de Expiración',
+      'es-MX': 'Fecha de Expiración',
+      'es-BO': 'Fecha de Expiración',
+    },
+    exipirationDateWarning: {
+      'en-US': 'Expiration date must be greater than 90 days',
+      'es-ES': 'La fecha de expiración debe ser mayor a 90 días',
+      'es-MX': 'La fecha de expiración debe ser mayor a 90 días',
+      'es-BO': 'La fecha de expiración debe ser mayor a 90 días',
+    },
+    expirationDateMessage: {
+      'en-US': 'Select the expiration date of your license',
+      'es-ES': 'Seleccione la fecha de expiración de su licencia',
+      'es-MX': 'Seleccione la fecha de expiración de su licencia',
+      'es-BO': 'Seleccione la fecha de expiración de su licencia',
+    },
+    enterDocumentNumber: {
+      'en-US': 'Enter your document number',
+      'es-ES': 'Ingrese el número de su documento',
+      'es-MX': 'Ingrese el número de su documento',
+      'es-BO': 'Ingrese el número de su documento',
+    },
+    enterExpirationDate: {
+      'en-US': 'Enter the expiration date',
+      'es-ES': 'Ingrese la fecha de expiración',
+      'es-MX': 'Ingrese la fecha de expiración',
+      'es-BO': 'Ingrese la fecha de expiración',
+    },
+    identificationRegisteredSuccessfully: {
+      'en-US': 'Identification registered successfully',
+      'es-ES': 'Identificación registrada correctamente',
+      'es-MX': 'Identificación registrada correctamente',
+      'es-BO': 'Identificación registrada correctamente',
+    },
+    frontLicense: {
+      'en-US': 'Front License',
+      'es-ES': 'Licencia Frontal',
+      'es-MX': 'Licencia Frontal',
+      'es-BO': 'Licencia Frontal',
+    },
+    backLicense: {
+      'en-US': 'Back License',
+      'es-ES': 'Licencia Posterior',
+      'es-MX': 'Licencia Posterior',
+      'es-BO': 'Licencia Posterior',
+    },
+    driverResumeInfo: {
+      'en-US': 'Driver Resume Info',
+      'es-ES': 'Resumen de información',
+      'es-MX': 'Resumen de información',
+      'es-BO': 'Resumen de información',
+    },
+    edit: {
+      'en-US': 'Edit',
+      'es-ES': 'Editar',
+      'es-MX': 'Editar',
+      'es-BO': 'Editar',
+    },
+    confirmationMessage: {
+      'en-US':
+          'All data has been sent to be verified. You will receive a message with the confirmation and the next steps to follow.',
+      'es-ES':
+          'Todos los datos han sido enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.',
+      'es-MX':
+          'Todos los datos han sido enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.',
+      'es-BO':
+          'Todos los datos han sido enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.',
+    },
+    registerVehicleHomeDes: {
+      'en-US':
+          'If you have already registered a vehicle previously, you can select it from the list of registered vehicles. Otherwise, register a new vehicle to start.',
+      'es-ES':
+          'Si ya ha registrado un vehículo anteriormente, puede seleccionarlo de la lista de vehículos registrados. De lo contrario, registre un nuevo vehículo para comenzar.',
+      'es-MX':
+          'Si ya ha registrado un vehículo anteriormente, puede seleccionarlo de la lista de vehículos registrados. De lo contrario, registre un nuevo vehículo para comenzar.',
+      'es-BO':
+          'Si ya ha registrado un vehículo anteriormente, puede seleccionarlo de la lista de vehículos registrados. De lo contrario, registre un nuevo vehículo para comenzar.',
+    },
+    registerVehicleTitle: {
+      'en-US': 'Vehicle Selection',
+      'es-ES': 'Selección de Vehículo',
+      'es-MX': 'Selección de Vehículo',
+      'es-BO': 'Selección de Vehículo',
+    },
+    sendRequest: {
+      'en-US': 'Send Request',
+      'es-ES': 'Enviar Solicitud',
+      'es-MX': 'Enviar Solicitud',
+      'es-BO': 'Enviar Solicitud',
+    },
+    vehicleInfoTitle: {
+      'en-US': 'Vehicle Information',
+      'es-ES': 'Información del Vehículo',
+      'es-MX': 'Información del Vehículo',
+      'es-BO': 'Información del Vehículo',
+    },
+    step2Of5: {
+      'en-US': 'Step 2 of 5',
+      'es-ES': 'Paso 2 de 5',
+      'es-MX': 'Paso 2 de 5',
+      'es-BO': 'Paso 2 de 5',
+    },
+    vehicleData: {
+      'en-US': 'Vehicle Data',
+      'es-ES': 'Datos del Vehículo',
+      'es-MX': 'Datos del Vehículo',
+      'es-BO': 'Datos del Vehículo',
+    },
+    vehicleDataDesc: {
+      'en-US': 'Enter the technical details of your unit.',
+      'es-ES': 'Ingresa los detalles técnicos de tu unidad.',
+      'es-MX': 'Ingresa los detalles técnicos de tu unidad.',
+      'es-BO': 'Ingresa los detalles técnicos de tu unidad.',
+    },
+    vehicleBrand: {
+      'en-US': 'Vehicle Brand',
+      'es-ES': 'Marca del Vehículo',
+      'es-MX': 'Marca del Vehículo',
+      'es-BO': 'Marca del Vehículo',
+    },
+    vehicleBrandHint: {
+      'en-US': 'Ex. Toyota',
+      'es-ES': 'Ej. Toyota',
+      'es-MX': 'Ej. Toyota',
+      'es-BO': 'Ej. Toyota',
+    },
+    vehicleModel: {
+      'en-US': 'Model',
+      'es-ES': 'Modelo',
+      'es-MX': 'Modelo',
+      'es-BO': 'Modelo',
+    },
+    vehicleModelHint: {
+      'en-US': 'Ex. Corolla',
+      'es-ES': 'Ej. Corolla',
+      'es-MX': 'Ej. Corolla',
+      'es-BO': 'Ej. Corolla',
+    },
+    vehicleYear: {
+      'en-US': 'Year',
+      'es-ES': 'Año',
+      'es-MX': 'Año',
+      'es-BO': 'Año',
+    },
+    vehicleYearHint: {
+      'en-US': '2023',
+      'es-ES': '2023',
+      'es-MX': '2023',
+      'es-BO': '2023',
+    },
+    vehiclePlate: {
+      'en-US': 'Plate Number',
+      'es-ES': 'Número de Placa',
+      'es-MX': 'Número de Placa',
+      'es-BO': 'Número de Placa',
+    },
+    vehiclePlateHint: {
+      'en-US': 'ABC-123',
+      'es-ES': 'ABC-123',
+      'es-MX': 'ABC-123',
+      'es-BO': 'ABC-123',
+    },
+    exteriorColor: {
+      'en-US': 'Exterior Color',
+      'es-ES': 'Color Exterior',
+      'es-MX': 'Color Exterior',
+      'es-BO': 'Color Exterior',
+    },
+    colorWhite: {
+      'en-US': 'White',
+      'es-ES': 'Blanco',
+      'es-MX': 'Blanco',
+      'es-BO': 'Blanco',
+    },
+    colorBlack: {
+      'en-US': 'Black',
+      'es-ES': 'Negro',
+      'es-MX': 'Negro',
+      'es-BO': 'Negro',
+    },
+    colorGray: {
+      'en-US': 'Gray',
+      'es-ES': 'Gris',
+      'es-MX': 'Gris',
+      'es-BO': 'Gris',
+    },
+    colorRed: {
+      'en-US': 'Red',
+      'es-ES': 'Rojo',
+      'es-MX': 'Rojo',
+      'es-BO': 'Rojo',
+    },
+    colorBlue: {
+      'en-US': 'Blue',
+      'es-ES': 'Azul',
+      'es-MX': 'Azul',
+      'es-BO': 'Azul',
+    },
+    vehicleTypeStr: {
+      'en-US': 'Vehicle Type',
+      'es-ES': 'Tipo de Vehículo',
+      'es-MX': 'Tipo de Vehículo',
+      'es-BO': 'Tipo de Vehículo',
+    },
+    typeSedan: {
+      'en-US': 'Sedan',
+      'es-ES': 'Sedán',
+      'es-MX': 'Sedán',
+      'es-BO': 'Sedán',
+    },
+    typeHatchback: {
+      'en-US': 'Hatchback',
+      'es-ES': 'Hatchback',
+      'es-MX': 'Hatchback',
+      'es-BO': 'Hatchback',
+    },
+    typeSUV: {'en-US': 'SUV', 'es-ES': 'SUV', 'es-MX': 'SUV', 'es-BO': 'SUV'},
+    typeMinivan: {
+      'en-US': 'Minivan/Van',
+      'es-ES': 'Minivan/Van',
+      'es-MX': 'Minivan/Van',
+      'es-BO': 'Minivan/Van',
+    },
+    propertyCard: {
+      'en-US': 'Property Card',
+      'es-ES': 'Tarjeta de Propiedad',
+      'es-MX': 'Tarjeta de Propiedad',
+      'es-BO': 'Tarjeta de Propiedad',
+    },
+    uploadPhotoOrDoc: {
+      'en-US': 'Upload photo or document',
+      'es-ES': 'Subir foto o documento',
+      'es-MX': 'Subir foto o documento',
+      'es-BO': 'Subir foto o documento',
+    },
+    jpgPngPdfLimit: {
+      'en-US': 'JPG, PNG or PDF up to 5MB',
+      'es-ES': 'JPG, PNG o PDF hasta 5MB',
+      'es-MX': 'JPG, PNG o PDF hasta 5MB',
+      'es-BO': 'JPG, PNG o PDF hasta 5MB',
+    },
+    errorCookie: {
+      'en-US': 'Error al obtener el cookie',
+      'es-ES': 'Error al obtener el cookie',
+      'es-MX': 'Error al obtener el cookie',
+      'es-BO': 'Error al obtener el cookie',
+    },
+    confirmationSuccess: {
+      'en-US': 'Confirmation sent successfully',
+      'es-ES': 'Confirmación enviada con éxito',
+      'es-MX': 'Confirmación enviada con éxito',
+      'es-BO': 'Confirmación enviada con éxito',
+    },
+    vehiclePhotos: {
+      'en-US': 'Vehicle Photos',
+      'es-ES': 'Fotografías del Vehículo',
+      'es-MX': 'Fotografías del Vehículo',
+      'es-BO': 'Fotografías del Vehículo',
+    },
+    vehiclePhotosDescription: {
+      'en-US':
+          'To complete the registration, we need clear photos of the four sides of your vehicle.',
+      'es-ES':
+          'Para completar el registro, necesitamos fotos claras de los cuatro lados de su vehículo.',
+      'es-MX':
+          'Para completar el registro, necesitamos fotos claras de los cuatro lados de su vehículo.',
+      'es-BO':
+          'Para completar el registro, necesitamos fotos claras de los cuatro lados de su vehículo.',
+    },
+    goodLightingRequired: {
+      'en-US': 'Good lighting required',
+      'es-ES': 'Buena iluminación requerida',
+      'es-MX': 'Buena iluminación requerida',
+      'es-BO': 'Buena iluminación requerida',
+    },
+    goodLightingDescription: {
+      'en-US':
+          'Make sure to take photos with good lighting for a quick verification.',
+      'es-ES':
+          'Asegúrese de tomar las fotos con buena iluminación para una verificación rápida.',
+      'es-MX':
+          'Asegúrese de tomar las fotos con buena iluminación para una verificación rápida.',
+      'es-BO':
+          'Asegúrese de tomar las fotos con buena iluminación para una verificación rápida.',
+    },
+    vehicleFront: {
+      'en-US': 'Front of the vehicle',
+      'es-ES': 'Frente del vehículo',
+      'es-MX': 'Frente del vehículo',
+      'es-BO': 'Frente del vehículo',
+    },
+    vehicleLeftSide: {
+      'en-US': 'Left side',
+      'es-ES': 'Lateral izquierdo',
+      'es-MX': 'Lateral izquierdo',
+      'es-BO': 'Lateral izquierdo',
+    },
+    vehicleRightSide: {
+      'en-US': 'Right side',
+      'es-ES': 'Lateral derecho',
+      'es-MX': 'Lateral derecho',
+      'es-BO': 'Lateral derecho',
+    },
+    vehicleBackSide: {
+      'en-US': 'Back side',
+      'es-ES': 'Parte trasera',
+      'es-MX': 'Parte trasera',
+      'es-BO': 'Parte trasera',
+    },
+    requiredText: {
+      'en-US': 'REQUIRED',
+      'es-ES': 'REQUERIDO',
+      'es-MX': 'REQUERIDO',
+      'es-BO': 'REQUERIDO',
+    },
+    ciDNI: {
+      'en-US': 'CI/DNI',
+      'es-ES': 'CI/DNI',
+      'es-MX': 'CI/DNI',
+      'es-BO': 'CI/DNI',
     },
   });
 
