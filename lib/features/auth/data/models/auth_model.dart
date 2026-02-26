@@ -23,7 +23,7 @@ class AuthModel extends AuthEntity {
 
   Map<String, dynamic> toJson() {
     return {
-      'phone': phone,
+      'user_name': phone,
       'password': password,
       'brand': brand,
       'ip': ip,

@@ -1,3 +1,5 @@
+import 'package:texi/features/auth/data/models/device_info_model.dart';
+
 class AuthEntity {
   final String phone;
   final String password;
@@ -14,4 +16,19 @@ class AuthEntity {
     required this.model,
     required this.os,
   });
+
+  factory AuthEntity.fromRequest(
+    DeviceInfoModel device,
+    String phone,
+    String password,
+  ) {
+    return AuthEntity(
+      phone: phone,
+      password: password,
+      brand: device.brand,
+      ip: device.ip,
+      model: device.model,
+      os: device.os,
+    );
+  }
 }

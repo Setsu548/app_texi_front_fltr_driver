@@ -5,6 +5,7 @@ import 'package:texi/features/register_driver/presentation/pages/driver_identity
 import 'package:texi/features/register_driver/presentation/pages/driver_license_page.dart';
 import 'package:texi/features/register_driver/presentation/pages/register_home_page.dart';
 import 'package:texi/features/register_driver/presentation/pages/driver_form_page.dart';
+import 'package:texi/features/register_vehicle/presentation/pages/register_vehicle_home_page.dart';
 
 class AppRouter {
   AppRouter._();
@@ -15,6 +16,7 @@ class AppRouter {
   static final String registerIdentityLocation = 'identity';
   static final String registerLicenseLocation = 'license';
   static final String registerConfirmationLocation = 'confirmation';
+  static final String vehicleHome = '/vehicleHome';
 
   static final routes = GoRouter(
     initialLocation: initialLocation,
@@ -41,6 +43,10 @@ class AppRouter {
             builder: (context, state) => DriverConfirmationPage(),
           ),
         ],
+      ),
+      GoRoute(
+        path: vehicleHome,
+        builder: (context, state) => RegisterVehicleHomePage(),
       ),
     ],
   );

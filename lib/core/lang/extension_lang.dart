@@ -134,6 +134,8 @@ const vehicleRightSide = 'Lateral derecho';
 const vehicleBackSide = 'Parte trasera';
 const requiredText = 'REQUERIDO';
 const ciDNI = 'CI/DNI';
+const phoneRequired = 'El número de teléfono es requerido';
+const passwordRequired = 'La contraseña es requerida';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
@@ -881,6 +883,18 @@ extension Localization on String {
       'es-ES': 'CI/DNI',
       'es-MX': 'CI/DNI',
       'es-BO': 'CI/DNI',
+    },
+    phoneRequired: {
+      'en-US': 'Phone number is required',
+      'es-ES': 'El número de teléfono es requerido',
+      'es-MX': 'El número de teléfono es requerido',
+      'es-BO': 'El número de teléfono es requerido',
+    },
+    passwordRequired: {
+      'en-US': 'Password is required',
+      'es-ES': 'La contraseña es requerida',
+      'es-MX': 'La contraseña es requerida',
+      'es-BO': 'La contraseña es requerida',
     },
   });
 

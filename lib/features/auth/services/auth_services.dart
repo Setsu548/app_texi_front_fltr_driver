@@ -1,7 +1,7 @@
-import 'package:texi/core/utils/secure_storage_service.dart';
+import 'package:texi/features/register_driver/services/register_secure_storage_service.dart';
 import 'package:texi/features/register_driver/data/models/driver_data_res_model.dart';
 
-class ValidateCokieDriver {
+class AuthServices {
   final SecureStorageService _secureStorageService = SecureStorageService();
 
   Future<DriverDataModel?> validateCokieDriver(String phone) async {

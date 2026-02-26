@@ -1,4 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:texi/core/constants/dio_provider.dart';
+import 'package:texi/features/auth/data/repo_impl/auth_repo_impl.dart';
+import 'package:texi/features/auth/domain/repo/auth_repo.dart';
+import 'package:texi/core/constants/data_api_response.dart';
+import 'package:texi/features/auth/data/models/login_data_model.dart';
+import 'package:texi/features/auth/domain/entities/auth_entity.dart';
 
 //--Provider para ocultar la contraseña--//
 final hidePasswordProvider = NotifierProvider<HidePasswordProvider, bool>(
@@ -15,4 +21,34 @@ class HidePasswordProvider extends Notifier<bool> {
     state = !state;
   }
 }
+//--//
+
+//--Provider del repositorio de auth--//
+final authRepoProvider = Provider<AuthRepo>((ref) {
+  return AuthRepoImpl(ref.watch(dioProvider));
+});
+//--//
+
+//--Provider para la autenticación--//
+final loginNotifierProvider = NotifierProvider<LoginNotifier, bool>(
+  LoginNotifier.new,
+);
+//--//
+
+//--Clase Notifier para la autenticación--//
+class LoginNotifier extends Notifier<bool> {
+  @override
+  bool build() {
+    return false;
+  }
+
+  Future<DataApiResponse<LoginDataModel>> login(AuthEntity authEntity) async {
+    state = true;
+    final repo = ref.read(authRepoProvider);
+    final response = await repo.login(authEntity);
+    state = false;
+    return response;
+  }
+}
+
 //--//

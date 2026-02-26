@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/router/app_router.dart';
-import 'package:texi/core/utils/secure_storage_service.dart';
+import 'package:texi/features/register_driver/services/register_secure_storage_service.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/loading_screen.dart';

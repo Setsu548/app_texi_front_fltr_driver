@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
+import 'package:texi/core/constants/device_info_provider.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/router/app_router.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/label_textfield_widget.dart';
+import 'package:texi/core/widgets/loading_screen.dart';
+import 'package:texi/features/auth/domain/entities/auth_entity.dart';
 import 'package:texi/features/auth/presentation/providers/auth_providers.dart';
-import 'package:texi/features/auth/services/validate_cokie_driver.dart';
+import 'package:texi/features/auth/services/auth_secure_storeage_service.dart';
+import 'package:texi/features/auth/services/auth_services.dart';
 import 'package:texi/features/register_driver/presentation/providers/driver_form_provider.dart';
 
 class AuthPage extends ConsumerStatefulWidget {
@@ -27,121 +31,164 @@ class _AuthPageState extends ConsumerState<AuthPage> {
   Widget build(BuildContext context) {
     final hidePassword = ref.watch(hidePasswordProvider);
     final countryValue = ref.watch(localCountryProvider);
+    final isLoggingIn = ref.watch(loginNotifierProvider);
 
     return Scaffold(
       appBar: null,
-      //Fondo de pantalla
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 5.w),
-        height: double.infinity,
-        width: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/images/texiFondo.png'),
-            fit: BoxFit.cover,
-            colorFilter: ColorFilter.mode(
-              Colors.white.withValues(alpha: 0.25),
-              BlendMode.overlay,
+      body: Stack(
+        children: [
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 5.w),
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/texiFondo.png'),
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                  Colors.white.withValues(alpha: 0.25),
+                  BlendMode.overlay,
+                ),
+              ),
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(height: 15.h),
+                  Image.asset(
+                    'assets/images/texi.png',
+                    height: 180,
+                    width: 450,
+                    fit: BoxFit.fitWidth,
+                  ),
+                  //Descripción de la aplicación
+                  Text(
+                    loginDescription.i18n,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.5.sp,
+                      letterSpacing: 1.75.sp,
+                    ),
+                  ),
+                  SizedBox(height: 5.h),
+                  //Botón de registro
+                  TextButton(
+                    onPressed: () {
+                      context.go(AppRouter.registerHomeLocation);
+                    },
+                    child: Text(registerOpcion.i18n),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10.w),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          //Campo de texto para el teléfono
+                          LabelTextfieldWidget(
+                            label: phone.i18n,
+                            controller: _phoneController,
+                            hintText: '${countryValue.dialCode} 77777777',
+                            keyboardType: TextInputType.phone,
+                            onTap: () => setState(() {
+                              _phoneController.text = countryValue.dialCode;
+                            }),
+                            isBold: true,
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return phoneRequired.i18n;
+                              }
+                              return null;
+                            },
+                          ),
+                          SizedBox(height: 2.5.h),
+                          //Campo de texto para la contraseña
+                          LabelTextfieldWidget(
+                            label: password.i18n,
+                            controller: _passwordController,
+                            hintText: '********',
+                            obscureText: hidePassword,
+                            isBold: true,
+                            suffixIcon: IconButton(
+                              icon: Icon(
+                                hidePassword
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.onSurface.withValues(alpha: 0.5),
+                              ),
+                              onPressed: () {
+                                ref
+                                    .read(hidePasswordProvider.notifier)
+                                    .toggle();
+                              },
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return passwordRequired.i18n;
+                              }
+                              return null;
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  //Botón de olvide mi contraseña
+                  TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      forgetPassword.i18n,
+                      textAlign: TextAlign.right,
+                    ),
+                  ),
+                  SizedBox(height: 10.h),
+                  //Botón de iniciar sesión
+                  ElevatedButtonWidget(
+                    label: login.i18n,
+                    onPressed: () async {
+                      final cockieDriver = await AuthServices()
+                          .validateCokieDriver(_phoneController.text);
+                      if (cockieDriver == null) {
+                        final deviceInfo = await ref.watch(
+                          deviceProvider.future,
+                        );
+                        final phone = _phoneController.text;
+                        final password = _passwordController.text;
+                        final authEntity = AuthEntity.fromRequest(
+                          deviceInfo,
+                          phone,
+                          password,
+                        );
+
+                        final response = await ref
+                            .read(loginNotifierProvider.notifier)
+                            .login(authEntity);
+                        if (response.success) {
+                          final cookie = response.data;
+                          AuthSecureStorageService().saveDriver(cookie!);
+                          _showMessage(
+                            '${welcomeDriver.i18n} ${_phoneController.text}',
+                          );
+                          _navigateToHome();
+                        } else {
+                          _showMessage(response.message);
+                        }
+                      } else {
+                        _showMessage(completeProcessRegistration.i18n);
+                        _navigateToIdentityPage();
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(height: 15.h),
-              //Logo de la aplicación
-              Image.asset(
-                'assets/images/texi.png',
-                height: 180,
-                width: 450,
-                fit: BoxFit.fitWidth,
-              ),
-              //Descripción de la aplicación
-              Text(
-                loginDescription.i18n,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16.5.sp,
-                  letterSpacing: 1.75.sp,
-                ),
-              ),
-              SizedBox(height: 5.h),
-              //Botón de registro
-              TextButton(
-                onPressed: () {
-                  context.go(AppRouter.registerHomeLocation);
-                },
-                child: Text(registerOpcion.i18n),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      //Campo de texto para el teléfono
-                      LabelTextfieldWidget(
-                        label: phone.i18n,
-                        controller: _phoneController,
-                        hintText: '${countryValue.dialCode} 77777777',
-                        keyboardType: TextInputType.phone,
-                        onTap: () => setState(() {
-                          _phoneController.text = countryValue.dialCode;
-                        }),
-                        isBold: true,
-                      ),
-                      SizedBox(height: 2.5.h),
-                      //Campo de texto para la contraseña
-                      LabelTextfieldWidget(
-                        label: password.i18n,
-                        controller: _passwordController,
-                        hintText: '********',
-                        obscureText: hidePassword,
-                        isBold: true,
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            hidePassword
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: Theme.of(
-                              context,
-                            ).colorScheme.onSurface.withValues(alpha: 0.5),
-                          ),
-                          onPressed: () {
-                            ref.read(hidePasswordProvider.notifier).toggle();
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              //Botón de olvide mi contraseña
-              TextButton(
-                onPressed: () {},
-                child: Text(forgetPassword.i18n, textAlign: TextAlign.right),
-              ),
-              SizedBox(height: 10.h),
-              //Botón de iniciar sesión
-              ElevatedButtonWidget(
-                label: login.i18n,
-                onPressed: () async {
-                  final cockieDriver = await ValidateCokieDriver()
-                      .validateCokieDriver(_phoneController.text);
-                  if (cockieDriver == null) {
-                    //TODO: Intentar iniciar sesion con el numero de telefono y contraseña
-                    _showMessage(doNotExistRegister.i18n);
-                  } else {
-                    _showMessage(completeProcessRegistration.i18n);
-                    _navigateToIdentityPage();
-                  }
-                },
-              ),
-            ],
-          ),
-        ),
+          if (isLoggingIn) const LoadingScreen(),
+        ],
       ),
     );
   }
@@ -153,6 +200,12 @@ class _AuthPageState extends ConsumerState<AuthPage> {
   }
 
   void _navigateToIdentityPage() {
-    context.go('/registerHome/identity');
+    context.go(
+      '${AppRouter.registerHomeLocation}${AppRouter.registerIdentityLocation}',
+    );
+  }
+
+  void _navigateToHome() {
+    context.go(AppRouter.vehicleHome);
   }
 }
