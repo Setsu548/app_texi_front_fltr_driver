@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/constants/device_info_provider.dart';
+import 'package:texi/core/constants/storage_keys.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/router/app_router.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
@@ -11,8 +13,9 @@ import 'package:texi/core/widgets/label_textfield_widget.dart';
 import 'package:texi/core/widgets/loading_screen.dart';
 import 'package:texi/features/auth/domain/entities/auth_entity.dart';
 import 'package:texi/features/auth/presentation/providers/auth_providers.dart';
-import 'package:texi/features/auth/services/auth_secure_storeage_service.dart';
+import 'package:texi/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi/features/auth/services/auth_services.dart';
+import 'package:texi/features/dashboard/presentation/provider/dashboard_providers.dart';
 import 'package:texi/features/register_driver/presentation/providers/driver_form_provider.dart';
 
 class AuthPage extends ConsumerStatefulWidget {
@@ -32,6 +35,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
     final hidePassword = ref.watch(hidePasswordProvider);
     final countryValue = ref.watch(localCountryProvider);
     final isLoggingIn = ref.watch(loginNotifierProvider);
+    final storage = GetIt.instance<AuthSecureStorageService>();
 
     return Scaffold(
       appBar: null,
@@ -150,9 +154,9 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                   ElevatedButtonWidget(
                     label: login.i18n,
                     onPressed: () async {
-                      final cockieDriver = await AuthServices()
-                          .validateCokieDriver(_phoneController.text);
-                      if (cockieDriver == null) {
+                      final validateDriverPhone = await AuthServices()
+                          .validateDriverPhone(_phoneController.text);
+                      if (!validateDriverPhone) {
                         final deviceInfo = await ref.watch(
                           deviceProvider.future,
                         );
@@ -169,11 +173,30 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                             .login(authEntity);
                         if (response.success) {
                           final cookie = response.data;
-                          AuthSecureStorageService().saveDriver(cookie!);
+                          await storage.saveToken(
+                            StorageKeys.driverToken,
+                            cookie!.token,
+                          );
                           _showMessage(
                             '${welcomeDriver.i18n} ${_phoneController.text}',
                           );
-                          _navigateToHome();
+                          final flag = await ref
+                              .read(hasVehicleNotifierProvider.notifier)
+                              .hasVehicle();
+                          if (!context.mounted) return;
+                          if (flag == false && flag != null) {
+                            //_navigateToHome();
+                            _navigateToVehiclePage();
+                          } else {
+                            if (flag == null) {
+                              _showMessage(tokenNotFound.i18n);
+                            } else {
+                              context.go(AppRouter.vehicleListLocation);
+                              await ref
+                                  .read(vehicleListProvider.notifier)
+                                  .getVehicleList();
+                            }
+                          }
                         } else {
                           _showMessage(response.message);
                         }
@@ -194,18 +217,21 @@ class _AuthPageState extends ConsumerState<AuthPage> {
   }
 
   void _showMessage(String message) {
+    if (!mounted) return;
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(customSnackBar(message, context));
   }
 
   void _navigateToIdentityPage() {
+    if (!mounted) return;
     context.go(
-      '${AppRouter.registerHomeLocation}${AppRouter.registerIdentityLocation}',
+      '${AppRouter.registerHomeLocation}/${AppRouter.registerIdentityLocation}',
     );
   }
 
-  void _navigateToHome() {
-    context.go(AppRouter.vehicleHome);
+  void _navigateToVehiclePage() {
+    if (!mounted) return;
+    context.go(AppRouter.vehicleRegisterHome);
   }
 }

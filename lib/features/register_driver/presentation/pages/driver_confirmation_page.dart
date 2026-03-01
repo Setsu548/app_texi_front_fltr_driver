@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
+import 'package:texi/core/constants/storage_keys.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/router/app_router.dart';
-import 'package:texi/features/register_driver/services/register_secure_storage_service.dart';
+import 'package:texi/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/loading_screen.dart';
@@ -18,12 +20,13 @@ class DriverConfirmationPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final storage = GetIt.instance<AuthSecureStorageService>();
     // Escuchamos el estado para manejar errores o éxitos
     ref.listen(driverConfirmationProvider, (previous, next) {
       if (!next.isLoading && next.hasValue && next.value != null) {
         if (next.value!.success) {
           // Elimina la cookie del usuario
-          SecureStorageService().clearDriver();
+          storage.deleteString(StorageKeys.driverRegister);
           ScaffoldMessenger.of(
             context,
           ).showSnackBar(customSnackBar(confirmationSuccess.i18n, context));
@@ -74,9 +77,10 @@ class DriverConfirmationPage extends ConsumerWidget {
                     label: sendRequest.i18n,
                     iconImageAfter: const Icon(Icons.chevron_right),
                     onPressed: () async {
-                      final localDriver = await SecureStorageService()
-                          .getDriver();
-                      if (localDriver == null) {
+                      final token = await storage.getString(
+                        StorageKeys.driverRegister,
+                      );
+                      if (token == null) {
                         if (!context.mounted) return;
                         ScaffoldMessenger.of(context).showSnackBar(
                           customSnackBar(errorCookie.i18n, context),
@@ -85,7 +89,7 @@ class DriverConfirmationPage extends ConsumerWidget {
                       }
                       ref
                           .read(driverConfirmationProvider.notifier)
-                          .confirm(localDriver.uuid);
+                          .confirm(token);
                     },
                   ),
                   SizedBox(height: 2.h),

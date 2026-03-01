@@ -52,3 +52,23 @@ class LoginNotifier extends Notifier<bool> {
 }
 
 //--//
+
+//--Clase Notifier para verificar si tiene vehículo--//
+class HasVehicleNotifier extends Notifier<bool> {
+  @override
+  bool build() {
+    return false;
+  }
+
+  Future<bool?> hasVehicle() async {
+    state = true;
+    final repo = ref.read(authRepoProvider);
+    final response = await repo.hasVehicle();
+    state = false;
+    return response;
+  }
+}
+
+final hasVehicleNotifierProvider = NotifierProvider<HasVehicleNotifier, bool>(
+  HasVehicleNotifier.new,
+);

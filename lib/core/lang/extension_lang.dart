@@ -97,7 +97,7 @@ const registerVehicleTitle = 'Selección de Vehículo';
 const vehicleInfoTitle = 'Información del Vehículo';
 const step2Of5 = 'Paso 2 de 5';
 const vehicleData = 'Datos del Vehículo';
-const vehicleDataDesc = 'Ingresa los detalles técnicos de tu unidad.';
+const vehicleDataDesc = 'Ingresa los detalles técnicos de tu unidad vehícular.';
 const vehicleBrand = 'Marca del Vehículo';
 const vehicleBrandHint = 'Ej. Toyota';
 const vehicleModel = 'Modelo';
@@ -112,14 +112,15 @@ const colorBlack = 'Negro';
 const colorGray = 'Gris';
 const colorRed = 'Rojo';
 const colorBlue = 'Azul';
+const colorYellow = 'Amarillo';
+const colorOrange = 'Naranja';
 const vehicleTypeStr = 'Tipo de Vehículo';
 const typeSedan = 'Sedán';
 const typeHatchback = 'Hatchback';
 const typeSUV = 'SUV';
 const typeMinivan = 'Minivan/Van';
 const propertyCard = 'Tarjeta de Propiedad';
-const uploadPhotoOrDoc = 'Subir foto o documento';
-const jpgPngPdfLimit = 'JPG, PNG o PDF hasta 5MB';
+const jpgPngLimit = 'JPG, PNG hasta 5MB';
 const errorCookie = 'Error al obtener el cookie';
 const confirmationSuccess = 'Confirmación enviada con éxito';
 const vehiclePhotos = 'Fotografías del Vehículo';
@@ -136,6 +137,18 @@ const requiredText = 'REQUERIDO';
 const ciDNI = 'CI/DNI';
 const phoneRequired = 'El número de teléfono es requerido';
 const passwordRequired = 'La contraseña es requerida';
+const addVehicle = 'Agregar Vehículo';
+const selectVehicle = 'Seleccionar Vehículo';
+const registerVehicle = 'Registrar Vehículo Nuevo';
+const vehicleInfoFooterDescription =
+    'Asegúrese de que los datos ingresados coincidan con los documentos oficiales del vehículo para evitar problemas durante la verificación,';
+const pickAPhoto = 'Seleccionar una foto';
+const vehicleRegisteredSuccessfully = 'Vehículo registrado exitosamente';
+const insurancePhoto = 'Tarjeta de seguro (opcional)';
+const vin = 'Número de Chasis';
+const titleVehicle = 'Título de Propiedad (RUAT)';
+const example = 'Ej.';
+const tokenNotFound = 'Token no encontrado';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
@@ -672,10 +685,10 @@ extension Localization on String {
       'es-BO': 'Datos del Vehículo',
     },
     vehicleDataDesc: {
-      'en-US': 'Enter the technical details of your unit.',
-      'es-ES': 'Ingresa los detalles técnicos de tu unidad.',
-      'es-MX': 'Ingresa los detalles técnicos de tu unidad.',
-      'es-BO': 'Ingresa los detalles técnicos de tu unidad.',
+      'en-US': 'Enter the technical details of your vehicle unit.',
+      'es-ES': 'Ingresa los detalles técnicos de tu unidad vehícular.',
+      'es-MX': 'Ingresa los detalles técnicos de tu unidad vehícular.',
+      'es-BO': 'Ingresa los detalles técnicos de tu unidad vehícular.',
     },
     vehicleBrand: {
       'en-US': 'Vehicle Brand',
@@ -761,6 +774,18 @@ extension Localization on String {
       'es-MX': 'Azul',
       'es-BO': 'Azul',
     },
+    colorYellow: {
+      'en-US': 'Yellow',
+      'es-ES': 'Amarillo',
+      'es-MX': 'Amarillo',
+      'es-BO': 'Amarillo',
+    },
+    colorOrange: {
+      'en-US': 'Orange',
+      'es-ES': 'Naranja',
+      'es-MX': 'Naranja',
+      'es-BO': 'Naranja',
+    },
     vehicleTypeStr: {
       'en-US': 'Vehicle Type',
       'es-ES': 'Tipo de Vehículo',
@@ -792,17 +817,11 @@ extension Localization on String {
       'es-MX': 'Tarjeta de Propiedad',
       'es-BO': 'Tarjeta de Propiedad',
     },
-    uploadPhotoOrDoc: {
-      'en-US': 'Upload photo or document',
-      'es-ES': 'Subir foto o documento',
-      'es-MX': 'Subir foto o documento',
-      'es-BO': 'Subir foto o documento',
-    },
-    jpgPngPdfLimit: {
-      'en-US': 'JPG, PNG or PDF up to 5MB',
-      'es-ES': 'JPG, PNG o PDF hasta 5MB',
-      'es-MX': 'JPG, PNG o PDF hasta 5MB',
-      'es-BO': 'JPG, PNG o PDF hasta 5MB',
+    jpgPngLimit: {
+      'en-US': 'JPG, PNG up to 5MB',
+      'es-ES': 'JPG, PNG hasta 5MB',
+      'es-MX': 'JPG, PNG hasta 5MB',
+      'es-BO': 'JPG, PNG hasta 5MB',
     },
     errorCookie: {
       'en-US': 'Error al obtener el cookie',
@@ -895,6 +914,71 @@ extension Localization on String {
       'es-ES': 'La contraseña es requerida',
       'es-MX': 'La contraseña es requerida',
       'es-BO': 'La contraseña es requerida',
+    },
+    addVehicle: {
+      'en-US': 'Add Vehicle',
+      'es-ES': 'Agregar Vehículo',
+      'es-MX': 'Agregar Vehículo',
+      'es-BO': 'Agregar Vehículo',
+    },
+    selectVehicle: {
+      'en-US': 'Select Vehicle',
+      'es-ES': 'Seleccionar Vehículo',
+      'es-MX': 'Seleccionar Vehículo',
+      'es-BO': 'Seleccionar Vehículo',
+    },
+    registerVehicle: {
+      'en-US': 'Register Vehicle',
+      'es-ES': 'Registrar Vehículo',
+      'es-MX': 'Registrar Vehículo',
+      'es-BO': 'Registrar Vehículo',
+    },
+    vehicleInfoFooterDescription: {
+      'en-US':
+          'Make sure the data entered matches the vehicle\'s official documents to avoid problems during verification.',
+      'es-ES':
+          'Asegúrese de que los datos ingresados coincidan con los documentos oficiales del vehículo para evitar problemas durante la verificación.',
+      'es-MX':
+          'Asegúrese de que los datos ingresados coincidan con los documentos oficiales del vehículo para evitar problemas durante la verificación.',
+      'es-BO':
+          'Asegúrese de que los datos ingresados coincidan con los documentos oficiales del vehículo para evitar problemas durante la verificación.',
+    },
+    pickAPhoto: {
+      'en-US': 'Pick a photo',
+      'es-ES': 'Seleccionar una foto',
+      'es-MX': 'Seleccionar una foto',
+      'es-BO': 'Seleccionar una foto',
+    },
+    vehicleRegisteredSuccessfully: {
+      'en-US': 'Vehicle registered successfully',
+      'es-ES': 'Vehículo registrado exitosamente',
+      'es-MX': 'Vehículo registrado exitosamente',
+      'es-BO': 'Vehículo registrado exitosamente',
+    },
+    insurancePhoto: {
+      'en-US': 'Insurance photo (optional)',
+      'es-ES': 'Tarjeta de seguro (opcional)',
+      'es-MX': 'Tarjeta de seguro (opcional)',
+      'es-BO': 'Tarjeta de seguro (opcional)',
+    },
+    vin: {
+      'en-US': 'VIN',
+      'es-ES': 'Número de Chasis',
+      'es-MX': 'Número de Chasis',
+      'es-BO': 'Número de Chasis',
+    },
+    titleVehicle: {
+      'en-US': 'Title of Property (RUAT)',
+      'es-ES': 'Título de Propiedad (RUAT)',
+      'es-MX': 'Título de Propiedad (RUAT)',
+      'es-BO': 'Título de Propiedad (RUAT)',
+    },
+    example: {'en-US': 'e.g.', 'es-ES': 'Ej.', 'es-MX': 'Ej.', 'es-BO': 'Ej.'},
+    tokenNotFound: {
+      'en-US': 'Token not found',
+      'es-ES': 'Token no encontrado',
+      'es-MX': 'Token no encontrado',
+      'es-BO': 'Token no encontrado',
     },
   });
 

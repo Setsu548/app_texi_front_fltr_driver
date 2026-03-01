@@ -8,7 +8,7 @@ class ImagePickerService {
   Future<File?> pickImage(ImageSource source) async {
     final XFile? pickedFile = await _picker.pickImage(
       source: source,
-      imageQuality: 50,
+      imageQuality: 25,
       requestFullMetadata: false,
     );
     if (pickedFile != null) {
@@ -17,7 +17,8 @@ class ImagePickerService {
     return null;
   }
 
-  static Future<String> imageToBase64(File imageFile) async {
+  static Future<String?> imageToBase64(File? imageFile) async {
+    if (imageFile == null) return null;
     List<int> imageBytes = await imageFile.readAsBytes();
     String base64Image = base64Encode(imageBytes);
     return base64Image;

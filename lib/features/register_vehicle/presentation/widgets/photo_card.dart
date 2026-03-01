@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
@@ -6,13 +7,24 @@ import 'package:texi/core/lang/extension_lang.dart';
 class PhotoCard extends ConsumerWidget {
   final String title;
   final IconData icon;
-  const PhotoCard({super.key, required this.title, required this.icon});
+  final File? imageFile;
+  final VoidCallback onPickImage;
+
+  const PhotoCard({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.imageFile,
+    required this.onPickImage,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       decoration: BoxDecoration(
-        color: const Color(0xFF1f2937), // dark grey from other page
+        color: Theme.of(context).colorScheme.tertiary.withValues(
+          alpha: 0.15,
+        ), // dark grey from other page
         borderRadius: BorderRadius.circular(10),
       ),
       padding: EdgeInsets.all(3.w),
@@ -22,16 +34,28 @@ class PhotoCard extends ConsumerWidget {
             height: 16.h,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: const Color(0xFF374151), // lighter dark grey
+              color: Theme.of(
+                context,
+              ).colorScheme.secondary.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(8),
+              image: imageFile != null
+                  ? DecorationImage(
+                      image: FileImage(imageFile!),
+                      fit: BoxFit.cover,
+                    )
+                  : null,
             ),
-            child: Center(
-              child: Icon(
-                icon,
-                color: const Color(0xFF6B7280), // even lighter
-                size: 40.sp,
-              ),
-            ),
+            child: imageFile == null
+                ? Center(
+                    child: Icon(
+                      icon,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primary.withValues(alpha: 0.85),
+                      size: 40.sp,
+                    ),
+                  )
+                : null,
           ),
           SizedBox(height: 2.h),
           Row(
@@ -66,9 +90,7 @@ class PhotoCard extends ConsumerWidget {
                 ),
                 child: IconButton(
                   icon: const Icon(Icons.camera_alt, color: Colors.black),
-                  onPressed: () {
-                    // TODO: Implement image picker
-                  },
+                  onPressed: onPickImage,
                 ),
               ),
             ],

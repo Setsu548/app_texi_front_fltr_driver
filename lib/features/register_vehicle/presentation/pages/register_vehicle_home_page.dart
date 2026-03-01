@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi/core/router/app_router.dart';
 import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 
@@ -11,27 +13,7 @@ class RegisterVehicleHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            if (context.canPop()) {
-              context.pop();
-            }
-          },
-        ),
-        title: Text(
-          registerVehicleTitle.i18n,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 16.sp,
-          ),
-        ),
-        centerTitle: true,
-      ),
+      appBar: null,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -42,19 +24,16 @@ class RegisterVehicleHomePage extends StatelessWidget {
                   child: Column(
                     children: [
                       SizedBox(height: 2.h),
-                      // Big card with car icon
                       Container(
                         width: double.infinity,
                         padding: EdgeInsets.symmetric(vertical: 5.h),
                         decoration: BoxDecoration(
-                          color: const Color(
-                            0xFF23231f,
-                          ), // estimated dark yellow/grey
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(15),
                           border: Border.all(
-                            color: const Color(
-                              0xFFFFD600,
-                            ).withValues(alpha: 0.3),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.3),
                             width: 1,
                           ),
                         ),
@@ -69,9 +48,8 @@ class RegisterVehicleHomePage extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: const Color(
-                                      0xFFFFD600,
-                                    ).withValues(alpha: 0.35),
+                                    color: Theme.of(context).colorScheme.primary
+                                        .withValues(alpha: 0.35),
                                     blurRadius: 25,
                                     spreadRadius: 8,
                                   ),
@@ -80,7 +58,9 @@ class RegisterVehicleHomePage extends StatelessWidget {
                               child: Center(
                                 child: Icon(
                                   Icons.local_taxi,
-                                  color: Colors.black,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onPrimary,
                                   size: 16.w,
                                 ),
                               ),
@@ -90,9 +70,9 @@ class RegisterVehicleHomePage extends StatelessWidget {
                               width: 20.w,
                               height: 3,
                               decoration: BoxDecoration(
-                                color: const Color(
-                                  0xFFFFD600,
-                                ).withValues(alpha: 0.5),
+                                color: Theme.of(
+                                  context,
+                                ).colorScheme.primary.withValues(alpha: 0.5),
                                 borderRadius: BorderRadius.circular(2),
                               ),
                             ),
@@ -101,58 +81,47 @@ class RegisterVehicleHomePage extends StatelessWidget {
                       ),
                       SizedBox(height: 4.h),
                       Text(
-                        'Selección de Vehículo',
+                        addVehicle.i18n,
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Theme.of(context).colorScheme.onSurface,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 1.5.h),
-                      Text(
-                        'Por favor seleccione una de las siguientes opciones para continuar con el proceso de registro.',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.grey[400],
-                          fontSize: 12.sp,
-                          height: 1.4,
-                        ),
-                      ),
-                      SizedBox(height: 4.h),
-                      // Primary Button
+                      SizedBox(height: 5.5.h),
                       ElevatedButtonWidget(
-                        label: 'Registrar Vehículo Nuevo',
+                        label: registerVehicle.i18n,
                         iconImageBefore: const Icon(
                           Icons.add_circle_outline,
                           color: Colors.black,
                         ),
                         onPressed: () {
-                          // Navigate to new vehicle registration
+                          context.push(
+                            '${AppRouter.vehicleRegisterHome}/${AppRouter.vehicleRegisterInfoLocation}',
+                          );
                         },
                       ),
                       SizedBox(height: 2.h),
-                      // Secondary Button
                       AnotherElevatedButtonWidget(
-                        label: 'Seleccionar Vehículo Registrado',
+                        label: continueLater.i18n,
                         iconImageBefore: const Icon(
-                          Icons.featured_play_list_outlined,
+                          Icons.chevron_left,
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          // Navigate to existing vehicle selection
+                          exit(0);
                         },
                       ),
                       SizedBox(height: 4.h),
-                      // Info Box
                       Container(
                         padding: EdgeInsets.all(4.w),
                         decoration: BoxDecoration(
-                          color: const Color(0xFF1f1f1a),
+                          color: Colors.transparent,
                           borderRadius: BorderRadius.circular(10),
                           border: Border.all(
-                            color: const Color(
-                              0xFFFFD600,
-                            ).withValues(alpha: 0.4),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.4),
                           ),
                         ),
                         child: Row(
@@ -160,7 +129,7 @@ class RegisterVehicleHomePage extends StatelessWidget {
                           children: [
                             Icon(
                               Icons.info_outline,
-                              color: const Color(0xFFFFD600),
+                              color: Theme.of(context).colorScheme.primary,
                               size: 6.w,
                             ),
                             SizedBox(width: 3.w),
@@ -168,7 +137,8 @@ class RegisterVehicleHomePage extends StatelessWidget {
                               child: Text(
                                 registerVehicleHomeDes.i18n,
                                 style: TextStyle(
-                                  color: Colors.grey[400],
+                                  color: Theme.of(context).colorScheme.onSurface
+                                      .withValues(alpha: 0.7),
                                   fontSize: 11.5.sp,
                                   height: 1.4,
                                 ),
@@ -177,26 +147,7 @@ class RegisterVehicleHomePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: 2.h),
                     ],
-                  ),
-                ),
-              ),
-              // Bottom Action Button
-              Padding(
-                padding: EdgeInsets.only(bottom: 2.h, top: 1.h),
-                child: TextButton(
-                  onPressed: () {
-                    // Continue later action
-                  },
-                  child: Text(
-                    continueLater.i18n,
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                      fontSize: 12.sp,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 1.2,
-                    ),
                   ),
                 ),
               ),

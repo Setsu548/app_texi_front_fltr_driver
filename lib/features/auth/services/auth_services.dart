@@ -1,18 +1,16 @@
-import 'package:texi/features/register_driver/services/register_secure_storage_service.dart';
+import 'package:get_it/get_it.dart';
+import 'package:texi/core/constants/storage_keys.dart';
+import 'package:texi/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi/features/register_driver/data/models/driver_data_res_model.dart';
 
 class AuthServices {
-  final SecureStorageService _secureStorageService = SecureStorageService();
-
-  Future<DriverDataModel?> validateCokieDriver(String phone) async {
-    final DriverDataModel? driverDataModel = await _secureStorageService
-        .getDriver();
-    if (driverDataModel == null) {
-      return null;
+  Future<bool> validateDriverPhone(String phone) async {
+    final storage = GetIt.instance<AuthSecureStorageService>();
+    final rawToken = await storage.getString(StorageKeys.driverRegister);
+    if (rawToken == null) {
+      return false;
     }
-    if (driverDataModel.phoneNumber != phone) {
-      return null;
-    }
-    return driverDataModel;
+    final driverDataResModel = DriverDataModel.fromRawJson(rawToken);
+    return driverDataResModel.phoneNumber == phone;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi/core/theme/styles_for_texts.dart';
 
 class WarningBanner extends StatelessWidget {
   const WarningBanner({super.key});
@@ -16,26 +17,43 @@ class WarningBanner extends StatelessWidget {
           color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
         ),
       ),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(
-            Icons.wb_sunny_outlined,
-            color: Theme.of(context).colorScheme.primary,
-          ),
-          SizedBox(height: 1.5.h),
-          Text(
-            goodLightingRequired.i18n,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.primary,
-              fontWeight: FontWeight.bold,
-              fontSize: 12.sp,
+          SizedBox(
+            height: 5.h,
+            width: 10.w,
+            child: Center(
+              child: Icon(
+                Icons.wb_sunny_outlined,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ),
-          SizedBox(height: 0.5.h),
-          Text(
-            goodLightingDescription.i18n,
-            style: TextStyle(color: Colors.grey[400], fontSize: 10.sp),
+          SizedBox(width: 1.5.w),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                goodLightingRequired.i18n,
+                style: StylesForTexts(context: context)
+                    .headerStyleSmall()
+                    .copyWith(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 15.75.sp,
+                    ),
+              ),
+              SizedBox(height: 0.5.h),
+              SizedBox(
+                width: 70.w,
+                child: Text(
+                  goodLightingDescription.i18n,
+                  style: StylesForTexts(
+                    context: context,
+                  ).bodyStyle().copyWith(fontSize: 13.sp),
+                ),
+              ),
+            ],
           ),
         ],
       ),

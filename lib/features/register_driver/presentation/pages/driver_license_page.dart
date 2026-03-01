@@ -1,12 +1,14 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
+import 'package:texi/core/constants/storage_keys.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/router/app_router.dart';
+import 'package:texi/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi/core/utils/image_picker_service.dart';
-import 'package:texi/features/register_driver/services/register_secure_storage_service.dart';
 import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
@@ -18,6 +20,7 @@ import 'package:texi/features/register_driver/presentation/widgets/driver_licens
 import 'package:texi/features/register_driver/presentation/widgets/driver_form_header_widget.dart';
 import 'package:texi/features/register_driver/presentation/widgets/driver_license/driver_expiration_license.dart';
 import 'package:texi/features/register_driver/presentation/widgets/driver_license/driver_front_license_widget.dart';
+import 'package:texi/features/register_driver/services/register_%20services.dart';
 
 class DriverLicensePage extends ConsumerStatefulWidget {
   const DriverLicensePage({super.key});
@@ -135,17 +138,28 @@ class _DriverLicensePageState extends ConsumerState<DriverLicensePage> {
                       label: continueButton.i18n,
                       iconImageAfter: Icon(Icons.chevron_right),
                       onPressed: () async {
+                        final secure =
+                            GetIt.instance<AuthSecureStorageService>();
                         if (ref.read(frontLicenseProvider).value != null &&
                             ref.read(backLicenseProvider).value != null &&
                             ref.read(profileImageProvider).value != null) {
-                          final cookie = await SecureStorageService()
-                              .getDriver();
-                          if (cookie != null) {
+                          final token = await secure.getString(
+                            StorageKeys.driverRegister,
+                          );
+                          final uuid = RegisterServices.getUuid(token);
+                          if (uuid != null) {
+                            final back = await ImagePickerService.imageToBase64(
+                              ref.read(backLicenseProvider).value!,
+                            );
+                            final face = await ImagePickerService.imageToBase64(
+                              ref.read(profileImageProvider).value!,
+                            );
+                            final front =
+                                await ImagePickerService.imageToBase64(
+                                  ref.read(frontLicenseProvider).value!,
+                                );
                             final license = IdentificationEntity(
-                              backDocument:
-                                  await ImagePickerService.imageToBase64(
-                                    ref.read(backLicenseProvider).value!,
-                                  ),
+                              backDocument: back!,
                               documentNumber: ref.read(
                                 numeroIdentificationProvider,
                               ),
@@ -153,14 +167,9 @@ class _DriverLicensePageState extends ConsumerState<DriverLicensePage> {
                               expireDate: ref.read(
                                 licenseExpirationDateProvider,
                               ),
-                              faceImage: await ImagePickerService.imageToBase64(
-                                ref.read(profileImageProvider).value!,
-                              ),
-                              frontDocument:
-                                  await ImagePickerService.imageToBase64(
-                                    ref.read(frontLicenseProvider).value!,
-                                  ),
-                              uuid: cookie.uuid,
+                              faceImage: face!,
+                              frontDocument: front!,
+                              uuid: uuid,
                             );
                             ref
                                 .read(
@@ -168,9 +177,11 @@ class _DriverLicensePageState extends ConsumerState<DriverLicensePage> {
                                 )
                                 .register(license);
                           } else {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              customSnackBar(errorCookie.i18n, context),
-                            );
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                customSnackBar(tokenNotFound.i18n, context),
+                              );
+                            }
                           }
                         } else {
                           ScaffoldMessenger.of(context).showSnackBar(

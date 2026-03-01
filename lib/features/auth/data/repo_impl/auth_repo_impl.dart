@@ -1,5 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:get_it/get_it.dart';
 import 'package:texi/core/constants/data_api_response.dart';
+import 'package:texi/core/constants/storage_keys.dart';
+import 'package:texi/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi/features/auth/data/auth_endpoints.dart';
 import 'package:texi/features/auth/data/models/auth_model.dart';
 import 'package:texi/features/auth/data/models/login_data_model.dart';
@@ -41,6 +44,31 @@ class AuthRepoImpl implements AuthRepo {
         message: 'Error al iniciar sesión',
         error: ErrorResponse(message: e.toString(), details: e.toString()),
       );
+    }
+  }
+
+  @override
+  Future<bool?> hasVehicle() async {
+    final storage = GetIt.instance<AuthSecureStorageService>();
+    try {
+      final token = await storage.getString(StorageKeys.driverToken);
+      if (token == null) {
+        return null;
+      }
+      final response = await _dio.get(
+        hasVehiclePath,
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+      if (response.statusCode != 200) {
+        return null;
+      }
+      final responseModel = DataApiResponse.fromJson(response.data);
+      if (responseModel.data == null) {
+        return false;
+      }
+      return true;
+    } catch (e) {
+      return null;
     }
   }
 }

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
+import 'package:texi/core/constants/storage_keys.dart';
 import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/features/register_driver/services/register_secure_storage_service.dart';
+import 'package:texi/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/loading_screen.dart';
 import 'package:texi/features/register_driver/presentation/providers/driver_form_provider.dart';
@@ -39,7 +41,9 @@ class _DriverFormPageState extends ConsumerState<DriverFormPage> {
           // Si la respuesta de la API es un éxito total:
           if (data?.success == true) {
             // 1. Guardamos los datos recibidos del conductor de forma segura en el dispositivo.
-            SecureStorageService().saveDriver(data!.data!);
+            final driverRes = data!.data!;
+            final storage = GetIt.instance<AuthSecureStorageService>();
+            storage.saveToken(StorageKeys.driverRegister, driverRes.toRawJson());
             // 2. Mostramos un mensaje de confirmación al usuario.
             ScaffoldMessenger.of(
               context,

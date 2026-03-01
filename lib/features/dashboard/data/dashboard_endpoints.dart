@@ -1,0 +1,1 @@
+final String vehicleListPath = '/users/vehicle';

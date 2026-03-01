@@ -1,12 +1,14 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
+import 'package:texi/core/constants/storage_keys.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/router/app_router.dart';
+import 'package:texi/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi/core/utils/image_picker_service.dart';
-import 'package:texi/features/register_driver/services/register_secure_storage_service.dart';
 import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
@@ -216,6 +218,8 @@ class DriverIdentityPage extends ConsumerWidget {
                     onPressed: isLoading
                         ? null
                         : () async {
+                            final storage =
+                                GetIt.instance<AuthSecureStorageService>();
                             if (_formKey.currentState!.validate()) {
                               if (ref.read(profileImageProvider).value !=
                                       null &&
@@ -223,37 +227,41 @@ class DriverIdentityPage extends ConsumerWidget {
                                       null &&
                                   ref.read(backIdentificationProvider).value !=
                                       null) {
-                                final cookie = await SecureStorageService()
-                                    .getDriver();
+                                final token = await storage.getString(
+                                  StorageKeys.driverRegister,
+                                );
                                 ref
                                     .read(numeroIdentificationProvider.notifier)
                                     .setNumeroIdentification(
                                       _identityController.text,
                                     );
-                                if (cookie != null) {
+                                if (token != null) {
+                                  final back =
+                                      await ImagePickerService.imageToBase64(
+                                        ref
+                                            .read(backIdentificationProvider)
+                                            .value!,
+                                      );
+                                  final face =
+                                      await ImagePickerService.imageToBase64(
+                                        ref.read(profileImageProvider).value!,
+                                      );
+                                  final front =
+                                      await ImagePickerService.imageToBase64(
+                                        ref
+                                            .read(frontIdentificationProvider)
+                                            .value!,
+                                      );
                                   final identification = IdentificationEntity(
-                                    backDocument:
-                                        await ImagePickerService.imageToBase64(
-                                          ref
-                                              .read(backIdentificationProvider)
-                                              .value!,
-                                        ),
+                                    backDocument: back!,
                                     documentNumber: _identityController.text,
                                     documentType: 1,
                                     expireDate: ref.read(
                                       idExpirationDateProvider,
                                     ),
-                                    faceImage:
-                                        await ImagePickerService.imageToBase64(
-                                          ref.read(profileImageProvider).value!,
-                                        ),
-                                    frontDocument:
-                                        await ImagePickerService.imageToBase64(
-                                          ref
-                                              .read(frontIdentificationProvider)
-                                              .value!,
-                                        ),
-                                    uuid: cookie.uuid,
+                                    faceImage: face!,
+                                    frontDocument: front!,
+                                    uuid: token,
                                   );
                                   ref
                                       .read(
@@ -261,6 +269,15 @@ class DriverIdentityPage extends ConsumerWidget {
                                             .notifier,
                                       )
                                       .register(identification);
+                                } else {
+                                  if (context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      customSnackBar(
+                                        tokenNotFound.i18n,
+                                        context,
+                                      ),
+                                    );
+                                  }
                                 }
                               } else {
                                 ScaffoldMessenger.of(context).showSnackBar(

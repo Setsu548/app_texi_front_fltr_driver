@@ -4,4 +4,5 @@ import 'package:texi/features/auth/domain/entities/auth_entity.dart';
 
 abstract class AuthRepo {
   Future<DataApiResponse<LoginDataModel>> login(AuthEntity authEntity);
+  Future<bool?> hasVehicle();
 }
