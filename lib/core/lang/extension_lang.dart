@@ -149,6 +149,22 @@ const vin = 'Número de Chasis';
 const titleVehicle = 'Título de Propiedad (RUAT)';
 const example = 'Ej.';
 const tokenNotFound = 'Token no encontrado';
+const currentStatus = 'Estado actual:';
+const activeStr = 'Activo';
+const connectedReadyForTrips = 'Conectado y listo para recibir viajes';
+const totalEarningsPeriod = 'GANANCIAS TOTALES DEL PERÍODO';
+const kmTraveledStr = 'Km recorridos';
+const last30Days = 'Últimos 30 días';
+const quickActionsStr = 'Acciones rápidas';
+const historyStr = 'Historial';
+const earningsStr = 'Ganancias';
+const profileStr = 'Perfil';
+const supportStr = 'Soporte';
+const breakdownLast5Days = 'Desglose últimos 5 días';
+const seeAll = 'Ver todo';
+const todayStr = 'Hoy';
+const yesterdayStr = 'Ayer';
+const tripsStr = 'viajes';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
@@ -979,6 +995,102 @@ extension Localization on String {
       'es-ES': 'Token no encontrado',
       'es-MX': 'Token no encontrado',
       'es-BO': 'Token no encontrado',
+    },
+    todayStr: {
+      'en-US': 'Today',
+      'es-ES': 'Hoy',
+      'es-MX': 'Hoy',
+      'es-BO': 'Hoy',
+    },
+    yesterdayStr: {
+      'en-US': 'Yesterday',
+      'es-ES': 'Ayer',
+      'es-MX': 'Ayer',
+      'es-BO': 'Ayer',
+    },
+    tripsStr: {
+      'en-US': 'trips',
+      'es-ES': 'viajes',
+      'es-MX': 'viajes',
+      'es-BO': 'viajes',
+    },
+    seeAll: {
+      'en-US': 'See all',
+      'es-ES': 'Ver todo',
+      'es-MX': 'Ver todo',
+      'es-BO': 'Ver todo',
+    },
+    breakdownLast5Days: {
+      'en-US': 'Breakdown last 5 days',
+      'es-ES': 'Desglose últimos 5 días',
+      'es-MX': 'Desglose últimos 5 días',
+      'es-BO': 'Desglose últimos 5 días',
+    },
+    supportStr: {
+      'en-US': 'Support',
+      'es-ES': 'Soporte',
+      'es-MX': 'Soporte',
+      'es-BO': 'Soporte',
+    },
+    profileStr: {
+      'en-US': 'Profile',
+      'es-ES': 'Perfil',
+      'es-MX': 'Perfil',
+      'es-BO': 'Perfil',
+    },
+    earningsStr: {
+      'en-US': 'Earnings',
+      'es-ES': 'Ganancias',
+      'es-MX': 'Ganancias',
+      'es-BO': 'Ganancias',
+    },
+    historyStr: {
+      'en-US': 'History',
+      'es-ES': 'Historial',
+      'es-MX': 'Historial',
+      'es-BO': 'Historial',
+    },
+    quickActionsStr: {
+      'en-US': 'Quick actions',
+      'es-ES': 'Acciones rápidas',
+      'es-MX': 'Acciones rápidas',
+      'es-BO': 'Acciones rápidas',
+    },
+    last30Days: {
+      'en-US': 'Last 30 days',
+      'es-ES': 'Últimos 30 días',
+      'es-MX': 'Últimos 30 días',
+      'es-BO': 'Últimos 30 días',
+    },
+    kmTraveledStr: {
+      'en-US': 'Km traveled',
+      'es-ES': 'Km recorridos',
+      'es-MX': 'Km recorridos',
+      'es-BO': 'Km recorridos',
+    },
+    totalEarningsPeriod: {
+      'en-US': 'TOTAL EARNINGS OF THE PERIOD',
+      'es-ES': 'GANANCIAS TOTALES DEL PERÍODO',
+      'es-MX': 'GANANCIAS TOTALES DEL PERÍODO',
+      'es-BO': 'GANANCIAS TOTALES DEL PERÍODO',
+    },
+    connectedReadyForTrips: {
+      'en-US': 'Connected and ready to receive trips',
+      'es-ES': 'Conectado y listo para recibir viajes',
+      'es-MX': 'Conectado y listo para recibir viajes',
+      'es-BO': 'Conectado y listo para recibir viajes',
+    },
+    activeStr: {
+      'en-US': 'Active',
+      'es-ES': 'Activo',
+      'es-MX': 'Activo',
+      'es-BO': 'Activo',
+    },
+    currentStatus: {
+      'en-US': 'Current status:',
+      'es-ES': 'Estado actual:',
+      'es-MX': 'Estado actual:',
+      'es-BO': 'Estado actual:',
     },
   });
 

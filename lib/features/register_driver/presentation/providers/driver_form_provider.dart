@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:i18n_extension/i18n_extension.dart';
+//import 'package:i18n_extension/i18n_extension.dart';
 import 'package:phonecodes/phonecodes.dart';
 import 'package:texi/core/constants/data_api_response.dart';
 import 'package:texi/core/constants/dio_provider.dart';
@@ -21,7 +21,11 @@ final countriesListProvider =
 class CountriesListProvider extends Notifier<List<Country>> {
   @override
   List<Country> build() {
-    return Countries.list;
+    final countries = Countries.list;
+    final latamCountries = LatamCountries.values.map((e) => e.name).toList();
+    return countries
+        .where((element) => latamCountries.contains(element.name.toLowerCase()))
+        .toList();
   }
 }
 
@@ -31,14 +35,18 @@ final localCountryProvider = NotifierProvider<LocalCountryProvider, Country>(
 
 /// Provider that manages the currently selected country.
 /// Defaults to the country matching the current locale or the first in the list.
+/// TODO: Implementar la selección de país por defecto según el idioma
 class LocalCountryProvider extends Notifier<Country> {
   @override
   Country build() {
     final countries = ref.watch(countriesListProvider);
     return countries.firstWhere(
+      (country) => country.name.toLowerCase() == 'bolivia',
+    );
+    /* return countries.firstWhere(
       (element) => element.code == I18n.locale.countryCode,
       orElse: () => countries.first,
-    );
+    ); */
   }
 
   void setCountry(Country country) {
@@ -181,7 +189,7 @@ final departmentSelectedProvider =
 
 class LocalitiesListProvider extends AsyncNotifier<List<LocalityEntity>> {
   @override
-  FutureOr<List<LocalityEntity>> build() async {
+  Future<List<LocalityEntity>> build() async {
     final department = ref.watch(departmentSelectedProvider);
     return department.localities;
   }

@@ -10,6 +10,7 @@ import 'package:texi/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/loading_screen.dart';
+import 'package:texi/features/register_driver/data/models/driver_data_res_model.dart';
 import 'package:texi/features/register_driver/presentation/providers/driver_identity_provider.dart';
 import 'package:texi/features/register_driver/presentation/widgets/confirmation_message.dart';
 import 'package:texi/features/register_driver/presentation/widgets/driver_form_header_widget.dart';
@@ -87,9 +88,10 @@ class DriverConfirmationPage extends ConsumerWidget {
                         );
                         return;
                       }
+                      final tokenDecoded = DriverDataModel.fromRawJson(token);
                       ref
                           .read(driverConfirmationProvider.notifier)
-                          .confirm(token);
+                          .confirm(tokenDecoded.uuid);
                     },
                   ),
                   SizedBox(height: 2.h),

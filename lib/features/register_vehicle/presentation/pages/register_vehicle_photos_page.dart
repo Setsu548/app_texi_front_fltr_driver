@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi/core/router/app_router.dart';
 import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
@@ -33,6 +35,8 @@ class RegisterVehiclePhotosPage extends ConsumerWidget {
         },
         data: (data) {
           if (data != null && data.success) {
+            //TODO: Implement register confirmation
+            _navigate(context);
             _showMessage(context, data.message!);
           }
         },
@@ -138,5 +142,9 @@ class RegisterVehiclePhotosPage extends ConsumerWidget {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(customSnackBar(message, context));
+  }
+
+  void _navigate(BuildContext context) {
+    context.go(AppRouter.initialLocation);
   }
 }

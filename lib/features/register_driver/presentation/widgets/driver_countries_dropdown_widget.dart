@@ -63,6 +63,7 @@ class _DriverCountriesDropdownWidgetState
               onChanged: (country) {
                 if (country != null) {
                   ref.read(localCountryProvider.notifier).setCountry(country);
+                  ref.read(departmentsListProvider.notifier).build();
                 }
               },
             ),

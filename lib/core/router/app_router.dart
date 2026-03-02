@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:texi/core/router/transitions_helper.dart';
 import 'package:texi/features/auth/presentation/pages/auth_page.dart';
+import 'package:texi/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:texi/features/dashboard/presentation/pages/vehicle_list_page.dart';
 import 'package:texi/features/register_driver/presentation/pages/driver_confirmation_page.dart';
 import 'package:texi/features/register_driver/presentation/pages/driver_identity_page.dart';
@@ -23,48 +25,75 @@ class AppRouter {
   static final String vehicleRegisterInfoLocation = 'vehicleRegisterInfo';
   static final String vehicleRegisterPhotosLocation = 'vehicleRegisterPhotos';
   static final String vehicleListLocation = '/vehicleList';
+  static final String dashboardLocation = '/dashboard';
 
   static final routes = GoRouter(
     initialLocation: initialLocation,
     routes: [
-      GoRoute(path: initialLocation, builder: (context, state) => AuthPage()),
+      GoRoute(
+        path: initialLocation,
+        pageBuilder: (context, state) =>
+            TransitionsHelper.fadeTransition(state, AuthPage()),
+      ),
       GoRoute(
         path: registerHomeLocation,
-        builder: (context, state) => RegisterHomePage(),
+        pageBuilder: (context, state) =>
+            TransitionsHelper.slideUpTransition(state, RegisterHomePage()),
         routes: [
           GoRoute(
             path: registerPersonalInfoLocation,
-            builder: (context, state) => DriverFormPage(),
+            pageBuilder: (context, state) =>
+                TransitionsHelper.slideTransition(state, DriverFormPage()),
           ),
           GoRoute(
             path: registerIdentityLocation,
-            builder: (context, state) => DriverIdentityPage(),
+            pageBuilder: (context, state) =>
+                TransitionsHelper.slideTransition(state, DriverIdentityPage()),
           ),
           GoRoute(
             path: registerLicenseLocation,
-            builder: (context, state) => DriverLicensePage(),
+            pageBuilder: (context, state) =>
+                TransitionsHelper.slideTransition(state, DriverLicensePage()),
           ),
           GoRoute(
             path: registerConfirmationLocation,
-            builder: (context, state) => DriverConfirmationPage(),
+            pageBuilder: (context, state) => TransitionsHelper.slideTransition(
+              state,
+              DriverConfirmationPage(),
+            ),
           ),
         ],
       ),
       GoRoute(
         path: vehicleListLocation,
-        builder: (context, state) => VehicleListPage(),
+        pageBuilder: (context, state) =>
+            TransitionsHelper.fadeTransition(state, VehicleListPage()),
+      ),
+      GoRoute(
+        path: dashboardLocation,
+        pageBuilder: (context, state) =>
+            TransitionsHelper.fadeTransition(state, DashboardPage()),
       ),
       GoRoute(
         path: vehicleRegisterHome,
-        builder: (context, state) => RegisterVehicleHomePage(),
+        pageBuilder: (context, state) => TransitionsHelper.slideUpTransition(
+          state,
+          RegisterVehicleHomePage(),
+        ),
         routes: [
           GoRoute(
             path: vehicleRegisterInfoLocation,
-            builder: (context, state) => RegisterVehicleInfoPage(),
+            pageBuilder: (context, state) => TransitionsHelper.slideTransition(
+              state,
+              RegisterVehicleInfoPage(),
+            ),
           ),
           GoRoute(
             path: vehicleRegisterPhotosLocation,
-            builder: (context, state) => RegisterVehiclePhotosPage(),
+            pageBuilder: (context, state) => TransitionsHelper.slideTransition(
+              state,
+              RegisterVehiclePhotosPage(),
+            ),
           ),
         ],
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi/core/theme/styles_for_texts.dart';
 
 class PhotoCard extends ConsumerWidget {
   final String title;
@@ -66,18 +67,13 @@ class PhotoCard extends ConsumerWidget {
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 11.5.sp,
-                    ),
+                    style: StylesForTexts(context: context).headerStyleSmall(),
                   ),
                   SizedBox(height: 0.2.h),
                   Text(
                     requiredText.i18n,
                     style: TextStyle(
-                      color: const Color(0xFFFFD600),
-                      fontSize: 9.sp,
+                      color: Theme.of(context).colorScheme.primary,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -85,11 +81,14 @@ class PhotoCard extends ConsumerWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                  color: const Color(0xFFFFD600),
+                  color: Theme.of(context).colorScheme.primary,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: IconButton(
-                  icon: const Icon(Icons.camera_alt, color: Colors.black),
+                  icon: Icon(
+                    Icons.camera_alt,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
                   onPressed: onPickImage,
                 ),
               ),

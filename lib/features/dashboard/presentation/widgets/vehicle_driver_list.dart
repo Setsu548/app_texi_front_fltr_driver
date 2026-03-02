@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
+import 'package:texi/core/router/app_router.dart';
 import 'package:texi/features/dashboard/presentation/provider/dashboard_providers.dart';
 
 class VehicleDriverList extends ConsumerWidget {
@@ -15,6 +17,9 @@ class VehicleDriverList extends ConsumerWidget {
         return ListTile(
           title: Text('${vehicle.brand} ${vehicle.model.toUpperCase()}'),
           subtitle: Text(vehicle.licensePlate),
+          onTap: () {
+            context.go(AppRouter.dashboardLocation);
+          },
         );
       },
     );

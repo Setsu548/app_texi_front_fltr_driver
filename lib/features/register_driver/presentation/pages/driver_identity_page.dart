@@ -13,6 +13,7 @@ import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/loading_screen.dart';
+import 'package:texi/features/register_driver/data/models/driver_data_res_model.dart';
 import 'package:texi/features/register_driver/domain/entities/identification_entity.dart';
 import 'package:texi/features/register_driver/presentation/providers/driver_identity_provider.dart';
 import 'package:texi/features/register_driver/presentation/widgets/dirver_identification/driver_back_identification_section.dart';
@@ -252,6 +253,8 @@ class DriverIdentityPage extends ConsumerWidget {
                                             .read(frontIdentificationProvider)
                                             .value!,
                                       );
+                                  final tokenDecoded =
+                                      DriverDataModel.fromRawJson(token);
                                   final identification = IdentificationEntity(
                                     backDocument: back!,
                                     documentNumber: _identityController.text,
@@ -261,7 +264,7 @@ class DriverIdentityPage extends ConsumerWidget {
                                     ),
                                     faceImage: face!,
                                     frontDocument: front!,
-                                    uuid: token,
+                                    uuid: tokenDecoded.uuid,
                                   );
                                   ref
                                       .read(
