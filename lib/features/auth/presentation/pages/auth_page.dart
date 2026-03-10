@@ -66,7 +66,6 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                     width: 450,
                     fit: BoxFit.fitWidth,
                   ),
-                  //Descripción de la aplicación
                   Text(
                     loginDescription.i18n,
                     style: TextStyle(
@@ -77,10 +76,13 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                     ),
                   ),
                   SizedBox(height: 5.h),
-                  //Botón de registro
+                  //TODO: Delete the register token?.
                   TextButton(
-                    onPressed: () {
-                      context.go(AppRouter.registerHomeLocation);
+                    onPressed: () async {
+                      //await storage.deleteString(StorageKeys.driverRegister);
+                      context.mounted
+                          ? context.go(AppRouter.registerHomeLocation)
+                          : null;
                     },
                     child: Text(registerOpcion.i18n),
                   ),
@@ -90,7 +92,6 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                       key: _formKey,
                       child: Column(
                         children: [
-                          //Campo de texto para el teléfono
                           LabelTextfieldWidget(
                             label: phone.i18n,
                             controller: _phoneController,
@@ -108,7 +109,6 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                             },
                           ),
                           SizedBox(height: 2.5.h),
-                          //Campo de texto para la contraseña
                           LabelTextfieldWidget(
                             label: password.i18n,
                             controller: _passwordController,
@@ -141,7 +141,6 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                       ),
                     ),
                   ),
-                  //Botón de olvide mi contraseña
                   TextButton(
                     onPressed: () {},
                     child: Text(
@@ -150,13 +149,12 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                     ),
                   ),
                   SizedBox(height: 10.h),
-                  //Botón de iniciar sesión
                   ElevatedButtonWidget(
                     label: login.i18n,
                     onPressed: () async {
                       final validateDriverPhone = await AuthServices()
                           .validateDriverPhone(_phoneController.text);
-                      if (!validateDriverPhone) {
+                      if (validateDriverPhone) {
                         final deviceInfo = await ref.watch(
                           deviceProvider.future,
                         );
@@ -185,7 +183,6 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                               .hasVehicle();
                           if (!context.mounted) return;
                           if (flag == false && flag != null) {
-                            //_navigateToHome();
                             _navigateToVehiclePage();
                           } else {
                             if (flag == null) {
@@ -198,7 +195,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                             }
                           }
                         } else {
-                          _showMessage(response.message);
+                          _showMessage(response.error!.details);
                         }
                       } else {
                         _showMessage(completeProcessRegistration.i18n);

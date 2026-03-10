@@ -18,31 +18,51 @@ class AuthRepoImpl implements AuthRepo {
     final authModel = AuthModel.fromEntity(authEntity);
     try {
       final response = await _dio.post(loginPath, data: authModel.toJson());
-      if (response.statusCode != 200) {
-        return DataApiResponse.fromError(
-          success: false,
-          statusCode: response.statusCode!,
-          code: response.data['code'],
-          message: response.data['message'],
-          error: response.data['error'],
-        );
+      switch (response.statusCode) {
+        case 200:
+          final loginModel = LoginDataModel.fromJson(response.data['data']);
+          return DataApiResponse(
+            success: true,
+            statusCode: response.statusCode!,
+            code: response.data['code'],
+            message: response.data['message'],
+            data: loginModel,
+            error: null,
+          );
+        case 201:
+          return DataApiResponse.fromSuccess(response.data, null);
+        case 400:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'],
+            message: response.data['message'],
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 404:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'],
+            message: response.data['message'],
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        default:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'],
+            message: response.data['message'],
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
       }
-      final loginModel = LoginDataModel.fromJson(response.data['data']);
-      return DataApiResponse(
-        success: true,
-        statusCode: response.statusCode!,
-        code: response.data['code'],
-        message: response.data['message'],
-        data: loginModel,
-        error: null,
-      );
-    } catch (e) {
+    } on DioException catch (e) {
       return DataApiResponse.fromError(
         success: false,
         statusCode: 500,
         code: 'ERROR',
         message: 'Error al iniciar sesión',
-        error: ErrorResponse(message: e.toString(), details: e.toString()),
+        error: ErrorResponse.fromJson(e.response?.data['error']),
       );
     }
   }
@@ -59,16 +79,18 @@ class AuthRepoImpl implements AuthRepo {
         hasVehiclePath,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
-      if (response.statusCode != 200) {
-        return null;
+      switch (response.statusCode) {
+        case 200:
+          final vehicles = response.data['data'] as List;
+          if (vehicles.isEmpty) {
+            return false;
+          }
+          return true;
+        default:
+          return null;
       }
-      final responseModel = DataApiResponse.fromJson(response.data);
-      if (responseModel.data == null) {
-        return false;
-      }
-      return true;
-    } catch (e) {
-      return null;
+    } on DioException catch (e) {
+      throw (e.response?.data['error']['details']);
     }
   }
 }

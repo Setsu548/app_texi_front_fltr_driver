@@ -18,7 +18,7 @@ class VehicleDriverList extends ConsumerWidget {
           title: Text('${vehicle.brand} ${vehicle.model.toUpperCase()}'),
           subtitle: Text(vehicle.licensePlate),
           onTap: () {
-            context.go(AppRouter.dashboardLocation);
+            context.push(AppRouter.dashboardLocation);
           },
         );
       },

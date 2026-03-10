@@ -5,15 +5,15 @@ import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/router/app_router.dart';
-import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
+import 'package:texi/features/dashboard/presentation/provider/dashboard_providers.dart';
 import 'package:texi/features/register_vehicle/presentation/providers/vehicle_info_provider.dart';
 import 'package:texi/features/register_vehicle/presentation/widgets/photo_card.dart';
 import 'package:texi/features/register_vehicle/presentation/widgets/vehicle_register_header.dart';
 import 'package:texi/features/register_vehicle/presentation/widgets/warning_banner.dart';
-import 'package:texi/features/register_vehicle/services/parser.dart';
 import 'package:texi/core/widgets/loading_screen.dart';
+import 'package:texi/features/register_vehicle/services/register_vehicles_services.dart';
 
 class RegisterVehiclePhotosPage extends ConsumerWidget {
   const RegisterVehiclePhotosPage({super.key});
@@ -35,7 +35,6 @@ class RegisterVehiclePhotosPage extends ConsumerWidget {
         },
         data: (data) {
           if (data != null && data.success) {
-            //TODO: Implement register confirmation
             _navigate(context);
             _showMessage(context, data.message!);
           }
@@ -107,27 +106,22 @@ class RegisterVehiclePhotosPage extends ConsumerWidget {
                           vehicleLeftSidePhoto != null &&
                           vehicleRightSidePhoto != null &&
                           vehicleBackSidePhoto != null) {
-                        final imagesParsed = await Parser.parseVehicleImages(
-                          vehicleFrontPhoto,
-                          vehicleLeftSidePhoto,
-                          vehicleRightSidePhoto,
-                          vehicleBackSidePhoto,
+                        await RegisterVehiclesServices.registerVehicleImages(
+                          ref,
                         );
-                        await ref
-                            .read(vehicleImagesSavingProvider.notifier)
-                            .saveVehicleImages(imagesParsed);
                       }
+                      ref.read(vehicleListProvider.notifier).getVehicleList();
                     },
                     width: 90.w,
                   ),
                   SizedBox(height: 1.5.h),
-                  AnotherElevatedButtonWidget(
+                  /* AnotherElevatedButtonWidget(
                     label: continueLater.i18n,
                     onPressed: () {
                       // TODO: Implement continue later
                     },
                     width: 90.w,
-                  ),
+                  ), */
                 ],
               ),
             ),
@@ -145,6 +139,6 @@ class RegisterVehiclePhotosPage extends ConsumerWidget {
   }
 
   void _navigate(BuildContext context) {
-    context.go(AppRouter.initialLocation);
+    context.go(AppRouter.vehicleListLocation);
   }
 }

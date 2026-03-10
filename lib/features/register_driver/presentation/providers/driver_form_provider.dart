@@ -1,16 +1,21 @@
 import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-//import 'package:i18n_extension/i18n_extension.dart';
+import 'package:get_it/get_it.dart';
 import 'package:phonecodes/phonecodes.dart';
-import 'package:texi/core/constants/data_api_response.dart';
 import 'package:texi/core/constants/dio_provider.dart';
 import 'package:texi/core/constants/enums.dart';
+import 'package:texi/core/constants/storage_keys.dart';
+import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi/core/utils/auth_secure_storeage_service.dart';
+import 'package:texi/core/utils/image_picker_service.dart';
 import 'package:texi/features/register_driver/data/models/driver_data_res_model.dart';
 import 'package:texi/features/register_driver/data/repo/driver_register_repo_impl.dart';
 import 'package:texi/features/register_driver/domain/entities/department_entity.dart';
 import 'package:texi/features/register_driver/domain/entities/driver_entity.dart';
+import 'package:texi/features/register_driver/domain/entities/identification_entity.dart';
 import 'package:texi/features/register_driver/domain/entities/locality_entity.dart';
 import 'package:texi/features/register_driver/domain/repo/driver_register_repo.dart';
+import 'package:texi/features/register_driver/presentation/providers/driver_identity_provider.dart';
 
 final countriesListProvider =
     NotifierProvider<CountriesListProvider, List<Country>>(
@@ -33,9 +38,6 @@ final localCountryProvider = NotifierProvider<LocalCountryProvider, Country>(
   LocalCountryProvider.new,
 );
 
-/// Provider that manages the currently selected country.
-/// Defaults to the country matching the current locale or the first in the list.
-/// TODO: Implementar la selección de país por defecto según el idioma
 class LocalCountryProvider extends Notifier<Country> {
   @override
   Country build() {
@@ -58,7 +60,6 @@ final birthDateProvider = NotifierProvider<BirthDateProvider, DateTime>(
   BirthDateProvider.new,
 );
 
-/// Provider that manages the selected birth date.
 class BirthDateProvider extends Notifier<DateTime> {
   @override
   DateTime build() {
@@ -92,32 +93,140 @@ final driverRegisterRepoProvider = Provider<DriverRegisterRepo>((ref) {
   return DriverRegisterRepoImpl(dio);
 });
 
-/// Notifier that handles the driver registration process.
-/// It manages the loading, success, and error states of the registration.
-class DriverRegisterNotifier
-    extends Notifier<AsyncValue<DataApiResponse<DriverDataModel>?>> {
+class RegisterProccessNotifier extends Notifier<AsyncValue<String>> {
   @override
-  AsyncValue<DataApiResponse<DriverDataModel>?> build() {
-    return const AsyncValue.data(null);
+  AsyncValue<String> build() {
+    return const AsyncValue.data('');
   }
 
-  Future<void> register(DriverEntity driver) async {
+  void setLoading() {
     state = const AsyncValue.loading();
-    try {
-      final repo = ref.read(driverRegisterRepoProvider);
-      final result = await repo.registerDriver(driver);
-      state = AsyncValue.data(result);
-    } catch (e, stack) {
-      state = AsyncValue.error(e, stack);
+  }
+
+  void setError(Object error, [StackTrace? stackTrace]) {
+    state = AsyncValue.error(error, stackTrace ?? StackTrace.current);
+  }
+
+  void setSuccess([String message = '']) {
+    state = AsyncValue.data(message);
+  }
+
+  Future<bool> registerDriver(DriverEntity driver) async {
+    final storage = GetIt.instance<AuthSecureStorageService>();
+    final repo = ref.read(driverRegisterRepoProvider);
+    final response = await repo.registerDriver(driver);
+    final driverRes = response.data;
+    if (driverRes == null) {
+      throw response.error?.details ?? 'Error';
+    }
+    await storage.saveToken(StorageKeys.driverRegister, driverRes.toRawJson());
+    return true;
+  }
+
+  Future<bool> registerDriverIdentification() async {
+    final storage = GetIt.instance<AuthSecureStorageService>();
+    final repo = ref.read(driverRegisterRepoProvider);
+    final rawDriverRegistered = await storage.getString(
+      StorageKeys.driverRegister,
+    );
+    if (rawDriverRegistered == null) {
+      throw (driverInfoNotFound.i18n);
+    }
+    final driverRegistered = DriverDataResModel.fromRawJson(
+      rawDriverRegistered,
+    );
+    final back = await ImagePickerService.imageToBase64(
+      ref.read(backIdentificationProvider).value!,
+    );
+    final face = await ImagePickerService.imageToBase64(
+      ref.read(profileImageProvider).value!,
+    );
+    final front = await ImagePickerService.imageToBase64(
+      ref.read(frontIdentificationProvider).value!,
+    );
+    final identification = IdentificationEntity(
+      backDocument: back!,
+      documentNumber: ref.read(identificationNumberProvider),
+      documentType: 1,
+      expireDate: ref.read(idExpirationDateProvider),
+      faceImage: face!,
+      frontDocument: front!,
+      uuid: driverRegistered.uuid,
+    );
+    final response = await repo.registerDriverIdentification(identification);
+    if (response.data == null && response.error != null) {
+      throw response.error!.details;
+    }
+    if (response.success) {
+      return true;
+    } else {
+      throw (response.error!.details);
+    }
+  }
+
+  Future<bool> registerDriverLicense() async {
+    final storage = GetIt.instance<AuthSecureStorageService>();
+    final repo = ref.read(driverRegisterRepoProvider);
+    final rawDriverRegistered = await storage.getString(
+      StorageKeys.driverRegister,
+    );
+    if (rawDriverRegistered == null) {
+      throw (driverInfoNotFound.i18n);
+    }
+    final driverRegistered = DriverDataResModel.fromRawJson(
+      rawDriverRegistered,
+    );
+    final back = await ImagePickerService.imageToBase64(
+      ref.read(backLicenseProvider).value!,
+    );
+    final face = await ImagePickerService.imageToBase64(
+      ref.read(profileImageProvider).value!,
+    );
+    final front = await ImagePickerService.imageToBase64(
+      ref.read(frontLicenseProvider).value!,
+    );
+    final identification = IdentificationEntity(
+      backDocument: back!,
+      documentNumber: ref.read(identificationNumberProvider),
+      documentType: 2,
+      expireDate: ref.read(licenseExpirationDateProvider),
+      faceImage: face!,
+      frontDocument: front!,
+      uuid: driverRegistered.uuid,
+    );
+    final response = await repo.registerDriverIdentification(identification);
+    if (response.data == null && response.error != null) {
+      throw response.error!.details;
+    }
+    if (response.success) {
+      return true;
+    } else {
+      throw (response.error!.details);
+    }
+  }
+
+  Future<bool> updateDriverRegistration() async {
+    final storage = GetIt.instance<AuthSecureStorageService>();
+    final repo = ref.read(driverRegisterRepoProvider);
+    final driverRegister = await storage.getString(StorageKeys.driverRegister);
+    if (driverRegister != null) {
+      final driver = DriverDataResModel.fromRawJson(driverRegister);
+      final res = await repo.confirmDriverRegistration(driver.uuid);
+      if (res.success) {
+        return true;
+      } else {
+        throw (res.error!.details);
+      }
+    } else {
+      throw (driverInfoExeption.i18n);
     }
   }
 }
 
-final driverRegisterProvider =
-    NotifierProvider<
-      DriverRegisterNotifier,
-      AsyncValue<DataApiResponse<DriverDataModel>?>
-    >(DriverRegisterNotifier.new);
+final driverRegisterProccessProvider =
+    NotifierProvider<RegisterProccessNotifier, AsyncValue<String>>(
+      RegisterProccessNotifier.new,
+    );
 
 //Department Provider
 //It manages the list of departments by a selected country

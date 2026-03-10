@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/theme/styles_for_texts.dart';
+import 'package:texi/features/dashboard/presentation/provider/dashboard_providers.dart';
 import '../../../../core/lang/extension_lang.dart';
+import '../../services/local_auth_services.dart';
 
-class DashboardPage extends StatefulWidget {
+class DashboardPage extends ConsumerStatefulWidget {
   const DashboardPage({super.key});
 
   @override
-  State<DashboardPage> createState() => _DashboardPageState();
+  ConsumerState<DashboardPage> createState() => _DashboardPageState();
 }
 
-class _DashboardPageState extends State<DashboardPage> {
-  bool _isActive = true;
+class _DashboardPageState extends ConsumerState<DashboardPage> {
+  final LocalAuthentication auth = LocalAuthentication();
+
+  @override
+  void initState() {
+    super.initState();
+    auth.isDeviceSupported().then((bool isSupported) {
+      ref.read(supportBiometricsProvider.notifier).toggleSwitch(isSupported);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,6 +107,7 @@ class _DashboardPageState extends State<DashboardPage> {
   }
 
   Widget _buildStatusCard(Color primaryColor, ThemeData theme) {
+    final switchActive = ref.watch(switchActiveProvider);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
       decoration: BoxDecoration(
@@ -114,8 +127,8 @@ class _DashboardPageState extends State<DashboardPage> {
                     Container(
                       width: 8,
                       height: 8,
-                      decoration: const BoxDecoration(
-                        color: Colors.greenAccent,
+                      decoration: BoxDecoration(
+                        color: switchActive ? Colors.greenAccent : Colors.red,
                         shape: BoxShape.circle,
                       ),
                     ),
@@ -128,7 +141,9 @@ class _DashboardPageState extends State<DashboardPage> {
                         ).headerStyleSmall(),
                         children: [
                           TextSpan(
-                            text: activeStr.i18n,
+                            text: switchActive
+                                ? activeStr.i18n
+                                : inactiveStr.i18n,
                             style: StylesForTexts(
                               context: context,
                             ).headerStyleSmall(),
@@ -150,11 +165,17 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
           ),
           Switch(
-            value: _isActive,
-            onChanged: (val) {
-              setState(() {
-                _isActive = val;
-              });
+            value: switchActive,
+            onChanged: (val) async {
+              if (val) {
+                final localAuth = LocalAuthServices(auth: auth);
+                bool isAuthenticated = await localAuth.authenticate();
+                if (isAuthenticated) {
+                  ref.read(switchActiveProvider.notifier).toggleSwitch();
+                }
+              } else {
+                ref.read(switchActiveProvider.notifier).toggleSwitch();
+              }
             },
             activeThumbColor: theme.primaryColor,
             activeTrackColor: theme.primaryColor.withValues(alpha: 0.15),

@@ -90,7 +90,7 @@ const driverResumeInfo = 'Resumen de información';
 const sendRequest = 'Enviar Solicitud';
 const edit = 'Editar';
 const confirmationMessage =
-    'Todos los datos han sido enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.';
+    'Todos los datos serán enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.';
 const registerVehicleHomeDes =
     'Si ya ha registrado un vehículo anteriormente, puede seleccionarlo de la lista de vehículos registrados. De lo contrario, registre un nuevo vehículo para comenzar.';
 const registerVehicleTitle = 'Selección de Vehículo';
@@ -151,6 +151,7 @@ const example = 'Ej.';
 const tokenNotFound = 'Token no encontrado';
 const currentStatus = 'Estado actual:';
 const activeStr = 'Activo';
+const inactiveStr = 'Inactivo';
 const connectedReadyForTrips = 'Conectado y listo para recibir viajes';
 const totalEarningsPeriod = 'GANANCIAS TOTALES DEL PERÍODO';
 const kmTraveledStr = 'Km recorridos';
@@ -165,6 +166,25 @@ const seeAll = 'Ver todo';
 const todayStr = 'Hoy';
 const yesterdayStr = 'Ayer';
 const tripsStr = 'viajes';
+const authenticateToContinue = 'Por favor, autentíquese para continuar';
+const formErrorFieldMessage =
+    'Revise que todos los campos están llenados correctamente';
+const confirmation = 'Confirmación';
+const confirmationDescription =
+    'Asegurese que todos sus datos son correctos antes de continuar';
+const driverSavedLocally = 'Datos guardados localmente.';
+const errorSavingDriver = 'Error al guardar los datos localmente.';
+const driverInfoExeption =
+    'No se encontró la información del conductor en el almacenamiento local.';
+const errorRegisteringDriverInfo =
+    'Error al registrar la información del conductor';
+const driverInfoNotFound = 'No se encontró información del conductor';
+const errorRegisteringDriverId =
+    'Error al registrar la identificación del conductor';
+const driverRegisteredSuccessfully = '¡Conductor registrado exitosamente!';
+const comeback = 'Regresar';
+const errorUpdatingDriverRegistration =
+    'Error al actualizar el registro del conductor';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
@@ -652,13 +672,13 @@ extension Localization on String {
     },
     confirmationMessage: {
       'en-US':
-          'All data has been sent to be verified. You will receive a message with the confirmation and the next steps to follow.',
+          'All data will be sent to be verified. You will receive a message with the confirmation and the next steps to follow.',
       'es-ES':
-          'Todos los datos han sido enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.',
+          'Todos los datos serán enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.',
       'es-MX':
-          'Todos los datos han sido enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.',
+          'Todos los datos serán enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.',
       'es-BO':
-          'Todos los datos han sido enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.',
+          'Todos los datos serán enviados para ser verificados. Recibirás un mensaje con la confirmación y los próximos pasos a seguir.',
     },
     registerVehicleHomeDes: {
       'en-US':
@@ -1091,6 +1111,90 @@ extension Localization on String {
       'es-ES': 'Estado actual:',
       'es-MX': 'Estado actual:',
       'es-BO': 'Estado actual:',
+    },
+    inactiveStr: {
+      'en-US': 'Inactive',
+      'es-ES': 'Inactivo',
+      'es-MX': 'Inactivo',
+      'es-BO': 'Inactivo',
+    },
+    authenticateToContinue: {
+      'en-US': 'Please authenticate to continue',
+      'es-ES': 'Por favor, autentíquese para continuar',
+      'es-MX': 'Por favor, autentíquese para continuar',
+      'es-BO': 'Por favor, autentíquese para continuar',
+    },
+    formErrorFieldMessage: {
+      'en-US': "Check that all fields are filled in correctly",
+      'es-ES': 'Revise que todos los campos están llenados correctamente',
+      'es-MX': 'Revise que todos los campos están llenados correctamente',
+      'es-BO': 'Revise que todos los campos están llenados correctamente',
+    },
+    confirmation: {
+      'en-US': 'Confirmation',
+      'es-ES': 'Confirmación',
+      'es-MX': 'Confirmación',
+      'es-BO': 'Confirmación',
+    },
+    confirmationDescription: {
+      'en-US': 'Make sure all your data is correct before continuing',
+      'es-ES': 'Asegurese que todos sus datos son correctos antes de continuar',
+      'es-MX': 'Asegurese que todos sus datos son correctos antes de continuar',
+      'es-BO': 'Asegurese que todos sus datos son correctos antes de continuar',
+    },
+    driverSavedLocally: {
+      'en-US': 'Driver data saved locally',
+      'es-ES': 'Datos del conductor guardados localmente',
+      'es-MX': 'Datos del conductor guardados localmente',
+      'es-BO': 'Datos del conductor guardados localmente',
+    },
+    errorSavingDriver: {
+      'en-US': 'Error saving driver data locally',
+      'es-ES': 'Error al guardar los datos del conductor localmente',
+      'es-MX': 'Error al guardar los datos del conductor localmente',
+      'es-BO': 'Error al guardar los datos del conductor localmente',
+    },
+    driverInfoExeption: {
+      'en-US': 'Error retrieving driver information',
+      'es-ES': 'Error al obtener la información del conductor',
+      'es-MX': 'Error al obtener la información del conductor',
+      'es-BO': 'Error al obtener la información del conductor',
+    },
+    errorRegisteringDriverInfo: {
+      'en-US': 'Error registering driver information',
+      'es-ES': 'Error al registrar la información del conductor',
+      'es-MX': 'Error al registrar la información del conductor',
+      'es-BO': 'Error al registrar la información del conductor',
+    },
+    driverInfoNotFound: {
+      'en-US': 'Driver information not found',
+      'es-ES': 'Información del conductor no encontrada',
+      'es-MX': 'Información del conductor no encontrada',
+      'es-BO': 'Información del conductor no encontrada',
+    },
+    errorRegisteringDriverId: {
+      'en-US': 'Error registering driver identification',
+      'es-ES': 'Error al registrar la identificación del conductor',
+      'es-MX': 'Error al registrar la identificación del conductor',
+      'es-BO': 'Error al registrar la identificación del conductor',
+    },
+    driverRegisteredSuccessfully: {
+      'en-US': 'Driver registered successfully',
+      'es-ES': 'Conductor registrado exitosamente',
+      'es-MX': 'Conductor registrado exitosamente',
+      'es-BO': 'Conductor registrado exitosamente',
+    },
+    comeback: {
+      'en-US': 'Come back',
+      'es-ES': 'Volver',
+      'es-MX': 'Volver',
+      'es-BO': 'Volver',
+    },
+    errorUpdatingDriverRegistration: {
+      'en-US': 'Error updating driver registration',
+      'es-ES': 'Error al actualizar el registro del conductor',
+      'es-MX': 'Error al actualizar el registro del conductor',
+      'es-BO': 'Error al actualizar el registro del conductor',
     },
   });
 

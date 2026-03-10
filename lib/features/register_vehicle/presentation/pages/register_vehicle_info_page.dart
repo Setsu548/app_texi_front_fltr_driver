@@ -8,7 +8,6 @@ import 'package:texi/core/constants/storage_keys.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/router/app_router.dart';
 import 'package:texi/core/utils/auth_secure_storeage_service.dart';
-import 'package:texi/core/widgets/another_elevated_button_widget.dart';
 import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/label_textfield_widget.dart';
@@ -20,6 +19,7 @@ import 'package:texi/features/register_vehicle/presentation/widgets/vehicle_info
 import 'package:texi/features/register_vehicle/presentation/widgets/vehicle_register_header.dart';
 import 'package:texi/features/register_vehicle/presentation/widgets/vehicle_type_selector_widget.dart';
 import 'package:texi/features/register_vehicle/presentation/widgets/vehicle_year_dropdown.dart';
+import 'package:texi/features/register_vehicle/services/register_vehicles_services.dart';
 
 class RegisterVehicleInfoPage extends ConsumerStatefulWidget {
   const RegisterVehicleInfoPage({super.key});
@@ -55,7 +55,33 @@ class _RegisterVehicleInfoPageState
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = ref.watch(registerVehicleProvider).isLoading;
+    ref.listen(registerVehicleProvider, (previous, next) {
+      next.whenOrNull(
+        error: (error, stackTrace) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(customSnackBar(error.toString(), context));
+        },
+        data: (data) async {
+          final storage = GetIt.instance<AuthSecureStorageService>();
+          if (data != null && data.success) {
+            final vehicleResModel = data.data;
+            await storage.saveToken(
+              StorageKeys.vehicleRegister,
+              vehicleResModel!.uuid,
+            );
+            if (context.mounted) {
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(customSnackBar(data.message, context));
+            }
+          }
+        },
+      );
+    });
+
+    final registerVehicleState = ref.watch(registerVehicleProvider);
+    final isLoading = registerVehicleState.isLoading;
 
     return Scaffold(
       appBar: null,
@@ -209,35 +235,22 @@ class _RegisterVehicleInfoPageState
                                     insurancePolicy: insuranceController.text
                                         .trim(),
                                   );
-                                  final response = await ref
-                                      .read(registerVehicleProvider.notifier)
-                                      .registerVehicle(vehicleInfo);
-
-                                  if (!context.mounted) return;
-                                  if (response != null) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      customSnackBar(
-                                        vehicleRegisteredSuccessfully.i18n,
-                                        context,
-                                      ),
+                                  try {
+                                    await RegisterVehiclesServices.registerVehicle(
+                                      ref,
+                                      vehicleInfo,
                                     );
-                                    await storage.saveToken(
-                                      StorageKeys.vehicleRegister,
-                                      response.uuid,
-                                    );
-                                    if (!context.mounted) return;
-                                    context.push(
-                                      '${AppRouter.vehicleRegisterHome}/${AppRouter.vehicleRegisterPhotosLocation}',
-                                    );
-                                  } else {
-                                    final error = ref
-                                        .read(registerVehicleProvider)
-                                        .error;
-                                    if (error != null) {
+                                    if (context.mounted) {
+                                      context.push(
+                                        '${AppRouter.vehicleRegisterHome}/${AppRouter.vehicleRegisterPhotosLocation}',
+                                      );
+                                    }
+                                  } catch (e) {
+                                    if (context.mounted) {
                                       ScaffoldMessenger.of(
                                         context,
                                       ).showSnackBar(
-                                        customSnackBar(error, context),
+                                        customSnackBar(e.toString(), context),
                                       );
                                     }
                                   }
@@ -246,7 +259,7 @@ class _RegisterVehicleInfoPageState
                             ),
                           ),
                           SizedBox(height: 1.5.h),
-                          Center(
+                          /* Center(
                             child: AnotherElevatedButtonWidget(
                               label: continueLater.i18n,
                               onPressed: () {
@@ -254,7 +267,7 @@ class _RegisterVehicleInfoPageState
                               },
                             ),
                           ),
-                          SizedBox(height: 2.5.h),
+                          SizedBox(height: 2.5.h), */
                         ],
                       ),
                     ),

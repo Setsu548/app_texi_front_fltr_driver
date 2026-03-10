@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:texi/core/utils/image_picker_service.dart';
 import 'package:texi/features/register_vehicle/domain/entities/vehicle_image_entity.dart';
 
-class Parser {
+class ImageParserToList {
   static Future<List<VehicleImageEntity>> parseVehicleImages(
     File? frontImage,
     File? leftSideImage,
@@ -37,3 +37,4 @@ class Parser {
     return temp;
   }
 }
+

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
+import 'package:texi/core/router/app_router.dart';
 import 'package:texi/features/dashboard/presentation/widgets/vehicle_driver_list.dart';
 import 'package:texi/features/dashboard/presentation/widgets/vehicle_list_header_widget.dart';
 
@@ -22,7 +24,9 @@ class VehicleListPage extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => context.push(
+          '${AppRouter.vehicleRegisterHome}/${AppRouter.vehicleRegisterInfoLocation}',
+        ),
       ),
     );
   }

@@ -5,3 +5,4 @@ final String departmentsEndpoint = '${dotenv.env['GEO_URL']}/geo/full-tree/';
 final String registerDriverIdentificationEndpoint =
     '/users/driver/document-info';
 final String confirmRegister = '/users/driver/update-user';
+final String getDriverInfoEndpoint = '/users/driver/personal-info?uuid=';

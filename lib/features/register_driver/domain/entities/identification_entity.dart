@@ -16,4 +16,6 @@ class IdentificationEntity {
     required this.frontDocument,
     required this.uuid,
   });
+
+  
 }

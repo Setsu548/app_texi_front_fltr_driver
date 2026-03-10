@@ -26,26 +26,54 @@ class RegisterVehicleRepoImp implements RegisterVehicleRepo {
       data: vehicleModel.toJson(),
       options: Options(headers: {'Authorization': 'Bearer $token'}),
     );
-    final dataRes = DataApiResponse<Map<String, dynamic>?>.fromJson(
-      response.data,
-    );
-    if (dataRes.success) {
-      return DataApiResponse<VehicleResModel?>(
-        success: dataRes.success,
-        statusCode: dataRes.statusCode,
-        code: dataRes.code,
-        message: dataRes.message,
-        data: VehicleResModel.fromJson(dataRes.data!),
-        error: null,
-      );
-    } else {
-      return DataApiResponse<VehicleResModel?>.fromError(
-        statusCode: dataRes.statusCode,
-        code: dataRes.code,
-        success: dataRes.success,
-        message: dataRes.message,
-        error: dataRes.error,
-      );
+    switch (response.statusCode) {
+      case 200:
+        return DataApiResponse<VehicleResModel?>.fromSuccess(
+          response.data,
+          (json) => VehicleResModel.fromJson(json),
+        );
+      case 201:
+        return DataApiResponse<VehicleResModel?>.fromSuccess(response.data);
+      case 400:
+        return DataApiResponse<VehicleResModel?>.fromError(
+          success: false,
+          statusCode: response.statusCode!,
+          code: response.data['code'] ?? '',
+          message: response.data['message'] ?? '',
+          error: ErrorResponse.fromJson(response.data['error']),
+        );
+      case 404:
+        return DataApiResponse<VehicleResModel?>.fromError(
+          success: false,
+          statusCode: response.statusCode!,
+          code: response.data['code'] ?? '',
+          message: response.data['message'] ?? '',
+          error: ErrorResponse.fromJson(response.data['error']),
+        );
+      case 500:
+        return DataApiResponse<VehicleResModel?>.fromError(
+          success: false,
+          statusCode: response.statusCode!,
+          code: response.data['code'] ?? '',
+          message: response.data['message'] ?? '',
+          error: ErrorResponse.fromJson(response.data['error']),
+        );
+      case 502:
+        return DataApiResponse<VehicleResModel?>.fromError(
+          success: false,
+          statusCode: response.statusCode!,
+          code: response.data['code'] ?? '',
+          message: response.data['message'] ?? '',
+          error: ErrorResponse.fromJson(response.data['error']),
+        );
+      default:
+        return DataApiResponse<VehicleResModel?>.fromError(
+          success: false,
+          statusCode: response.statusCode!,
+          code: response.data['code'] ?? '',
+          message: response.data['message'] ?? '',
+          error: ErrorResponse.fromJson(response.data['error']),
+        );
     }
   }
 
@@ -55,6 +83,7 @@ class RegisterVehicleRepoImp implements RegisterVehicleRepo {
   ) async {
     final storage = GetIt.instance<AuthSecureStorageService>();
     final vehicleId = await storage.getString(StorageKeys.vehicleRegister);
+    print(vehicleId);
     try {
       final vehiclesImagesModel = VehicleImageSaving(
         carId: vehicleId!,
@@ -63,6 +92,7 @@ class RegisterVehicleRepoImp implements RegisterVehicleRepo {
             .toList(),
       );
       final data = vehiclesImagesModel.toJson();
+      print(data);
       final token = await GetIt.instance<AuthSecureStorageService>().getString(
         StorageKeys.driverToken,
       );
@@ -71,32 +101,65 @@ class RegisterVehicleRepoImp implements RegisterVehicleRepo {
         data: data,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
-      final dataRes = DataApiResponse.fromJson(response.data);
-      if (dataRes.success) {
-        return DataApiResponse(
-          success: dataRes.success,
-          statusCode: dataRes.statusCode,
-          code: dataRes.code,
-          message: dataRes.message,
-          data: null,
-          error: null,
-        );
-      } else {
-        return DataApiResponse.fromError(
-          statusCode: dataRes.statusCode,
-          code: dataRes.code,
-          success: dataRes.success,
-          message: dataRes.message,
-          error: dataRes.error,
-        );
+      print(response.data);
+      switch (response.statusCode) {
+        case 200:
+          return DataApiResponse(
+            success: true,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            data: null,
+            error: null,
+          );
+        case 400:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 404:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 500:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 502:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        default:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
       }
-    } catch (e) {
+    } on DioException catch (e) {
       return DataApiResponse.fromError(
-        statusCode: 500,
-        code: '0',
+        statusCode: e.response?.statusCode ?? 500,
+        code: e.response?.data['code'] ?? '0',
         success: false,
-        message: 'Error',
-        error: ErrorResponse(message: e.toString(), details: e.toString()),
+        message: e.response?.data['message'] ?? 'Error',
+        error: ErrorResponse.fromJson(e.response?.data['error']),
       );
     }
   }

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:texi/core/utils/dates_utilities.dart';
 import 'package:texi/features/register_driver/domain/entities/identification_entity.dart';
 
@@ -71,4 +72,6 @@ class IdentificationModel extends IdentificationEntity {
     'front_document': frontDocument,
     'uuid': uuid,
   };
+
+  String toRawJson() => jsonEncode(toJson());
 }

@@ -14,28 +14,6 @@ class DriverRegisterRepoImpl implements DriverRegisterRepo {
   DriverRegisterRepoImpl(this._dio);
 
   @override
-  Future<DriverDataResModel> registerDriver(DriverEntity driver) async {
-    try {
-      final response = await _dio.post(
-        registerDriverEndpoint,
-        data: DriverModel.fromEntity(driver).toJson(),
-      );
-      if (response.statusCode != 200) {
-        return DriverDataResModel.fromError(response.data);
-      }
-      return DriverDataResModel.fromJson(response.data);
-    } catch (e) {
-      return DriverDataResModel.fromErrorCatch(
-        success: false,
-        statusCode: 500,
-        code: 'Fail',
-        message: e.toString(),
-        data: null,
-      );
-    }
-  }
-
-  @override
   Future<GeoDataResModel> getDepartments(String country) async {
     try {
       final response = await _dio.get('$departmentsEndpoint$country');
@@ -48,8 +26,77 @@ class DriverRegisterRepoImpl implements DriverRegisterRepo {
       }
       final resModel = GeoDataResModel.fromJson(response.data);
       return resModel;
-    } catch (e) {
+    } on DioException catch (e) {
       return GeoDataResModel.fromError({}, 500, e.toString());
+    }
+  }
+
+  @override
+  Future<DataApiResponse<DriverDataResModel>> registerDriver(
+    DriverEntity driver,
+  ) async {
+    try {
+      final response = await _dio.post(
+        registerDriverEndpoint,
+        data: DriverModel.fromEntity(driver).toJson(),
+      );
+      switch (response.statusCode) {
+        case 200:
+          return DataApiResponse<DriverDataResModel>.fromSuccess(
+            response.data,
+            (json) => DriverDataResModel.fromJson(json),
+          );
+        case 201:
+          return DataApiResponse<DriverDataResModel>.fromJson(response.data);
+        case 400:
+          return DataApiResponse<DriverDataResModel>.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 404:
+          return DataApiResponse<DriverDataResModel>.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 500:
+          return DataApiResponse<DriverDataResModel>.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 502:
+          return DataApiResponse<DriverDataResModel>.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        default:
+          return DataApiResponse<DriverDataResModel>.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+      }
+    } on DioException catch (e) {
+      return DataApiResponse<DriverDataResModel>.fromError(
+        success: false,
+        statusCode: e.response!.statusCode!,
+        code: e.response!.data['code'] ?? '',
+        message: e.response!.data['message'] ?? '',
+        error: ErrorResponse.fromJson(e.response!.data['error']),
+      );
     }
   }
 
@@ -57,62 +104,112 @@ class DriverRegisterRepoImpl implements DriverRegisterRepo {
   Future<DataApiResponse<String?>> registerDriverIdentification(
     IdentificationEntity identification,
   ) async {
-    final IdentificationModel identificationModel =
-        IdentificationModel.fromEntity(identification);
+    final identificationModel = IdentificationModel.fromEntity(identification);
     try {
       final response = await _dio.post(
         registerDriverIdentificationEndpoint,
         data: identificationModel.toJson(),
       );
-      if (response.statusCode != 200) {
-        return DataApiResponse.fromError(
-          success: false,
-          statusCode: response.statusCode!,
-          code: response.data['code'] ?? '',
-          message: response.data['message'] ?? '',
-          error: ErrorResponse.fromJson(response.data['error']),
-        );
+      switch (response.statusCode) {
+        case 200:
+          return DataApiResponse<String?>.fromSuccess(response.data);
+        case 201:
+          return DataApiResponse.fromJson(response.data);
+        case 404:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 500:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 502:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        default:
+          return DataApiResponse.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
       }
-      return DataApiResponse.fromJson(response.data);
-    } catch (e) {
+    } on DioException catch (e) {
       return DataApiResponse.fromError(
         success: false,
         statusCode: 500,
         code: 'Fail',
         message: e.toString(),
-        error: ErrorResponse(message: e.toString(), details: e.toString()),
+        error: ErrorResponse.fromJson(e.response!.data['error']),
       );
     }
   }
 
   @override
-  Future<DataApiResponse<bool>> confirmDataRegister(String uuid) async {
+  Future<DataApiResponse<DriverDataResModel>> confirmDriverRegistration(
+    String uuid,
+  ) async {
     try {
-      final resJson = await _dio.put(confirmRegister, data: {'uuid': uuid});
-      if (resJson.statusCode != 200) {
-        return DataApiResponse<bool>.fromError(
-          success: false,
-          statusCode: resJson.statusCode!,
-          code: resJson.data['code'] ?? '',
-          message: resJson.data['message'] ?? '',
-          error: ErrorResponse.fromJson(resJson.data['error']),
-        );
+      final response = await _dio.put(confirmRegister, data: {'uuid': uuid});
+      switch (response.statusCode) {
+        case 200:
+          return DataApiResponse<DriverDataResModel>.fromJson(response.data);
+        case 201:
+          return DataApiResponse<DriverDataResModel>.fromJson(response.data);
+        case 404:
+          return DataApiResponse<DriverDataResModel>.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 500:
+          return DataApiResponse<DriverDataResModel>.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        case 502:
+          return DataApiResponse<DriverDataResModel>.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
+        default:
+          return DataApiResponse<DriverDataResModel>.fromError(
+            success: false,
+            statusCode: response.statusCode!,
+            code: response.data['code'] ?? '',
+            message: response.data['message'] ?? '',
+            error: ErrorResponse.fromJson(response.data['error']),
+          );
       }
-      return DataApiResponse<bool>(
-        success: true,
-        statusCode: resJson.statusCode!,
-        code: resJson.data['code'] ?? '',
-        message: resJson.data['message'] ?? '',
-        data: true,
-        error: null,
-      );
-    } catch (e) {
-      return DataApiResponse<bool>.fromError(
+    } on DioException catch (e) {
+      return DataApiResponse<DriverDataResModel>.fromError(
         success: false,
         statusCode: 500,
         code: 'Fail',
         message: e.toString(),
-        error: ErrorResponse(message: e.toString(), details: e.toString()),
+        error: ErrorResponse.fromJson(e.response!.data['error']),
       );
     }
   }

@@ -8,8 +8,10 @@ class ImagePickerService {
   Future<File?> pickImage(ImageSource source) async {
     final XFile? pickedFile = await _picker.pickImage(
       source: source,
-      imageQuality: 25,
+      imageQuality: 15,
       requestFullMetadata: false,
+      maxWidth: 1024,
+      maxHeight: 870,
     );
     if (pickedFile != null) {
       return File(pickedFile.path);

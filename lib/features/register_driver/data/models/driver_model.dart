@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:texi/core/utils/dates_utilities.dart';
 import 'package:texi/features/register_driver/domain/entities/driver_entity.dart';
 
@@ -11,7 +12,7 @@ class DriverModel extends DriverEntity {
     required super.password,
     required super.gender,
     required super.birthDate,
-    required super.profession,
+    super.profession,
     required super.localityId,
   });
 
@@ -30,6 +31,21 @@ class DriverModel extends DriverEntity {
     );
   }
 
+  DriverEntity toEntity() {
+    return DriverEntity(
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      phoneNumber: phoneNumber,
+      address: address,
+      password: password,
+      gender: gender,
+      birthDate: birthDate,
+      profession: profession,
+      localityId: localityId,
+    );
+  }
+
   Map<String, dynamic> toJson() {
     return {
       'first_name': firstName,
@@ -40,23 +56,32 @@ class DriverModel extends DriverEntity {
       'password': password,
       'gender': gender,
       'birth_date': DatesUtilities.dateToSave(birthDate),
-      'profession': profession,
+      'profession': null,
       'locality_id': localityId,
     };
   }
 
   factory DriverModel.fromJson(Map<String, dynamic> json) {
     return DriverModel(
-      firstName: json['firstName'],
-      lastName: json['lastName'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
       email: json['email'],
-      phoneNumber: json['phoneNumber'],
+      phoneNumber: json['phone_number'],
       address: json['address'],
       password: json['password'],
       gender: json['gender'],
-      birthDate: DateTime.parse(json['birthDate']),
-      profession: json['profession'],
-      localityId: json['localityId'],
+      birthDate: DateTime.parse(json['birth_date']),
+      profession: null,
+      localityId: json['locality_id'],
     );
+  }
+
+  String toRawJson() {
+    return jsonEncode(toJson());
+  }
+
+  factory DriverModel.fromRawJson(String rawDriverInformation) {
+    final json = jsonDecode(rawDriverInformation);
+    return DriverModel.fromJson(json);
   }
 }

@@ -10,7 +10,7 @@ class AuthServices {
     if (rawToken == null) {
       return false;
     }
-    final driverDataResModel = DriverDataModel.fromRawJson(rawToken);
+    final driverDataResModel = DriverDataResModel.fromRawJson(rawToken);
     return driverDataResModel.phoneNumber == phone;
   }
 }

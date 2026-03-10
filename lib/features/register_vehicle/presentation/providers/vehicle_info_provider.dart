@@ -23,7 +23,8 @@ final vehicleRepoProvider = Provider<RegisterVehicleRepo>((ref) {
 class ListOfYears extends Notifier<List<int>> {
   @override
   List<int> build() {
-    return List.generate(50, (index) => index + (DateTime.now().year - 50));
+    final year = DateTime.now().add(Duration(days: 365)).year;
+    return List.generate(50, (index) => index + (year - 50));
   }
 }
 
@@ -98,63 +99,60 @@ final vehiclePhotoProvider =
       VehiclePhotoNotifier.new,
     );
 
-class RegisterVehicleState {
-  final bool isLoading;
-  final String? error;
-  final String? response;
-
-  RegisterVehicleState({this.isLoading = false, this.error, this.response});
-
-  RegisterVehicleState copyWith({
-    bool? isLoading,
-    String? error,
-    String? response,
-  }) {
-    return RegisterVehicleState(
-      isLoading: isLoading ?? this.isLoading,
-      error: error ?? this.error,
-      response: response ?? this.response,
-    );
-  }
-}
-
-class RegisterVehicleNotifier extends Notifier<RegisterVehicleState> {
+class RegisterVehicleNotifier
+    extends Notifier<AsyncValue<DataApiResponse<VehicleResModel?>?>> {
   @override
-  RegisterVehicleState build() {
-    return RegisterVehicleState();
+  AsyncValue<DataApiResponse<VehicleResModel?>?> build() {
+    return const AsyncValue.data(null);
   }
 
-  Future<VehicleResModel?> registerVehicle(VehicleEntity vehicle) async {
-    state = state.copyWith(isLoading: true, error: null);
+  void setLoading() {
+    state = const AsyncValue.loading();
+  }
+
+  void setError(Object error, [StackTrace? stackTrace]) {
+    state = AsyncValue.error(error, stackTrace ?? StackTrace.current);
+  }
+
+  void setSuccess(DataApiResponse<VehicleResModel?> data) {
+    state = AsyncValue.data(data);
+  }
+
+  Future<bool> registerVehicle(VehicleEntity vehicle) async {
+    setLoading();
     final storage = GetIt.instance<AuthSecureStorageService>();
     try {
       final token = await storage.getString(StorageKeys.driverToken);
       if (token == null) {
-        state = state.copyWith(isLoading: false, error: tokenNotFound.i18n);
-        return null;
+        setError(tokenNotFound.i18n);
+        throw tokenNotFound.i18n;
       }
 
       final repo = ref.read(vehicleRepoProvider);
       final response = await repo.registerVehicle(vehicle, token);
 
       if (response.success) {
-        state = state.copyWith(isLoading: false, response: response.data?.uuid);
-        return response.data;
+        setSuccess(response);
+        return true;
       } else {
-        state = state.copyWith(isLoading: false, error: response.message);
-        return null;
+        final errorMsg = response.error?.details ?? response.message;
+        setError(errorMsg);
+        throw errorMsg;
       }
     } catch (e) {
-      state = state.copyWith(isLoading: false, error: e.toString());
-      return null;
+      if (!state.hasError) {
+        setError(e.toString());
+      }
+      rethrow;
     }
   }
 }
 
 final registerVehicleProvider =
-    NotifierProvider<RegisterVehicleNotifier, RegisterVehicleState>(
-      RegisterVehicleNotifier.new,
-    );
+    NotifierProvider<
+      RegisterVehicleNotifier,
+      AsyncValue<DataApiResponse<VehicleResModel?>?>
+    >(RegisterVehicleNotifier.new);
 
 class VehicleInsurancePhotoNotifier extends Notifier<AsyncValue<File?>> {
   @override
@@ -263,14 +261,16 @@ class VehicleImagesSavingNotifier
     return const AsyncValue.data(null);
   }
 
-  Future<void> saveVehicleImages(List<VehicleImageEntity> vehicleImages) async {
+  Future<bool> saveVehicleImages(List<VehicleImageEntity> vehicleImages) async {
     state = const AsyncValue.loading();
     final repo = ref.read(vehicleRepoProvider);
     final response = await repo.registerVehicleImages(vehicleImages);
     if (response.success) {
       state = AsyncValue.data(response);
+      return true;
     } else {
       state = AsyncValue.error(response.message, StackTrace.current);
+      return false;
     }
   }
 }

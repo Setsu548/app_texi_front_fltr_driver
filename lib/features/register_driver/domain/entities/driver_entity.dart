@@ -7,7 +7,7 @@ class DriverEntity {
   final String password;
   final String gender;
   final DateTime birthDate;
-  final String profession;
+  final String? profession;
   final int localityId;
 
   DriverEntity({
@@ -19,7 +19,7 @@ class DriverEntity {
     required this.password,
     required this.gender,
     required this.birthDate,
-    required this.profession,
+    this.profession,
     required this.localityId,
   });
 }

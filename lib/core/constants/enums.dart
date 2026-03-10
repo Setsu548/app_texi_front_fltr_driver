@@ -125,3 +125,5 @@ enum LatamCountries {
 
   const LatamCountries(this.name);
 }
+
+enum SupportBiometricsState { unknown, supported, unsupported }

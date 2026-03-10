@@ -4,16 +4,18 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi/core/router/app_router.dart';
 import 'package:texi/core/utils/dates_utilities.dart';
 import 'package:texi/core/widgets/another_elevated_button_widget.dart';
+import 'package:texi/core/widgets/custom_snack_bar.dart';
 import 'package:texi/core/widgets/elevated_button_widget.dart';
 import 'package:texi/core/widgets/label_textfield_widget.dart';
 import 'package:texi/features/register_driver/domain/entities/driver_entity.dart';
 import 'package:texi/features/register_driver/presentation/providers/driver_form_provider.dart';
-import 'package:texi/features/register_driver/presentation/widgets/driver_countries_dropdown_widget.dart';
-import 'package:texi/features/register_driver/presentation/widgets/driver_department_dropdown.dart';
-import 'package:texi/features/register_driver/presentation/widgets/driver_gender_dropdown.dart';
-import 'package:texi/features/register_driver/presentation/widgets/driver_locality_dropdown.dart';
+import 'package:texi/features/register_driver/presentation/widgets/driver_user/driver_countries_dropdown_widget.dart';
+import 'package:texi/features/register_driver/presentation/widgets/driver_user/driver_department_dropdown.dart';
+import 'package:texi/features/register_driver/presentation/widgets/driver_user/driver_gender_dropdown.dart';
+import 'package:texi/features/register_driver/presentation/widgets/driver_user/driver_locality_dropdown.dart';
 
 class DriverFormWidget extends ConsumerStatefulWidget {
   const DriverFormWidget({super.key});
@@ -31,10 +33,6 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
   final _addressController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
-  //final _departmentController = TextEditingController();
-  final _professionController = TextEditingController();
-  //final _provinceController = TextEditingController();
-  //final _cityController = TextEditingController();
   final _birthDateController = TextEditingController();
   Widget checkPassword = SizedBox.shrink();
   Widget checkConfirmPassword = SizedBox.shrink();
@@ -158,19 +156,6 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
           ),
           SizedBox(height: 1.5.h),
           LabelTextfieldWidget(
-            controller: _professionController,
-            hintText: 'Conductor',
-            textCapitalization: TextCapitalization.words,
-            label: '${profession.i18n} *',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return requiredField.i18n;
-              }
-              return null;
-            },
-          ),
-          SizedBox(height: 1.5.h),
-          LabelTextfieldWidget(
             controller: _addressController,
             hintText: 'Calle 123 #45-67',
             label: '${address.i18n} *',
@@ -254,22 +239,27 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
           ElevatedButtonWidget(
             iconImageAfter: Icon(Icons.chevron_right),
             label: continueButton.i18n,
-            onPressed: () {
+            onPressed: () async {
               if (_formKey.currentState!.validate()) {
                 final driver = DriverEntity(
                   firstName: _nameController.text.trim(),
                   lastName: _lastNameController.text.trim(),
-                  email: _emailController.text.trim(),
+                  email: _emailController.text.trim().toLowerCase(),
                   phoneNumber:
                       '${countryValue.dialCode}${_phoneController.text.trim()}',
                   address: _addressController.text.trim(),
                   password: _passwordController.text.trim(),
-                  gender: gender.genderToSave,
+                  gender: gender.genderToSave.toLowerCase(),
                   birthDate: birthDate,
-                  profession: _professionController.text.trim(),
+                  profession: null,
                   localityId: ref.watch(localitySelectedProvider).id,
                 );
-                ref.read(driverRegisterProvider.notifier).register(driver);
+                context.push(
+                  '${AppRouter.registerHomeLocation}/${AppRouter.confirmationDriverDataLocation}',
+                  extra: driver,
+                );
+              } else {
+                _showMessage(formErrorFieldMessage.i18n);
               }
             },
           ),
@@ -297,4 +287,8 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
       }
     });
   }
+
+  void _showMessage(String message) => ScaffoldMessenger.of(
+    context,
+  ).showSnackBar(customSnackBar(message, context));
 }

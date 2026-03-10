@@ -3,7 +3,8 @@ import 'package:texi/core/router/transitions_helper.dart';
 import 'package:texi/features/auth/presentation/pages/auth_page.dart';
 import 'package:texi/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:texi/features/dashboard/presentation/pages/vehicle_list_page.dart';
-import 'package:texi/features/register_driver/presentation/pages/driver_confirmation_page.dart';
+import 'package:texi/features/register_driver/domain/entities/driver_entity.dart';
+import 'package:texi/features/register_driver/presentation/pages/confirmation_driver_data.dart';
 import 'package:texi/features/register_driver/presentation/pages/driver_identity_page.dart';
 import 'package:texi/features/register_driver/presentation/pages/driver_license_page.dart';
 import 'package:texi/features/register_driver/presentation/pages/register_home_page.dart';
@@ -18,9 +19,9 @@ class AppRouter {
   static final String initialLocation = '/';
   static final String registerHomeLocation = '/registerHome';
   static final String registerPersonalInfoLocation = 'personalInfo';
+  static final String confirmationDriverDataLocation = 'confirmationDriverData';
   static final String registerIdentityLocation = 'identity';
   static final String registerLicenseLocation = 'license';
-  static final String registerConfirmationLocation = 'confirmation';
   static final String vehicleRegisterHome = '/vehicleRegisterHome';
   static final String vehicleRegisterInfoLocation = 'vehicleRegisterInfo';
   static final String vehicleRegisterPhotosLocation = 'vehicleRegisterPhotos';
@@ -46,6 +47,13 @@ class AppRouter {
                 TransitionsHelper.slideTransition(state, DriverFormPage()),
           ),
           GoRoute(
+            path: confirmationDriverDataLocation,
+            pageBuilder: (context, state) => TransitionsHelper.slideTransition(
+              state,
+              ConfirmationDriverData(driver: state.extra as DriverEntity),
+            ),
+          ),
+          GoRoute(
             path: registerIdentityLocation,
             pageBuilder: (context, state) =>
                 TransitionsHelper.slideTransition(state, DriverIdentityPage()),
@@ -54,13 +62,6 @@ class AppRouter {
             path: registerLicenseLocation,
             pageBuilder: (context, state) =>
                 TransitionsHelper.slideTransition(state, DriverLicensePage()),
-          ),
-          GoRoute(
-            path: registerConfirmationLocation,
-            pageBuilder: (context, state) => TransitionsHelper.slideTransition(
-              state,
-              DriverConfirmationPage(),
-            ),
           ),
         ],
       ),

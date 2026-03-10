@@ -27,6 +27,7 @@ dependencies:
   go_router: ^17.1.0
   i18n_extension: ^15.1.0
   image_picker: ^1.2.1
+  local_auth: ^3.0.1
   network_info_plus: ^7.0.0
   phonecodes: ^0.0.4
   sizer: ^3.1.3

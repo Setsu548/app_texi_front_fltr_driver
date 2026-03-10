@@ -15,17 +15,31 @@ class DataApiResponse<T> {
     required this.error,
   });
 
-  factory DataApiResponse.fromJson(Map<String, dynamic> json) =>
-      DataApiResponse(
-        success: json['success'] ?? false,
-        statusCode: json['status_code'] ?? 0,
-        code: json['code'] ?? '',
-        message: json['message'] ?? '',
-        data: json['data'] != null ? json['data'] as T : null,
-        error: json['error'] != null
-            ? ErrorResponse.fromJson(json['error'])
-            : null,
-      );
+  factory DataApiResponse.fromJson(
+    Map<String, dynamic> json, [
+    T Function(dynamic)? fromJsonT,
+  ]) => DataApiResponse(
+    success: json['success'] ?? false,
+    statusCode: json['status_code'] ?? 0,
+    code: json['code'] ?? '',
+    message: json['message'] ?? '',
+    data: null,
+    error: null,
+  );
+
+  factory DataApiResponse.fromSuccess(
+    Map<String, dynamic> json, [
+    T Function(dynamic)? fromJsonT,
+  ]) => DataApiResponse(
+    success: json['success'] ?? false,
+    statusCode: json['status_code'] ?? 0,
+    code: json['code'] ?? '',
+    message: json['message'] ?? '',
+    data: json['data'] != null && fromJsonT != null
+        ? fromJsonT(json['data'])
+        : null,
+    error: null,
+  );
 
   factory DataApiResponse.fromError({
     required bool success,
