@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:texi/core/constants/data_api_response.dart';
-import 'package:texi/core/constants/dio_provider.dart';
+import 'package:texi/core/providers/dio_provider.dart';
 import 'package:texi/core/constants/enums.dart';
 import 'package:texi/features/dashboard/data/repo_impl/dashboard_repo_impl.dart';
 import 'package:texi/features/dashboard/domain/entities/dashboard_vehicle_entity.dart';

@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/constants/device_info_provider.dart';
+import 'package:texi/core/providers/device_info_provider.dart';
 import 'package:texi/core/constants/storage_keys.dart';
 import 'package:texi/core/lang/extension_lang.dart';
 import 'package:texi/core/router/app_router.dart';
@@ -14,7 +14,6 @@ import 'package:texi/core/widgets/loading_screen.dart';
 import 'package:texi/features/auth/domain/entities/auth_entity.dart';
 import 'package:texi/features/auth/presentation/providers/auth_providers.dart';
 import 'package:texi/core/utils/auth_secure_storeage_service.dart';
-import 'package:texi/features/auth/services/auth_services.dart';
 import 'package:texi/features/dashboard/presentation/provider/dashboard_providers.dart';
 import 'package:texi/features/register_driver/presentation/providers/driver_form_provider.dart';
 
@@ -152,54 +151,45 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                   ElevatedButtonWidget(
                     label: login.i18n,
                     onPressed: () async {
-                      final validateDriverPhone = await AuthServices()
-                          .validateDriverPhone(_phoneController.text);
-                      if (validateDriverPhone) {
-                        final deviceInfo = await ref.watch(
-                          deviceProvider.future,
-                        );
-                        final phone = _phoneController.text;
-                        final password = _passwordController.text;
-                        final authEntity = AuthEntity.fromRequest(
-                          deviceInfo,
-                          phone,
-                          password,
-                        );
+                      final deviceInfo = await ref.watch(deviceProvider.future);
+                      final phone = _phoneController.text;
+                      final password = _passwordController.text;
+                      final authEntity = AuthEntity.fromRequest(
+                        deviceInfo,
+                        phone,
+                        password,
+                      );
 
-                        final response = await ref
-                            .read(loginNotifierProvider.notifier)
-                            .login(authEntity);
-                        if (response.success) {
-                          final cookie = response.data;
-                          await storage.saveToken(
-                            StorageKeys.driverToken,
-                            cookie!.token,
-                          );
-                          _showMessage(
-                            '${welcomeDriver.i18n} ${_phoneController.text}',
-                          );
-                          final flag = await ref
-                              .read(hasVehicleNotifierProvider.notifier)
-                              .hasVehicle();
-                          if (!context.mounted) return;
-                          if (flag == false && flag != null) {
-                            _navigateToVehiclePage();
-                          } else {
-                            if (flag == null) {
-                              _showMessage(tokenNotFound.i18n);
-                            } else {
-                              context.go(AppRouter.vehicleListLocation);
-                              await ref
-                                  .read(vehicleListProvider.notifier)
-                                  .getVehicleList();
-                            }
-                          }
+                      final response = await ref
+                          .read(loginNotifierProvider.notifier)
+                          .login(authEntity);
+                      if (response.success) {
+                        final cookie = response.data;
+                        await storage.saveToken(
+                          StorageKeys.driverToken,
+                          cookie!.token,
+                        );
+                        _showMessage(
+                          '${welcomeDriver.i18n} ${_phoneController.text}',
+                        );
+                        final flag = await ref
+                            .read(hasVehicleNotifierProvider.notifier)
+                            .hasVehicle();
+                        if (!context.mounted) return;
+                        if (flag == false && flag != null) {
+                          _navigateToVehiclePage();
                         } else {
-                          _showMessage(response.error!.details);
+                          if (flag == null) {
+                            _showMessage(tokenNotFound.i18n);
+                          } else {
+                            context.go(AppRouter.vehicleListLocation);
+                            await ref
+                                .read(vehicleListProvider.notifier)
+                                .getVehicleList();
+                          }
                         }
                       } else {
-                        _showMessage(completeProcessRegistration.i18n);
-                        _navigateToIdentityPage();
+                        _showMessage(response.error!.details);
                       }
                     },
                   ),
@@ -218,13 +208,6 @@ class _AuthPageState extends ConsumerState<AuthPage> {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(customSnackBar(message, context));
-  }
-
-  void _navigateToIdentityPage() {
-    if (!mounted) return;
-    context.go(
-      '${AppRouter.registerHomeLocation}/${AppRouter.registerIdentityLocation}',
-    );
   }
 
   void _navigateToVehiclePage() {

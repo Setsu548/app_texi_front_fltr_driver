@@ -20,14 +20,9 @@ class AuthRepoImpl implements AuthRepo {
       final response = await _dio.post(loginPath, data: authModel.toJson());
       switch (response.statusCode) {
         case 200:
-          final loginModel = LoginDataModel.fromJson(response.data['data']);
-          return DataApiResponse(
-            success: true,
-            statusCode: response.statusCode!,
-            code: response.data['code'],
-            message: response.data['message'],
-            data: loginModel,
-            error: null,
+          return DataApiResponse<LoginDataModel>.fromSuccess(
+            response.data,
+            (json) => LoginDataModel.fromJson(json),
           );
         case 201:
           return DataApiResponse.fromSuccess(response.data, null);

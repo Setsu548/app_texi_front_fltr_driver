@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:phonecodes/phonecodes.dart';
-import 'package:texi/core/constants/dio_provider.dart';
+import 'package:texi/core/providers/dio_provider.dart';
 import 'package:texi/core/constants/enums.dart';
 import 'package:texi/core/constants/storage_keys.dart';
 import 'package:texi/core/lang/extension_lang.dart';

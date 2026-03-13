@@ -1,7 +1,9 @@
 import 'package:go_router/go_router.dart';
 import 'package:texi/core/router/transitions_helper.dart';
+import 'package:texi/core/widgets/offline_page.dart';
 import 'package:texi/features/auth/presentation/pages/auth_page.dart';
 import 'package:texi/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:texi/features/dashboard/presentation/pages/driver_profile.dart';
 import 'package:texi/features/dashboard/presentation/pages/vehicle_list_page.dart';
 import 'package:texi/features/register_driver/domain/entities/driver_entity.dart';
 import 'package:texi/features/register_driver/presentation/pages/confirmation_driver_data.dart';
@@ -27,6 +29,8 @@ class AppRouter {
   static final String vehicleRegisterPhotosLocation = 'vehicleRegisterPhotos';
   static final String vehicleListLocation = '/vehicleList';
   static final String dashboardLocation = '/dashboard';
+  static final String driverProfileLocation = '/driverProfile';
+  static final String offlineLocation = '/offline';
 
   static final routes = GoRouter(
     initialLocation: initialLocation,
@@ -74,6 +78,13 @@ class AppRouter {
         path: dashboardLocation,
         pageBuilder: (context, state) =>
             TransitionsHelper.fadeTransition(state, DashboardPage()),
+        routes: [
+          GoRoute(
+            path: driverProfileLocation,
+            pageBuilder: (context, state) =>
+                TransitionsHelper.slideUpTransition(state, DriverProfile()),
+          ),
+        ],
       ),
       GoRoute(
         path: vehicleRegisterHome,
@@ -97,6 +108,11 @@ class AppRouter {
             ),
           ),
         ],
+      ),
+      GoRoute(
+        path: offlineLocation,
+        pageBuilder: (context, state) =>
+            TransitionsHelper.fadeTransition(state, OfflinePage()),
       ),
     ],
   );

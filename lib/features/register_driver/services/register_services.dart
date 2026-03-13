@@ -41,6 +41,7 @@ class RegisterServices {
                 clearImageProviders(ref);
                 notifier.setSuccess();
                 await storage.deleteString(StorageKeys.driverLocalRegister);
+                await storage.deleteString(StorageKeys.driverRegister);
               } else {
                 throw (errorUpdatingDriverRegistration.i18n);
               }

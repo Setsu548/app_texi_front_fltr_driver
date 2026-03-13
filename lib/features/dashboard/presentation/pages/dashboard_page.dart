@@ -4,6 +4,7 @@ import 'package:local_auth/local_auth.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi/core/theme/styles_for_texts.dart';
 import 'package:texi/features/dashboard/presentation/provider/dashboard_providers.dart';
+import 'package:texi/features/dashboard/presentation/widgets/menu_drawer.dart';
 import '../../../../core/lang/extension_lang.dart';
 import '../../services/local_auth_services.dart';
 
@@ -31,12 +32,17 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
     final primaryColor = theme.primaryColor;
 
     return Scaffold(
+      drawer: const MenuDrawer(),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.menu, color: theme.colorScheme.primary),
-          onPressed: () {},
+        leading: Builder(
+          builder: (context) {
+            return IconButton(
+              icon: Icon(Icons.menu, color: theme.colorScheme.primary),
+              onPressed: () => Scaffold.of(context).openDrawer(),
+            );
+          },
         ),
         title: Text(
           'TEXI',

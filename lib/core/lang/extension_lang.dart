@@ -185,6 +185,10 @@ const driverRegisteredSuccessfully = '¡Conductor registrado exitosamente!';
 const comeback = 'Regresar';
 const errorUpdatingDriverRegistration =
     'Error al actualizar el registro del conductor';
+const offlineTitle = '¡Ups! Sin conexión';
+const offlineMessage =
+    'Parece que no tienes conexión a internet en este momento. Por favor, verifica tu red e intenta de nuevo.';
+const backToHome = 'Volver al inicio';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
@@ -1195,6 +1199,28 @@ extension Localization on String {
       'es-ES': 'Error al actualizar el registro del conductor',
       'es-MX': 'Error al actualizar el registro del conductor',
       'es-BO': 'Error al actualizar el registro del conductor',
+    },
+    offlineTitle: {
+      'en-US': 'Oops! No connection',
+      'es-ES': '¡Ups! Sin conexión',
+      'es-MX': '¡Ups! Sin conexión',
+      'es-BO': '¡Ups! Sin conexión',
+    },
+    offlineMessage: {
+      'en-US':
+          'It seems you don\'t have an internet connection right now. Please check your network and try again.',
+      'es-ES':
+          'Parece que no tienes conexión a internet en este momento. Por favor, verifica tu red e intenta de nuevo.',
+      'es-MX':
+          'Parece que no tienes conexión a internet en este momento. Por favor, verifica tu red e intenta de nuevo.',
+      'es-BO':
+          'Parece que no tienes conexión a internet en este momento. Por favor, verifica tu red e intenta de nuevo.',
+    },
+    backToHome: {
+      'en-US': 'Back to home',
+      'es-ES': 'Volver al inicio',
+      'es-MX': 'Volver al inicio',
+      'es-BO': 'Volver al inicio',
     },
   });
 

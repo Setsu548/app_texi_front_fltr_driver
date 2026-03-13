@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:texi/core/constants/dio_provider.dart';
+import 'package:texi/core/providers/dio_provider.dart';
 import 'package:texi/features/auth/data/repo_impl/auth_repo_impl.dart';
 import 'package:texi/features/auth/domain/repo/auth_repo.dart';
 import 'package:texi/core/constants/data_api_response.dart';

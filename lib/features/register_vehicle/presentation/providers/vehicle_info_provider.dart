@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:texi/core/constants/data_api_response.dart';
-import 'package:texi/core/constants/dio_provider.dart';
+import 'package:texi/core/providers/dio_provider.dart';
 import 'package:texi/core/constants/enums.dart';
 import 'package:texi/core/constants/storage_keys.dart';
 import 'package:texi/core/lang/extension_lang.dart';
