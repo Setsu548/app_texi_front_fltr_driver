@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:texi/core/router/app_router.dart';
+import 'package:texi_driver/core/router/app_router.dart';
 
 class InternetService {
   Timer? _timer;

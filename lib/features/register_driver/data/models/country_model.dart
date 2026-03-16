@@ -1,5 +1,5 @@
-import 'package:texi/features/register_driver/data/models/department_model.dart';
-import 'package:texi/features/register_driver/domain/entities/country_entity.dart';
+import 'package:texi_driver/features/register_driver/data/models/department_model.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/country_entity.dart';
 
 class CountryModel extends CountryEntity {
   CountryModel({required super.country, required super.departments});

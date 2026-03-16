@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/core/widgets/elevated_button_widget.dart';
-import 'package:texi/core/widgets/modal_options_image_picker.dart';
-import 'package:texi/features/register_driver/presentation/providers/driver_identity_provider.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/widgets/elevated_button_widget.dart';
+import 'package:texi_driver/core/widgets/modal_options_image_picker.dart';
+import 'package:texi_driver/features/register_driver/presentation/providers/driver_identity_provider.dart';
 
 class DriverFrontIdentificationSection extends ConsumerStatefulWidget {
   const DriverFrontIdentificationSection({super.key});

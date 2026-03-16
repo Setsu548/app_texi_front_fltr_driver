@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/router/app_router.dart';
+import 'package:texi_driver/core/router/app_router.dart';
 
 class MenuDrawer extends StatelessWidget {
   const MenuDrawer({super.key});

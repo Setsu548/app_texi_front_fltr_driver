@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/core/utils/dates_utilities.dart';
-import 'package:texi/core/widgets/custom_snack_bar.dart';
-import 'package:texi/features/register_driver/presentation/providers/driver_identity_provider.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/utils/dates_utilities.dart';
+import 'package:texi_driver/core/widgets/custom_snack_bar.dart';
+import 'package:texi_driver/features/register_driver/presentation/providers/driver_identity_provider.dart';
 
 class DriverExpirationDate extends ConsumerWidget {
   final TextEditingController controller;

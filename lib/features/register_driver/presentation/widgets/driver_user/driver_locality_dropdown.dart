@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/features/register_driver/presentation/providers/driver_form_provider.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/features/register_driver/presentation/providers/driver_form_provider.dart';
 
 class DriverLocalityDropdown extends ConsumerWidget {
   const DriverLocalityDropdown({super.key});

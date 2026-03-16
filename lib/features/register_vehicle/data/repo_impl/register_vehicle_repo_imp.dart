@@ -1,16 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:texi/core/constants/data_api_response.dart';
-import 'package:texi/core/constants/storage_keys.dart';
-import 'package:texi/core/utils/auth_secure_storeage_service.dart';
-import 'package:texi/features/register_vehicle/data/model/vehicle_image_model.dart';
-import 'package:texi/features/register_vehicle/data/model/vehicle_image_saving.dart';
-import 'package:texi/features/register_vehicle/data/model/vehicle_model.dart';
-import 'package:texi/features/register_vehicle/data/model/vehicle_res_model.dart';
-import 'package:texi/features/register_vehicle/data/register_vehicles_paths.dart';
-import 'package:texi/features/register_vehicle/domain/entities/vehicle_entity.dart';
-import 'package:texi/features/register_vehicle/domain/entities/vehicle_image_entity.dart';
-import 'package:texi/features/register_vehicle/domain/repo/register_vehicle_repo.dart';
+import 'package:texi_driver/core/constants/data_api_response.dart';
+import 'package:texi_driver/core/constants/storage_keys.dart';
+import 'package:texi_driver/core/utils/auth_secure_storeage_service.dart';
+import 'package:texi_driver/features/register_vehicle/data/model/vehicle_image_model.dart';
+import 'package:texi_driver/features/register_vehicle/data/model/vehicle_image_saving.dart';
+import 'package:texi_driver/features/register_vehicle/data/model/vehicle_model.dart';
+import 'package:texi_driver/features/register_vehicle/data/model/vehicle_res_model.dart';
+import 'package:texi_driver/features/register_vehicle/data/register_vehicles_paths.dart';
+import 'package:texi_driver/features/register_vehicle/domain/entities/vehicle_entity.dart';
+import 'package:texi_driver/features/register_vehicle/domain/entities/vehicle_image_entity.dart';
+import 'package:texi_driver/features/register_vehicle/domain/repo/register_vehicle_repo.dart';
 
 class RegisterVehicleRepoImp implements RegisterVehicleRepo {
   final Dio _dio;

@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:texi/features/register_vehicle/domain/entities/vehicle_entity.dart';
-import 'package:texi/features/register_vehicle/presentation/providers/vehicle_info_provider.dart';
-import 'package:texi/features/register_vehicle/services/image_parser_to_list.dart';
+import 'package:texi_driver/features/register_vehicle/domain/entities/vehicle_entity.dart';
+import 'package:texi_driver/features/register_vehicle/presentation/providers/vehicle_info_provider.dart';
+import 'package:texi_driver/features/register_vehicle/services/image_parser_to_list.dart';
 
 class RegisterVehiclesServices {
   static Future<void> registerVehicle(

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/core/router/app_router.dart';
-import 'package:texi/core/widgets/another_elevated_button_widget.dart';
-import 'package:texi/core/widgets/elevated_button_widget.dart';
-import 'package:texi/features/register_driver/presentation/widgets/register_header_widget.dart';
-import 'package:texi/features/register_driver/presentation/widgets/terms_conditions_widget.dart';
-import 'package:texi/features/register_driver/presentation/widgets/welcome_content_widget.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/router/app_router.dart';
+import 'package:texi_driver/core/widgets/another_elevated_button_widget.dart';
+import 'package:texi_driver/core/widgets/elevated_button_widget.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/register_header_widget.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/terms_conditions_widget.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/welcome_content_widget.dart';
 
 class RegisterHomePage extends StatelessWidget {
   const RegisterHomePage({super.key});

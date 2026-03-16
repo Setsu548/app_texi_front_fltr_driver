@@ -1,4 +1,4 @@
-import 'package:texi/features/register_driver/domain/entities/locality_entity.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/locality_entity.dart';
 
 class LocalityModel extends LocalityEntity {
   LocalityModel({required super.id, required super.name});

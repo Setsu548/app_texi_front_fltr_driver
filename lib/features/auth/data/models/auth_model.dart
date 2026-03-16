@@ -1,4 +1,4 @@
-import 'package:texi/features/auth/domain/entities/auth_entity.dart';
+import 'package:texi_driver/features/auth/domain/entities/auth_entity.dart';
 
 class AuthModel extends AuthEntity {
   AuthModel({

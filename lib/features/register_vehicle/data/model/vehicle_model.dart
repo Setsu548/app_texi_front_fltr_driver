@@ -1,4 +1,4 @@
-import 'package:texi/features/register_vehicle/domain/entities/vehicle_entity.dart';
+import 'package:texi_driver/features/register_vehicle/domain/entities/vehicle_entity.dart';
 
 class VehicleModel extends VehicleEntity {
   VehicleModel({

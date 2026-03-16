@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:texi/core/providers/dio_provider.dart';
-import 'package:texi/features/auth/data/repo_impl/auth_repo_impl.dart';
-import 'package:texi/features/auth/domain/repo/auth_repo.dart';
-import 'package:texi/core/constants/data_api_response.dart';
-import 'package:texi/features/auth/data/models/login_data_model.dart';
-import 'package:texi/features/auth/domain/entities/auth_entity.dart';
+import 'package:texi_driver/core/providers/dio_provider.dart';
+import 'package:texi_driver/features/auth/data/repo_impl/auth_repo_impl.dart';
+import 'package:texi_driver/features/auth/domain/repo/auth_repo.dart';
+import 'package:texi_driver/core/constants/data_api_response.dart';
+import 'package:texi_driver/features/auth/data/models/login_data_model.dart';
+import 'package:texi_driver/features/auth/domain/entities/auth_entity.dart';
 
 //--Provider para ocultar la contraseña--//
 final hidePasswordProvider = NotifierProvider<HidePasswordProvider, bool>(

@@ -1,4 +1,4 @@
-import 'package:texi/features/register_vehicle/data/model/vehicle_image_model.dart';
+import 'package:texi_driver/features/register_vehicle/data/model/vehicle_image_model.dart';
 
 class VehicleImageSaving {
   final String carId;

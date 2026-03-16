@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:texi/core/constants/data_api_response.dart';
-import 'package:texi/core/constants/storage_keys.dart';
-import 'package:texi/core/utils/auth_secure_storeage_service.dart';
-import 'package:texi/features/auth/data/auth_endpoints.dart';
-import 'package:texi/features/auth/data/models/auth_model.dart';
-import 'package:texi/features/auth/data/models/login_data_model.dart';
-import 'package:texi/features/auth/domain/entities/auth_entity.dart';
-import 'package:texi/features/auth/domain/repo/auth_repo.dart';
+import 'package:texi_driver/core/constants/data_api_response.dart';
+import 'package:texi_driver/core/constants/storage_keys.dart';
+import 'package:texi_driver/core/utils/auth_secure_storeage_service.dart';
+import 'package:texi_driver/features/auth/data/auth_endpoints.dart';
+import 'package:texi_driver/features/auth/data/models/auth_model.dart';
+import 'package:texi_driver/features/auth/data/models/login_data_model.dart';
+import 'package:texi_driver/features/auth/domain/entities/auth_entity.dart';
+import 'package:texi_driver/features/auth/domain/repo/auth_repo.dart';
 
 class AuthRepoImpl implements AuthRepo {
   final Dio _dio;

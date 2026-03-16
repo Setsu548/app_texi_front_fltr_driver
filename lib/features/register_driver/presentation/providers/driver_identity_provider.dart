@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:texi/core/constants/data_api_response.dart';
-import 'package:texi/core/utils/image_picker_service.dart';
-import 'package:texi/features/register_driver/domain/entities/identification_entity.dart';
-import 'package:texi/features/register_driver/presentation/providers/driver_form_provider.dart';
+import 'package:texi_driver/core/constants/data_api_response.dart';
+import 'package:texi_driver/core/utils/image_picker_service.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/identification_entity.dart';
+import 'package:texi_driver/features/register_driver/presentation/providers/driver_form_provider.dart';
 
 class IdentificationNumberNotifier extends Notifier<String> {
   @override

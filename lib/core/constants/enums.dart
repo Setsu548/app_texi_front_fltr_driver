@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
 
 enum Gender {
   male,

@@ -189,6 +189,17 @@ const offlineTitle = '¡Ups! Sin conexión';
 const offlineMessage =
     'Parece que no tienes conexión a internet en este momento. Por favor, verifica tu red e intenta de nuevo.';
 const backToHome = 'Volver al inicio';
+const offlinePositionTitle = '¡Ups! Sin posición';
+const offlinePositionMessage =
+    'Parece que no tienes acceso a tu ubicación en este momento. Por favor, verifica que los permisos de ubicación estén habilitados e intenta de nuevo.';
+const disconnected = 'Desconectado';
+const positionPermissionDenied = 'Permiso de localización denegado';
+const errorSocketProvider = 'Error al iniciar el Socket Provider';
+const roadToOrigin = 'Rumbo al origen';
+const arrivedToOrigin = 'Llegué al origen';
+const startTrip = 'Iniciar viaje';
+const finishTrip = 'Finalizar viaje';
+const tripFinished = 'Viaje finalizado';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
@@ -1221,6 +1232,70 @@ extension Localization on String {
       'es-ES': 'Volver al inicio',
       'es-MX': 'Volver al inicio',
       'es-BO': 'Volver al inicio',
+    },
+    offlinePositionTitle: {
+      'en-US': 'Oops! No position',
+      'es-ES': '¡Ups! Sin posición',
+      'es-MX': '¡Ups! Sin posición',
+      'es-BO': '¡Ups! Sin posición',
+    },
+    offlinePositionMessage: {
+      'en-US':
+          'It seems you don\'t have access to your location right now. Please check that location permissions are enabled and try again.',
+      'es-ES':
+          'Parece que no tienes acceso a tu ubicación en este momento. Por favor, verifica que los permisos de ubicación estén habilitados e intenta de nuevo.',
+      'es-MX':
+          'Parece que no tienes acceso a tu ubicación en este momento. Por favor, verifica que los permisos de ubicación estén habilitados e intenta de nuevo.',
+      'es-BO':
+          'Parece que no tienes acceso a tu ubicación en este momento. Por favor, verifica que los permisos de ubicación estén habilitados e intenta de nuevo.',
+    },
+    disconnected: {
+      'en-US': 'Disconnected',
+      'es-ES': 'Desconectado',
+      'es-MX': 'Desconectado',
+      'es-BO': 'Desconectado',
+    },
+    positionPermissionDenied: {
+      'en-US': 'Position permission denied',
+      'es-ES': 'Permiso de localización denegado',
+      'es-MX': 'Permiso de localización denegado',
+      'es-BO': 'Permiso de localización denegado',
+    },
+    errorSocketProvider: {
+      'en-US': 'Error starting Socket Provider',
+      'es-ES': 'Error al iniciar el Socket Provider',
+      'es-MX': 'Error al iniciar el Socket Provider',
+      'es-BO': 'Error al iniciar el Socket Provider',
+    },
+    roadToOrigin: {
+      'en-US': 'Road to origin',
+      'es-ES': 'Rumbo al origen',
+      'es-MX': 'Rumbo al origen',
+      'es-BO': 'Rumbo al origen',
+    },
+    arrivedToOrigin: {
+      'en-US': 'Arrived to origin',
+      'es-ES': 'Llegué al origen',
+      'es-MX': 'Llegué al origen',
+      'es-BO': 'Llegué al origen',
+    },
+    startTrip: {
+      'en-US': 'Start trip',
+      'es-ES': 'Iniciar viaje',
+      'es-MX': 'Iniciar viaje',
+      'es-BO': 'Iniciar viaje',
+    },
+    finishTrip: {
+      'en-US': 'Finish trip',
+      'es-ES': 'Finalizar viaje',
+      'es-MX': 'Finalizar viaje',
+      'es-BO': 'Finalizar viaje',
+    },
+    tripFinished: {
+      'en-US': 'Trip finished',
+      'es-ES': 'Viaje finalizado',
+      'es-MX': 'Viaje finalizado',
+      'es-BO': 'Viaje finalizado',
     },
   });
 

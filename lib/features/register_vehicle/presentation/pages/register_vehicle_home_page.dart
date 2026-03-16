@@ -2,10 +2,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/core/router/app_router.dart';
-import 'package:texi/core/widgets/another_elevated_button_widget.dart';
-import 'package:texi/core/widgets/elevated_button_widget.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/router/app_router.dart';
+import 'package:texi_driver/core/widgets/another_elevated_button_widget.dart';
+import 'package:texi_driver/core/widgets/elevated_button_widget.dart';
 
 class RegisterVehicleHomePage extends StatelessWidget {
   const RegisterVehicleHomePage({super.key});

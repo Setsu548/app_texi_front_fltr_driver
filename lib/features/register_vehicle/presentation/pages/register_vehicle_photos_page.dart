@@ -3,17 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/core/router/app_router.dart';
-import 'package:texi/core/widgets/custom_snack_bar.dart';
-import 'package:texi/core/widgets/elevated_button_widget.dart';
-import 'package:texi/features/dashboard/presentation/provider/dashboard_providers.dart';
-import 'package:texi/features/register_vehicle/presentation/providers/vehicle_info_provider.dart';
-import 'package:texi/features/register_vehicle/presentation/widgets/photo_card.dart';
-import 'package:texi/features/register_vehicle/presentation/widgets/vehicle_register_header.dart';
-import 'package:texi/features/register_vehicle/presentation/widgets/warning_banner.dart';
-import 'package:texi/core/widgets/loading_screen.dart';
-import 'package:texi/features/register_vehicle/services/register_vehicles_services.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/router/app_router.dart';
+import 'package:texi_driver/core/widgets/custom_snack_bar.dart';
+import 'package:texi_driver/core/widgets/elevated_button_widget.dart';
+import 'package:texi_driver/features/dashboard/presentation/provider/dashboard_providers.dart';
+import 'package:texi_driver/features/register_vehicle/presentation/providers/vehicle_info_provider.dart';
+import 'package:texi_driver/features/register_vehicle/presentation/widgets/photo_card.dart';
+import 'package:texi_driver/features/register_vehicle/presentation/widgets/vehicle_register_header.dart';
+import 'package:texi_driver/features/register_vehicle/presentation/widgets/warning_banner.dart';
+import 'package:texi_driver/core/widgets/loading_screen.dart';
+import 'package:texi_driver/features/register_vehicle/services/register_vehicles_services.dart';
 
 class RegisterVehiclePhotosPage extends ConsumerWidget {
   const RegisterVehiclePhotosPage({super.key});

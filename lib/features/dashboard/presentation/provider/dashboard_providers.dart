@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:texi/core/constants/data_api_response.dart';
-import 'package:texi/core/providers/dio_provider.dart';
-import 'package:texi/core/constants/enums.dart';
-import 'package:texi/features/dashboard/data/repo_impl/dashboard_repo_impl.dart';
-import 'package:texi/features/dashboard/domain/entities/dashboard_vehicle_entity.dart';
-import 'package:texi/features/dashboard/domain/repo/dashboar_repo.dart';
+import 'package:texi_driver/core/constants/data_api_response.dart';
+import 'package:texi_driver/core/providers/dio_provider.dart';
+import 'package:texi_driver/core/constants/enums.dart';
+import 'package:texi_driver/features/dashboard/data/repo_impl/dashboard_repo_impl.dart';
+import 'package:texi_driver/features/dashboard/domain/entities/dashboard_vehicle_entity.dart';
+import 'package:texi_driver/features/dashboard/domain/repo/dashboar_repo.dart';
 
 final dashboardRepoProvider = Provider<DashboarRepo>((ref) {
   return DashboardRepoImpl(ref.watch(dioProvider));

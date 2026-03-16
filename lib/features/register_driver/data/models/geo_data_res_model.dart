@@ -1,4 +1,4 @@
-import 'package:texi/features/register_driver/data/models/country_model.dart';
+import 'package:texi_driver/features/register_driver/data/models/country_model.dart';
 
 class GeoDataResModel {
   final String code;

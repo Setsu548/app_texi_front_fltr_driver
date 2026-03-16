@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/theme/styles_for_texts.dart';
-import 'package:texi/features/dashboard/presentation/provider/dashboard_providers.dart';
-import 'package:texi/features/dashboard/presentation/widgets/menu_drawer.dart';
+import 'package:texi_driver/core/providers/socket_provider.dart';
+import 'package:texi_driver/core/theme/styles_for_texts.dart';
+import 'package:texi_driver/core/widgets/custom_snack_bar.dart';
+import 'package:texi_driver/features/trips_driver/presentation/pages/trip_passenger_offers_page.dart';
+import 'package:texi_driver/features/dashboard/presentation/provider/dashboard_providers.dart';
+import 'package:texi_driver/features/dashboard/presentation/widgets/menu_drawer.dart';
+import 'package:texi_driver/features/dashboard/services/positioning_services.dart';
 import '../../../../core/lang/extension_lang.dart';
 import '../../services/local_auth_services.dart';
 
@@ -17,7 +21,6 @@ class DashboardPage extends ConsumerStatefulWidget {
 
 class _DashboardPageState extends ConsumerState<DashboardPage> {
   final LocalAuthentication auth = LocalAuthentication();
-
   @override
   void initState() {
     super.initState();
@@ -83,7 +86,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
             children: [
               _buildStatusCard(primaryColor, theme),
               SizedBox(height: 2.h),
-              _buildEarningsCard(primaryColor, theme),
+              /* _buildEarningsCard(primaryColor, theme),
               SizedBox(height: 3.h),
               Text(
                 quickActionsStr.i18n,
@@ -104,7 +107,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
               ),
               SizedBox(height: 1.5.h),
               _buildBreakdownList(primaryColor, theme),
-              SizedBox(height: 2.h),
+              SizedBox(height: 2.h), */
             ],
           ),
         ),
@@ -161,7 +164,9 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                 ),
                 SizedBox(height: 0.8.h),
                 Text(
-                  connectedReadyForTrips.i18n,
+                  switchActive
+                      ? connectedReadyForTrips.i18n
+                      : disconnected.i18n,
                   style: TextStyle(
                     color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                     fontSize: 13.sp,
@@ -176,11 +181,36 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
               if (val) {
                 final localAuth = LocalAuthServices(auth: auth);
                 bool isAuthenticated = await localAuth.authenticate();
+                if (!mounted) return;
                 if (isAuthenticated) {
                   ref.read(switchActiveProvider.notifier).toggleSwitch();
+                  try {
+                    final socketService = await ref.read(
+                      socketServiceProvider.future,
+                    );
+                    if (socketService != null) {
+                      _showMessage(connectedReadyForTrips.i18n);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const TripPassengerOffersPage(),
+                        ),
+                      );
+                      PositioningServices(socketService).start();
+                    } else {
+                      _showMessage('Error al iniciar el Socket Provider');
+                      ref.read(switchActiveProvider.notifier).toggleSwitch();
+                    }
+                  } catch (e, stack) {
+                    _showMessage('Error al iniciar el Socket Provider: \$e');
+                    print(stack);
+                    ref.read(switchActiveProvider.notifier).toggleSwitch();
+                  }
                 }
               } else {
                 ref.read(switchActiveProvider.notifier).toggleSwitch();
+                ref.invalidate(socketServiceProvider);
+                PositioningServices(null).stop();
               }
             },
             activeThumbColor: theme.primaryColor,
@@ -410,5 +440,11 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
         );
       },
     );
+  }
+
+  void _showMessage(String message) {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(customSnackBar(message, context));
   }
 }

@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/core/router/app_router.dart';
-import 'package:texi/core/widgets/another_elevated_button_widget.dart';
-import 'package:texi/core/widgets/custom_snack_bar.dart';
-import 'package:texi/core/widgets/elevated_button_widget.dart';
-import 'package:texi/features/register_driver/presentation/providers/driver_identity_provider.dart';
-import 'package:texi/features/register_driver/presentation/widgets/dirver_identification/driver_back_identification_section.dart';
-import 'package:texi/features/register_driver/presentation/widgets/dirver_identification/driver_expiration_date.dart';
-import 'package:texi/features/register_driver/presentation/widgets/driver_form_header_widget.dart';
-import 'package:texi/features/register_driver/presentation/widgets/dirver_identification/driver_front_identification_section.dart';
-import 'package:texi/features/register_driver/presentation/widgets/dirver_identification/driver_identity_input.dart';
-import 'package:texi/features/register_driver/presentation/widgets/dirver_identification/driver_profile_image_section.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/router/app_router.dart';
+import 'package:texi_driver/core/widgets/another_elevated_button_widget.dart';
+import 'package:texi_driver/core/widgets/custom_snack_bar.dart';
+import 'package:texi_driver/core/widgets/elevated_button_widget.dart';
+import 'package:texi_driver/features/register_driver/presentation/providers/driver_identity_provider.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/dirver_identification/driver_back_identification_section.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/dirver_identification/driver_expiration_date.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/driver_form_header_widget.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/dirver_identification/driver_front_identification_section.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/dirver_identification/driver_identity_input.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/dirver_identification/driver_profile_image_section.dart';
 
 /// [DriverIdentityPage]
 ///

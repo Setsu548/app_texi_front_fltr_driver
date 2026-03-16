@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:texi/core/utils/dates_utilities.dart';
-import 'package:texi/features/register_driver/domain/entities/driver_entity.dart';
+import 'package:texi_driver/core/utils/dates_utilities.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/driver_entity.dart';
 
 class DriverModel extends DriverEntity {
   DriverModel({

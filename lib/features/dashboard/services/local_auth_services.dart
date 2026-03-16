@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
 
 class LocalAuthServices {
   final LocalAuthentication auth;

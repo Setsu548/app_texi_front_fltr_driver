@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
-import 'package:texi/core/constants/data_api_response.dart';
-import 'package:texi/features/register_driver/data/models/driver_data_res_model.dart';
-import 'package:texi/features/register_driver/data/models/driver_model.dart';
-import 'package:texi/features/register_driver/data/models/geo_data_res_model.dart';
-import 'package:texi/features/register_driver/data/models/identification_model.dart';
-import 'package:texi/features/register_driver/data/register_endpoints.dart';
-import 'package:texi/features/register_driver/domain/entities/driver_entity.dart';
-import 'package:texi/features/register_driver/domain/entities/identification_entity.dart';
-import 'package:texi/features/register_driver/domain/repo/driver_register_repo.dart';
+import 'package:texi_driver/core/constants/data_api_response.dart';
+import 'package:texi_driver/features/register_driver/data/models/driver_data_res_model.dart';
+import 'package:texi_driver/features/register_driver/data/models/driver_model.dart';
+import 'package:texi_driver/features/register_driver/data/models/geo_data_res_model.dart';
+import 'package:texi_driver/features/register_driver/data/models/identification_model.dart';
+import 'package:texi_driver/features/register_driver/data/register_endpoints.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/driver_entity.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/identification_entity.dart';
+import 'package:texi_driver/features/register_driver/domain/repo/driver_register_repo.dart';
 
 class DriverRegisterRepoImpl implements DriverRegisterRepo {
   final Dio _dio;

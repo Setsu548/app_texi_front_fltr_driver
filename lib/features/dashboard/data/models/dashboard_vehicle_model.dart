@@ -1,4 +1,4 @@
-import 'package:texi/features/dashboard/domain/entities/dashboard_vehicle_entity.dart';
+import 'package:texi_driver/features/dashboard/domain/entities/dashboard_vehicle_entity.dart';
 
 class DashboardVehicleModel extends DashboardVehicleEntity {
   DashboardVehicleModel({

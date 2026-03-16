@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:texi/core/utils/image_picker_service.dart';
-import 'package:texi/features/register_vehicle/domain/entities/vehicle_image_entity.dart';
+import 'package:texi_driver/core/utils/image_picker_service.dart';
+import 'package:texi_driver/features/register_vehicle/domain/entities/vehicle_image_entity.dart';
 
 class ImageParserToList {
   static Future<List<VehicleImageEntity>> parseVehicleImages(

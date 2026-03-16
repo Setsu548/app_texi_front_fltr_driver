@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/theme/styles_for_texts.dart';
+import 'package:texi_driver/core/theme/styles_for_texts.dart';
 
 class DriverFormHeaderWidget extends StatelessWidget {
   final String title;

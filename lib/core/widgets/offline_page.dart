@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/core/router/app_router.dart';
-import 'package:texi/core/theme/styles_for_texts.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/router/app_router.dart';
+import 'package:texi_driver/core/theme/styles_for_texts.dart';
 
 class OfflinePage extends StatelessWidget {
   const OfflinePage({super.key});

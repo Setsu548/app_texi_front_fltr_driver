@@ -1,4 +1,4 @@
-import 'package:texi/features/auth/data/models/device_info_model.dart';
+import 'package:texi_driver/features/auth/data/models/device_info_model.dart';
 
 class AuthEntity {
   final String phone;

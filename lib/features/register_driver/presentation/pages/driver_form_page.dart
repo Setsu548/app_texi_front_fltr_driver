@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/features/register_driver/presentation/widgets/driver_form_header_widget.dart';
-import 'package:texi/features/register_driver/presentation/widgets/driver_user/driver_form_widget.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/driver_form_header_widget.dart';
+import 'package:texi_driver/features/register_driver/presentation/widgets/driver_user/driver_form_widget.dart';
 
 /// Esta es la página principal para el formulario de registro de conductores.
 ///

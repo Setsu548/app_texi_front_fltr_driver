@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:texi/core/theme/styles_for_texts.dart';
+import 'package:texi_driver/core/theme/styles_for_texts.dart';
 
 class DriverProfile extends StatelessWidget {
   const DriverProfile({super.key});

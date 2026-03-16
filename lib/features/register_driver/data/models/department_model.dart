@@ -1,5 +1,5 @@
-import 'package:texi/features/register_driver/data/models/locality_model.dart';
-import 'package:texi/features/register_driver/domain/entities/department_entity.dart';
+import 'package:texi_driver/features/register_driver/data/models/locality_model.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/department_entity.dart';
 
 class DepartmentModel extends DepartmentEntity {
   DepartmentModel({required super.name, required super.localities});

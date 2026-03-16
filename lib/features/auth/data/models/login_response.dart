@@ -1,5 +1,5 @@
-import 'package:texi/features/auth/data/models/login_data_model.dart';
-import 'package:texi/features/auth/data/models/login_error_model.dart';
+import 'package:texi_driver/features/auth/data/models/login_data_model.dart';
+import 'package:texi_driver/features/auth/data/models/login_error_model.dart';
 
 class LoginResponse {
   final String code;

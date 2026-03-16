@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
 
 class DriverIdentityInput extends StatelessWidget {
   final String? Function(String?)? validator;

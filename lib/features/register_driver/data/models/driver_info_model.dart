@@ -1,4 +1,4 @@
-import 'package:texi/features/register_driver/domain/entities/driver_info_entity.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/driver_info_entity.dart';
 
 class DriverInfoModel extends DriverInfoEntity {
   DriverInfoModel({

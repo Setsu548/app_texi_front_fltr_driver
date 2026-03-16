@@ -1,7 +1,7 @@
-import 'package:texi/core/constants/data_api_response.dart';
-import 'package:texi/features/register_vehicle/data/model/vehicle_res_model.dart';
-import 'package:texi/features/register_vehicle/domain/entities/vehicle_entity.dart';
-import 'package:texi/features/register_vehicle/domain/entities/vehicle_image_entity.dart';
+import 'package:texi_driver/core/constants/data_api_response.dart';
+import 'package:texi_driver/features/register_vehicle/data/model/vehicle_res_model.dart';
+import 'package:texi_driver/features/register_vehicle/domain/entities/vehicle_entity.dart';
+import 'package:texi_driver/features/register_vehicle/domain/entities/vehicle_image_entity.dart';
 
 abstract class RegisterVehicleRepo {
   Future<DataApiResponse<VehicleResModel?>> registerVehicle(

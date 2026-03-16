@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:i18n_extension/i18n_extension.dart';
 import 'package:sizer/sizer.dart';
-import 'package:texi/core/router/app_router.dart';
-import 'package:texi/core/theme/app_theme.dart';
+import 'package:texi_driver/core/router/app_router.dart';
+import 'package:texi_driver/core/theme/app_theme.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:network_info_plus/network_info_plus.dart';
-import 'package:texi/features/auth/data/models/device_info_model.dart';
+import 'package:texi_driver/features/auth/data/models/device_info_model.dart';
 
 class DeviceServices {
   static Future<DeviceInfoModel> getDeviceInfo() async {

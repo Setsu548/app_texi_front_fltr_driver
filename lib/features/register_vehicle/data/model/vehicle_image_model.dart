@@ -1,4 +1,4 @@
-import 'package:texi/features/register_vehicle/domain/entities/vehicle_image_entity.dart';
+import 'package:texi_driver/features/register_vehicle/domain/entities/vehicle_image_entity.dart';
 
 class VehicleImageModel extends VehicleImageEntity {
   VehicleImageModel({required super.image, required super.imageName});

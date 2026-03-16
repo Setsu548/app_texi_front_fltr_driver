@@ -2,20 +2,20 @@ import 'dart:async';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get_it/get_it.dart';
 import 'package:phonecodes/phonecodes.dart';
-import 'package:texi/core/providers/dio_provider.dart';
-import 'package:texi/core/constants/enums.dart';
-import 'package:texi/core/constants/storage_keys.dart';
-import 'package:texi/core/lang/extension_lang.dart';
-import 'package:texi/core/utils/auth_secure_storeage_service.dart';
-import 'package:texi/core/utils/image_picker_service.dart';
-import 'package:texi/features/register_driver/data/models/driver_data_res_model.dart';
-import 'package:texi/features/register_driver/data/repo/driver_register_repo_impl.dart';
-import 'package:texi/features/register_driver/domain/entities/department_entity.dart';
-import 'package:texi/features/register_driver/domain/entities/driver_entity.dart';
-import 'package:texi/features/register_driver/domain/entities/identification_entity.dart';
-import 'package:texi/features/register_driver/domain/entities/locality_entity.dart';
-import 'package:texi/features/register_driver/domain/repo/driver_register_repo.dart';
-import 'package:texi/features/register_driver/presentation/providers/driver_identity_provider.dart';
+import 'package:texi_driver/core/providers/dio_provider.dart';
+import 'package:texi_driver/core/constants/enums.dart';
+import 'package:texi_driver/core/constants/storage_keys.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/utils/auth_secure_storeage_service.dart';
+import 'package:texi_driver/core/utils/image_picker_service.dart';
+import 'package:texi_driver/features/register_driver/data/models/driver_data_res_model.dart';
+import 'package:texi_driver/features/register_driver/data/repo/driver_register_repo_impl.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/department_entity.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/driver_entity.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/identification_entity.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/locality_entity.dart';
+import 'package:texi_driver/features/register_driver/domain/repo/driver_register_repo.dart';
+import 'package:texi_driver/features/register_driver/presentation/providers/driver_identity_provider.dart';
 
 final countriesListProvider =
     NotifierProvider<CountriesListProvider, List<Country>>(

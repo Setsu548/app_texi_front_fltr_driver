@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:texi/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
 
 class CustomDialogue extends StatelessWidget {
   final String title;
