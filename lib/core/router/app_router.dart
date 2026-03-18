@@ -102,10 +102,7 @@ class AppRouter {
           GoRoute(
             path: roadToOriginLocation,
             pageBuilder: (context, state) =>
-                TransitionsHelper.slideUpTransition(
-                  state,
-                  RoadToOriginPage(tripId: state.extra as String),
-                ),
+                TransitionsHelper.slideUpTransition(state, RoadToOriginPage()),
           ),
         ],
       ),

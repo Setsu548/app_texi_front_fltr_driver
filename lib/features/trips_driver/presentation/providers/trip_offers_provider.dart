@@ -1,61 +1,65 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:texi_driver/core/providers/socket_provider.dart';
 import 'package:texi_driver/features/trips_driver/data/model/trip_offer_model.dart';
-import 'package:texi_driver/features/trips_driver/services/trip_offers_passenger.dart';
+import 'package:texi_driver/features/trips_driver/domain/entities/location_entity.dart';
 
-final tripOffersServiceProvider = Provider<TripOffersPassenger?>((ref) {
-  final socketServiceAsyncValue = ref.watch(socketServiceProvider);
-
-  return socketServiceAsyncValue.when(
-    data: (socketService) {
-      if (socketService == null) return null;
-      return TripOffersPassenger(socketService);
-    },
-    loading: () => null,
-    error: (_, _) => null,
-  );
-});
-
+//--Provider de lista de ofertas de viaje--//
 final tripOffersProvider =
     NotifierProvider<TripOffersNotifier, List<TripOfferModel>>(
       TripOffersNotifier.new,
     );
 
 class TripOffersNotifier extends Notifier<List<TripOfferModel>> {
-  TripOffersPassenger? _service;
-
   @override
-  List<TripOfferModel> build() {
-    _service = ref.watch(tripOffersServiceProvider);
-    _initListener();
-    return [];
-  }
+  List<TripOfferModel> build() => [];
 
-  void _initListener() {
-    if (_service != null) {
-      _service!.listenToOffers((offerData) {
-        if (offerData != null && offerData is Map) {
-          try {
-            final offerMap = Map<String, dynamic>.from(offerData);
-            final offer = TripOfferModel.fromJson(offerMap);
-            if (!state.any((e) => e.tripId == offer.tripId)) {
-              state = [...state, offer];
-            } else {
-              state = [
-                for (final e in state)
-                  if (e.tripId == offer.tripId) offer else e,
-              ];
-            }
-          } catch (e) {
-            print('Error parsing trip offer: $e');
-          }
-        }
-      });
+  /// Agrega una oferta nueva o actualiza si ya existe el mismo tripId.
+  void addOrUpdate(TripOfferModel offer) {
+    final exists = state.any((e) => e.tripId == offer.tripId);
+    if (exists) {
+      state = [
+        for (final e in state) e.tripId == offer.tripId ? offer : e,
+      ];
+    } else {
+      state = [...state, offer];
     }
   }
 
-  void acceptOffer(String tripId) {
-    _service?.acceptOffer(tripId);
-    state = state.where((offer) => offer.tripId != tripId).toList();
+  void clear() {
+    state = [];
   }
 }
+//--//
+
+//--Provider de Origen--//
+class OriginNotifier extends Notifier<LocationEntity> {
+  @override
+  LocationEntity build() {
+    return LocationEntity(lat: 0, lng: 0);
+  }
+
+  void setLocation(LocationEntity location) {
+    state = location;
+  }
+}
+
+final originProvider = NotifierProvider<OriginNotifier, LocationEntity>(
+  OriginNotifier.new,
+);
+//--//
+
+//--Provider de destino--//
+class DestinyNotifier extends Notifier<LocationEntity> {
+  @override
+  LocationEntity build() {
+    return LocationEntity(lat: 0, lng: 0);
+  }
+
+  void setLocation(LocationEntity location) {
+    state = location;
+  }
+}
+
+final destinyProvider = NotifierProvider<DestinyNotifier, LocationEntity>(
+  DestinyNotifier.new,
+);
+//--//

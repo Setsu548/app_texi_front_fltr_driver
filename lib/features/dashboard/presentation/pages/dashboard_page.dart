@@ -4,6 +4,7 @@ import 'package:local_auth/local_auth.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi_driver/core/providers/socket_provider.dart';
 import 'package:texi_driver/core/theme/styles_for_texts.dart';
+import 'package:texi_driver/core/utils/socket_service.dart';
 import 'package:texi_driver/core/widgets/custom_snack_bar.dart';
 import 'package:texi_driver/features/trips_driver/presentation/pages/trip_passenger_offers_page.dart';
 import 'package:texi_driver/features/dashboard/presentation/provider/dashboard_providers.dart';
@@ -33,6 +34,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final primaryColor = theme.primaryColor;
+    final socketService = ref.watch(socketServiceProvider).value;
 
     return Scaffold(
       drawer: const MenuDrawer(),
@@ -84,7 +86,7 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildStatusCard(primaryColor, theme),
+              _buildStatusCard(primaryColor, theme, socketService),
               SizedBox(height: 2.h),
               /* _buildEarningsCard(primaryColor, theme),
               SizedBox(height: 3.h),
@@ -115,7 +117,11 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
     );
   }
 
-  Widget _buildStatusCard(Color primaryColor, ThemeData theme) {
+  Widget _buildStatusCard(
+    Color primaryColor,
+    ThemeData theme,
+    SocketService? socketService,
+  ) {
     final switchActive = ref.watch(switchActiveProvider);
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
@@ -185,9 +191,6 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                 if (isAuthenticated) {
                   ref.read(switchActiveProvider.notifier).toggleSwitch();
                   try {
-                    final socketService = await ref.read(
-                      socketServiceProvider.future,
-                    );
                     if (socketService != null) {
                       _showMessage(connectedReadyForTrips.i18n);
                       Navigator.push(

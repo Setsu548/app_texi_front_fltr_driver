@@ -6,15 +6,12 @@ import 'package:i18n_extension/i18n_extension.dart';
 import 'package:texi_driver/core/lang/delegates_lang.dart';
 import 'package:texi_driver/core/lang/supported_lang.dart';
 import 'package:texi_driver/core/utils/auth_secure_storeage_service.dart';
-import 'package:texi_driver/core/utils/internet_service.dart';
 import 'package:texi_driver/main_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final getIt = GetIt.instance;
-  final internetService = InternetService();
-  internetService.start();
 
   void setupLocator() {
     getIt.registerSingleton<AuthSecureStorageService>(

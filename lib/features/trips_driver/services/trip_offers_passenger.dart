@@ -1,15 +1,26 @@
-import 'package:texi_driver/core/utils/socket_service.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:texi_driver/core/providers/socket_provider.dart';
+import 'package:texi_driver/features/trips_driver/data/model/trip_offer_model.dart';
+import 'package:texi_driver/features/trips_driver/presentation/providers/trip_offers_provider.dart';
 
 class TripOffersPassenger {
-  final SocketService _socketService;
-
-  TripOffersPassenger(this._socketService);
-
-  void listenToOffers(Function(dynamic) onData) {
-    _socketService.onMessage('trip:offer', onData);
+  /// Inicia el listener del socket para el evento 'trip:offer'.
+  /// Captura el notifier ANTES del callback para evitar usar `ref`
+  /// cuando el widget ya fue desmontado.
+  static void listenOffers(WidgetRef ref) {
+    final socketService = ref.read(socketServiceProvider).value;
+    final offersNotifier = ref.read(tripOffersProvider.notifier);
+    socketService?.onMessage('trip:offer', (data) {
+      final offer = TripOfferModel.fromJson(Map<String, dynamic>.from(data));
+      //TODO: Revisar la filtración de ofertas, solo deben llegar las ofertas que esten disponibles
+      offersNotifier.addOrUpdate(offer);
+    });
   }
 
-  void acceptOffer(String tripId) {
-    _socketService.sendMessage('trip:accept', {'tripId': tripId});
-  }
+  /* static void tripAccepted(WidgetRef ref, BuildContext context) {
+    final socketService = ref.read(socketServiceProvider).value;
+    socketService?.onMessage('trip:accepted', (data) {
+      
+    });
+  } */
 }

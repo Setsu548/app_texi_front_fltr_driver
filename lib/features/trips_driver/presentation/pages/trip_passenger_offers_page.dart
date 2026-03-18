@@ -2,24 +2,43 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
 import 'package:texi_driver/core/router/app_router.dart';
 import 'package:texi_driver/core/theme/styles_for_texts.dart';
 import 'package:texi_driver/core/widgets/custom_snack_bar.dart';
 import 'package:texi_driver/core/widgets/elevated_button_widget.dart';
 import 'package:texi_driver/features/trips_driver/presentation/providers/trip_offers_provider.dart';
+import 'package:texi_driver/features/trips_driver/services/trip_offers_passenger.dart';
+import 'package:texi_driver/features/trips_driver/services/trip_states_services.dart';
 
-class TripPassengerOffersPage extends ConsumerWidget {
+class TripPassengerOffersPage extends ConsumerStatefulWidget {
   const TripPassengerOffersPage({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    // Escuchar el estado de las ofertas de viaje desde el provider
+  ConsumerState<TripPassengerOffersPage> createState() =>
+      _TripPassengerOffersPageState();
+}
+
+class _TripPassengerOffersPageState
+    extends ConsumerState<TripPassengerOffersPage> {
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      TripOffersPassenger.listenOffers(ref);
+    });
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
     final offers = ref.watch(tripOffersProvider);
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Ofertas de Pasajeros',
+          passengerOffers.i18n,
           style: StylesForTexts(context: context).headerStyle(),
         ),
         centerTitle: true,
@@ -27,7 +46,7 @@ class TripPassengerOffersPage extends ConsumerWidget {
       body: offers.isEmpty
           ? Center(
               child: Text(
-                'Esperando ofertas...',
+                waitingForOffers.i18n,
                 style: StylesForTexts(context: context).headerStyleSmall(),
               ),
             )
@@ -66,7 +85,7 @@ class TripPassengerOffersPage extends ConsumerWidget {
                         SizedBox(
                           width: 50.w,
                           child: Text(
-                            'Tiempo estimado: ${offer.etaMinutes} min',
+                            '${estimatedTime.i18n}: ${offer.etaMinutes} min',
                             style: StylesForTexts(context: context)
                                 .bodyStyle()
                                 .copyWith(
@@ -80,7 +99,7 @@ class TripPassengerOffersPage extends ConsumerWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Precio Ofrecido',
+                              offeredPrice.i18n,
                               style: StylesForTexts(context: context)
                                   .bodyStyle()
                                   .copyWith(
@@ -105,25 +124,43 @@ class TripPassengerOffersPage extends ConsumerWidget {
                             TextButton(
                               onPressed: () {
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  customSnackBar('Oferta rechazada', context),
+                                  customSnackBar(rejectedOffer.i18n, context),
                                 );
                               },
-                              child: const Text('Rechazar'),
+                              child: Text(reject.i18n),
                             ),
                             const SizedBox(width: 8),
                             ElevatedButtonWidget(
-                              label: 'Aceptar',
+                              label: accept.i18n,
                               width: 28.w,
-                              onPressed: () {
-                                final offertAcceptedId = offer
-                                    .tripId; // Aquí puedes implementar la lógica para aceptar la oferta
-                                ref
-                                    .read(tripOffersProvider.notifier)
-                                    .acceptOffer(offertAcceptedId);
-                                context.push(
-                                  '${AppRouter.tripPassengerOffersLocation}/${AppRouter.roadToOriginLocation}',
-                                  extra: offertAcceptedId,
-                                );
+                              onPressed: () async {
+                                final offertAcceptedId = offer.tripId;
+                                if (await TripStatesServices.acceptTrip(
+                                  offertAcceptedId,
+                                  ref,
+                                )) {
+                                  if (context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      customSnackBar(
+                                        acceptedOffer.i18n,
+                                        context,
+                                      ),
+                                    );
+                                    context.push(
+                                      '${AppRouter.tripPassengerOffersLocation}/${AppRouter.roadToOriginLocation}',
+                                      extra: offertAcceptedId,
+                                    );
+                                  }
+                                } else {
+                                  if (context.mounted) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      customSnackBar(
+                                        errorAcceptOffer.i18n,
+                                        context,
+                                      ),
+                                    );
+                                  }
+                                }
                               },
                             ),
                           ],

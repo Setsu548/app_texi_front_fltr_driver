@@ -3,6 +3,7 @@ import 'package:i18n_extension/i18n_extension.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi_driver/core/router/app_router.dart';
 import 'package:texi_driver/core/theme/app_theme.dart';
+import 'package:texi_driver/core/widgets/app_connection_listener.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -14,6 +15,9 @@ class MainApp extends StatelessWidget {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           routerConfig: AppRouter.routes,
+          builder: (context, child) {
+            return AppConnectionListener(child: child!);
+          },
           theme: AppTheme.lightTheme,
           locale: I18n.locale,
           localizationsDelegates: I18n.localizationsDelegates,

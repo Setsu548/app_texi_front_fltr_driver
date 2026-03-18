@@ -1,31 +1,43 @@
 import 'dart:async';
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/material.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:texi_driver/core/router/app_router.dart';
 
-class InternetService {
-  Timer? _timer;
-  bool _isOfflinePageVisible = false;
+enum ConnectionStatus { online, offline, checking }
 
-  void start() {
-    _timer = Timer.periodic(const Duration(seconds: 5), (timer) async {
-      bool hasInternet = await InternetConnection().hasInternetAccess;
-      if (!hasInternet && !_isOfflinePageVisible) {
-        _isOfflinePageVisible = true;
-        AppRouter.routes.push(AppRouter.offlineLocation).then((value) {
-          _isOfflinePageVisible = false;
-        });
-      } else if (hasInternet && _isOfflinePageVisible) {
-        if (AppRouter.routes.canPop()) {
-          AppRouter.routes.pop();
-        } else {
-          AppRouter.routes.go(AppRouter.initialLocation);
-        }
-        _isOfflinePageVisible = false;
-      }
-    });
+class InternetService with WidgetsBindingObserver {
+  final _controller = StreamController<ConnectionStatus>.broadcast();
+
+  Stream<ConnectionStatus> get stream => _controller.stream;
+
+  late final StreamSubscription _connectivitySub;
+
+  InternetService() {
+    _connectivitySub = Connectivity().onConnectivityChanged.listen(
+      (_) => _checkInternet(),
+    );
+
+    _checkInternet();
   }
 
-  void stop() {
-    _timer?.cancel();
+  Future<void> _checkInternet() async {
+    _controller.add(ConnectionStatus.checking);
+
+    final hasInternet = await InternetConnection().hasInternetAccess;
+
+    if (hasInternet) {
+      _controller.add(ConnectionStatus.online);
+    } else {
+      _controller.add(ConnectionStatus.offline);
+    }
+  }
+
+  Future<bool> checkNow() async {
+    return await InternetConnection().hasInternetAccess;
+  }
+
+  void dispose() {
+    _connectivitySub.cancel();
+    _controller.close();
   }
 }

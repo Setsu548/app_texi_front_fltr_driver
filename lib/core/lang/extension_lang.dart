@@ -200,6 +200,16 @@ const arrivedToOrigin = 'Llegué al origen';
 const startTrip = 'Iniciar viaje';
 const finishTrip = 'Finalizar viaje';
 const tripFinished = 'Viaje finalizado';
+const passengerOffers = 'Ofertas de Pasajeros';
+const waitingForOffers = 'Esperando ofertas...';
+const estimatedTime = 'Tiempo estimado';
+const offeredPrice = 'Precio Ofrecido';
+const reject = 'Rechazar';
+const accept = 'Aceptar';
+const rejectedOffer = 'Oferta rechazada';
+const acceptedOffer = 'Oferta aceptada';
+const errorAcceptOffer = 'Error al aceptar la oferta';
+const errorRejectOffer = 'Error al rechazar la oferta';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
@@ -1296,6 +1306,66 @@ extension Localization on String {
       'es-ES': 'Viaje finalizado',
       'es-MX': 'Viaje finalizado',
       'es-BO': 'Viaje finalizado',
+    },
+    passengerOffers: {
+      'en-US': 'Passenger offers',
+      'es-ES': 'Ofertas de pasajeros',
+      'es-MX': 'Ofertas de pasajeros',
+      'es-BO': 'Ofertas de pasajeros',
+    },
+    waitingForOffers: {
+      'en-US': 'Waiting for offers...',
+      'es-ES': 'Esperando ofertas...',
+      'es-MX': 'Esperando ofertas...',
+      'es-BO': 'Esperando ofertas...',
+    },
+    estimatedTime: {
+      'en-US': 'Estimated time',
+      'es-ES': 'Tiempo estimado',
+      'es-MX': 'Tiempo estimado',
+      'es-BO': 'Tiempo estimado',
+    },
+    offeredPrice: {
+      'en-US': 'Offered price',
+      'es-ES': 'Precio ofrecido',
+      'es-MX': 'Precio ofrecido',
+      'es-BO': 'Precio ofrecido',
+    },
+    reject: {
+      'en-US': 'Reject',
+      'es-ES': 'Rechazar',
+      'es-MX': 'Rechazar',
+      'es-BO': 'Rechazar',
+    },
+    accept: {
+      'en-US': 'Accept',
+      'es-ES': 'Aceptar',
+      'es-MX': 'Aceptar',
+      'es-BO': 'Aceptar',
+    },
+    rejectedOffer: {
+      'en-US': 'Rejected offer',
+      'es-ES': 'Oferta rechazada',
+      'es-MX': 'Oferta rechazada',
+      'es-BO': 'Oferta rechazada',
+    },
+    acceptedOffer: {
+      'en-US': 'Accepted offer',
+      'es-ES': 'Oferta aceptada',
+      'es-MX': 'Oferta aceptada',
+      'es-BO': 'Oferta aceptada',
+    },
+    errorAcceptOffer: {
+      'en-US': 'Error accepting offer',
+      'es-ES': 'Error al aceptar la oferta',
+      'es-MX': 'Error al aceptar la oferta',
+      'es-BO': 'Error al aceptar la oferta',
+    },
+    errorRejectOffer: {
+      'en-US': 'Error rejecting offer',
+      'es-ES': 'Error al rechazar la oferta',
+      'es-MX': 'Error al rechazar la oferta',
+      'es-BO': 'Error al rechazar la oferta',
     },
   });
 

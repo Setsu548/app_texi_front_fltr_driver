@@ -55,7 +55,7 @@ final dioProviderActions = Provider<Dio>((ref) {
   dio.interceptors.add(
     InterceptorsWrapper(
       onRequest: (options, handler) async {
-        final token = await storage.getString(StorageKeys.driverRegister);
+        final token = await storage.getString(StorageKeys.driverToken);
 
         if (token != null) {
           options.headers['Authorization'] = 'Bearer $token';
@@ -68,3 +68,18 @@ final dioProviderActions = Provider<Dio>((ref) {
 
   return dio;
 });
+
+class TripIdNotifier extends Notifier<String?> {
+  @override
+  String? build() {
+    return null;
+  }
+
+  void setTripId(String tripId) {
+    state = tripId;
+  }
+}
+
+final tripIdProvider = NotifierProvider<TripIdNotifier, String?>(
+  TripIdNotifier.new,
+);

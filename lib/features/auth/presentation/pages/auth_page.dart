@@ -14,6 +14,7 @@ import 'package:texi_driver/core/widgets/loading_screen.dart';
 import 'package:texi_driver/features/auth/domain/entities/auth_entity.dart';
 import 'package:texi_driver/features/auth/presentation/providers/auth_providers.dart';
 import 'package:texi_driver/core/utils/auth_secure_storeage_service.dart';
+import 'package:texi_driver/features/auth/services/auth_services.dart';
 import 'package:texi_driver/features/dashboard/presentation/provider/dashboard_providers.dart';
 import 'package:texi_driver/features/register_driver/presentation/providers/driver_form_provider.dart';
 
@@ -169,6 +170,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                           StorageKeys.driverToken,
                           cookie!.token,
                         );
+                        AuthServices.initSocket(ref);
                         _showMessage(
                           '${welcomeDriver.i18n} ${_phoneController.text}',
                         );

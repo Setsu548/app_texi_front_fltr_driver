@@ -5,6 +5,8 @@ import 'package:texi_driver/features/auth/domain/repo/auth_repo.dart';
 import 'package:texi_driver/core/constants/data_api_response.dart';
 import 'package:texi_driver/features/auth/data/models/login_data_model.dart';
 import 'package:texi_driver/features/auth/domain/entities/auth_entity.dart';
+import 'package:texi_driver/features/auth/data/models/connection_ack_res_model.dart';
+import 'package:texi_driver/features/auth/presentation/providers/states/profile_state.dart';
 
 //--Provider para ocultar la contraseña--//
 final hidePasswordProvider = NotifierProvider<HidePasswordProvider, bool>(
@@ -72,3 +74,26 @@ class HasVehicleNotifier extends Notifier<bool> {
 final hasVehicleNotifierProvider = NotifierProvider<HasVehicleNotifier, bool>(
   HasVehicleNotifier.new,
 );
+
+//--//
+
+//--Clase Notifier para el perfil del conductor--//
+class ProfileNotifier extends Notifier<ProfileState?> {
+  @override
+  ProfileState? build() {
+    return null;
+  }
+
+  void loadFromConnectionAck(ConnectionAckResModel connectionAck) {
+    state = ProfileState.fromProfile(connectionAck.profile);
+  }
+
+  void clear() {
+    state = null;
+  }
+}
+
+final profileNotifierProvider = NotifierProvider<ProfileNotifier, ProfileState?>(
+  ProfileNotifier.new,
+);
+//--//

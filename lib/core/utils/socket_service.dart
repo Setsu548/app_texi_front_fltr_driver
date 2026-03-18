@@ -14,6 +14,7 @@ class SocketService {
       IO.OptionBuilder().setTransports(['websocket']).setExtraHeaders({
         "Authorization": _token,
       }).build(),
+      
     );
     _socket.connect();
     _socket.onConnect((_) {
