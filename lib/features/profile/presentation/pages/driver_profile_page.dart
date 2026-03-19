@@ -1,145 +1,198 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
 import 'package:texi_driver/core/theme/styles_for_texts.dart';
+import 'package:texi_driver/core/widgets/loading_screen.dart';
+import 'package:texi_driver/features/profile/domain/entities/driver_profile_entity.dart';
+import 'package:texi_driver/features/profile/presentation/providers/profile_provider.dart';
 
-class DriverProfile extends StatelessWidget {
+class DriverProfile extends ConsumerWidget {
   const DriverProfile({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final profileDriver = ref.watch(driverProfileNotifierProvider);
 
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          'Dashboard',
-          style: StylesForTexts(context: context).headerStyle(),
-        ),
-        centerTitle: true,
+    return profileDriver.when(
+      loading: () => const LoadingScreen(),
+      error: (error, stack) => Scaffold(
+        appBar: AppBar(title: Text(profileStr.i18n)),
+        body: Center(child: Text('Error: $error')),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 16),
-              // Profile Header
-              _buildProfileHeader(theme),
-              const SizedBox(height: 32),
+      data: (profile) => Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: IconButton(
+            icon: Icon(
+              Icons.chevron_left,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+            onPressed: () => Navigator.pop(context),
+          ),
+          title: Text(
+            profileStr.i18n,
+            style: StylesForTexts(context: context).headerStyle(),
+          ),
+          centerTitle: true,
+        ),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const SizedBox(height: 16),
+                // Profile Header
+                _buildProfileHeader(theme, profile),
+                const SizedBox(height: 32),
 
-              // Action Cards Row
-              Row(
-                children: [
-                  Expanded(
-                    child: _buildActionCard(
-                      theme,
-                      icon: Icons.history,
-                      label: 'Trip History',
-                      onTap: () {},
+                // Action Cards Row
+                /* Row(
+                  children: [
+                    Expanded(
+                      child: _buildActionCard(
+                        theme,
+                        icon: Icons.history,
+                        label: 'Trip History',
+                        onTap: () {},
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: _buildActionCard(
-                      theme,
-                      icon: Icons.payments_outlined,
-                      label: 'Earnings',
-                      onTap: () {},
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: _buildActionCard(
+                        theme,
+                        icon: Icons.payments_outlined,
+                        label: 'Earnings',
+                        onTap: () {},
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 32),
+                  ],
+                ),
+                const SizedBox(height: 32), */
 
-              // Vehicle Information
-              _buildSectionTitle(
-                theme,
-                icon: Icons.directions_car,
-                title: 'Vehicle Information',
-              ),
-              const SizedBox(height: 16),
-              _buildInfoContainer(
-                theme,
-                children: [
-                  _buildInfoRow('Brand/Model', 'Toyota Corolla'),
-                  _buildDivider(),
-                  _buildInfoRow('Plate', 'ABC-1234'),
-                  _buildDivider(),
-                  _buildInfoRow('Color', 'Dark Grey'),
-                  _buildDivider(),
-                  _buildInfoRow('Capacity', '4 Passengers'),
-                ],
-              ),
-              const SizedBox(height: 32),
+                // Personal Information
+                _buildSectionTitle(
+                  theme,
+                  icon: Icons.person_outline,
+                  title: personalInformation.i18n,
+                ),
+                const SizedBox(height: 16),
+                _buildInfoContainer(
+                  theme,
+                  children: [
+                    _buildInfoRow(email.i18n, profile.email),
+                    _buildDivider(),
+                    _buildInfoRow(phone.i18n, profile.phoneNumber),
+                    _buildDivider(),
+                    _buildInfoRow(gender.i18n, profile.gender),
+                    _buildDivider(),
+                    _buildInfoRow(dateOfBirth.i18n, profile.birthDate),
+                  ],
+                ),
+                const SizedBox(height: 32),
 
-              // Documents
-              _buildSectionTitle(
-                theme,
-                icon: Icons.description,
-                title: 'Documents',
-              ),
-              const SizedBox(height: 16),
-              _buildDocumentCard(
-                theme,
-                icon: Icons.badge_outlined,
-                title: "Driver's License",
-                status: "VERIFIED",
-              ),
-              const SizedBox(height: 12),
-              _buildDocumentCard(
-                theme,
-                icon: Icons.shield_outlined,
-                title: "Insurance Policy",
-                status: "VERIFIED",
-              ),
-              const SizedBox(height: 12),
-              _buildDocumentCard(
-                theme,
-                icon: Icons.build_outlined,
-                title: "Technical Inspection",
-                status: "PENDING REVIEW",
-              ),
-              const SizedBox(height: 32),
+                // Address Information
+                _buildSectionTitle(
+                  theme,
+                  icon: Icons.location_on_outlined,
+                  title: address.i18n,
+                ),
+                const SizedBox(height: 16),
+                _buildInfoContainer(
+                  theme,
+                  children: [
+                    _buildInfoRow(locality.i18n, profile.locality.toString()),
+                    _buildDivider(),
+                    _buildInfoRow(address.i18n, profile.address),
+                  ],
+                ),
+                const SizedBox(height: 32),
 
-              // Settings
-              _buildSectionTitle(
-                theme,
-                icon: Icons.settings,
-                title: 'Settings',
-              ),
-              const SizedBox(height: 16),
-              _buildInfoContainer(
-                theme,
-                children: [
-                  _buildSettingsRow(theme, 'Notifications', true),
-                  _buildDivider(),
-                  _buildSettingsRow(theme, 'Dark Mode', true),
-                  _buildDivider(),
-                  _buildSettingsRow(theme, 'App Sounds', false),
-                ],
-              ),
-              const SizedBox(height: 32),
+                // Vehicle Information
+                /* _buildSectionTitle(
+                  theme,
+                  icon: Icons.directions_car,
+                  title: vehicleInfoTitle.i18n,
+                ),
+                const SizedBox(height: 16),
+                _buildInfoContainer(
+                  theme,
+                  children: [
+                    _buildInfoRow('Brand/Model', 'Toyota Corolla'),
+                    _buildDivider(),
+                    _buildInfoRow('Plate', 'ABC-1234'),
+                    _buildDivider(),
+                    _buildInfoRow('Color', 'Dark Grey'),
+                    _buildDivider(),
+                    _buildInfoRow('Capacity', '4 Passengers'),
+                  ],
+                ),
+                const SizedBox(height: 32),
 
-              // Action Buttons
-              _buildLogoutButton(theme),
-              const SizedBox(height: 16),
-              _buildBackButton(theme, context),
-              const SizedBox(height: 40),
-            ],
+                // Documents
+                _buildSectionTitle(
+                  theme,
+                  icon: Icons.description,
+                  title: 'Documents',
+                ),
+                const SizedBox(height: 16),
+                _buildDocumentCard(
+                  theme,
+                  icon: Icons.badge_outlined,
+                  title: "Driver's License",
+                  status: "VERIFIED",
+                ),
+                const SizedBox(height: 12),
+                _buildDocumentCard(
+                  theme,
+                  icon: Icons.shield_outlined,
+                  title: "Insurance Policy",
+                  status: "VERIFIED",
+                ),
+                const SizedBox(height: 12),
+                _buildDocumentCard(
+                  theme,
+                  icon: Icons.build_outlined,
+                  title: "Technical Inspection",
+                  status: "PENDING REVIEW",
+                ),
+                const SizedBox(height: 32),
+
+                // Settings
+                _buildSectionTitle(
+                  theme,
+                  icon: Icons.settings,
+                  title: 'Settings',
+                ),
+                const SizedBox(height: 16),
+                _buildInfoContainer(
+                  theme,
+                  children: [
+                    _buildSettingsRow(theme, 'Notifications', true),
+                    _buildDivider(),
+                    _buildSettingsRow(theme, 'Dark Mode', true),
+                    _buildDivider(),
+                    _buildSettingsRow(theme, 'App Sounds', false),
+                  ],
+                ),
+                const SizedBox(height: 32),
+
+                // Action Buttons
+                _buildLogoutButton(theme),
+                const SizedBox(height: 16), */
+                _buildBackButton(theme, context),
+                const SizedBox(height: 40),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildProfileHeader(ThemeData theme) {
+  Widget _buildProfileHeader(ThemeData theme, DriverProfileEntity profile) {
     return Column(
       children: [
         Stack(
@@ -155,13 +208,23 @@ class DriverProfile extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(2.0),
                 child: Container(
+                  clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
                     color: Colors.grey[800],
                     shape: BoxShape.circle,
                   ),
-                  child: const Center(
-                    child: Icon(Icons.person, size: 50, color: Colors.grey),
-                  ),
+                  child: profile.pictureProfile != null
+                      ? Image.network(
+                          profile.pictureProfile!,
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) =>
+                              const Icon(
+                                Icons.person,
+                                size: 50,
+                                color: Colors.grey,
+                              ),
+                        )
+                      : const Icon(Icons.person, size: 50, color: Colors.grey),
                 ),
               ),
             ),
@@ -188,9 +251,9 @@ class DriverProfile extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 16),
-        const Text(
-          'Carlos Mendoza',
-          style: TextStyle(
+        Text(
+          '${profile.firstName} ${profile.lastName}',
+          style: const TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -217,9 +280,9 @@ class DriverProfile extends StatelessWidget {
                 style: TextStyle(color: Colors.grey, fontSize: 14),
               ),
             ),
-            const Text(
-              'Member since 2021',
-              style: TextStyle(color: Colors.grey, fontSize: 14),
+            Text(
+              profile.uuid.substring(0, 8),
+              style: const TextStyle(color: Colors.grey, fontSize: 14),
             ),
           ],
         ),

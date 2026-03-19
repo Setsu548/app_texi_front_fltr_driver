@@ -211,6 +211,7 @@ const acceptedOffer = 'Oferta aceptada';
 const errorAcceptOffer = 'Error al aceptar la oferta';
 const errorRejectOffer = 'Error al rechazar la oferta';
 
+
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
     loginDescription: {

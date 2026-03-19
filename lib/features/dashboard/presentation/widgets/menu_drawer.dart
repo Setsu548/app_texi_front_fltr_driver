@@ -1,14 +1,20 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:texi_driver/core/widgets/loading_component.dart';
+import 'package:texi_driver/features/profile/presentation/providers/profile_provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi_driver/core/router/app_router.dart';
 
-class MenuDrawer extends StatelessWidget {
+class MenuDrawer extends ConsumerWidget {
   const MenuDrawer({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final profileDriver = ref.watch(driverProfileNotifierProvider);
 
     return Drawer(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -23,12 +29,26 @@ class MenuDrawer extends StatelessWidget {
                   Container(
                     width: 60,
                     height: 60,
+                    clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: theme.primaryColor, width: 2),
                     ),
-                    child: Center(
-                      child: Icon(
+                    child: profileDriver.when(
+                      data: (profile) => profile.pictureProfile != null
+                          ? Image.network(
+                              profile.pictureProfile!,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Icon(Icons.person, color: theme.primaryColor),
+                            )
+                          : Icon(
+                              Icons.person,
+                              color: theme.primaryColor,
+                              size: 32,
+                            ),
+                      loading: () => loadingComponent(),
+                      error: (_, _) => Icon(
                         Icons.person,
                         color: theme.primaryColor,
                         size: 32,
@@ -40,9 +60,14 @@ class MenuDrawer extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Juan Pérez',
-                          style: TextStyle(
+                        Text(
+                          profileDriver.when(
+                            data: (profile) =>
+                                '${profile.firstName} ${profile.lastName}',
+                            loading: () => '...',
+                            error: (_, _) => 'Error',
+                          ),
+                          style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
@@ -96,7 +121,8 @@ class MenuDrawer extends StatelessWidget {
                     route: AppRouter.driverProfileLocation,
                     isSelected: true,
                   ),
-                  const MenuDrawerItem(
+
+                  /*                   const MenuDrawerItem(
                     icon: Icons.history,
                     label: 'Historial',
                     route: '/history',
@@ -110,8 +136,7 @@ class MenuDrawer extends StatelessWidget {
                     icon: Icons.support_agent,
                     label: 'Soporte',
                     route: '/support',
-                  ),
-
+                  ), */
                   const SizedBox(height: 32),
 
                   // Invite Friends Card
@@ -168,7 +193,8 @@ class MenuDrawer extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      // Logout action (añade tu ruta de logout o manejador)
+                      //TODO: Logout action (añade tu ruta de logout o manejador)
+                      exit(0);
                     },
                     borderRadius: BorderRadius.circular(12),
                     child: Container(
@@ -201,7 +227,7 @@ class MenuDrawer extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   Text(
-                    'TaxiApp v2.4.0 (Build ***)',
+                    'TaxiApp v1.0.0 (Build ***)',
                     style: TextStyle(color: Colors.grey[600], fontSize: 12),
                   ),
                   const SizedBox(height: 4),

@@ -7,6 +7,7 @@ import 'package:texi_driver/core/providers/google_directions_provider.dart';
 import 'package:texi_driver/core/router/app_router.dart';
 import 'package:texi_driver/core/theme/styles_for_texts.dart';
 import 'package:texi_driver/core/widgets/elevated_button_widget.dart';
+import 'package:texi_driver/core/widgets/loading_component.dart';
 import 'package:texi_driver/features/trips_driver/presentation/providers/actions_provider.dart';
 import 'package:texi_driver/features/trips_driver/presentation/providers/state/action_button_state.dart';
 import 'package:texi_driver/features/trips_driver/services/trip_states_services.dart';
@@ -70,7 +71,7 @@ class _RoadToOriginPageState extends ConsumerState<RoadToOriginPage> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: routeState.isLoading
-                    ? const Center(child: CircularProgressIndicator())
+                    ? Center(child: loadingComponent())
                     : GoogleMap(
                         onMapCreated: (controller) {
                           _mapController = controller;
@@ -97,13 +98,19 @@ class _RoadToOriginPageState extends ConsumerState<RoadToOriginPage> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 2.h),
-        child: ElevatedButtonWidget(
-          label: _getButtonLabel(actionState),
-          width: double.infinity,
-          onPressed: tripId == null
-              ? null
-              : () => _handleOnPressed(actionState, tripId),
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ElevatedButtonWidget(
+              label: _getButtonLabel(actionState),
+              width: double.infinity,
+              onPressed: tripId == null
+                  ? null
+                  : () => _handleOnPressed(actionState, tripId),
+            ),
+            SizedBox(height: 5.95.h),
+          ],
         ),
       ),
     );
@@ -128,6 +135,7 @@ class _RoadToOriginPageState extends ConsumerState<RoadToOriginPage> {
     } else if (!actionState.isTripFinished) {
       TripStatesServices.finishTrip(tripId, ref);
       notifier.setIsTripFinished(true);
+      notifier.reset();
       // El autoDispose del routeProvider cancela el timer automáticamente.
       AppRouter.routes.go(AppRouter.tripPassengerOffersLocation);
     }

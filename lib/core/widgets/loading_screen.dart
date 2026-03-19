@@ -8,7 +8,7 @@ class LoadingScreen extends StatelessWidget {
     return SizedBox.expand(
       child: Container(
         color: Colors.black.withValues(alpha: 0.5),
-        child: const Center(child: CircularProgressIndicator()),
+        child: Center(child: Image.asset('assets/images/loader_image.gif')),
       ),
     );
   }

@@ -4,7 +4,7 @@ import 'package:texi_driver/core/widgets/offline_page.dart';
 import 'package:texi_driver/core/widgets/offline_position_page.dart';
 import 'package:texi_driver/features/auth/presentation/pages/auth_page.dart';
 import 'package:texi_driver/features/dashboard/presentation/pages/dashboard_page.dart';
-import 'package:texi_driver/features/dashboard/presentation/pages/driver_profile.dart';
+import 'package:texi_driver/features/profile/presentation/pages/driver_profile_page.dart';
 import 'package:texi_driver/features/trips_driver/presentation/pages/road_to_origin_page.dart';
 import 'package:texi_driver/features/trips_driver/presentation/pages/trip_passenger_offers_page.dart';
 import 'package:texi_driver/features/dashboard/presentation/pages/vehicle_list_page.dart';

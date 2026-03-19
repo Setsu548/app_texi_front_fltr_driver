@@ -7,6 +7,7 @@ import 'package:texi_driver/core/providers/device_info_provider.dart';
 import 'package:texi_driver/core/constants/storage_keys.dart';
 import 'package:texi_driver/core/lang/extension_lang.dart';
 import 'package:texi_driver/core/router/app_router.dart';
+import 'package:texi_driver/core/theme/styles_for_texts.dart';
 import 'package:texi_driver/core/widgets/custom_snack_bar.dart';
 import 'package:texi_driver/core/widgets/elevated_button_widget.dart';
 import 'package:texi_driver/core/widgets/label_textfield_widget.dart';
@@ -16,6 +17,7 @@ import 'package:texi_driver/features/auth/presentation/providers/auth_providers.
 import 'package:texi_driver/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi_driver/features/auth/services/auth_services.dart';
 import 'package:texi_driver/features/dashboard/presentation/provider/dashboard_providers.dart';
+import 'package:texi_driver/features/profile/presentation/providers/profile_provider.dart';
 import 'package:texi_driver/features/register_driver/presentation/providers/driver_form_provider.dart';
 
 class AuthPage extends ConsumerStatefulWidget {
@@ -50,7 +52,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                 image: AssetImage('assets/images/texiFondo.png'),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                  Colors.white.withValues(alpha: 0.25),
+                  Theme.of(context).colorScheme.primary.withValues(alpha: 0.25),
                   BlendMode.overlay,
                 ),
               ),
@@ -84,7 +86,12 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                           ? context.go(AppRouter.registerHomeLocation)
                           : null;
                     },
-                    child: Text(registerOpcion.i18n),
+                    child: Text(
+                      registerOpcion.i18n,
+                      style: StylesForTexts(context: context)
+                          .headerStyleSmall()
+                          .copyWith(color: Theme.of(context).primaryColor),
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -171,9 +178,9 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                           cookie!.token,
                         );
                         AuthServices.initSocket(ref);
-                        _showMessage(
-                          '${welcomeDriver.i18n} ${_phoneController.text}',
-                        );
+                        // Fetch profile data for the first time
+                        ref.read(driverProfileNotifierProvider.future);
+                        _showMessage(welcomeDriver.i18n);
                         final flag = await ref
                             .read(hasVehicleNotifierProvider.notifier)
                             .hasVehicle();

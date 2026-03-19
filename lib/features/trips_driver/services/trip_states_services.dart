@@ -6,16 +6,23 @@ import 'package:texi_driver/features/trips_driver/presentation/providers/trip_of
 class TripStatesServices {
   static Future<bool> acceptTrip(String tripId, WidgetRef ref) async {
     final dio = ref.read(dioProviderActions);
+    final destinyNotifier = ref.read(destinyProvider.notifier);
+    final tripIdNotifier = ref.read(tripIdProvider.notifier);
+    
     final response = await TripRepoImpl().acceptTrip(tripId, dio);
-    ref.read(destinyProvider.notifier).setLocation(response.data!.origin);
-    ref.read(tripIdProvider.notifier).setTripId(tripId);
+    destinyNotifier.setLocation(response.data!.origin);
+    tripIdNotifier.setTripId(tripId);
+    
     return response.success;
   }
 
   static Future<bool> arriveTrip(String tripId, WidgetRef ref) async {
     final dio = ref.read(dioProviderActions);
+    final destinyNotifier = ref.read(destinyProvider.notifier);
+    
     final response = await TripRepoImpl().arriveState(tripId, dio);
-    ref.read(destinyProvider.notifier).setLocation(response.data!.destination);
+    destinyNotifier.setLocation(response.data!.destination);
+    
     return response.success;
   }
 
@@ -27,8 +34,10 @@ class TripStatesServices {
 
   static Future<bool> finishTrip(String tripId, WidgetRef ref) async {
     final dio = ref.read(dioProviderActions);
+    final tripOffersNotifier = ref.read(tripOffersProvider.notifier);
+    
     final response = await TripRepoImpl().finishTrip(tripId, dio);
-    ref.read(tripOffersProvider.notifier).clear();
+    tripOffersNotifier.clear();
     return response.success;
   }
 }

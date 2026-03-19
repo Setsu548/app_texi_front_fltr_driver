@@ -12,6 +12,7 @@ class TripOffersPassenger {
     final offersNotifier = ref.read(tripOffersProvider.notifier);
     socketService?.onMessage('trip:offer', (data) {
       final offer = TripOfferModel.fromJson(Map<String, dynamic>.from(data));
+      print(offer);
       //TODO: Revisar la filtración de ofertas, solo deben llegar las ofertas que esten disponibles
       offersNotifier.addOrUpdate(offer);
     });

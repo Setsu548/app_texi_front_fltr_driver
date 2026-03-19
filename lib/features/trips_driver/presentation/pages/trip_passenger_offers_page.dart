@@ -21,7 +21,6 @@ class TripPassengerOffersPage extends ConsumerStatefulWidget {
 
 class _TripPassengerOffersPageState
     extends ConsumerState<TripPassengerOffersPage> {
-
   @override
   void initState() {
     super.initState();
@@ -29,7 +28,6 @@ class _TripPassengerOffersPageState
       TripOffersPassenger.listenOffers(ref);
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +68,7 @@ class _TripPassengerOffersPageState
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        /* Text(
                           'ID: ${offer.tripId}',
                           style: StylesForTexts(context: context)
                               .bodyStyle()
@@ -80,7 +78,7 @@ class _TripPassengerOffersPageState
                                 ).colorScheme.secondary.withValues(alpha: 0.5),
                                 fontSize: 14.85.sp,
                               ),
-                        ),
+                        ), */
                         const SizedBox(height: 12),
                         SizedBox(
                           width: 50.w,

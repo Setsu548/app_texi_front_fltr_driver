@@ -14,6 +14,9 @@ class PositionServices {
   }
 
   Future<Position> getCurrentPosition() async {
+    if (await checkPermission() == LocationPermission.denied) {
+      await requestPermission();
+    }
     return await Geolocator.getCurrentPosition();
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/widgets/loading_component.dart';
 import 'package:texi_driver/features/register_driver/domain/entities/department_entity.dart';
 import 'package:texi_driver/features/register_driver/presentation/providers/driver_form_provider.dart';
 
@@ -74,7 +75,7 @@ class _DriverDepartmentDropdownState
                   },
                 );
               },
-              loading: () => const Center(child: CircularProgressIndicator()),
+              loading: () => Center(child: loadingComponent()),
               error: (error, stack) => Center(child: Text('Error')),
             ),
           ),

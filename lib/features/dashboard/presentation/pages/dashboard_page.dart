@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi_driver/core/providers/socket_provider.dart';
+import 'package:texi_driver/core/router/app_router.dart';
 import 'package:texi_driver/core/theme/styles_for_texts.dart';
 import 'package:texi_driver/core/utils/socket_service.dart';
 import 'package:texi_driver/core/widgets/custom_snack_bar.dart';
@@ -193,20 +195,14 @@ class _DashboardPageState extends ConsumerState<DashboardPage> {
                   try {
                     if (socketService != null) {
                       _showMessage(connectedReadyForTrips.i18n);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const TripPassengerOffersPage(),
-                        ),
-                      );
+                      context.push(AppRouter.tripPassengerOffersLocation);
                       PositioningServices(socketService).start();
                     } else {
                       _showMessage('Error al iniciar el Socket Provider');
                       ref.read(switchActiveProvider.notifier).toggleSwitch();
                     }
-                  } catch (e, stack) {
+                  } catch (e, _) {
                     _showMessage('Error al iniciar el Socket Provider: \$e');
-                    print(stack);
                     ref.read(switchActiveProvider.notifier).toggleSwitch();
                   }
                 }

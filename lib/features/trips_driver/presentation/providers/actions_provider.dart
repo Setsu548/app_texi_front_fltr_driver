@@ -33,6 +33,14 @@ class ActionsProvider extends Notifier<ActionButtonState> {
   void setIsTripFinished(bool isTripFinished) {
     state = state.copyWith(isTripFinished: isTripFinished);
   }
+
+  void reset() {
+    state = ActionButtonState(
+      isArrived: false,
+      isTripStarted: false,
+      isTripFinished: false,
+    );
+  }
 }
 
 final tripRepoProvider = Provider<TripRepo>((ref) {
