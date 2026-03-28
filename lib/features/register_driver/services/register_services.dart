@@ -70,4 +70,16 @@ class RegisterServices {
     ref.invalidate(backLicenseProvider);
     ref.invalidate(frontLicenseProvider);
   }
+
+  static Future<bool> checkDriverPhone(String phone, WidgetRef ref) async {
+    final repo = ref.read(driverRegisterRepoProvider);
+    final response = await repo.checkDriverPhone(phone);
+    return response.data!.phoneVerified;
+  }
+
+  static Future<bool> checkDriverEmail(String email, WidgetRef ref) async {
+    final repo = ref.read(driverRegisterRepoProvider);
+    final response = await repo.checkDriverEmail(email);
+    return response.data!.emailVerified;
+  }
 }

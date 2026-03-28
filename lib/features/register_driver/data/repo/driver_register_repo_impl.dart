@@ -1,10 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:texi_driver/core/constants/data_api_response.dart';
+import 'package:texi_driver/features/register_driver/data/models/data_check_model.dart';
+import 'package:texi_driver/features/register_driver/data/models/document_type_model.dart';
 import 'package:texi_driver/features/register_driver/data/models/driver_data_res_model.dart';
 import 'package:texi_driver/features/register_driver/data/models/driver_model.dart';
 import 'package:texi_driver/features/register_driver/data/models/geo_data_res_model.dart';
 import 'package:texi_driver/features/register_driver/data/models/identification_model.dart';
 import 'package:texi_driver/features/register_driver/data/register_endpoints.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/document_type_entity.dart';
 import 'package:texi_driver/features/register_driver/domain/entities/driver_entity.dart';
 import 'package:texi_driver/features/register_driver/domain/entities/identification_entity.dart';
 import 'package:texi_driver/features/register_driver/domain/repo/driver_register_repo.dart';
@@ -212,5 +215,94 @@ class DriverRegisterRepoImpl implements DriverRegisterRepo {
         error: ErrorResponse.fromJson(e.response!.data['error']),
       );
     }
+  }
+
+  @override
+  Future<DataApiResponse<PhoneChecked>> checkDriverPhone(String phone) async {
+    try {
+      final response = await _dio.get(
+        checkDriverPhoneEndpoint,
+        queryParameters: {'phone': phone},
+      );
+      if (response.statusCode == 200) {
+        return DataApiResponse<PhoneChecked>.fromSuccess(
+          response.data,
+          (json) => PhoneChecked.fromJson(json),
+        );
+      }
+    } on DioException catch (e) {
+      return DataApiResponse<PhoneChecked>.fromError(
+        success: false,
+        statusCode: e.response!.statusCode!,
+        code: e.response!.data['code'] ?? '',
+        message: e.response!.data['message'] ?? '',
+        error: ErrorResponse.fromJson(e.response!.data['error']),
+      );
+    }
+    return DataApiResponse<PhoneChecked>.fromError(
+      success: false,
+      statusCode: 500,
+      code: 'Fail',
+      message: 'Error al verificar el telefono',
+      error: ErrorResponse.fromJson({}),
+    );
+  }
+
+  @override
+  Future<DataApiResponse<EmailChecked>> checkDriverEmail(String email) async {
+    try {
+      final response = await _dio.get(checkDriverEmailEndpoint(email));
+      if (response.statusCode == 200) {
+        return DataApiResponse<EmailChecked>.fromSuccess(
+          response.data,
+          (json) => EmailChecked.fromJson(json),
+        );
+      }
+    } on DioException catch (e) {
+      return DataApiResponse<EmailChecked>.fromError(
+        success: false,
+        statusCode: e.response!.statusCode!,
+        code: e.response!.data['code'] ?? '',
+        message: e.response!.data['message'] ?? '',
+        error: ErrorResponse.fromJson(e.response!.data['error']),
+      );
+    }
+    return DataApiResponse<EmailChecked>.fromError(
+      success: false,
+      statusCode: 500,
+      code: 'Fail',
+      message: 'Error al verificar el correo',
+      error: ErrorResponse.fromJson({}),
+    );
+  }
+
+  @override
+  Future<DataApiResponse<List<DocumentTypeEntity>>> getDocumentTypes() async {
+    try {
+      final response = await _dio.get(documentTypesEndpoint);
+      if (response.statusCode == 200) {
+        return DataApiResponse<List<DocumentTypeEntity>>.fromSuccess(
+          response.data,
+          (json) => (json as List<dynamic>)
+              .map((e) => DocumentTypeModel.fromJson(e).toEntity())
+              .toList(),
+        );
+      }
+    } on DioException catch (e) {
+      return DataApiResponse<List<DocumentTypeEntity>>.fromError(
+        success: false,
+        statusCode: e.response!.statusCode!,
+        code: e.response!.data['code'] ?? '',
+        message: e.response!.data['message'] ?? '',
+        error: ErrorResponse.fromJson(e.response!.data['error']),
+      );
+    }
+    return DataApiResponse<List<DocumentTypeEntity>>.fromError(
+      success: false,
+      statusCode: 500,
+      code: 'Fail',
+      message: 'Error al obtener los tipos de documento',
+      error: ErrorResponse.fromJson({}),
+    );
   }
 }

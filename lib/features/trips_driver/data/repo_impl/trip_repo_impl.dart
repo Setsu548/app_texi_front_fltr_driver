@@ -91,4 +91,13 @@ class TripRepoImpl implements TripRepo {
       throw Exception(e.response?.data['message']);
     }
   }
+
+  @override
+  Future<DataApiResponse<TripStatusResEntity>> rejectTrip(
+    String tripId,
+    Dio dio,
+  ) {
+    // TODO: implement rejectTrip
+    throw UnimplementedError();
+  }
 }

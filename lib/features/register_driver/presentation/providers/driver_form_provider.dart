@@ -154,9 +154,7 @@ class RegisterProccessNotifier extends Notifier<AsyncValue<String>> {
       uuid: driverRegistered.uuid,
     );
     final response = await repo.registerDriverIdentification(identification);
-    if (response.data == null && response.error != null) {
-      throw response.error!.details;
-    }
+    print(response.data);
     if (response.success) {
       return true;
     } else {
@@ -188,16 +186,15 @@ class RegisterProccessNotifier extends Notifier<AsyncValue<String>> {
     final identification = IdentificationEntity(
       backDocument: back!,
       documentNumber: ref.read(identificationNumberProvider),
-      documentType: 2,
+      documentType: ref.read(selectedDocumentTypeProvider)!.id,
       expireDate: ref.read(licenseExpirationDateProvider),
       faceImage: face!,
       frontDocument: front!,
       uuid: driverRegistered.uuid,
     );
+
     final response = await repo.registerDriverIdentification(identification);
-    if (response.data == null && response.error != null) {
-      throw response.error!.details;
-    }
+
     if (response.success) {
       return true;
     } else {

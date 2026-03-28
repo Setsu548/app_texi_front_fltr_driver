@@ -24,7 +24,7 @@ enum Gender {
   }
 }
 
-enum LicenseCategory {
+/* enum LicenseCategory {
   a,
   b,
   c,
@@ -48,7 +48,7 @@ enum LicenseCategory {
         return 'T';
     }
   }
-}
+} */
 
 enum VehicleColor {
   white(Colors.white, colorWhite),

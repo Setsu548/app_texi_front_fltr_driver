@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
@@ -16,6 +17,7 @@ import 'package:texi_driver/features/register_driver/presentation/widgets/driver
 import 'package:texi_driver/features/register_driver/presentation/widgets/driver_user/driver_department_dropdown.dart';
 import 'package:texi_driver/features/register_driver/presentation/widgets/driver_user/driver_gender_dropdown.dart';
 import 'package:texi_driver/features/register_driver/presentation/widgets/driver_user/driver_locality_dropdown.dart';
+import 'package:texi_driver/features/register_driver/services/register_services.dart';
 
 class DriverFormWidget extends ConsumerStatefulWidget {
   const DriverFormWidget({super.key});
@@ -36,6 +38,10 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
   final _birthDateController = TextEditingController();
   Widget checkPassword = SizedBox.shrink();
   Widget checkConfirmPassword = SizedBox.shrink();
+  Widget checkPhone = SizedBox.shrink();
+  Widget checkEmail = SizedBox.shrink();
+  bool isEmailVerified = false;
+  bool isPhoneVerified = false;
 
   @override
   void dispose() {
@@ -61,7 +67,7 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
         children: [
           LabelTextfieldWidget(
             controller: _nameController,
-            hintText: 'Bruce',
+            hintText: 'John',
             label: '${names.i18n} *',
             textCapitalization: TextCapitalization.words,
             validator: (value) {
@@ -74,7 +80,7 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
           SizedBox(height: 1.5.h),
           LabelTextfieldWidget(
             controller: _lastNameController,
-            hintText: 'Wayne',
+            hintText: 'Doe',
             label: '${lastName.i18n} *',
             textCapitalization: TextCapitalization.words,
             validator: (value) {
@@ -88,6 +94,7 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
           LabelTextfieldWidget(
             controller: _emailController,
             hintText: 'email@email.com',
+            suffixIcon: checkEmail,
             keyboardType: TextInputType.emailAddress,
             label: '${email.i18n} *',
             validator: (value) {
@@ -98,6 +105,42 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
                 return invalidEmail.i18n;
               }
               return null;
+            },
+            onChanged: (value) async {
+              if (EmailValidator.validate(value)) {
+                isEmailVerified = await RegisterServices.checkDriverEmail(
+                  value,
+                  ref,
+                );
+                if (isEmailVerified) {
+                  setState(() {
+                    checkEmail = Icon(
+                      Icons.error,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primary.withValues(alpha: 0.5),
+                    );
+                  });
+                  if (context.mounted) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      customSnackBar(emailAlreadyExists.i18n, context),
+                    );
+                  }
+                } else {
+                  setState(() {
+                    checkEmail = Icon(
+                      Icons.check_circle,
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primary.withValues(alpha: 0.5),
+                    );
+                  });
+                }
+              } else {
+                setState(() {
+                  checkEmail = SizedBox.shrink();
+                });
+              }
             },
           ),
           SizedBox(height: 1.5.h),
@@ -138,10 +181,60 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
                   controller: _phoneController,
                   hintText: '77777777',
                   keyboardType: TextInputType.phone,
+                  inputFormatters: [
+                    LengthLimitingTextInputFormatter(8),
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  suffixIcon: checkPhone,
                   label: '${phone.i18n} *',
+                  onChanged: (value) async {
+                    if (value.length == 8) {
+                      if (context.mounted) {
+                        FocusScope.of(context).unfocus();
+                      }
+                      isPhoneVerified = await RegisterServices.checkDriverPhone(
+                        countryValue.dialCode + value,
+                        ref,
+                      );
+                      if (isPhoneVerified) {
+                        setState(() {
+                          checkPhone = Icon(
+                            Icons.error,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.5),
+                          );
+                        });
+                        if (context.mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            customSnackBar(phoneAlreadyExists.i18n, context),
+                          );
+                        }
+                      } else {
+                        setState(() {
+                          checkPhone = Icon(
+                            Icons.check_circle,
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.5),
+                          );
+                        });
+                      }
+                    } else {
+                      setState(() {
+                        checkPhone = SizedBox.shrink();
+                      });
+                    }
+                  },
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return requiredField.i18n;
+                    }
+                    if (value.length != 8) {
+                      return phoneMustBe8Characters.i18n;
+                    }
+                    if (int.tryParse(value) == null) {
+                      return phoneMustBeNumeric.i18n;
                     }
                     return null;
                   },
@@ -240,7 +333,9 @@ class _DriverFormWidgetState extends ConsumerState<DriverFormWidget> {
             iconImageAfter: Icon(Icons.chevron_right),
             label: continueButton.i18n,
             onPressed: () async {
-              if (_formKey.currentState!.validate()) {
+              if (_formKey.currentState!.validate() &&
+                  isEmailVerified == false &&
+                  isPhoneVerified == false) {
                 final driver = DriverEntity(
                   firstName: _nameController.text.trim(),
                   lastName: _lastNameController.text.trim(),

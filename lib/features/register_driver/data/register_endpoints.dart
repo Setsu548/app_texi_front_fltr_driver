@@ -6,3 +6,7 @@ final String registerDriverIdentificationEndpoint =
     '/users/driver/document-info';
 final String confirmRegister = '/users/driver/update-user';
 final String getDriverInfoEndpoint = '/users/driver/personal-info?uuid=';
+final String checkDriverPhoneEndpoint = '/users/verify-phone';
+String checkDriverEmailEndpoint(String email) =>
+    '/users/verify-email?email=$email';
+final String documentTypesEndpoint = '/document-type';

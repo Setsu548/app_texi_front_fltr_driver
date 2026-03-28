@@ -74,7 +74,7 @@ class MenuDrawer extends ConsumerWidget {
                           ),
                         ),
                         const SizedBox(height: 4),
-                        Row(
+                        /* Row(
                           children: [
                             Icon(
                               Icons.star,
@@ -99,7 +99,7 @@ class MenuDrawer extends ConsumerWidget {
                               ),
                             ),
                           ],
-                        ),
+                        ), */
                       ],
                     ),
                   ),

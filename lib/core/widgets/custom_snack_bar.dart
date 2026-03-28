@@ -11,9 +11,9 @@ SnackBar customSnackBar(String message, BuildContext context) {
         color: Theme.of(context).colorScheme.onPrimary,
       ),
     ),
-    backgroundColor: Theme.of(context).colorScheme.primary,
+    backgroundColor: Theme.of(context).colorScheme.error,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-    duration: const Duration(seconds: 4),
+    duration: const Duration(seconds: 5),
   );
 }

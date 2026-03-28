@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:sizer/sizer.dart';
 
 class LabelTextfieldWidget extends StatelessWidget {
@@ -15,6 +16,7 @@ class LabelTextfieldWidget extends StatelessWidget {
   final Function(String)? onChanged;
   final Function()? onTap;
   final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
 
   const LabelTextfieldWidget({
     super.key,
@@ -31,6 +33,7 @@ class LabelTextfieldWidget extends StatelessWidget {
     this.onChanged,
     this.onTap,
     this.keyboardType,
+    this.inputFormatters,
   });
 
   @override
@@ -69,6 +72,7 @@ class LabelTextfieldWidget extends StatelessWidget {
               maxLines: multipleLines ? 5 : 1,
               readOnly: readOnly!,
               keyboardType: keyboardType,
+              inputFormatters: inputFormatters,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: isBold! ? FontWeight.bold : FontWeight.normal,
@@ -80,6 +84,9 @@ class LabelTextfieldWidget extends StatelessWidget {
                 suffixIcon: suffixIcon,
                 hintStyle: TextStyle(
                   color: Colors.white.withValues(alpha: 0.5),
+                ),
+                errorStyle: TextStyle(
+                  color: Theme.of(context).colorScheme.error,
                 ),
               ),
               validator: validator,

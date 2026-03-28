@@ -10,6 +10,7 @@ import 'package:texi_driver/core/widgets/elevated_button_widget.dart';
 import 'package:texi_driver/core/widgets/loading_component.dart';
 import 'package:texi_driver/features/trips_driver/presentation/providers/actions_provider.dart';
 import 'package:texi_driver/features/trips_driver/presentation/providers/state/action_button_state.dart';
+import 'package:texi_driver/features/trips_driver/presentation/widgets/alert_rate_passenger.dart';
 import 'package:texi_driver/features/trips_driver/services/trip_states_services.dart';
 
 class RoadToOriginPage extends ConsumerStatefulWidget {
@@ -133,11 +134,17 @@ class _RoadToOriginPageState extends ConsumerState<RoadToOriginPage> {
       notifier.setIsTripStarted(true);
       TripStatesServices.startTrip(tripId, ref);
     } else if (!actionState.isTripFinished) {
-      TripStatesServices.finishTrip(tripId, ref);
-      notifier.setIsTripFinished(true);
-      notifier.reset();
-      // El autoDispose del routeProvider cancela el timer automáticamente.
-      AppRouter.routes.go(AppRouter.tripPassengerOffersLocation);
+      showDialog(
+        barrierDismissible: false,
+        context: context,
+        builder: (context) => const AlertRatePassenger(),
+      ).then((_) {
+        TripStatesServices.finishTrip(tripId, ref);
+        notifier.setIsTripFinished(true);
+        notifier.reset();
+        // El autoDispose del routeProvider cancela el timer automáticamente.
+        AppRouter.routes.go(AppRouter.tripPassengerOffersLocation);
+      });
     }
   }
 }

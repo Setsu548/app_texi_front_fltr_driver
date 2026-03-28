@@ -163,7 +163,8 @@ class DriverIdentityPage extends ConsumerWidget {
               // Botón principal para continuar al siguiente paso (Licencia de conducir).
               ElevatedButtonWidget(
                 onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
+                  if (_formKey.currentState!.validate() &&
+                      _expirationDateController.text.isNotEmpty ) {
                     if (ref.read(profileImageProvider).value != null &&
                         ref.read(frontIdentificationProvider).value != null &&
                         ref.read(backIdentificationProvider).value != null) {

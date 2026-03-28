@@ -16,9 +16,7 @@ class TripOffersNotifier extends Notifier<List<TripOfferModel>> {
   void addOrUpdate(TripOfferModel offer) {
     final exists = state.any((e) => e.tripId == offer.tripId);
     if (exists) {
-      state = [
-        for (final e in state) e.tripId == offer.tripId ? offer : e,
-      ];
+      state = [for (final e in state) e.tripId == offer.tripId ? offer : e];
     } else {
       state = [...state, offer];
     }
@@ -63,3 +61,23 @@ final destinyProvider = NotifierProvider<DestinyNotifier, LocationEntity>(
   DestinyNotifier.new,
 );
 //--//
+
+class TripAcceptedInfoNotifier extends Notifier<TripOfferModel?> {
+  @override
+  TripOfferModel? build() {
+    return null;
+  }
+
+  void setTripAcceptedInfo(TripOfferModel tripAcceptedInfo) {
+    state = tripAcceptedInfo;
+  }
+
+  void clear() {
+    state = null;
+  }
+}
+
+final tripAcceptedInfoProvider =
+    NotifierProvider<TripAcceptedInfoNotifier, TripOfferModel?>(
+      TripAcceptedInfoNotifier.new,
+    );

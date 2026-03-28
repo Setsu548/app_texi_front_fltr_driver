@@ -210,7 +210,16 @@ const rejectedOffer = 'Oferta rechazada';
 const acceptedOffer = 'Oferta aceptada';
 const errorAcceptOffer = 'Error al aceptar la oferta';
 const errorRejectOffer = 'Error al rechazar la oferta';
-
+const phoneMustBe8Characters = 'El número de teléfono debe tener 8 caracteres';
+const phoneMustBeNumeric = 'El número de teléfono debe contener solo números';
+const distanceToPickup = 'Distancia al origen';
+const tripDistance = 'Distancia del viaje';
+const passengerName = 'Nombre del pasajero';
+const emailAlreadyExists = 'El correo electrónico ya está registrado';
+const phoneAlreadyExists = 'El número de teléfono ya está registrado';
+const howWasYourTrip = '¿Cómo fue tu viaje con ';
+const ratePassenger = 'Calificar pasajero';
+const rate = 'Calificar';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
@@ -1367,6 +1376,66 @@ extension Localization on String {
       'es-ES': 'Error al rechazar la oferta',
       'es-MX': 'Error al rechazar la oferta',
       'es-BO': 'Error al rechazar la oferta',
+    },
+    phoneMustBe8Characters: {
+      'en-US': 'Phone must be 8 characters',
+      'es-ES': 'El número de teléfono debe tener 8 caracteres',
+      'es-MX': 'El número de teléfono debe tener 8 caracteres',
+      'es-BO': 'El número de teléfono debe tener 8 caracteres',
+    },
+    phoneMustBeNumeric: {
+      'en-US': 'Phone number must contain only numbers',
+      'es-ES': 'El número de teléfono debe contener solo números',
+      'es-MX': 'El número de teléfono debe contener solo números',
+      'es-BO': 'El número de teléfono debe contener solo números',
+    },
+    distanceToPickup: {
+      'en-US': 'Distance to pickup',
+      'es-ES': 'Distancia al origen',
+      'es-MX': 'Distancia al origen',
+      'es-BO': 'Distancia al origen',
+    },
+    tripDistance: {
+      'en-US': 'Trip distance',
+      'es-ES': 'Distancia del viaje',
+      'es-MX': 'Distancia del viaje',
+      'es-BO': 'Distancia del viaje',
+    },
+    passengerName: {
+      'en-US': 'Passenger name',
+      'es-ES': 'Nombre del pasajero',
+      'es-MX': 'Nombre del pasajero',
+      'es-BO': 'Nombre del pasajero',
+    },
+    emailAlreadyExists: {
+      'en-US': 'Email already registered',
+      'es-ES': 'El correo electrónico ya está registrado',
+      'es-MX': 'El correo electrónico ya está registrado',
+      'es-BO': 'El correo electrónico ya está registrado',
+    },
+    phoneAlreadyExists: {
+      'en-US': 'Phone number already registered',
+      'es-ES': 'El número de teléfono ya está registrado',
+      'es-MX': 'El número de teléfono ya está registrado',
+      'es-BO': 'El número de teléfono ya está registrado',
+    },
+    howWasYourTrip: {
+      'en-US': 'How was your trip with ',
+      'es-ES': '¿Cómo fue tu viaje con ',
+      'es-MX': '¿Cómo fue tu viaje con ',
+      'es-BO': '¿Cómo fue tu viaje con ',
+    },
+    ratePassenger: {
+      'en-US': 'Rate Passenger',
+      'es-ES': 'Calificar Pasajero',
+      'es-MX': 'Calificar Pasajero',
+      'es-BO': 'Calificar Pasajero',
+    },
+    rate: {
+      'en-US': 'Rate',
+      'es-ES': 'Calificar',
+      'es-MX': 'Calificar',
+      'es-BO': 'Calificar',
     },
   });
 

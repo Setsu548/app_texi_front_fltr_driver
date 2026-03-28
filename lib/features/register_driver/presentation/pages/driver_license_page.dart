@@ -118,7 +118,8 @@ class _DriverLicensePageState extends ConsumerState<DriverLicensePage> {
                       onPressed: () async {
                         if (ref.read(frontLicenseProvider).value != null &&
                             ref.read(backLicenseProvider).value != null &&
-                            ref.read(profileImageProvider).value != null) {
+                            ref.read(profileImageProvider).value != null &&
+                            ref.read(selectedDocumentTypeProvider) != null) {
                           try {
                             await RegisterServices.registerDriverInformation(
                               ref,

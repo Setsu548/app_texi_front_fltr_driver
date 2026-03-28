@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:texi_driver/core/providers/socket_provider.dart';
 import 'package:texi_driver/features/trips_driver/data/model/trip_offer_model.dart';
@@ -11,9 +12,8 @@ class TripOffersPassenger {
     final socketService = ref.read(socketServiceProvider).value;
     final offersNotifier = ref.read(tripOffersProvider.notifier);
     socketService?.onMessage('trip:offer', (data) {
-      final offer = TripOfferModel.fromJson(Map<String, dynamic>.from(data));
-      print(offer);
-      //TODO: Revisar la filtración de ofertas, solo deben llegar las ofertas que esten disponibles
+      final offer = TripOfferModel.fromJson(data);
+      HapticFeedback.heavyImpact();
       offersNotifier.addOrUpdate(offer);
     });
   }

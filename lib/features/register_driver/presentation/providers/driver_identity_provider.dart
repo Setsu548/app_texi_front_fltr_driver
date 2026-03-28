@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:texi_driver/core/constants/data_api_response.dart';
 import 'package:texi_driver/core/utils/image_picker_service.dart';
+import 'package:texi_driver/features/register_driver/domain/entities/document_type_entity.dart';
 import 'package:texi_driver/features/register_driver/domain/entities/identification_entity.dart';
 import 'package:texi_driver/features/register_driver/presentation/providers/driver_form_provider.dart';
 
@@ -181,4 +182,38 @@ class BackLicenseNotifier extends Notifier<AsyncValue<File?>> {
 final backLicenseProvider =
     NotifierProvider<BackLicenseNotifier, AsyncValue<File?>>(
       BackLicenseNotifier.new,
+    );
+
+class DocumentTypesProvider extends AsyncNotifier<List<DocumentTypeEntity>> {
+  @override
+  Future<List<DocumentTypeEntity>> build() async {
+    final repo = ref.read(driverRegisterRepoProvider);
+    final result = await repo.getDocumentTypes();
+    if (result.data != null) {
+      return result.data!;
+    } else {
+      throw (result.error!.details);
+    }
+  }
+}
+
+final documentTypesProvider =
+    AsyncNotifierProvider<DocumentTypesProvider, List<DocumentTypeEntity>>(
+      DocumentTypesProvider.new,
+    );
+
+class SelectedDocumentTypeNotifier extends Notifier<DocumentTypeEntity?> {
+  @override
+  DocumentTypeEntity? build() {
+    return null;
+  }
+
+  void setSelectedDocumentType(DocumentTypeEntity documentType) {
+    state = documentType;
+  }
+}
+
+final selectedDocumentTypeProvider =
+    NotifierProvider<SelectedDocumentTypeNotifier, DocumentTypeEntity?>(
+      SelectedDocumentTypeNotifier.new,
     );

@@ -21,59 +21,33 @@ class RegisterVehicleRepoImp implements RegisterVehicleRepo {
     String token,
   ) async {
     final vehicleModel = VehicleModel.fromEntity(vehicle);
-    final response = await _dio.post(
-      registerVehiclePath,
-      data: vehicleModel.toJson(),
-      options: Options(headers: {'Authorization': 'Bearer $token'}),
-    );
-    switch (response.statusCode) {
-      case 200:
+    try {
+      final response = await _dio.post(
+        registerVehiclePath,
+        data: vehicleModel.toJson(),
+        options: Options(headers: {'Authorization': 'Bearer $token'}),
+      );
+      if (response.statusCode == 200) {
         return DataApiResponse<VehicleResModel?>.fromSuccess(
           response.data,
           (json) => VehicleResModel.fromJson(json),
         );
-      case 201:
-        return DataApiResponse<VehicleResModel?>.fromSuccess(response.data);
-      case 400:
-        return DataApiResponse<VehicleResModel?>.fromError(
-          success: false,
-          statusCode: response.statusCode!,
-          code: response.data['code'] ?? '',
-          message: response.data['message'] ?? '',
-          error: ErrorResponse.fromJson(response.data['error']),
-        );
-      case 404:
-        return DataApiResponse<VehicleResModel?>.fromError(
-          success: false,
-          statusCode: response.statusCode!,
-          code: response.data['code'] ?? '',
-          message: response.data['message'] ?? '',
-          error: ErrorResponse.fromJson(response.data['error']),
-        );
-      case 500:
-        return DataApiResponse<VehicleResModel?>.fromError(
-          success: false,
-          statusCode: response.statusCode!,
-          code: response.data['code'] ?? '',
-          message: response.data['message'] ?? '',
-          error: ErrorResponse.fromJson(response.data['error']),
-        );
-      case 502:
-        return DataApiResponse<VehicleResModel?>.fromError(
-          success: false,
-          statusCode: response.statusCode!,
-          code: response.data['code'] ?? '',
-          message: response.data['message'] ?? '',
-          error: ErrorResponse.fromJson(response.data['error']),
-        );
-      default:
-        return DataApiResponse<VehicleResModel?>.fromError(
-          success: false,
-          statusCode: response.statusCode!,
-          code: response.data['code'] ?? '',
-          message: response.data['message'] ?? '',
-          error: ErrorResponse.fromJson(response.data['error']),
-        );
+      }
+      return DataApiResponse<VehicleResModel?>.fromError(
+        success: false,
+        statusCode: response.statusCode ?? 500,
+        code: response.data['code'] ?? '0',
+        message: response.data['message'] ?? 'Error',
+        error: ErrorResponse.fromJson(response.data['error']),
+      );
+    } on DioException catch (e) {
+      return DataApiResponse<VehicleResModel?>.fromError(
+        success: false,
+        statusCode: e.response?.statusCode ?? 500,
+        code: e.response?.data['code'] ?? '0',
+        message: e.response?.data['message'] ?? 'Error',
+        error: ErrorResponse.fromJson(e.response?.data['error']),
+      );
     }
   }
 
@@ -83,7 +57,6 @@ class RegisterVehicleRepoImp implements RegisterVehicleRepo {
   ) async {
     final storage = GetIt.instance<AuthSecureStorageService>();
     final vehicleId = await storage.getString(StorageKeys.vehicleRegister);
-    print(vehicleId);
     try {
       final vehiclesImagesModel = VehicleImageSaving(
         carId: vehicleId!,
@@ -92,7 +65,6 @@ class RegisterVehicleRepoImp implements RegisterVehicleRepo {
             .toList(),
       );
       final data = vehiclesImagesModel.toJson();
-      print(data);
       final token = await GetIt.instance<AuthSecureStorageService>().getString(
         StorageKeys.driverToken,
       );
@@ -101,7 +73,6 @@ class RegisterVehicleRepoImp implements RegisterVehicleRepo {
         data: data,
         options: Options(headers: {'Authorization': 'Bearer $token'}),
       );
-      print(response.data);
       switch (response.statusCode) {
         case 200:
           return DataApiResponse(

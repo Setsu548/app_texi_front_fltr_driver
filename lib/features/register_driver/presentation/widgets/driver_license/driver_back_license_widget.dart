@@ -78,7 +78,7 @@ class _DriverBackLicenseWidgetState
                     ),
                     SizedBox(height: 2.75.h),
                     Text(
-                      frontIdentification.i18n,
+                      backLicense.i18n,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16.6.sp,

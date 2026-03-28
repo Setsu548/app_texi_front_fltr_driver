@@ -260,7 +260,7 @@ class DriverProfile extends ConsumerWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Row(
+        /* Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(Icons.star, color: theme.primaryColor, size: 16),
@@ -285,7 +285,7 @@ class DriverProfile extends ConsumerWidget {
               style: const TextStyle(color: Colors.grey, fontSize: 14),
             ),
           ],
-        ),
+        ), */
       ],
     );
   }
@@ -394,7 +394,7 @@ class DriverProfile extends ConsumerWidget {
           Switch(
             value: value,
             onChanged: (val) {},
-            activeColor: theme.primaryColor,
+            activeThumbColor: theme.primaryColor,
             activeTrackColor: theme.primaryColor.withValues(alpha: 0.2),
             inactiveThumbColor: Colors.grey,
             inactiveTrackColor: Colors.grey.withValues(alpha: 0.2),
