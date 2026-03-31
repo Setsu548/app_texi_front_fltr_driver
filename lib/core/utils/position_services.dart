@@ -19,4 +19,8 @@ class PositionServices {
     }
     return await Geolocator.getCurrentPosition();
   }
+
+  Future<bool> openLocationSettings() async {
+    return await Geolocator.openLocationSettings();
+  }
 }

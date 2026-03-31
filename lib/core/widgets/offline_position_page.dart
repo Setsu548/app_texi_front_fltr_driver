@@ -4,6 +4,7 @@ import 'package:sizer/sizer.dart';
 import 'package:texi_driver/core/lang/extension_lang.dart';
 import 'package:texi_driver/core/router/app_router.dart';
 import 'package:texi_driver/core/theme/styles_for_texts.dart';
+import 'package:texi_driver/core/utils/position_services.dart';
 
 class OfflinePositionPage extends StatelessWidget {
   const OfflinePositionPage({super.key});
@@ -75,6 +76,27 @@ class OfflinePositionPage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 6.h),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: primaryColor,
+                  foregroundColor: Colors.white,
+                  minimumSize: Size(80.w, 6.h),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(3.w),
+                  ),
+                ),
+                onPressed: () async {
+                  await PositionServices().openLocationSettings();
+                },
+                child: Text(
+                  'Activar Ubicación',
+                  style: styles.bodyStyle().copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                ),
+              ),
+              SizedBox(height: 2.h),
               TextButton(
                 onPressed: () {
                   if (context.canPop()) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:texi_driver/core/providers/internet_service_provider.dart';
-
+import 'package:texi_driver/core/providers/location_service_provider.dart';
 class AppConnectionListener extends ConsumerStatefulWidget {
   final Widget child;
 
@@ -21,6 +21,14 @@ class _AppConnectionListenerState extends ConsumerState<AppConnectionListener> {
         ref.read(connectionControllerProvider).handleConnection(status, router);
       });
     });
+
+    ref.listen(locationServiceStatusProvider, (previous, next) {
+      next.whenData((status) {
+        final router = ref.read(routerProvider);
+        ref.read(locationConnectionControllerProvider).handleConnection(status, router);
+      });
+    });
+
     return widget.child;
   }
 }
