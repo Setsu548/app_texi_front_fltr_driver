@@ -7,7 +7,7 @@ class LoadingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox.expand(
       child: Container(
-        color: Colors.black.withValues(alpha: 0.5),
+        color: Colors.black.withValues(alpha: 0.7),
         child: Center(child: Image.asset('assets/images/loader_image.gif')),
       ),
     );

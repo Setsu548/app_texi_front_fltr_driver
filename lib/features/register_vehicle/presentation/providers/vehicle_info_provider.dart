@@ -124,8 +124,8 @@ class RegisterVehicleNotifier
     try {
       final token = await storage.getString(StorageKeys.driverToken);
       if (token == null) {
-        setError(tokenNotFound.i18n);
-        throw tokenNotFound.i18n;
+        setError(userNotFound.i18n);
+        throw userNotFound.i18n;
       }
 
       final repo = ref.read(vehicleRepoProvider);

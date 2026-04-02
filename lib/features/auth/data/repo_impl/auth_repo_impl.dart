@@ -88,4 +88,57 @@ class AuthRepoImpl implements AuthRepo {
       throw (e.response?.data['error']['details']);
     }
   }
+
+  @override
+  Future<DataApiResponse<LoginDataModel>> refreshToken(Dio dioRefresh) async {
+    try {
+      final response = await dioRefresh.post(refreshTokenPath);
+      if (response.statusCode == 200) {
+        return DataApiResponse<LoginDataModel>.fromSuccess(
+          response.data,
+          (json) => LoginDataModel.fromJson(json),
+        );
+      }
+      return DataApiResponse.fromError(
+        success: false,
+        statusCode: response.statusCode ?? 500,
+        code: response.data['code'],
+        message: response.data['message'],
+        error: ErrorResponse.fromJson(response.data['error']),
+      );
+    } on DioException catch (e) {
+      return DataApiResponse.fromError(
+        success: false,
+        statusCode: e.response?.statusCode ?? 500,
+        code: e.response?.data['code'],
+        message: e.response?.data['message'],
+        error: ErrorResponse.fromJson(e.response?.data['error']),
+      );
+    }
+  }
+
+  @override
+  Future<DataApiResponse<void>> logout() async {
+    try {
+      final response = await _dio.get(logoutPath);
+      if (response.statusCode == 200) {
+        return DataApiResponse<void>.fromSuccess(response.data, null);
+      }
+      return DataApiResponse.fromError(
+        success: false,
+        statusCode: response.statusCode ?? 500,
+        code: response.data['code'],
+        message: response.data['message'],
+        error: ErrorResponse.fromJson(response.data['error']),
+      );
+    } on DioException catch (e) {
+      return DataApiResponse.fromError(
+        success: false,
+        statusCode: e.response?.statusCode ?? 500,
+        code: e.response?.data['code'],
+        message: e.response?.data['message'],
+        error: ErrorResponse.fromJson(e.response?.data['error']),
+      );
+    }
+  }
 }

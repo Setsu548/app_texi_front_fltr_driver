@@ -3,6 +3,7 @@ import 'package:texi_driver/core/router/transitions_helper.dart';
 import 'package:texi_driver/core/widgets/offline_page.dart';
 import 'package:texi_driver/core/widgets/offline_position_page.dart';
 import 'package:texi_driver/features/auth/presentation/pages/auth_page.dart';
+import 'package:texi_driver/features/auth/presentation/pages/splash_page.dart';
 import 'package:texi_driver/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:texi_driver/features/profile/presentation/pages/driver_profile_page.dart';
 import 'package:texi_driver/features/trips_driver/presentation/pages/road_to_origin_page.dart';
@@ -22,6 +23,7 @@ class AppRouter {
   AppRouter._();
 
   static final String initialLocation = '/';
+  static final String authLocation = '/auth';
   static final String registerHomeLocation = '/registerHome';
   static final String registerPersonalInfoLocation = 'personalInfo';
   static final String confirmationDriverDataLocation = 'confirmationDriverData';
@@ -43,6 +45,11 @@ class AppRouter {
     routes: [
       GoRoute(
         path: initialLocation,
+        pageBuilder: (context, state) =>
+            TransitionsHelper.fadeTransition(state, const SplashPage()),
+      ),
+      GoRoute(
+        path: authLocation,
         pageBuilder: (context, state) =>
             TransitionsHelper.fadeTransition(state, AuthPage()),
       ),

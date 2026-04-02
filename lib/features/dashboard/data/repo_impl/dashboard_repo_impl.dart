@@ -24,8 +24,8 @@ class DashboardRepoImpl implements DashboarRepo {
           code: 'UNAUTHORIZED',
           message: 'No autorizado',
           error: ErrorResponse(
-            message: tokenNotFound.i18n,
-            details: tokenNotFound.i18n,
+            message: userNotFound.i18n,
+            details: userNotFound.i18n,
           ),
         );
       }

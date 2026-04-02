@@ -3,7 +3,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:texi_driver/core/lang/extension_lang.dart';
+import 'package:texi_driver/core/widgets/custom_snack_bar.dart';
 import 'package:texi_driver/core/widgets/loading_component.dart';
+import 'package:texi_driver/features/auth/services/auth_services.dart';
 import 'package:texi_driver/features/profile/presentation/providers/profile_provider.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi_driver/core/router/app_router.dart';
@@ -192,8 +195,57 @@ class MenuDrawer extends ConsumerWidget {
               child: Column(
                 children: [
                   InkWell(
+                    onTap: () async {
+                      try {
+                        await AuthServices.logout(ref);
+                        if (!context.mounted) return;
+                        context.go(AppRouter.authLocation);
+                      } catch (e) {
+                        if (!context.mounted) return;
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(customSnackBar(e.toString(), context));
+                      }
+                    },
+                    borderRadius: BorderRadius.circular(12),
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.primary.withValues(alpha: 0.3),
+                        ),
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.primary.withValues(alpha: 0.1),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.logout,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          SizedBox(width: 8),
+                          Text(
+                            logout.i18n,
+                            style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 2.5.h),
+                  InkWell(
                     onTap: () {
-                      //TODO: Logout action (añade tu ruta de logout o manejador)
                       exit(0);
                     },
                     borderRadius: BorderRadius.circular(12),
@@ -203,19 +255,26 @@ class MenuDrawer extends ConsumerWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
-                          color: Colors.redAccent.withValues(alpha: 0.3),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.error.withValues(alpha: 0.3),
                         ),
-                        color: Colors.redAccent.withValues(alpha: 0.1),
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.error.withValues(alpha: 0.1),
                       ),
-                      child: const Row(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.logout, color: Colors.redAccent),
+                          Icon(
+                            Icons.close,
+                            color: Theme.of(context).colorScheme.error,
+                          ),
                           SizedBox(width: 8),
                           Text(
-                            'SALIR',
+                            close.i18n,
                             style: TextStyle(
-                              color: Colors.redAccent,
+                              color: Theme.of(context).colorScheme.error,
                               fontWeight: FontWeight.bold,
                               fontSize: 16,
                               letterSpacing: 1.2,

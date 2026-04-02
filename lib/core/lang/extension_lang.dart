@@ -148,7 +148,7 @@ const insurancePhoto = 'Tarjeta de seguro (opcional)';
 const vin = 'Número de Chasis';
 const titleVehicle = 'Título de Propiedad (RUAT)';
 const example = 'Ej.';
-const tokenNotFound = 'Token no encontrado';
+const userNotFound = 'Usuario no encontrado';
 const currentStatus = 'Estado actual:';
 const activeStr = 'Activo';
 const inactiveStr = 'Inactivo';
@@ -220,6 +220,8 @@ const phoneAlreadyExists = 'El número de teléfono ya está registrado';
 const howWasYourTrip = '¿Cómo fue tu viaje con ';
 const ratePassenger = 'Calificar pasajero';
 const rate = 'Calificar';
+const logout = 'Cerrar Sesión';
+const close = 'Salir';
 
 extension Localization on String {
   static const _translations = ConstTranslations('es-MX', {
@@ -1045,11 +1047,11 @@ extension Localization on String {
       'es-BO': 'Título de Propiedad (RUAT)',
     },
     example: {'en-US': 'e.g.', 'es-ES': 'Ej.', 'es-MX': 'Ej.', 'es-BO': 'Ej.'},
-    tokenNotFound: {
-      'en-US': 'Token not found',
-      'es-ES': 'Token no encontrado',
-      'es-MX': 'Token no encontrado',
-      'es-BO': 'Token no encontrado',
+    userNotFound: {
+      'en-US': 'User not found',
+      'es-ES': 'Usuario no encontrado',
+      'es-MX': 'Usuario no encontrado',
+      'es-BO': 'Usuario no encontrado',
     },
     todayStr: {
       'en-US': 'Today',
@@ -1436,6 +1438,18 @@ extension Localization on String {
       'es-ES': 'Calificar',
       'es-MX': 'Calificar',
       'es-BO': 'Calificar',
+    },
+    logout: {
+      'en-US': 'Logout',
+      'es-ES': 'Cerrar Sesión',
+      'es-MX': 'Cerrar Sesión',
+      'es-BO': 'Cerrar Sesión',
+    },
+    close: {
+      'en-US': 'Exit',
+      'es-ES': 'Salir',
+      'es-MX': 'Salir',
+      'es-BO': 'Salir',
     },
   });
 

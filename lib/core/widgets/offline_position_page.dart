@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi_driver/core/lang/extension_lang.dart';
-import 'package:texi_driver/core/router/app_router.dart';
 import 'package:texi_driver/core/theme/styles_for_texts.dart';
 import 'package:texi_driver/core/utils/position_services.dart';
 
@@ -15,23 +13,7 @@ class OfflinePositionPage extends StatelessWidget {
     final styles = StylesForTexts(context: context);
 
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: IconButton(
-          icon: Icon(
-            Icons.chevron_left,
-            color: Theme.of(context).colorScheme.onSurface,
-          ),
-          onPressed: () {
-            if (context.canPop()) {
-              context.pop();
-            } else {
-              context.go(AppRouter.initialLocation);
-            }
-          },
-        ),
-      ),
+      appBar: null,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.w),
@@ -91,22 +73,12 @@ class OfflinePositionPage extends StatelessWidget {
                 child: Text(
                   'Activar Ubicación',
                   style: styles.bodyStyle().copyWith(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
               SizedBox(height: 2.h),
-              TextButton(
-                onPressed: () {
-                  if (context.canPop()) {
-                    context.pop();
-                  } else {
-                    context.go(AppRouter.initialLocation);
-                  }
-                },
-                child: Text(backToHome.i18n),
-              ),
             ],
           ),
         ),

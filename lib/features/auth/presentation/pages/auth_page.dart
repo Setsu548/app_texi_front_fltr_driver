@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:go_router/go_router.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sizer/sizer.dart';
 import 'package:texi_driver/core/providers/device_info_provider.dart';
-import 'package:texi_driver/core/constants/storage_keys.dart';
 import 'package:texi_driver/core/lang/extension_lang.dart';
 import 'package:texi_driver/core/router/app_router.dart';
 import 'package:texi_driver/core/theme/styles_for_texts.dart';
@@ -14,7 +12,6 @@ import 'package:texi_driver/core/widgets/label_textfield_widget.dart';
 import 'package:texi_driver/core/widgets/loading_screen.dart';
 import 'package:texi_driver/features/auth/domain/entities/auth_entity.dart';
 import 'package:texi_driver/features/auth/presentation/providers/auth_providers.dart';
-import 'package:texi_driver/core/utils/auth_secure_storeage_service.dart';
 import 'package:texi_driver/features/auth/services/auth_services.dart';
 import 'package:texi_driver/features/dashboard/presentation/provider/dashboard_providers.dart';
 import 'package:texi_driver/features/profile/presentation/providers/profile_provider.dart';
@@ -37,7 +34,6 @@ class _AuthPageState extends ConsumerState<AuthPage> {
     final hidePassword = ref.watch(hidePasswordProvider);
     final countryValue = ref.watch(localCountryProvider);
     final isLoggingIn = ref.watch(loginNotifierProvider);
-    final storage = GetIt.instance<AuthSecureStorageService>();
 
     return Scaffold(
       appBar: null,
@@ -148,13 +144,13 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                       ),
                     ),
                   ),
-                  TextButton(
+                  /* TextButton(
                     onPressed: () {},
                     child: Text(
                       forgetPassword.i18n,
                       textAlign: TextAlign.right,
                     ),
-                  ),
+                  ), */
                   SizedBox(height: 10.h),
                   ElevatedButtonWidget(
                     label: login.i18n,
@@ -167,17 +163,13 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                         phone,
                         password,
                       );
-
                       final response = await ref
                           .read(loginNotifierProvider.notifier)
                           .login(authEntity);
                       if (response.success) {
                         final cookie = response.data;
-                        await storage.saveToken(
-                          StorageKeys.driverToken,
-                          cookie!.token,
-                        );
-                        AuthServices.initSocket(ref);
+                        AuthServices.saveDriverTokens(cookie!);
+                        //AuthServices.initSocket(ref);
                         // Fetch profile data for the first time
                         ref.read(driverProfileNotifierProvider.future);
                         _showMessage(welcomeDriver.i18n);
@@ -189,7 +181,7 @@ class _AuthPageState extends ConsumerState<AuthPage> {
                           _navigateToVehiclePage();
                         } else {
                           if (flag == null) {
-                            _showMessage(tokenNotFound.i18n);
+                            _showMessage(userNotFound.i18n);
                           } else {
                             context.go(AppRouter.vehicleListLocation);
                             await ref
